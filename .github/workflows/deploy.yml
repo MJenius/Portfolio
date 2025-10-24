@@ -1,4 +1,10 @@
+# ...existing code...
 name: Deploy to GitHub Pages
+
+# give the job permission to push
+permissions:
+  contents: write
+  pages: write
 
 on:
   push:
@@ -11,6 +17,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          persist-credentials: true
 
       - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v3
