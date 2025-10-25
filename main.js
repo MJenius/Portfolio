@@ -79,8 +79,9 @@ function initTypewriter() {
                 'AI/ML Developer',
                 'Software Engineer',
                 'Full-Stack Developer',
+                'Data Analyst',
                 'Problem Solver',
-                'Innovation Enthusiast'
+                'Machine Learning Enthusiast'
             ],
             typeSpeed: 80,
             backSpeed: 40,
