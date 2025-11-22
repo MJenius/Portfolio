@@ -1,21 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Skills - Mevin Jose</title>
-    <meta name="description" content="Explore my technical skills in AI/ML, web development, and software engineering with interactive visualizations.">
-    
+    <meta name="description"
+        content="Explore my technical skills in AI/ML, web development, and software engineering with interactive visualizations.">
+
     <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-    
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap"
+        rel="stylesheet">
+
     <!-- Core Libraries -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.4.3/echarts.min.js"></script>
     <script src="https://unpkg.com/splitting@1.0.6/dist/splitting.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/splitting@1.0.6/dist/splitting.css">
-    
+
     <style>
         :root {
             --primary-dark: #1e293b;
@@ -27,32 +31,32 @@
             --backend-green: #10b981;
             --ai-pink: #ec4899;
         }
-        
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
             font-family: 'Inter', sans-serif;
             background: var(--primary-dark);
             color: var(--soft-white);
             overflow-x: hidden;
         }
-        
+
         .gradient-text {
             background: linear-gradient(135deg, var(--primary-blue), var(--ml-purple));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
-        
+
         .nav-link {
             position: relative;
             transition: all 0.3s ease;
         }
-        
+
         .nav-link::after {
             content: '';
             position: absolute;
@@ -63,65 +67,65 @@
             background: var(--primary-blue);
             transition: width 0.3s ease;
         }
-        
+
         .nav-link:hover::after,
         .nav-link.active::after {
             width: 100%;
         }
-        
+
         .skill-card {
             background: rgba(30, 41, 59, 0.8);
             backdrop-filter: blur(10px);
             border: 1px solid rgba(59, 130, 246, 0.2);
             transition: all 0.3s ease;
         }
-        
+
         .skill-card:hover {
             transform: translateY(-4px);
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
             border-color: rgba(59, 130, 246, 0.4);
         }
-        
+
         .progress-bar {
             background: rgba(59, 130, 246, 0.1);
             border-radius: 10px;
             overflow: hidden;
         }
-        
+
         .progress-fill {
             background: linear-gradient(90deg, var(--primary-blue), var(--ml-purple));
             height: 100%;
             border-radius: 10px;
             transition: width 1s ease;
         }
-        
+
         .reveal-element {
             opacity: 0;
             transform: translateY(30px);
             transition: all 0.6s ease;
         }
-        
+
         .reveal-element.revealed {
             opacity: 1;
             transform: translateY(0);
         }
-        
+
         .certification-badge {
             background: rgba(59, 130, 246, 0.1);
             border: 1px solid rgba(59, 130, 246, 0.3);
             transition: all 0.3s ease;
         }
-        
+
         .certification-badge:hover {
             background: rgba(59, 130, 246, 0.2);
             transform: scale(1.02);
         }
-        
+
         .timeline-item {
             position: relative;
             padding-left: 2rem;
         }
-        
+
         .timeline-item::before {
             content: '';
             position: absolute;
@@ -133,7 +137,7 @@
             border-radius: 50%;
             border: 3px solid var(--primary-dark);
         }
-        
+
         .timeline-item::after {
             content: '';
             position: absolute;
@@ -143,16 +147,16 @@
             height: calc(100% - 1rem);
             background: rgba(59, 130, 246, 0.3);
         }
-        
+
         .timeline-item:last-child::after {
             display: none;
         }
-        
+
         #radar-chart {
             width: 100%;
             height: 400px;
         }
-        
+
         @media (max-width: 768px) {
             #radar-chart {
                 height: 300px;
@@ -167,28 +171,42 @@
             justify-content: center;
         }
 
-        .cert-grid > .certification-badge {
+        .cert-grid>.certification-badge {
             flex: 0 0 360px;
             max-width: 360px;
         }
 
         @media (max-width: 1024px) {
-            .cert-grid > .certification-badge { flex: 0 0 300px; max-width: 300px; }
-            .cert-grid { gap: 24px; }
+            .cert-grid>.certification-badge {
+                flex: 0 0 300px;
+                max-width: 300px;
+            }
+
+            .cert-grid {
+                gap: 24px;
+            }
         }
 
         @media (max-width: 768px) {
-            .cert-grid { gap: 16px; }
-            .cert-grid > .certification-badge { flex: 0 0 100%; max-width: 100%; }
+            .cert-grid {
+                gap: 16px;
+            }
+
+            .cert-grid>.certification-badge {
+                flex: 0 0 100%;
+                max-width: 100%;
+            }
         }
     </style>
 </head>
+
 <body>
     <!-- Navigation -->
     <nav class="fixed top-0 w-full z-50 bg-slate-900/80 backdrop-blur-md border-b border-slate-700/50">
         <div class="max-w-6xl mx-auto px-6 py-4">
             <div class="flex items-center justify-between">
-                <a href="index.html" class="text-xl font-bold gradient-text" style="text-decoration:none;">Mevin Jose</a>
+                <a href="index.html" class="text-xl font-bold gradient-text" style="text-decoration:none;">Mevin
+                    Jose</a>
                 <div class="hidden md:flex space-x-8">
                     <a href="index.html" class="nav-link text-slate-300 hover:text-white">Home</a>
                     <a href="projects.html" class="nav-link text-slate-300 hover:text-white">Projects</a>
@@ -197,7 +215,8 @@
                 </div>
                 <button class="md:hidden text-slate-300 hover:text-white" id="mobile-menu-btn">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16M4 18h16"></path>
                     </svg>
                 </button>
             </div>
@@ -223,7 +242,7 @@
                 <h2 class="text-3xl md:text-4xl font-bold mb-4 gradient-text">Experience Timeline</h2>
                 <p class="text-slate-300">My journey in technology and software development</p>
             </div>
-            
+
             <div class="space-y-8 reveal-element">
                 <div class="timeline-item">
                     <div class="bg-slate-800 p-6 rounded-lg border border-slate-700">
@@ -233,18 +252,22 @@
                         </div>
                         <p class="text-slate-400 font-medium mb-2">PES University, Bangalore</p>
                         <p class="text-slate-300 text-sm mb-3">
-                            Pursuing Bachelor's degree in Artificial Intelligence and Machine Learning with CGPA of 7.54. 
-                            Relevant coursework includes Data Structures, Operating Systems, Database Management Systems, 
+                            Pursuing Bachelor's degree in Artificial Intelligence and Machine Learning with CGPA of
+                            7.54.
+                            Relevant coursework includes Data Structures, Operating Systems, Database Management
+                            Systems,
                             Computer Networks, Software Engineering, and Machine Learning.
                         </p>
                         <div class="flex flex-wrap gap-2">
-                            <span class="bg-purple-600/20 text-purple-400 px-2 py-1 rounded text-xs">Machine Learning</span>
+                            <span class="bg-purple-600/20 text-purple-400 px-2 py-1 rounded text-xs">Machine
+                                Learning</span>
                             <span class="bg-blue-600/20 text-blue-400 px-2 py-1 rounded text-xs">Data Structures</span>
-                            <span class="bg-green-600/20 text-green-400 px-2 py-1 rounded text-xs">Software Engineering</span>
+                            <span class="bg-green-600/20 text-green-400 px-2 py-1 rounded text-xs">Software
+                                Engineering</span>
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="timeline-item">
                     <div class="bg-slate-800 p-6 rounded-lg border border-slate-700">
                         <div class="flex justify-between items-start mb-3">
@@ -253,13 +276,16 @@
                         </div>
                         <p class="text-slate-400 font-medium mb-2">Superhhero Learning</p>
                         <p class="text-slate-300 text-sm mb-3">
-                            Developed and deployed full-stack MERN application, collaborated with 4+ developers, reduced development time by 25%, and improved performance by 10%.
+                            Developed and deployed a production MERN landing platform receiving ~100 monthly users.
+                            Integrated APIs and improved workflow efficiency, reducing development time by 25%.
+                            Optimized backend performance and caching, improving load time by 10%.
                         </p>
                         <div class="flex flex-wrap gap-2">
                             <span class="bg-blue-600/20 text-blue-400 px-2 py-1 rounded text-xs">React</span>
                             <span class="bg-green-600/20 text-green-400 px-2 py-1 rounded text-xs">Node.js</span>
                             <span class="bg-purple-600/20 text-purple-400 px-2 py-1 rounded text-xs">MongoDB</span>
-                            <span class="bg-orange-600/20 text-orange-400 px-2 py-1 rounded text-xs">Express</span>
+                            <span class="bg-orange-600/20 text-orange-400 px-2 py-1 rounded text-xs">Vercel
+                                Auto-Deploy</span>
                         </div>
                     </div>
                 </div>
@@ -274,14 +300,16 @@
                 <h2 class="text-3xl md:text-4xl font-bold mb-4 gradient-text">Technical Skills</h2>
                 <p class="text-slate-300">Organized by category and expertise level</p>
             </div>
-            
+
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 reveal-element">
                 <!-- Programming Languages -->
                 <div class="skill-card p-6 rounded-xl">
                     <h3 class="text-xl font-bold text-white mb-4 flex items-center">
-                        <div class="w-8 h-8 bg-gradient-to-r from-blue-500 to-blue-600 rounded-lg flex items-center justify-center mr-3">
+                        <div
+                            class="w-8 h-8 bg-gradient-to-r from-blue-500 to-blue-600 rounded-lg flex items-center justify-center mr-3">
                             <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
                             </svg>
                         </div>
                         Programming Languages
@@ -309,13 +337,15 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- AI/ML -->
                 <div class="skill-card p-6 rounded-xl">
                     <h3 class="text-xl font-bold text-white mb-4 flex items-center">
-                        <div class="w-8 h-8 bg-gradient-to-r from-purple-500 to-pink-600 rounded-lg flex items-center justify-center mr-3">
+                        <div
+                            class="w-8 h-8 bg-gradient-to-r from-purple-500 to-pink-600 rounded-lg flex items-center justify-center mr-3">
                             <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
                             </svg>
                         </div>
                         AI/ML
@@ -343,13 +373,15 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Web Development -->
                 <div class="skill-card p-6 rounded-xl">
                     <h3 class="text-xl font-bold text-white mb-4 flex items-center">
-                        <div class="w-8 h-8 bg-gradient-to-r from-green-500 to-teal-600 rounded-lg flex items-center justify-center mr-3">
+                        <div
+                            class="w-8 h-8 bg-gradient-to-r from-green-500 to-teal-600 rounded-lg flex items-center justify-center mr-3">
                             <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
                             </svg>
                         </div>
                         Web Development
@@ -377,14 +409,17 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Tools & Platforms -->
                 <div class="skill-card p-6 rounded-xl">
                     <h3 class="text-xl font-bold text-white mb-4 flex items-center">
-                        <div class="w-8 h-8 bg-gradient-to-r from-orange-500 to-red-600 rounded-lg flex items-center justify-center mr-3">
+                        <div
+                            class="w-8 h-8 bg-gradient-to-r from-orange-500 to-red-600 rounded-lg flex items-center justify-center mr-3">
                             <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                             </svg>
                         </div>
                         Tools & Platforms
@@ -412,7 +447,7 @@
                         </div>
                     </div>
                 </div>
-                    <!-- Languages & Databases removed per user request -->
+                <!-- Languages & Databases removed per user request -->
             </div>
         </div>
     </section>
@@ -424,14 +459,16 @@
                 <h2 class="text-3xl md:text-4xl font-bold mb-4 gradient-text">Technologies & Frameworks</h2>
                 <p class="text-slate-300">Tools and technologies I work with regularly</p>
             </div>
-            
+
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <!-- Web Development -->
                 <div class="skill-card p-6 rounded-xl reveal-element">
                     <h3 class="text-xl font-bold text-white mb-6 flex items-center">
-                        <div class="w-8 h-8 bg-gradient-to-r from-green-500 to-teal-600 rounded-lg flex items-center justify-center mr-3">
+                        <div
+                            class="w-8 h-8 bg-gradient-to-r from-green-500 to-teal-600 rounded-lg flex items-center justify-center mr-3">
                             <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
                             </svg>
                         </div>
                         Web Development
@@ -447,13 +484,15 @@
                         <span class="bg-green-600/20 text-green-400 px-3 py-1 rounded-full text-sm">Tailwind CSS</span>
                     </div>
                 </div>
-                
+
                 <!-- AI/ML -->
                 <div class="skill-card p-6 rounded-xl reveal-element">
                     <h3 class="text-xl font-bold text-white mb-6 flex items-center">
-                        <div class="w-8 h-8 bg-gradient-to-r from-purple-500 to-pink-600 rounded-lg flex items-center justify-center mr-3">
+                        <div
+                            class="w-8 h-8 bg-gradient-to-r from-purple-500 to-pink-600 rounded-lg flex items-center justify-center mr-3">
                             <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
                             </svg>
                         </div>
                         AI/ML
@@ -461,7 +500,8 @@
                     <div class="flex flex-wrap gap-2">
                         <span class="bg-purple-600/20 text-purple-400 px-3 py-1 rounded-full text-sm">TensorFlow</span>
                         <span class="bg-purple-600/20 text-purple-400 px-3 py-1 rounded-full text-sm">PyTorch</span>
-                        <span class="bg-purple-600/20 text-purple-400 px-3 py-1 rounded-full text-sm">Scikit-learn</span>
+                        <span
+                            class="bg-purple-600/20 text-purple-400 px-3 py-1 rounded-full text-sm">Scikit-learn</span>
                         <span class="bg-purple-600/20 text-purple-400 px-3 py-1 rounded-full text-sm">Pandas</span>
                         <span class="bg-purple-600/20 text-purple-400 px-3 py-1 rounded-full text-sm">NumPy</span>
                         <span class="bg-purple-600/20 text-purple-400 px-3 py-1 rounded-full text-sm">Matplotlib</span>
@@ -469,30 +509,50 @@
                         <span class="bg-purple-600/20 text-purple-400 px-3 py-1 rounded-full text-sm">Jupyter</span>
                     </div>
                 </div>
-                
+
                 <!-- Tools & Platforms -->
                 <div class="skill-card p-6 rounded-xl reveal-element">
                     <h3 class="text-xl font-bold text-white mb-6 flex items-center">
-                        <div class="w-8 h-8 bg-gradient-to-r from-orange-500 to-red-600 rounded-lg flex items-center justify-center mr-3">
+                        <div
+                            class="w-8 h-8 bg-gradient-to-r from-orange-500 to-red-600 rounded-lg flex items-center justify-center mr-3">
                             <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                             </svg>
                         </div>
                         Tools & Platforms
                     </h3>
                     <div class="flex flex-wrap gap-2">
-                        <span class="bg-orange-600/20 text-orange-400 px-3 py-1 rounded-full text-sm">Machine Learning</span>
-                        <span class="bg-orange-600/20 text-orange-400 px-3 py-1 rounded-full text-sm">Deep Learning</span>
-                        <span class="bg-orange-600/20 text-orange-400 px-3 py-1 rounded-full text-sm">Generative AI</span>
-                        <span class="bg-orange-600/20 text-orange-400 px-3 py-1 rounded-full text-sm">Computer Vision</span>
-                        <span class="bg-orange-600/20 text-orange-400 px-3 py-1 rounded-full text-sm">Git</span>
-                        <span class="bg-orange-600/20 text-orange-400 px-3 py-1 rounded-full text-sm">Azure Cognitive Services</span>
-                        <span class="bg-orange-600/20 text-orange-400 px-3 py-1 rounded-full text-sm">Google Colab</span>
-                        <span class="bg-orange-600/20 text-orange-400 px-3 py-1 rounded-full text-sm">RStudio</span>
+                        <span class="bg-orange-600/20 text-orange-400 px-3 py-1 rounded-full text-sm">Machine
+                            Learning</span>
+                        <span class="bg-orange-600/20 text-orange-400 px-3 py-1 rounded-full text-sm">Deep
+                            Learning</span>
+                        <span class="bg-orange-600/20 text-orange-400 px-3 py-1 rounded-full text-sm">Generative
+                            AI</span>
+                        <span class="bg-orange-600/20 text-orange-400 px-3 py-1 rounded-full text-sm">Reinforcement
+                            Learning</span>
+                        <span class="bg-orange-600/20 text-orange-400 px-3 py-1 rounded-full text-sm">Computer
+                            Vision</span>
+                        <span class="bg-orange-600/20 text-orange-400 px-3 py-1 rounded-full text-sm">Model
+                            Deployment</span>
+                        <span class="bg-orange-600/20 text-orange-400 px-3 py-1 rounded-full text-sm">Git & GitHub
+                            Actions</span>
+                        <span class="bg-orange-600/20 text-orange-400 px-3 py-1 rounded-full text-sm">Vercel
+                            CI/CD</span>
+                        <span class="bg-orange-600/20 text-orange-400 px-3 py-1 rounded-full text-sm">Modal</span>
+                        <span class="bg-orange-600/20 text-orange-400 px-3 py-1 rounded-full text-sm">PyTest</span>
+                        <span class="bg-orange-600/20 text-orange-400 px-3 py-1 rounded-full text-sm">Docker</span>
+                        <span class="bg-orange-600/20 text-orange-400 px-3 py-1 rounded-full text-sm">Azure Cognitive
+                            Services</span>
+                        <span class="bg-orange-600/20 text-orange-400 px-3 py-1 rounded-full text-sm">Google
+                            Colab</span>
                         <span class="bg-orange-600/20 text-orange-400 px-3 py-1 rounded-full text-sm">Tableau</span>
-                        <span class="bg-orange-600/20 text-orange-400 px-3 py-1 rounded-full text-sm">Data Analysis</span>
-                        <span class="bg-orange-600/20 text-orange-400 px-3 py-1 rounded-full text-sm">Data Visualization</span>
+                        <span class="bg-orange-600/20 text-orange-400 px-3 py-1 rounded-full text-sm">Data
+                            Analysis</span>
+                        <span class="bg-orange-600/20 text-orange-400 px-3 py-1 rounded-full text-sm">Data
+                            Visualization</span>
                     </div>
                 </div>
             </div>
@@ -506,13 +566,17 @@
                 <h2 class="text-3xl md:text-4xl font-bold mb-4 gradient-text">Certifications</h2>
                 <p class="text-slate-300">Professional certifications and achievements</p>
             </div>
-            
+
             <div class="cert-grid reveal-element">
-                <a href="https://coursera.org/share/11aafe0abcf8437084bc6d19db82c564" data-cert="google-data-analytics" target="_blank" rel="noopener noreferrer" class="certification-badge p-6 rounded-xl block hover:bg-slate-700/50 transition-colors">
+                <a href="https://coursera.org/share/11aafe0abcf8437084bc6d19db82c564" data-cert="google-data-analytics"
+                    target="_blank" rel="noopener noreferrer"
+                    class="certification-badge p-6 rounded-xl block hover:bg-slate-700/50 transition-colors">
                     <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-green-500 rounded-lg flex items-center justify-center mr-4">
+                        <div
+                            class="w-12 h-12 bg-gradient-to-r from-blue-500 to-green-500 rounded-lg flex items-center justify-center mr-4">
                             <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                             </svg>
                         </div>
                         <div>
@@ -520,14 +584,19 @@
                             <p class="text-slate-400 text-sm">Coursera</p>
                         </div>
                     </div>
-                    <p class="text-slate-300 text-sm">Comprehensive certification in data analysis, visualization, and business intelligence using Google tools.</p>
+                    <p class="text-slate-300 text-sm">Comprehensive certification in data analysis, visualization, and
+                        business intelligence using Google tools.</p>
                 </a>
-                
-                <a href="https://coursera.org/share/beaa01b66b9804e5d9547c403fa9840f" data-cert="ibm-generative-ai" target="_blank" rel="noopener noreferrer" class="certification-badge p-6 rounded-xl block hover:bg-slate-700/50 transition-colors">
+
+                <a href="https://coursera.org/share/beaa01b66b9804e5d9547c403fa9840f" data-cert="ibm-generative-ai"
+                    target="_blank" rel="noopener noreferrer"
+                    class="certification-badge p-6 rounded-xl block hover:bg-slate-700/50 transition-colors">
                     <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg flex items-center justify-center mr-4">
+                        <div
+                            class="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg flex items-center justify-center mr-4">
                             <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                             </svg>
                         </div>
                         <div>
@@ -535,14 +604,19 @@
                             <p class="text-slate-400 text-sm">Coursera</p>
                         </div>
                     </div>
-                    <p class="text-slate-300 text-sm">Advanced certification in generative AI technologies, including GPT models and prompt engineering.</p>
+                    <p class="text-slate-300 text-sm">Advanced certification in generative AI technologies, including
+                        GPT models and prompt engineering.</p>
                 </a>
-                
-                <a href="https://coursera.org/share/2db49eb5a4a3fbd458b3c759d3635992" data-cert="microsoft-computer-vision" target="_blank" rel="noopener noreferrer" class="certification-badge p-6 rounded-xl block hover:bg-slate-700/50 transition-colors">
+
+                <a href="https://coursera.org/share/2db49eb5a4a3fbd458b3c759d3635992"
+                    data-cert="microsoft-computer-vision" target="_blank" rel="noopener noreferrer"
+                    class="certification-badge p-6 rounded-xl block hover:bg-slate-700/50 transition-colors">
                     <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 bg-gradient-to-r from-red-500 to-orange-500 rounded-lg flex items-center justify-center mr-4">
+                        <div
+                            class="w-12 h-12 bg-gradient-to-r from-red-500 to-orange-500 rounded-lg flex items-center justify-center mr-4">
                             <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                             </svg>
                         </div>
                         <div>
@@ -550,14 +624,19 @@
                             <p class="text-slate-400 text-sm">Azure AI</p>
                         </div>
                     </div>
-                    <p class="text-slate-300 text-sm">Specialized certification in Azure Cognitive Services for computer vision and image processing.</p>
+                    <p class="text-slate-300 text-sm">Specialized certification in Azure Cognitive Services for computer
+                        vision and image processing.</p>
                 </a>
-                
-                <a href="https://www.kaggle.com/mjeniusmj" data-cert="kaggle-ml-dl" target="_blank" rel="noopener noreferrer" class="certification-badge p-6 rounded-xl block hover:bg-slate-700/50 transition-colors">
+
+                <a href="https://www.kaggle.com/mjeniusmj" data-cert="kaggle-ml-dl" target="_blank"
+                    rel="noopener noreferrer"
+                    class="certification-badge p-6 rounded-xl block hover:bg-slate-700/50 transition-colors">
                     <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-lg flex items-center justify-center mr-4">
+                        <div
+                            class="w-12 h-12 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-lg flex items-center justify-center mr-4">
                             <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                             </svg>
                         </div>
                         <div>
@@ -565,14 +644,19 @@
                             <p class="text-slate-400 text-sm">Kaggle</p>
                         </div>
                     </div>
-                    <p class="text-slate-300 text-sm">Expert-level certification in machine learning and deep learning through practical competitions.</p>
+                    <p class="text-slate-300 text-sm">Expert-level certification in machine learning and deep learning
+                        through practical competitions.</p>
                 </a>
-                
-                <a href="https://coursera.org/share/3b59ffff270c01b2e6ffdc4fb13abc2f" data-cert="meta-genai-analytics" target="_blank" rel="noopener noreferrer" class="certification-badge p-6 rounded-xl block hover:bg-slate-700/50 transition-colors">
+
+                <a href="https://coursera.org/share/3b59ffff270c01b2e6ffdc4fb13abc2f" data-cert="meta-genai-analytics"
+                    target="_blank" rel="noopener noreferrer"
+                    class="certification-badge p-6 rounded-xl block hover:bg-slate-700/50 transition-colors">
                     <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 bg-gradient-to-r from-teal-500 to-green-500 rounded-lg flex items-center justify-center mr-4">
+                        <div
+                            class="w-12 h-12 bg-gradient-to-r from-teal-500 to-green-500 rounded-lg flex items-center justify-center mr-4">
                             <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                             </svg>
                         </div>
                         <div>
@@ -580,7 +664,8 @@
                             <p class="text-slate-400 text-sm">Meta/Coursera</p>
                         </div>
                     </div>
-                    <p class="text-slate-300 text-sm">Advanced certification in generative AI applications for data analytics and business intelligence.</p>
+                    <p class="text-slate-300 text-sm">Advanced certification in generative AI applications for data
+                        analytics and business intelligence.</p>
                 </a>
             </div>
         </div>
@@ -588,36 +673,38 @@
 
     <script>
         // Populate certification hrefs from cert-links.json (local file in the same folder)
-        (async function populateCertLinks(){
-            try{
+        (async function populateCertLinks() {
+            try {
                 const res = await fetch('cert-links.json');
-                if(!res.ok) return;
+                if (!res.ok) return;
                 const links = await res.json();
                 document.querySelectorAll('[data-cert]').forEach(a => {
                     const key = a.getAttribute('data-cert');
-                    if(links[key]){
+                    if (links[key]) {
                         a.setAttribute('href', links[key]);
-                        a.setAttribute('target','_blank');
-                        a.setAttribute('rel','noopener noreferrer');
+                        a.setAttribute('target', '_blank');
+                        a.setAttribute('rel', 'noopener noreferrer');
                     }
                 });
-            }catch(e){
+            } catch (e) {
                 // silent fallback - leave hrefs as-is for now
                 console.warn('cert-links.json not loaded:', e);
             }
         })();
     </script>
 
-    
+
 
     <!-- Footer -->
     <footer class="py-12 px-6 border-t border-slate-700">
         <div class="max-w-6xl mx-auto text-center">
             <div class="flex justify-center space-x-6 mb-6">
-                <a href="https://leetcode.com/u/mjenius1357/" target="_blank" class="text-slate-400 hover:text-white transition-colors">
+                <a href="https://leetcode.com/u/mjenius1357/" target="_blank"
+                    class="text-slate-400 hover:text-white transition-colors">
                     LeetCode
                 </a>
-                <a href="https://github.com/MJenius" target="_blank" class="text-slate-400 hover:text-white transition-colors">
+                <a href="https://github.com/MJenius" target="_blank"
+                    class="text-slate-400 hover:text-white transition-colors">
                     GitHub
                 </a>
                 <a href="mailto:mjenius1357@gmail.com" class="text-slate-400 hover:text-white transition-colors">
@@ -632,4 +719,5 @@
 
     <script src="main.js"></script>
 </body>
+
 </html>
