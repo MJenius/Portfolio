@@ -1,20 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact - Mevin Jose</title>
-    <meta name="description" content="Get in touch with Mevin Jose for collaboration, opportunities, or just to say hello. Available for AI/ML and web development projects.">
-    
+    <meta name="description"
+        content="Get in touch with Mevin Jose for collaboration, opportunities, or just to say hello. Available for AI/ML and web development projects.">
+
     <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-    
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap"
+        rel="stylesheet">
+
     <!-- Core Libraries -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
     <script src="https://unpkg.com/splitting@1.0.6/dist/splitting.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/splitting@1.0.6/dist/splitting.css">
-    
+
     <style>
         :root {
             --primary-dark: #1e293b;
@@ -26,32 +30,32 @@
             --backend-green: #10b981;
             --ai-pink: #ec4899;
         }
-        
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
             font-family: 'Inter', sans-serif;
             background: var(--primary-dark);
             color: var(--soft-white);
             overflow-x: hidden;
         }
-        
+
         .gradient-text {
             background: linear-gradient(135deg, var(--primary-blue), var(--ml-purple));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
-        
+
         .nav-link {
             position: relative;
             transition: all 0.3s ease;
         }
-        
+
         .nav-link::after {
             content: '';
             position: absolute;
@@ -62,98 +66,98 @@
             background: var(--primary-blue);
             transition: width 0.3s ease;
         }
-        
+
         .nav-link:hover::after,
         .nav-link.active::after {
             width: 100%;
         }
-        
+
         .contact-card {
             background: rgba(30, 41, 59, 0.8);
             backdrop-filter: blur(10px);
             border: 1px solid rgba(59, 130, 246, 0.2);
             transition: all 0.3s ease;
         }
-        
+
         .contact-card:hover {
             transform: translateY(-4px);
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
             border-color: rgba(59, 130, 246, 0.4);
         }
-        
+
         .form-input {
             background: rgba(30, 41, 59, 0.8);
             border: 1px solid rgba(59, 130, 246, 0.2);
             transition: all 0.3s ease;
         }
-        
+
         .form-input:focus {
             border-color: var(--primary-blue);
             box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
             outline: none;
         }
-        
+
         .form-input.error {
             border-color: #ef4444;
             box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
         }
-        
+
         .form-input.success {
             border-color: #10b981;
             box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
         }
-        
+
         .btn-primary {
             background: linear-gradient(135deg, var(--primary-blue), var(--ml-purple));
             transition: all 0.3s ease;
         }
-        
+
         .btn-primary:hover {
             transform: translateY(-2px);
             box-shadow: 0 10px 25px rgba(59, 130, 246, 0.3);
         }
-        
+
         .btn-primary:disabled {
             opacity: 0.6;
             cursor: not-allowed;
             transform: none;
         }
-        
+
         .reveal-element {
             opacity: 0;
             transform: translateY(30px);
             transition: all 0.6s ease;
         }
-        
+
         .reveal-element.revealed {
             opacity: 1;
             transform: translateY(0);
         }
-        
+
         .social-link {
             background: rgba(59, 130, 246, 0.1);
             border: 1px solid rgba(59, 130, 246, 0.3);
             transition: all 0.3s ease;
         }
-        
+
         .social-link:hover {
             background: rgba(59, 130, 246, 0.2);
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(59, 130, 246, 0.2);
         }
-        
+
         .success-message {
             background: rgba(16, 185, 129, 0.1);
             border: 1px solid rgba(16, 185, 129, 0.3);
             color: #10b981;
         }
-        
+
         .error-message {
             background: rgba(239, 68, 68, 0.1);
             border: 1px solid rgba(239, 68, 68, 0.3);
             color: #ef4444;
         }
-        
+
         .loading-spinner {
             border: 2px solid rgba(59, 130, 246, 0.3);
             border-top: 2px solid var(--primary-blue);
@@ -162,32 +166,39 @@
             height: 20px;
             animation: spin 1s linear infinite;
         }
-        
+
         @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
         }
-        
+
         .character-count {
             font-size: 0.75rem;
             color: var(--muted-gray);
         }
-        
+
         .character-count.warning {
             color: #f59e0b;
         }
-        
+
         .character-count.error {
             color: #ef4444;
         }
     </style>
 </head>
+
 <body>
     <!-- Navigation -->
     <nav class="fixed top-0 w-full z-50 bg-slate-900/80 backdrop-blur-md border-b border-slate-700/50">
         <div class="max-w-6xl mx-auto px-6 py-4">
             <div class="flex items-center justify-between">
-                <a href="index.html" class="text-xl font-bold gradient-text" style="text-decoration:none;">Mevin Jose</a>
+                <a href="index.html" class="text-xl font-bold gradient-text" style="text-decoration:none;">Mevin Jose
+                    Portfolio</a>
                 <div class="hidden md:flex space-x-8">
                     <a href="index.html" class="nav-link text-slate-300 hover:text-white">Home</a>
                     <a href="projects.html" class="nav-link text-slate-300 hover:text-white">Projects</a>
@@ -196,7 +207,8 @@
                 </div>
                 <button class="md:hidden text-slate-300 hover:text-white" id="mobile-menu-btn">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16M4 18h16"></path>
                     </svg>
                 </button>
             </div>
@@ -209,7 +221,7 @@
             <div class="reveal-element">
                 <h1 class="text-5xl md:text-6xl font-bold mb-6 gradient-text">Get In Touch</h1>
                 <p class="text-xl text-slate-300 max-w-3xl mx-auto mb-12">
-                    Let's connect and explore opportunities to collaborate on innovative projects. 
+                    Let's connect and explore opportunities to collaborate on innovative projects.
                     I'm always open to discussing AI/ML, web development, and technology.
                 </p>
             </div>
@@ -224,60 +236,71 @@
                 <div class="reveal-element">
                     <div class="contact-card p-8 rounded-xl">
                         <h2 class="text-2xl font-bold text-white mb-6">Get In Touch</h2>
-                        
+
                         <div class="text-center space-y-6">
                             <p class="text-slate-300">
-                                I'm always interested in discussing new opportunities, collaborating on projects, 
+                                I'm always interested in discussing new opportunities, collaborating on projects,
                                 or just connecting with like-minded professionals in the tech community.
                             </p>
-                            
+
                             <div class="space-y-4">
-                                <a href="mailto:mjenius1357@gmail.com" class="btn-primary w-full py-3 px-6 rounded-lg font-semibold text-white flex items-center justify-center">
+                                <a href="mailto:mjenius1357@gmail.com"
+                                    class="btn-primary w-full py-3 px-6 rounded-lg font-semibold text-white flex items-center justify-center">
                                     <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                                     </svg>
                                     Send Email
                                 </a>
-                                
+
                                 <p class="text-slate-400 text-sm">
-                                    Direct email: <a href="mailto:mjenius1357@gmail.com" class="text-blue-400 hover:text-blue-300">mjenius1357@gmail.com</a>
+                                    Direct email: <a href="mailto:mjenius1357@gmail.com"
+                                        class="text-blue-400 hover:text-blue-300">mjenius1357@gmail.com</a>
                                 </p>
                             </div>
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Contact Information -->
                 <div class="reveal-element">
                     <div class="space-y-8">
                         <div>
                             <h2 class="text-2xl font-bold text-white mb-6">Let's Connect</h2>
                             <p class="text-slate-300 mb-6">
-                                I'm currently available for freelance projects, full-time opportunities, and collaborative work. 
-                                Whether you have a project in mind or just want to discuss technology, I'd love to hear from you.
+                                I'm currently available for freelance projects, full-time opportunities, and
+                                collaborative work.
+                                Whether you have a project in mind or just want to discuss technology, I'd love to hear
+                                from you.
                             </p>
                         </div>
-                        
+
                         <!-- Contact Methods -->
                         <div class="space-y-4">
                             <div class="flex items-center">
-                                <div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-blue-600 rounded-lg flex items-center justify-center mr-4">
-                                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                                <div
+                                    class="w-12 h-12 bg-gradient-to-r from-blue-500 to-blue-600 rounded-lg flex items-center justify-center mr-4">
+                                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                                     </svg>
                                 </div>
                                 <div>
                                     <h3 class="text-white font-semibold">Email</h3>
-                                    <a href="mailto:mjenius1357@gmail.com" class="text-slate-300 hover:text-blue-400 transition-colors">
+                                    <a href="mailto:mjenius1357@gmail.com"
+                                        class="text-slate-300 hover:text-blue-400 transition-colors">
                                         mjenius1357@gmail.com
                                     </a>
                                 </div>
                             </div>
-                            
+
                             <div class="flex items-center">
-                                <div class="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-600 rounded-lg flex items-center justify-center mr-4">
+                                <div
+                                    class="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-600 rounded-lg flex items-center justify-center mr-4">
                                     <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
-                                        <path d="M12 0L1.605 6.021v7.958L12 19.5l10.395-5.521V6.021L12 0zm0 2.5l7.5 4.5v6l-7.5 4.5-7.5-4.5v-6l7.5-4.5z"/>
+                                        <path
+                                            d="M12 0L1.605 6.021v7.958L12 19.5l10.395-5.521V6.021L12 0zm0 2.5l7.5 4.5v6l-7.5 4.5-7.5-4.5v-6l7.5-4.5z" />
                                     </svg>
                                 </div>
                                 <div>
@@ -285,11 +308,14 @@
                                     <p class="text-slate-300">Bangalore, Karnataka, India</p>
                                 </div>
                             </div>
-                            
+
                             <div class="flex items-center">
-                                <div class="w-12 h-12 bg-gradient-to-r from-green-500 to-teal-600 rounded-lg flex items-center justify-center mr-4">
-                                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                <div
+                                    class="w-12 h-12 bg-gradient-to-r from-green-500 to-teal-600 rounded-lg flex items-center justify-center mr-4">
+                                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                                     </svg>
                                 </div>
                                 <div>
@@ -298,24 +324,28 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                         <!-- Social Links -->
                         <div>
                             <h3 class="text-xl font-bold text-white mb-4">Professional Profiles</h3>
                             <div class="grid grid-cols-2 gap-4">
-                                <a href="https://github.com/MJenius" target="_blank" class="social-link p-4 rounded-lg flex items-center">
+                                <a href="https://github.com/MJenius" target="_blank"
+                                    class="social-link p-4 rounded-lg flex items-center">
                                     <svg class="w-6 h-6 text-blue-400 mr-3" fill="currentColor" viewBox="0 0 24 24">
-                                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                                        <path
+                                            d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
                                     </svg>
                                     <div>
                                         <h4 class="text-white font-semibold">GitHub</h4>
                                         <p class="text-slate-400 text-sm">@MJenius</p>
                                     </div>
                                 </a>
-                                
-                                <a href="https://leetcode.com/u/mjenius1357/" target="_blank" class="social-link p-4 rounded-lg flex items-center">
+
+                                <a href="https://leetcode.com/u/mjenius1357/" target="_blank"
+                                    class="social-link p-4 rounded-lg flex items-center">
                                     <svg class="w-6 h-6 text-orange-400 mr-3" fill="currentColor" viewBox="0 0 24 24">
-                                        <path d="M12 0L1.605 6.021v7.958L12 19.5l10.395-5.521V6.021L12 0zm0 2.5l7.5 4.5v6l-7.5 4.5-7.5-4.5v-6l7.5-4.5z"/>
+                                        <path
+                                            d="M12 0L1.605 6.021v7.958L12 19.5l10.395-5.521V6.021L12 0zm0 2.5l7.5 4.5v6l-7.5 4.5-7.5-4.5v-6l7.5-4.5z" />
                                     </svg>
                                     <div>
                                         <h4 class="text-white font-semibold">LeetCode</h4>
@@ -324,13 +354,15 @@
                                 </a>
                             </div>
                         </div>
-                        
+
                         <!-- Resume Download -->
                         <div>
                             <h3 class="text-xl font-bold text-white mb-4">Resume</h3>
-                            <a href="./Mevin Jose Resume.pdf" download class="btn-primary w-full py-3 px-6 rounded-lg font-semibold text-white flex items-center justify-center">
+                            <a href="./Mevin Jose Resume.pdf" download
+                                class="btn-primary w-full py-3 px-6 rounded-lg font-semibold text-white flex items-center justify-center">
                                 <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                                 </svg>
                                 Download Resume
                             </a>
@@ -345,10 +377,12 @@
     <footer class="py-12 px-6 border-t border-slate-700">
         <div class="max-w-6xl mx-auto text-center">
             <div class="flex justify-center space-x-6 mb-6">
-                <a href="https://leetcode.com/u/mjenius1357/" target="_blank" class="text-slate-400 hover:text-white transition-colors">
+                <a href="https://leetcode.com/u/mjenius1357/" target="_blank"
+                    class="text-slate-400 hover:text-white transition-colors">
                     LeetCode
                 </a>
-                <a href="https://github.com/MJenius" target="_blank" class="text-slate-400 hover:text-white transition-colors">
+                <a href="https://github.com/MJenius" target="_blank"
+                    class="text-slate-400 hover:text-white transition-colors">
                     GitHub
                 </a>
                 <a href="mailto:mjenius1357@gmail.com" class="text-slate-400 hover:text-white transition-colors">
@@ -363,4 +397,5 @@
 
     <script src="main.js"></script>
 </body>
+
 </html>

@@ -230,8 +230,8 @@
     <nav class="fixed top-0 w-full z-50 bg-slate-900/80 backdrop-blur-md border-b border-slate-700/50">
         <div class="max-w-6xl mx-auto px-6 py-4">
             <div class="flex items-center justify-between">
-                <a href="index.html" class="text-xl font-bold gradient-text" style="text-decoration:none;">Mevin
-                    Jose</a>
+                <a href="index.html" class="text-xl font-bold gradient-text" style="text-decoration:none;">Mevin Jose
+                    Portfolio</a>
                 <div class="hidden md:flex space-x-8">
                     <a href="index.html" class="nav-link text-slate-300 hover:text-white">Home</a>
                     <a href="projects.html" class="nav-link active text-slate-300 hover:text-white">Projects</a>
@@ -362,8 +362,8 @@
                     </div>
                 </div>
 
-                <!-- PDF Playground -->
-                <div class="project-card p-6 rounded-xl" data-category="web" data-title="PDF Playground">
+                <!-- DocParse AI -->
+                <div class="project-card p-6 rounded-xl" data-category="web" data-title="DocParse AI">
                     <div class="flex items-center mb-4">
                         <div
                             class="w-14 h-14 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-lg flex items-center justify-center mr-4">
@@ -373,7 +373,7 @@
                             </svg>
                         </div>
                         <div>
-                            <h3 class="text-xl font-bold text-white">PDF Playground</h3>
+                            <h3 class="text-xl font-bold text-white">DocParse AI</h3>
                             <p class="text-slate-400 text-sm">Full Stack • Multi-Model • SaaS</p>
                         </div>
                     </div>
@@ -500,6 +500,42 @@
                         </div>
                         <button class="text-blue-400 hover:text-blue-300 transition-colors text-sm"
                             onclick="openModal('ct-radiomics')">View Details →</button>
+                    </div>
+                </div>
+
+                <!-- Demand Forecasting ML System -->
+                <div class="project-card p-6 rounded-xl" data-category="ai-ml"
+                    data-title="Demand Forecasting ML System">
+                    <div class="flex items-center mb-4">
+                        <div
+                            class="w-14 h-14 bg-gradient-to-r from-emerald-500 to-teal-600 rounded-lg flex items-center justify-center mr-4">
+                            <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-white">Demand Forecasting ML</h3>
+                            <p class="text-slate-400 text-sm">MLOps • End-to-End • Production</p>
+                        </div>
+                    </div>
+                    <p class="text-slate-300 text-sm mb-4">
+                        End-to-end retail demand forecasting system with hybrid ML modeling, drift detection, model
+                        registry,
+                        and safe auto-retraining pipeline.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="tech-tag px-2 py-1 rounded-full text-xs">Python</span>
+                        <span class="tech-tag px-2 py-1 rounded-full text-xs">LightGBM</span>
+                        <span class="tech-tag px-2 py-1 rounded-full text-xs">FastAPI</span>
+                        <span class="tech-tag px-2 py-1 rounded-full text-xs">MLOps</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <div class="text-xs text-slate-400">
+                            <span class="text-green-400">●</span> ∙25% MAE improvement
+                        </div>
+                        <button class="text-blue-400 hover:text-blue-300 transition-colors text-sm"
+                            onclick="openModal('demand-forecasting')">View Details →</button>
                     </div>
                 </div>
 
@@ -824,7 +860,7 @@
         </div>
     </div>
 
-    <!-- Modal: PDF Playground -->
+    <!-- Modal: DocParse AI -->
     <div id="modal-pdf-playground" class="modal">
         <div class="modal-content p-8 m-4">
             <button class="modal-close" onclick="closeModal('pdf-playground')">
@@ -832,7 +868,7 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                 </svg>
             </button>
-            <h2 class="text-3xl font-bold mb-4 gradient-text">PDF Playground</h2>
+            <h2 class="text-3xl font-bold mb-4 gradient-text">DocParse AI – Intelligent PDF Extraction Platform</h2>
             <div class="space-y-4 text-slate-300">
                 <p>
                     A full-stack multi-model PDF extraction platform that leverages state-of-the-art models like Surya,
@@ -890,6 +926,44 @@
                 <div class="flex gap-4 mt-6">
                     <a href="https://github.com/rajeev8008/CT-Based-Radiomics-for-COVID-19-Patient-Triage"
                         target="_blank"
+                        class="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-lg text-white transition-colors">View on
+                        GitHub</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: Demand Forecasting ML System -->
+    <div id="modal-demand-forecasting" class="modal">
+        <div class="modal-content p-8 m-4">
+            <button class="modal-close" onclick="closeModal('demand-forecasting')">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+            <h2 class="text-3xl font-bold mb-4 gradient-text">Demand Forecasting ML System</h2>
+            <div class="space-y-4 text-slate-300">
+                <p>
+                    End-to-end retail demand forecasting system with hybrid ML modeling, monitoring, and
+                    auto-retraining.
+                    Designed for 30k+ SKU–store time series in production environments.
+                </p>
+                <h3 class="text-xl font-semibold text-white">Key Achievements:</h3>
+                <ul class="list-disc list-inside space-y-2">
+                    <li>Deployed hybrid ML + statistical forecasting (∙25% MAE improvement)</li>
+                    <li>Implemented drift detection & model versioning for production-safe retraining</li>
+                    <li>Leakage-safe feature engineering with explicit baseline validation</li>
+                    <li>Model registry with versioning, rollback support, and safe promotions</li>
+                    <li>Production-style FastAPI inference with /health, /model-info, /predict endpoints</li>
+                </ul>
+                <h3 class="text-xl font-semibold text-white">Technical Stack:</h3>
+                <ul class="list-disc list-inside space-y-2">
+                    <li>Python, LightGBM, Pandas, NumPy, SciPy</li>
+                    <li>FastAPI for production inference API</li>
+                    <li>SQLite, Parquet for storage</li>
+                </ul>
+                <div class="flex gap-4 mt-6">
+                    <a href="https://github.com/MJenius/Demand-Forecasting-ML-System" target="_blank"
                         class="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-lg text-white transition-colors">View on
                         GitHub</a>
                 </div>
