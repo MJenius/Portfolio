@@ -8,6 +8,8 @@ import { GooeyText } from './components/ui/gooey-text-morphing';
 import { Home, Briefcase, Lightbulb, MessageSquare, Download, Eye, Mail, User, BriefcaseBusiness, Award } from 'lucide-react';
 import { Vortex } from './components/ui/vortex';
 import { ThreeDPhotoCarouselDemo } from '@/components/ui/demo';
+import { ProfileCard } from '@/components/ui/profile-card';
+import { LiveEngineeringStats } from './components/live-engineering-stats';
 
 const navItems = [
   { name: 'Home', url: '#home', icon: Home },
@@ -32,12 +34,7 @@ const htmlContent = `
         <div id="particle-text-container" class="h-[120px] flex items-center justify-center mb-6"></div>
       </div>
 
-      <div class="reveal-element">
-        <p class="hero-subtitle text-xl md:text-2xl text-slate-300 mb-8 max-w-3xl mx-auto">
-          Turning ideas into impactful products with AI and modern web tech. Building smart, scalable
-          solutions for tomorrow.
-        </p>
-      </div>
+      
 
       <div id="hero-buttons-container" class="reveal-element flex flex-col sm:flex-row gap-4 justify-center items-center mb-12"></div>
 
@@ -114,60 +111,14 @@ const htmlContent = `
     </div>
   </section>
 
-  <section id="about" class="py-20 px-6">
-    <div class="max-w-4xl mx-auto text-center">
-      <div class="reveal-element">
-        <h2 class="text-4xl md:text-5xl font-bold mb-8 gradient-text">About Me</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-slate-300">
-          <div class="prose max-w-none text-left">
-            <p class="mb-4">
-              Hi, I'm Mevin Jose, an AI/ML and Software Engineering student at PES University (2023–2027)
-              with hands-on experience designing and deploying real-time computer vision applications
-              and end-to-end ML pipelines in production environments.
-            </p>
-
-            <p class="mb-4">
-              I'm proficient in Python, FastAPI, Node.js, React, TensorFlow, and PyTorch, with strong
-              foundations in system design, microservices, RESTful APIs, CI/CD automation, and cloud
-              deployment (Vercel, Modal).
-            </p>
-
-            <p class="mt-4">
-              I'm passionate about building high-performance software that integrates AI innovation
-              and clean engineering practices to deliver measurable impact. Currently open to
-              internships and collaboration opportunities.
-            </p>
-
-          </div>
-          <div class="p-6 rounded-lg">
-            <h3 class="text-lg font-semibold text-white mb-3">Quick facts</h3>
-            <ul class="list-none space-y-2 text-left">
-              <li><strong>Education:</strong> B.Tech (AI & ML), PES University</li>
-              <li><strong>Location:</strong> Bangalore, India</li>
-              <li><strong>Email:</strong> <a href="mailto:mjenius1357@gmail.com"
-                  class="text-blue-400 hover:underline">mjenius1357@gmail.com</a></li>
-              <li><strong>Open to:</strong> Internships & Collaboration</li>
-            </ul>
-            <h4 class="mt-4 font-semibold">Certifications</h4>
-            <ul class="list-disc pl-5 mt-2">
-              <li><a href="https://coursera.org/share/11aafe0abcf8437084bc6d19db82c564"
-                  data-cert="google-data-analytics" class="text-blue-400 hover:underline"
-                  target="_blank" rel="noopener noreferrer">Google Data Analytics</a></li>
-              <li><a href="https://coursera.org/share/beaa01b66b9804e5d9547c403fa9840f"
-                  data-cert="ibm-generative-ai" class="text-blue-400 hover:underline" target="_blank"
-                  rel="noopener noreferrer">IBM Generative AI</a></li>
-              <li><a href="https://coursera.org/share/3b59ffff270c01b2e6ffdc4fb13abc2f"
-                  data-cert="meta-genai-analytics" class="text-blue-400 hover:underline"
-                  target="_blank" rel="noopener noreferrer">Meta GenAI</a></li>
-              <li><a href="https://coursera.org/share/2db49eb5a4a3fbd458b3c759d3635992"
-                  class="text-blue-400 hover:underline" target="_blank"
-                  rel="noopener noreferrer">Microsoft Computer Vision</a></li>
-              <li><a href="https://www.kaggle.com/mjeniusmj" class="text-blue-400 hover:underline"
-                  target="_blank" rel="noopener noreferrer">Kaggle ML & DL</a></li>
-            </ul>
-          </div>
-        </div>
+  <section id="about" class="py-16 px-6 relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-b from-slate-900/0 via-slate-900/40 to-slate-950"></div>
+    <div class="max-w-6xl mx-auto relative z-10">
+      <div class="text-center mb-8 reveal-element">
+        <h2 class="text-3xl md:text-4xl font-bold mb-2 gradient-text">About Me</h2>
       </div>
+
+      <div class="reveal-element flex justify-center" id="profile-card-container"></div>
     </div>
   </section>
 
@@ -1549,6 +1500,20 @@ function App() {
             </GradientButton>
           </>
         );
+      }
+
+      // Mount Live Engineering Stats
+      const liveStatsContainer = document.getElementById('live-stats-container');
+      if (liveStatsContainer) {
+        const root = ReactDOM.createRoot(liveStatsContainer);
+        root.render(<LiveEngineeringStats />);
+      }
+
+      // Mount Profile Card
+      const profileCardContainer = document.getElementById('profile-card-container');
+      if (profileCardContainer) {
+        const root = ReactDOM.createRoot(profileCardContainer);
+        root.render(<ProfileCard />);
       }
 
       // Mount Email Button
