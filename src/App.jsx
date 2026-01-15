@@ -5,14 +5,17 @@ import { SocialLinks } from './components/social-links';
 import { NavBar } from './components/ui/tubelight-navbar';
 import { GradientButton } from './components/ui/gradient-button';
 import { GooeyText } from './components/ui/gooey-text-morphing';
-import { Home, Briefcase, Lightbulb, MessageSquare, Download, Eye, Mail } from 'lucide-react';
+import { Home, Briefcase, Lightbulb, MessageSquare, Download, Eye, Mail, User, BriefcaseBusiness, Award } from 'lucide-react';
 import { Vortex } from './components/ui/vortex';
 import { ThreeDPhotoCarouselDemo } from '@/components/ui/demo';
 
 const navItems = [
   { name: 'Home', url: '#home', icon: Home },
+  { name: 'About Me', url: '#about', icon: User },
+  { name: 'Work Experience', url: '#experience', icon: BriefcaseBusiness },
   { name: 'Projects', url: '#projects', icon: Briefcase },
   { name: 'Skills', url: '#skills', icon: Lightbulb },
+  { name: 'Certifications', url: '#certifications', icon: Award },
   { name: 'Contact', url: '#contact', icon: MessageSquare }
 ];
 
@@ -39,6 +42,9 @@ const htmlContent = `
       <div id="hero-buttons-container" class="reveal-element flex flex-col sm:flex-row gap-4 justify-center items-center mb-12"></div>
 
       <div id="social-links-container" class="reveal-element flex justify-center mt-8"></div>
+    </div>
+  </section>
+
   <section class="pt-40 pb-20 px-6">
     <div class="max-w-6xl mx-auto">
       <div class="text-center mb-8 reveal-element">
@@ -108,7 +114,7 @@ const htmlContent = `
     </div>
   </section>
 
-  <section class="py-20 px-6">
+  <section id="about" class="py-20 px-6">
     <div class="max-w-4xl mx-auto text-center">
       <div class="reveal-element">
         <h2 class="text-4xl md:text-5xl font-bold mb-8 gradient-text">About Me</h2>
@@ -882,18 +888,7 @@ const htmlContent = `
     </div>
   </div>
 
-  <section id="skills" class="pt-32 pb-16 px-6">
-    <div class="max-w-6xl mx-auto text-center">
-      <div class="reveal-element">
-        <h1 class="text-5xl md:text-6xl font-bold mb-6 gradient-text">Technical Skills</h1>
-        <p class="text-xl text-slate-300 max-w-3xl mx-auto mb-12">
-          A comprehensive overview of my expertise across AI/ML, web development, and software engineering
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <section class="py-16 px-6">
+  <section id="experience" class="pt-32 pb-16 px-6">
     <div class="max-w-4xl mx-auto">
       <div class="text-center mb-12 reveal-element">
         <h2 class="text-3xl md:text-4xl font-bold mb-4 gradient-text">Experience Timeline</h2>
@@ -950,11 +945,11 @@ const htmlContent = `
     </div>
   </section>
 
-  <section class="py-16 px-6">
+  <section id="skills" class="py-16 px-6">
     <div class="max-w-6xl mx-auto">
       <div class="text-center mb-12 reveal-element">
         <h2 class="text-3xl md:text-4xl font-bold mb-4 gradient-text">Technical Skills</h2>
-        <p class="text-slate-300">Organized by category and expertise level</p>
+        <p class="text-slate-300">A comprehensive overview of my expertise across AI/ML, web development, and software engineering</p>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8 reveal-element">
@@ -1209,7 +1204,7 @@ const htmlContent = `
     </div>
   </section>
 
-  <section class="py-16 px-6">
+  <section id="certifications" class="py-16 px-6">
     <div class="max-w-6xl mx-auto">
       <div class="text-center mb-12 reveal-element">
         <h2 class="text-3xl md:text-4xl font-bold mb-4 gradient-text">Certifications</h2>
