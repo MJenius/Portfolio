@@ -146,7 +146,7 @@ Error generating stack: `+c.message+`
       <div id="hero-buttons-container" class="reveal-element flex flex-col sm:flex-row gap-4 justify-center items-center mb-12"></div>
 
       <div id="social-links-container" class="reveal-element flex justify-center mt-8"></div>
-  <section class="pt-40 pb-20 px-6 bg-slate-800/50">
+  <section class="pt-40 pb-20 px-6">
     <div class="max-w-6xl mx-auto">
       <div class="text-center mb-16 reveal-element">
         <h2 class="text-4xl md:text-5xl font-bold mb-6 gradient-text">Featured Projects</h2>
@@ -317,7 +317,7 @@ Error generating stack: `+c.message+`
     </div>
   </section>
 
-  <section class="py-20 px-6 bg-slate-800/50">
+  <section class="py-20 px-6">
     <div class="max-w-6xl mx-auto">
       <div class="text-center mb-16 reveal-element">
         <h2 class="text-4xl md:text-5xl font-bold mb-6 gradient-text">Technical Expertise</h2>
@@ -398,7 +398,7 @@ Error generating stack: `+c.message+`
             </p>
 
           </div>
-          <div class="bg-slate-800/40 p-6 rounded-lg">
+          <div class="p-6 rounded-lg">
             <h3 class="text-lg font-semibold text-white mb-3">Quick facts</h3>
             <ul class="list-none space-y-2 text-left">
               <li><strong>Education:</strong> B.Tech (AI & ML), PES University</li>
@@ -1158,7 +1158,7 @@ Error generating stack: `+c.message+`
     </div>
   </section>
 
-  <section class="py-16 px-6 bg-slate-800/30">
+  <section class="py-16 px-6">
     <div class="max-w-4xl mx-auto">
       <div class="text-center mb-12 reveal-element">
         <h2 class="text-3xl md:text-4xl font-bold mb-4 gradient-text">Experience Timeline</h2>
@@ -1373,7 +1373,7 @@ Error generating stack: `+c.message+`
     </div>
   </section>
 
-  <section class="py-16 px-6 bg-slate-800/30">
+  <section class="py-16 px-6">
     <div class="max-w-6xl mx-auto">
       <div class="text-center mb-12 reveal-element">
         <h2 class="text-3xl md:text-4xl font-bold mb-4 gradient-text">Technologies & Frameworks</h2>
@@ -1722,7 +1722,7 @@ Error generating stack: `+c.message+`
     </div>
   </section>
 
-  <footer class="py-12 px-6 border-t border-slate-700">
+  <footer class="py-12 px-6">
     <div class="max-w-6xl mx-auto text-center">
       <div class="flex justify-center space-x-6 mb-6">
         <a href="https://leetcode.com/u/mjenius1357/" target="_blank"
