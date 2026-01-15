@@ -191,7 +191,7 @@ const CarouselCard = memo(
           ref={cardRef}
           className="relative rounded-2xl overflow-hidden w-full cursor-pointer"
           style={{
-            height: `${faceWidth * 0.55}px`,
+            height: `${faceWidth * 0.58}px`,
             transformStyle: "preserve-3d",
             backgroundColor: "#0e131f",
             boxShadow: "0 -10px 100px 10px rgba(78, 99, 255, 0.25), 0 0 10px 0 rgba(0, 0, 0, 0.5)",
@@ -304,14 +304,14 @@ const CarouselCard = memo(
 
           {/* Card content */}
           <motion.div
-            className="relative flex flex-col h-full p-4 z-40 justify-between items-center text-center"
+            className="relative flex flex-col h-full p-3 z-40 justify-between items-center text-center"
             animate={{
               z: 2
             }}
           >
             {/* Icon circle */}
             <motion.div
-              className="w-10 h-10 rounded-full flex items-center justify-center mb-3 flex-shrink-0 mx-auto"
+              className="w-10 h-10 rounded-full flex items-center justify-center mb-2 flex-shrink-0 mx-auto"
               style={{
                 background: `linear-gradient(225deg, ${project.icon.gradientFrom.replace('from-', '')} 0%, #121624 100%)`,
                 position: "relative",
@@ -349,7 +349,7 @@ const CarouselCard = memo(
               }}
             >
               <motion.h3
-                className="text-base font-bold text-white mb-1 leading-tight tracking-tight w-full"
+                className="text-base font-bold text-white mb-0.5 leading-tight tracking-tight w-full"
                 initial={{ filter: "blur(3px)", opacity: 0.7 }}
                 animate={{
                   textShadow: isHovered ? "0 2px 4px rgba(0,0,0,0.2)" : "none",
@@ -365,7 +365,7 @@ const CarouselCard = memo(
               </motion.h3>
 
               <motion.p
-                className="text-xs text-slate-300 mb-2 leading-relaxed font-semibold w-full"
+                className="text-xs text-slate-300 mb-0.75 leading-relaxed font-semibold w-full"
                 initial={{ filter: "blur(3px)", opacity: 0.7 }}
                 animate={{
                   filter: "blur(0px)",
@@ -380,7 +380,7 @@ const CarouselCard = memo(
               </motion.p>
 
               <motion.p
-                className="text-xs text-slate-100 mb-2 leading-relaxed font-normal w-full"
+                className="text-xs text-slate-100 mb-1.25 leading-relaxed font-normal w-full"
                 initial={{ filter: "blur(3px)", opacity: 0.7 }}
                 animate={{
                   filter: "blur(0px)",
@@ -394,7 +394,7 @@ const CarouselCard = memo(
                 {project.description}
               </motion.p>
 
-              <div className="flex flex-wrap gap-1 mb-1.5">
+              <div className="flex flex-wrap gap-0.5 mb-1">
                 {project.tags.map((tag) => (
                   <span key={tag} className="bg-slate-700/50 text-slate-100 px-2 py-0.5 rounded text-xs font-medium">
                     {tag}
@@ -405,7 +405,7 @@ const CarouselCard = memo(
 
             {/* Footer metric */}
             <motion.div
-              className="text-xs text-slate-400 pt-0.5 border-t border-slate-700/30"
+              className="text-xs text-slate-400 pt-1 border-t border-slate-700/30"
               initial={{ filter: "blur(3px)", opacity: 0.7 }}
               animate={{
                 filter: "blur(0px)",
@@ -422,8 +422,7 @@ const CarouselCard = memo(
         </motion.div>
       </motion.div>
     );
-  }
-);
+  });
 
 const Carousel = memo(
   ({
@@ -439,7 +438,7 @@ const Carousel = memo(
   }) => {
     const isScreenSizeSm = useMediaQuery("(max-width: 640px)");
     const faceCount = cards.length;
-    const faceWidth = isScreenSizeSm ? 300 : 450;
+    const faceWidth = isScreenSizeSm ? 260 : 380;
     const cylinderWidth = faceWidth * faceCount;
     const radius = cylinderWidth / (2 * Math.PI);
     const rotation = useMotionValue(0);
