@@ -627,7 +627,7 @@ function ThreeDPhotoCarousel() {
                 <div className="text-sm text-slate-200 pt-3 border-t border-slate-700/30 mb-4 font-semibold">
                   <span className="text-green-400 font-bold">●</span> {projects.find((p) => p.title === activeImg)?.metric}
                 </div>
-                {projects.find((p) => p.title === activeImg)?.links && projects.find((p) => p.title === activeImg)?.links!.length > 0 && (
+                {projects.find((p) => p.title === activeImg)?.links && projects.find((p) => p.title === activeImg)?.links!.length! > 0 && (
                   <div className="flex gap-3 flex-wrap">
                     {projects.find((p) => p.title === activeImg)?.links?.map((link) => (
                       <a
