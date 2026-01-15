@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom/client';
 import { initPortfolio } from './portfolio';
 import { SocialLinks } from './components/social-links';
 import { NavBar } from './components/ui/tubelight-navbar';
-import { Home, Briefcase, Lightbulb, MessageSquare } from 'lucide-react';
+import { GradientButton } from './components/ui/gradient-button';
+import { Home, Briefcase, Lightbulb, MessageSquare, Download, Eye, Mail } from 'lucide-react';
 
 const navItems = [
   { name: 'Home', url: '#home', icon: Home },
@@ -36,20 +37,7 @@ const htmlContent = `
         </p>
       </div>
 
-      <div class="reveal-element flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
-        <a href="#projects"
-          class="border border-slate-600 px-8 py-3 rounded-lg font-semibold text-slate-300 transition-all btn-highlight-hover">
-          View My Work
-        </a>
-        <a href="#contact"
-          class="border border-slate-600 px-8 py-3 rounded-lg font-semibold text-slate-300 hover:text-white hover:border-slate-400 transition-all btn-highlight-hover">
-          Get In Touch
-        </a>
-        <a href="Mevin%20Jose%20Resume.pdf" download
-          class="border border-slate-600 px-8 py-3 rounded-lg font-semibold text-slate-300 hover:text-white hover:border-slate-400 transition-all btn-highlight-hover">
-          Download Resume
-        </a>
-      </div>
+      <div id="hero-buttons-container" class="reveal-element flex flex-col sm:flex-row gap-4 justify-center items-center mb-12"></div>
 
       <div id="social-links-container" class="reveal-element flex justify-center mt-8"></div>
   <section class="pt-40 pb-20 px-6 bg-slate-800/50">
@@ -1450,14 +1438,7 @@ const htmlContent = `
               </p>
 
               <div class="space-y-4">
-                <a href="mailto:mjenius1357@gmail.com"
-                  class="btn-primary w-full py-3 px-6 rounded-lg font-semibold text-white flex items-center justify-center">
-                  <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                      d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                  </svg>
-                  Send Email
-                </a>
+                <div id="email-button-container"></div>
 
                 <p class="text-slate-400 text-sm">
                   Direct email: <a href="mailto:mjenius1357@gmail.com"
@@ -1560,14 +1541,7 @@ const htmlContent = `
 
             <div>
               <h3 class="text-xl font-bold text-white mb-4">Resume</h3>
-              <a href="Mevin%20Jose%20Resume.pdf" download
-                class="btn-primary w-full py-3 px-6 rounded-lg font-semibold text-white flex items-center justify-center">
-                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                </svg>
-                Download Resume
-              </a>
+              <div id="resume-button-container"></div>
             </div>
           </div>
         </div>
@@ -1614,6 +1588,62 @@ function App() {
       if (socialContainer) {
         const root = ReactDOM.createRoot(socialContainer);
         root.render(<SocialLinks />);
+      }
+
+      // Mount Hero Buttons
+      const heroButtonsContainer = document.getElementById('hero-buttons-container');
+      if (heroButtonsContainer) {
+        const root = ReactDOM.createRoot(heroButtonsContainer);
+        root.render(
+          <>
+            <GradientButton asChild>
+              <a href="#projects">
+                <Eye className="w-5 h-5 mr-2" />
+                View My Work
+              </a>
+            </GradientButton>
+            <GradientButton variant="variant" asChild>
+              <a href="#contact">
+                <Mail className="w-5 h-5 mr-2" />
+                Get In Touch
+              </a>
+            </GradientButton>
+            <GradientButton asChild>
+              <a href="Mevin%20Jose%20Resume.pdf" download>
+                <Download className="w-5 h-5 mr-2" />
+                Download Resume
+              </a>
+            </GradientButton>
+          </>
+        );
+      }
+
+      // Mount Email Button
+      const emailButtonContainer = document.getElementById('email-button-container');
+      if (emailButtonContainer) {
+        const root = ReactDOM.createRoot(emailButtonContainer);
+        root.render(
+          <GradientButton className="w-full" asChild>
+            <a href="mailto:mjenius1357@gmail.com">
+              <Mail className="w-5 h-5 mr-2" />
+              Send Email
+            </a>
+          </GradientButton>
+        );
+      }
+
+      // Mount Resume Download Button
+      const resumeButtonContainer = document.getElementById('resume-button-container');
+      if (resumeButtonContainer) {
+        const root = ReactDOM.createRoot(resumeButtonContainer);
+        root.render(
+          <GradientButton className="w-full" variant="variant" asChild>
+            <a href="Mevin%20Jose%20Resume.pdf" download>
+              <Download className="w-5 h-5 mr-2" />
+              Download Resume
+            </a>
+          </GradientButton>
+        );
       }
     }, 0);
   }, []);
