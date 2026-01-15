@@ -63,7 +63,7 @@ Error generating stack: `+i.message+`
     <div class="hero-bg"></div>
     <div class="max-w-6xl mx-auto text-center">
       <div class="reveal-element">
-        <img src="/resources/profile-avatar.png" alt="Mevin Jose Profile Pic"
+        <img src="resources/profile-avatar.png" alt="Mevin Jose Profile Pic"
           class="profile-avatar mx-auto mb-8 floating-animation">
       </div>
 
@@ -90,7 +90,7 @@ Error generating stack: `+i.message+`
           class="border border-slate-600 px-8 py-3 rounded-lg font-semibold text-slate-300 hover:text-white hover:border-slate-400 transition-all btn-highlight-hover">
           Get In Touch
         </a>
-        <a href="/Mevin Jose Resume.pdf" download
+        <a href="Mevin%20Jose%20Resume.pdf" download
           class="border border-slate-600 px-8 py-3 rounded-lg font-semibold text-slate-300 hover:text-white hover:border-slate-400 transition-all btn-highlight-hover">
           Download Resume
         </a>
@@ -1627,7 +1627,7 @@ Error generating stack: `+i.message+`
 
             <div>
               <h3 class="text-xl font-bold text-white mb-4">Resume</h3>
-              <a href="/Mevin Jose Resume.pdf" download
+              <a href="Mevin%20Jose%20Resume.pdf" download
                 class="btn-primary w-full py-3 px-6 rounded-lg font-semibold text-white flex items-center justify-center">
                 <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
