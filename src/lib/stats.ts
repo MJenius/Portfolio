@@ -156,7 +156,7 @@ export async function fetchEngineeringStats(): Promise<EngineeringStats> {
   } catch (error) {
     console.error('Error fetching stats:', error);
     return {
-      github: { commits12m: 0 },
+      github: { totalContributions: 0 },
       leetcode: { totalSolved: 185, easy: 62, medium: 98, hard: 25 },
       cgpa: 7.78,
       error: 'Failed to fetch live stats',
