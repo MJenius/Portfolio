@@ -52,7 +52,7 @@ const htmlContent = `
       </div>
 
       <div id="social-links-container" class="reveal-element flex justify-center mt-8"></div>
-  <section class="py-20 px-6 bg-slate-800/50">
+  <section class="pt-40 pb-20 px-6 bg-slate-800/50">
     <div class="max-w-6xl mx-auto">
       <div class="text-center mb-16 reveal-element">
         <h2 class="text-4xl md:text-5xl font-bold mb-6 gradient-text">Featured Projects</h2>
