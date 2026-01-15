@@ -73,38 +73,32 @@
         }
 
         .contact-card {
-            background: rgba(30, 41, 59, 0.8);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(59, 130, 246, 0.2);
+            border: 1px solid #3b82f6;
             transition: all 0.3s ease;
         }
 
         .contact-card:hover {
             transform: translateY(-4px);
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-            border-color: rgba(59, 130, 246, 0.4);
+            border-color: #3b82f6;
         }
 
         .form-input {
-            background: rgba(30, 41, 59, 0.8);
-            border: 1px solid rgba(59, 130, 246, 0.2);
+            border: 1px solid #3b82f6;
             transition: all 0.3s ease;
         }
 
         .form-input:focus {
             border-color: var(--primary-blue);
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
             outline: none;
         }
 
         .form-input.error {
             border-color: #ef4444;
-            box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
         }
 
         .form-input.success {
             border-color: #10b981;
-            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
         }
 
         .btn-primary {
@@ -135,31 +129,27 @@
         }
 
         .social-link {
-            background: rgba(59, 130, 246, 0.1);
-            border: 1px solid rgba(59, 130, 246, 0.3);
+            border: 1px solid #3b82f6;
             transition: all 0.3s ease;
         }
 
         .social-link:hover {
-            background: rgba(59, 130, 246, 0.2);
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(59, 130, 246, 0.2);
         }
 
         .success-message {
-            background: rgba(16, 185, 129, 0.1);
-            border: 1px solid rgba(16, 185, 129, 0.3);
+            border: 1px solid #10b981;
             color: #10b981;
         }
 
         .error-message {
-            background: rgba(239, 68, 68, 0.1);
-            border: 1px solid rgba(239, 68, 68, 0.3);
+            border: 1px solid #ef4444;
             color: #ef4444;
         }
 
         .loading-spinner {
-            border: 2px solid rgba(59, 130, 246, 0.3);
+            border: 2px solid #3b82f6;
             border-top: 2px solid var(--primary-blue);
             border-radius: 50%;
             width: 20px;
@@ -194,7 +184,7 @@
 
 <body>
     <!-- Navigation -->
-    <nav class="fixed top-0 w-full z-50 bg-slate-900/80 backdrop-blur-md border-b border-slate-700/50">
+    <nav class="fixed top-0 w-full z-50 border-b border-slate-700">
         <div class="max-w-6xl mx-auto px-6 py-4">
             <div class="flex items-center justify-between">
                 <a href="index.html" class="text-xl font-bold gradient-text" style="text-decoration:none;">Mevin Jose
@@ -374,7 +364,7 @@
     </section>
 
     <!-- Footer -->
-    <footer class="py-12 px-6 border-t border-slate-700">
+    <footer class="py-12 px-6">
         <div class="max-w-6xl mx-auto text-center">
             <div class="flex justify-center space-x-6 mb-6">
                 <a href="https://leetcode.com/u/mjenius1357/" target="_blank"
