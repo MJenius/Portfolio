@@ -132,7 +132,7 @@ const initProjectFiltering = () => {
       const matchesSearch = searchTerm === '' || title.includes(searchTerm);
 
       if (matchesFilter && matchesSearch) {
-        card.style.display = 'block';
+        card.classList.remove('hidden');
         const anime = safeAnime();
         if (anime) {
           anime({
@@ -144,6 +144,7 @@ const initProjectFiltering = () => {
           });
         }
       } else {
+        card.classList.add('hidden');
         const anime = safeAnime();
         if (anime) {
           anime({
@@ -152,12 +153,7 @@ const initProjectFiltering = () => {
             translateY: [0, -20],
             duration: 200,
             easing: 'easeInQuad',
-            complete: () => {
-              card.style.display = 'none';
-            },
           });
-        } else {
-          card.style.display = 'none';
         }
       }
     });

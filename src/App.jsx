@@ -6,6 +6,7 @@ import { NavBar } from './components/ui/tubelight-navbar';
 import { GradientButton } from './components/ui/gradient-button';
 import { GooeyText } from './components/ui/gooey-text-morphing';
 import { Home, Briefcase, Lightbulb, MessageSquare, Download, Eye, Mail } from 'lucide-react';
+import { Vortex } from './components/ui/vortex';
 
 const navItems = [
   { name: 'Home', url: '#home', icon: Home },
@@ -17,8 +18,7 @@ const navItems = [
 const htmlContent = `
 
   <section id="home" class="min-h-screen flex items-center justify-center pt-20 px-6">
-    <div class="hero-bg"></div>
-    <div class="max-w-6xl mx-auto text-center">
+      <div class="max-w-6xl mx-auto text-center relative z-20">
       <div class="reveal-element">
         <img src="resources/profile-avatar.png" alt="Mevin Jose Profile Pic"
           class="profile-avatar mx-auto mb-8 floating-animation">
@@ -376,18 +376,19 @@ const htmlContent = `
             </div>
           </div>
           <p class="text-slate-300 text-sm mb-4">
-            Tamper-resistant surveillance system using HMAC-SHA256 watermarking and real-time tamper
-            detection (blur, glare, blackout).
+            Tamper-resistant surveillance system using computer vision, cryptographic watermarks, and forensics to detect attacks.
           </p>
           <div class="flex flex-wrap gap-2 mb-4">
             <span class="tech-tag px-2 py-1 rounded-full text-xs">Python</span>
             <span class="tech-tag px-2 py-1 rounded-full text-xs">OpenCV</span>
             <span class="tech-tag px-2 py-1 rounded-full text-xs">Flask</span>
             <span class="tech-tag px-2 py-1 rounded-full text-xs">Socket.IO</span>
+            <span class="tech-tag px-2 py-1 rounded-full text-xs">SQLite</span>
+            <span class="tech-tag px-2 py-1 rounded-full text-xs">Cryptography</span>
           </div>
           <div class="flex justify-between items-center">
             <div class="text-xs text-slate-400">
-              <span class="text-green-400">●</span> &lt;2% false positives
+              <span class="text-green-400">●</span> Cryptographically verifiable with &lt;2% false positives
             </div>
             <button class="text-blue-400 hover:text-blue-300 transition-colors text-sm"
               onclick="openModal('aegis')">
@@ -411,8 +412,7 @@ const htmlContent = `
             </div>
           </div>
           <p class="text-slate-300 text-sm mb-4">
-            Reinforcement Learning agent (PPO) optimizing emergency vehicle routing in SUMO, trained on
-            Bangalore traffic data.
+            Reinforcement Learning agent optimizing emergency vehicle routing in SUMO simulation using Bangalore traffic data.
           </p>
           <div class="flex flex-wrap gap-2 mb-4">
             <span class="tech-tag px-2 py-1 rounded-full text-xs">Python</span>
@@ -448,8 +448,7 @@ const htmlContent = `
           </div>
           <p class="text-slate-300 text-sm mb-4">
             Multi-model PDF extraction platform (Surya, Docling, MinerU) with PyMuPDF fallback. Deployed via
-            Modal + Vercel.
-          </p>
+            Modal + Vercel.with PyMuPDF fallback, deployed via Modal and Vercel for production use
           <div class="flex flex-wrap gap-2 mb-4">
             <span class="tech-tag px-2 py-1 rounded-full text-xs">FastAPI</span>
             <span class="tech-tag px-2 py-1 rounded-full text-xs">Next.js</span>
@@ -483,8 +482,7 @@ const htmlContent = `
             </div>
           </div>
           <p class="text-slate-300 text-sm mb-4">
-            Voice-enabled assistant for LeetCode problem solving with company-specific suggestions using
-            spaCy NLP and LeetCode API integration.
+            Voice-enabled assistant for LeetCode with company-specific suggestions using spaCy NLP and LeetCode API integration.
           </p>
           <div class="flex flex-wrap gap-2 mb-4">
             <span class="tech-tag px-2 py-1 rounded-full text-xs">Python</span>
@@ -518,8 +516,7 @@ const htmlContent = `
             </div>
           </div>
           <p class="text-slate-300 text-sm mb-4">
-            Full-stack MERN application for online learning platform with scalable architecture and
-            optimized performance.
+            Full-stack MERN application for online learning platform with scalable architecture and optimized performance.
           </p>
           <div class="flex flex-wrap gap-2 mb-4">
             <span class="tech-tag px-2 py-1 rounded-full text-xs">React</span>
@@ -553,8 +550,9 @@ const htmlContent = `
               <p class="text-slate-400 text-sm">Medical Imaging • Radiomics</p>
             </div>
           </div>
-          <p class="text-slate-300 text-sm mb-4">A research-oriented radiomics pipeline for CT-based triage of
-            COVID-19 patients, including feature extraction and model evaluation.</p>
+          <p class="text-slate-300 text-sm mb-4">
+            Research-oriented radiomics pipeline for CT-based COVID-19 triage with feature extraction and model evaluation.
+          </p>
           <div class="flex flex-wrap gap-2 mb-4">
             <span class="tech-tag px-2 py-1 rounded-full text-xs">Python</span>
             <span class="tech-tag px-2 py-1 rounded-full text-xs">PyRadiomics</span>
@@ -585,9 +583,7 @@ const htmlContent = `
             </div>
           </div>
           <p class="text-slate-300 text-sm mb-4">
-            End-to-end retail demand forecasting system with hybrid ML modeling, drift detection, model
-            registry,
-            and safe auto-retraining pipeline.
+            End-to-end retail demand forecasting with hybrid ML modeling, drift detection, and auto-retraining pipeline.
           </p>
           <div class="flex flex-wrap gap-2 mb-4">
             <span class="tech-tag px-2 py-1 rounded-full text-xs">Python</span>
@@ -603,9 +599,81 @@ const htmlContent = `
               onclick="openModal('demand-forecasting')">View Details →</button>
           </div>
         </div>
+
+        <div class="project-card p-6 rounded-xl" data-category="web" data-title="Social Media Management System">
+          <div class="flex items-center mb-4">
+            <div
+              class="w-14 h-14 bg-gradient-to-r from-blue-500 to-cyan-600 rounded-lg flex items-center justify-center mr-4">
+              <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M13 10V3L4 14h7v7l9-11h-7z" />
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-xl font-bold text-white">Social Media Management</h3>
+              <p class="text-slate-400 text-sm">SaaS • Backend • Automation</p>
+            </div>
+          </div>
+          <p class="text-slate-300 text-sm mb-4">
+            Production-grade social media platform with role-based access, post scheduling, and secure multi-user workflows.
+          </p>
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span class="tech-tag px-2 py-1 rounded-full text-xs">Node.js</span>
+            <span class="tech-tag px-2 py-1 rounded-full text-xs">Express</span>
+            <span class="tech-tag px-2 py-1 rounded-full text-xs">SQLite</span>
+            <span class="tech-tag px-2 py-1 rounded-full text-xs">RBAC</span>
+            <span class="tech-tag px-2 py-1 rounded-full text-xs">REST APIs</span>
+          </div>
+          <div class="flex justify-between items-center">
+            <div class="text-xs text-slate-400">
+              <span class="text-green-400">●</span> ~77% automated test coverage
+            </div>
+            <button class="text-blue-400 hover:text-blue-300 transition-colors text-sm"
+              onclick="openModal('smms')">
+              View Details →
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   </section>
+
+  <div id="modal-smms" class="modal">
+    <div class="modal-content p-8 m-4">
+      <button class="modal-close" onclick="closeModal('smms')">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+      <h2 class="text-3xl font-bold mb-4 gradient-text">Social Media Management System (SMMS)</h2>
+      <div class="space-y-4 text-slate-300">
+        <p>
+          A production-grade social media management platform designed for teams and agencies to efficiently manage multiple accounts, schedule content, automate publishing, and track analytics from a unified dashboard.
+        </p>
+        <h3 class="text-xl font-semibold text-white">Key Achievements:</h3>
+        <ul class="list-disc list-inside space-y-2">
+          <li>Role-based access control (RBAC) for secure multi-user workflows</li>
+          <li>Post scheduling and auto-publishing with queue management</li>
+          <li>Comprehensive analytics and engagement tracking</li>
+          <li>Built with ~77% automated test coverage for production reliability</li>
+        </ul>
+        <h3 class="text-xl font-semibold text-white">Technical Stack:</h3>
+        <ul class="list-disc list-inside space-y-2">
+          <li>Node.js with Express.js backend</li>
+          <li>SQLite for data persistence</li>
+          <li>Role-based access control (RBAC) implementation</li>
+          <li>RESTful APIs with comprehensive error handling</li>
+          <li>Jest/Mocha for automated testing</li>
+        </ul>
+        <div class="flex gap-4 mt-6">
+          <a href="https://github.com/MJenius/Social-Media-Management-System" target="_blank"
+            class="bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded-lg text-white transition-colors">
+            View on GitHub
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <div id="modal-voice-assistant" class="modal">
     <div class="modal-content p-8 m-4">
@@ -802,25 +870,24 @@ const htmlContent = `
       <h2 class="text-3xl font-bold mb-4 gradient-text">AEGIS Surveillance System</h2>
       <div class="space-y-4 text-slate-300">
         <p>
-          A tamper-resistant surveillance system developed for the Kodikon Hackathon (Top-10/280 teams). It
-          secures CCTV feeds using HMAC-SHA256 watermarks and detects tampering in real-time.
+          A tamper-resistant surveillance system developed for the Kodikon Hackathon (Top-10/280 teams). It secures CCTV feeds using real-time computer vision, cryptographic HMAC-SHA256 watermarks, and forensic analysis to detect physical attacks, replay attacks, and feed manipulation.
         </p>
         <h3 class="text-xl font-semibold text-white">Key Achievements:</h3>
         <ul class="list-disc list-inside space-y-2">
-          <li>Real-time detection of blur, shake, glare, and blackout events</li>
+          <li>Real-time detection of blur, shake, glare, blackout, and replay attacks</li>
           <li>Achieved &lt;2% false positives and &lt;100ms detection latency</li>
-          <li>Implemented glare rescue (CLAHE) and flow-based reposition detection</li>
-          <li>Secure incident logging with cryptographic verification</li>
+          <li>Cryptographically verifiable incident logging with HMAC-SHA256 watermarks</li>
+          <li>Forensic analysis for post-attack investigation and evidence preservation</li>
         </ul>
         <h3 class="text-xl font-semibold text-white">Technical Stack:</h3>
         <ul class="list-disc list-inside space-y-2">
           <li>Python, OpenCV, Flask, Socket.IO</li>
-          <li>HMAC-SHA256 for watermarking</li>
+          <li>HMAC-SHA256 for cryptographic watermarking</li>
+          <li>SQLite for secure incident logging</li>
           <li>ffmpeg for stream processing</li>
-          <li>SQLite for incident logging</li>
         </ul>
         <div class="flex gap-4 mt-6">
-          <a href="https://github.com/ZeroDeaths7/AegisAI-tamper-resistent-surveillance-system"
+          <a href="https://github.com/ZeroDeaths7/Aegis-Tamper-Resistant-Surveillance-System"
             target="_blank"
             class="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-lg text-white transition-colors">View on
             GitHub</a>
@@ -1571,10 +1638,34 @@ const htmlContent = `
 
 function App() {
   useEffect(() => {
-    // Wait for next tick to ensure DOM is ready
+    // Mount a single global Vortex background
+    const vortexContainer = document.createElement('div');
+    vortexContainer.id = 'vortex-global';
+    Object.assign(vortexContainer.style, {
+      position: 'fixed',
+      inset: '0',
+      width: '100%',
+      height: '100%',
+      zIndex: '0',
+      pointerEvents: 'none',
+    });
+    document.body.prepend(vortexContainer);
+
+    const vortexRoot = ReactDOM.createRoot(vortexContainer);
+    vortexRoot.render(
+      <Vortex
+        backgroundColor="#000000"
+        rangeY={800}
+        particleCount={900}
+        baseHue={220}
+        containerClassName="w-full h-full"
+      />
+    );
+
+    // Wait for next tick to ensure DOM is ready, then mount shadcn pieces
     setTimeout(() => {
       initPortfolio();
-      
+
       // Mount React components to their containers
       const navContainer = document.getElementById('navbar-container');
       if (navContainer) {
@@ -1657,12 +1748,17 @@ function App() {
         );
       }
     }, 0);
+
+    return () => {
+      vortexRoot.unmount();
+      vortexContainer.remove();
+    };
   }, []);
 
   return (
     <>
       <div id="navbar-container"></div>
-      <div dangerouslySetInnerHTML={{ __html: htmlContent }} />
+      <div className="relative z-10" dangerouslySetInnerHTML={{ __html: htmlContent }} />
     </>
   );
 }

@@ -348,6 +348,13 @@ body {
   background: rgba(30, 41, 59, 0.8);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(59, 130, 246, 0.2);
+  overflow: hidden;
+  position: relative;
+}
+
+.project-card p {
+  overflow: hidden;
+  line-height: 1.5;
 }
 
 .tech-tag {
@@ -486,38 +493,50 @@ body {
 }
 
 .project-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 40px;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  max-width: 1500px;
+  margin: 0 auto;
+  align-items: start;
+  padding: 0 20px;
 }
 
 .project-grid > .project-card {
-  flex: 0 1 312px;
-  max-width: 312px;
-  min-width: 0;
-  align-self: stretch;
+  transition: all 0.2s ease;
+  min-height: 0;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.project-card > * {
+  flex-shrink: 1;
+  min-height: 0;
+}
+
+.project-card.hidden {
+  display: none !important;
+}
+
+@media (max-width: 1280px) {
+  .project-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+  .project-grid > .project-card:nth-child(n) { grid-column: auto; }
 }
 
 @media (max-width: 1024px) {
-  .project-grid > .project-card {
-    flex: 0 0 300px;
-    max-width: 300px;
-  }
-
   .project-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 24px;
   }
 }
 
 @media (max-width: 768px) {
   .project-grid {
+    grid-template-columns: 1fr;
     gap: 16px;
-  }
-
-  .project-grid > .project-card {
-    flex: 0 0 100%;
-    max-width: 100%;
   }
 }
 
