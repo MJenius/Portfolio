@@ -7,6 +7,7 @@ import { GradientButton } from './components/ui/gradient-button';
 import { GooeyText } from './components/ui/gooey-text-morphing';
 import { Home, Briefcase, Lightbulb, MessageSquare, Download, Eye, Mail } from 'lucide-react';
 import { Vortex } from './components/ui/vortex';
+import { ThreeDPhotoCarouselDemo } from '@/components/ui/demo';
 
 const navItems = [
   { name: 'Home', url: '#home', icon: Home },
@@ -40,172 +41,14 @@ const htmlContent = `
       <div id="social-links-container" class="reveal-element flex justify-center mt-8"></div>
   <section class="pt-40 pb-20 px-6">
     <div class="max-w-6xl mx-auto">
-      <div class="text-center mb-16 reveal-element">
+      <div class="text-center mb-8 reveal-element">
         <h2 class="text-4xl md:text-5xl font-bold mb-6 gradient-text">Featured Projects</h2>
         <p class="text-xl text-slate-300 max-w-3xl mx-auto">
           A showcase of my most impactful work in AI/ML and full-stack development
         </p>
       </div>
 
-      <div class="splide reveal-element" id="featured-projects">
-        <div class="splide__track">
-          <ul class="splide__list">
-            <li class="splide__slide">
-              <div class="project-card p-8 rounded-xl card-hover">
-                <div class="flex items-center mb-4">
-                  <div
-                    class="w-12 h-12 bg-gradient-to-r from-emerald-500 to-teal-600 rounded-lg flex items-center justify-center mr-4">
-                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor"
-                      viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                    </svg>
-                  </div>
-                  <div>
-                    <h3 class="text-2xl font-bold text-white">Demand Forecasting ML</h3>
-                    <p class="text-slate-400">MLOps • End-to-End • Production</p>
-                  </div>
-                </div>
-                <p class="text-slate-300 mb-6">
-                  End-to-end retail demand forecasting with hybrid ML + statistical models,
-                  drift detection, and auto-retraining pipeline.
-                </p>
-                <div class="flex flex-wrap gap-2 mb-6">
-                  <span class="tech-tag px-3 py-1 rounded-full text-sm">Python</span>
-                  <span class="tech-tag px-3 py-1 rounded-full text-sm">LightGBM</span>
-                  <span class="tech-tag px-3 py-1 rounded-full text-sm">FastAPI</span>
-                  <span class="tech-tag px-3 py-1 rounded-full text-sm">Pandas</span>
-                </div>
-                <div class="flex justify-between items-center">
-                  <div class="text-sm text-slate-400">
-                    <span class="text-green-400">●</span> ↓25% MAE improvement
-                  </div>
-                  <a href="https://github.com/MJenius/Demand-Forecasting-ML-System" target="_blank"
-                    class="text-blue-400 hover:text-blue-300 transition-colors">
-                    View Code →
-                  </a>
-                </div>
-              </div>
-            </li>
-
-            <li class="splide__slide">
-              <div class="project-card p-8 rounded-xl card-hover">
-                <div class="flex items-center mb-4">
-                  <div
-                    class="w-12 h-12 bg-gradient-to-r from-red-500 to-orange-600 rounded-lg flex items-center justify-center mr-4">
-                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor"
-                      viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-                    </svg>
-                  </div>
-                  <div>
-                    <h3 class="text-2xl font-bold text-white">AEGIS Surveillance</h3>
-                    <p class="text-slate-400">CV • Security • Top-10 Hackathon</p>
-                  </div>
-                </div>
-                <p class="text-slate-300 mb-6">
-                  Tamper-resistant surveillance system using HMAC-SHA256 watermarking and real-time
-                  tamper detection (blur, glare, blackout).
-                </p>
-                <div class="flex flex-wrap gap-2 mb-6">
-                  <span class="tech-tag px-3 py-1 rounded-full text-sm">Python</span>
-                  <span class="tech-tag px-3 py-1 rounded-full text-sm">OpenCV</span>
-                  <span class="tech-tag px-3 py-1 rounded-full text-sm">Flask</span>
-                  <span class="tech-tag px-3 py-1 rounded-full text-sm">Socket.IO</span>
-                </div>
-                <div class="flex justify-between items-center">
-                  <div class="text-sm text-slate-400">
-                    <span class="text-green-400">●</span> &lt;2% false positives
-                  </div>
-                  <a href="https://github.com/ZeroDeaths7/AegisAI-tamper-resistent-surveillance-system"
-                    target="_blank" class="text-blue-400 hover:text-blue-300 transition-colors">
-                    View Code →
-                  </a>
-                </div>
-              </div>
-            </li>
-
-            <li class="splide__slide">
-              <div class="project-card p-8 rounded-xl card-hover">
-                <div class="flex items-center mb-4">
-                  <div
-                    class="w-12 h-12 bg-gradient-to-r from-blue-500 to-cyan-600 rounded-lg flex items-center justify-center mr-4">
-                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor"
-                      viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
-                    </svg>
-                  </div>
-                  <div>
-                    <h3 class="text-2xl font-bold text-white">Adaptive Traffic Control</h3>
-                    <p class="text-slate-400">RL • PPO • Smart City</p>
-                  </div>
-                </div>
-                <p class="text-slate-300 mb-6">
-                  Reinforcement Learning agent (PPO) optimizing emergency vehicle routing in SUMO,
-                  trained on Bangalore traffic data.
-                </p>
-                <div class="flex flex-wrap gap-2 mb-6">
-                  <span class="tech-tag px-3 py-1 rounded-full text-sm">Python</span>
-                  <span class="tech-tag px-3 py-1 rounded-full text-sm">Stable-Baselines3</span>
-                  <span class="tech-tag px-3 py-1 rounded-full text-sm">SUMO</span>
-                  <span class="tech-tag px-3 py-1 rounded-full text-sm">Pandas</span>
-                </div>
-                <div class="flex justify-between items-center">
-                  <div class="text-sm text-slate-400">
-                    <span class="text-green-400">●</span> 10.6% faster emergency travel
-                  </div>
-                  <a href="https://github.com/rajeev8008/sumo-traffic-rl-project" target="_blank"
-                    class="text-blue-400 hover:text-blue-300 transition-colors">
-                    View Code →
-                  </a>
-                </div>
-              </div>
-            </li>
-
-            <li class="splide__slide">
-              <div class="project-card p-8 rounded-xl card-hover">
-                <div class="flex items-center mb-4">
-                  <div
-                    class="w-12 h-12 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-lg flex items-center justify-center mr-4">
-                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor"
-                      viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                    </svg>
-                  </div>
-                  <div>
-                    <h3 class="text-2xl font-bold text-white">DocParse AI</h3>
-                    <p class="text-slate-400">Full Stack • Multi-Model • SaaS</p>
-                  </div>
-                </div>
-                <p class="text-slate-300 mb-6">
-                  Multi-model PDF extraction platform (Surya, Docling, MinerU) with PyMuPDF fallback.
-                  Deployed via Modal + Vercel.
-                </p>
-                <div class="flex flex-wrap gap-2 mb-6">
-                  <span class="tech-tag px-3 py-1 rounded-full text-sm">FastAPI</span>
-                  <span class="tech-tag px-3 py-1 rounded-full text-sm">Next.js</span>
-                  <span class="tech-tag px-3 py-1 rounded-full text-sm">Modal</span>
-                  <span class="tech-tag px-3 py-1 rounded-full text-sm">Vercel</span>
-                </div>
-                <div class="flex justify-between items-center">
-                  <div class="text-sm text-slate-400">
-                    <span class="text-green-400">●</span> 99% accuracy
-                  </div>
-                  <div class="flex gap-4">
-                    <a href="https://pdf-playground-8wlek8vg8-mevin-joses-projects.vercel.app/" target="_blank"
-                      class="text-blue-400 hover:text-blue-300 transition-colors">Live Demo →</a>
-                  </div>
-                </div>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </div>
+      <div id="featured-carousel-container" class="reveal-element"></div>
     </div>
   </section>
 
@@ -1667,6 +1510,12 @@ function App() {
       initPortfolio();
 
       // Mount React components to their containers
+            // Mount Featured 3D Carousel
+            const featuredCarouselContainer = document.getElementById('featured-carousel-container');
+            if (featuredCarouselContainer) {
+              const root = ReactDOM.createRoot(featuredCarouselContainer);
+              root.render(<ThreeDPhotoCarouselDemo />);
+            }
       const navContainer = document.getElementById('navbar-container');
       if (navContainer) {
         const root = ReactDOM.createRoot(navContainer);
