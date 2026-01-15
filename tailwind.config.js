@@ -24,8 +24,12 @@ export default {
           foreground: '#6b7280',
         },
         ring: '#3b82f6',
+        background: '#1e293b',
+        foreground: '#f8fafc',
+        border: '#334155',
       },
     },
   },
   plugins: [],
 }
+

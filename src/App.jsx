@@ -2,28 +2,17 @@ import { useEffect } from 'react';
 import ReactDOM from 'react-dom/client';
 import { initPortfolio } from './portfolio';
 import { SocialLinks } from './components/social-links';
+import { NavBar } from './components/ui/tubelight-navbar';
+import { Home, Briefcase, Lightbulb, MessageSquare } from 'lucide-react';
+
+const navItems = [
+  { name: 'Home', url: '#home', icon: Home },
+  { name: 'Projects', url: '#projects', icon: Briefcase },
+  { name: 'Skills', url: '#skills', icon: Lightbulb },
+  { name: 'Contact', url: '#contact', icon: MessageSquare }
+];
 
 const htmlContent = `
-  <nav class="fixed top-0 w-full z-50 bg-slate-900/80 backdrop-blur-md border-b border-slate-700/50">
-    <div class="max-w-6xl mx-auto px-6 py-4">
-      <div class="flex items-center justify-between">
-        <a href="#home" class="text-xl font-bold gradient-text" style="text-decoration:none;">Mevin Jose
-          Portfolio</a>
-        <div class="hidden md:flex space-x-8">
-          <a href="#home" class="nav-link active text-slate-300 hover:text-white">Home</a>
-          <a href="#projects" class="nav-link text-slate-300 hover:text-white">Projects</a>
-          <a href="#skills" class="nav-link text-slate-300 hover:text-white">Skills</a>
-          <a href="#contact" class="nav-link text-slate-300 hover:text-white">Contact</a>
-        </div>
-        <button class="md:hidden text-slate-300 hover:text-white" id="mobile-menu-btn">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-              d="M4 6h16M4 12h16M4 18h16"></path>
-          </svg>
-        </button>
-      </div>
-    </div>
-  </nav>
 
   <section id="home" class="min-h-screen flex items-center justify-center pt-20 px-6">
     <div class="hero-bg"></div>
@@ -63,6 +52,7 @@ const htmlContent = `
       </div>
 
       <div id="social-links-container" class="reveal-element flex justify-center mt-8"></div>
+  <section class="py-20 px-6 bg-slate-800/50">
     <div class="max-w-6xl mx-auto">
       <div class="text-center mb-16 reveal-element">
         <h2 class="text-4xl md:text-5xl font-bold mb-6 gradient-text">Featured Projects</h2>
@@ -1611,15 +1601,26 @@ function App() {
   useEffect(() => {
     initPortfolio();
     
-    // Mount React component to the social links container
-    const container = document.getElementById('social-links-container');
-    if (container) {
-      const root = ReactDOM.createRoot(container);
+    // Mount React components to their containers
+    const navContainer = document.getElementById('navbar-container');
+    if (navContainer) {
+      const root = ReactDOM.createRoot(navContainer);
+      root.render(<NavBar items={navItems} />);
+    }
+    
+    const socialContainer = document.getElementById('social-links-container');
+    if (socialContainer) {
+      const root = ReactDOM.createRoot(socialContainer);
       root.render(<SocialLinks />);
     }
   }, []);
 
-  return <div dangerouslySetInnerHTML={{ __html: htmlContent }} />;
+  return (
+    <>
+      <div id="navbar-container"></div>
+      <div dangerouslySetInnerHTML={{ __html: htmlContent }} />
+    </>
+  );
 }
 
 export default App;
