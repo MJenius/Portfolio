@@ -1693,4 +1693,4 @@ Error generating stack: `+u.message+`
       </p>
     </div>
   </footer>
-`;function J2(){return O.useEffect(()=>{Hg();const n=document.getElementById("navbar-container");n&&ha.createRoot(n).render(re.jsx(X2,{items:q2}));const r=document.getElementById("social-links-container");r&&ha.createRoot(r).render(re.jsx(Y2,{}))},[]),re.jsxs(re.Fragment,{children:[re.jsx("div",{id:"navbar-container"}),re.jsx("div",{dangerouslySetInnerHTML:{__html:Z2}})]})}ha.createRoot(document.getElementById("root")).render(re.jsx(J2,{}));
+`;function J2(){return O.useEffect(()=>{setTimeout(()=>{Hg();const n=document.getElementById("navbar-container");n&&ha.createRoot(n).render(re.jsx(X2,{items:q2}));const r=document.getElementById("social-links-container");r&&ha.createRoot(r).render(re.jsx(Y2,{}))},0)},[]),re.jsxs(re.Fragment,{children:[re.jsx("div",{id:"navbar-container"}),re.jsx("div",{dangerouslySetInnerHTML:{__html:Z2}})]})}ha.createRoot(document.getElementById("root")).render(re.jsx(J2,{}));
