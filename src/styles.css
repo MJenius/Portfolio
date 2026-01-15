@@ -43,7 +43,7 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: url('/resources/hero-image.png') center/cover;
+  background: url('resources/hero-image.png') center/cover;
   opacity: 0.3;
   z-index: -1;
 }
