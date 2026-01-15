@@ -4,6 +4,7 @@ import { initPortfolio } from './portfolio';
 import { SocialLinks } from './components/social-links';
 import { NavBar } from './components/ui/tubelight-navbar';
 import { GradientButton } from './components/ui/gradient-button';
+import { GooeyText } from './components/ui/gooey-text-morphing';
 import { Home, Briefcase, Lightbulb, MessageSquare, Download, Eye, Mail } from 'lucide-react';
 
 const navItems = [
@@ -24,10 +25,7 @@ const htmlContent = `
       </div>
 
       <div class="reveal-element">
-        <h1 class="hero-title text-5xl md:text-7xl font-bold mb-6">
-          <span class="gradient-text" id="typed-text"></span>
-          <span class="typewriter-cursor">|</span>
-        </h1>
+        <div id="particle-text-container" class="h-[120px] flex items-center justify-center mb-6"></div>
       </div>
 
       <div class="reveal-element">
@@ -1643,6 +1641,19 @@ function App() {
               Download Resume
             </a>
           </GradientButton>
+        );
+      }
+
+      // Mount GooeyText Component
+      const particleTextContainer = document.getElementById('particle-text-container');
+      if (particleTextContainer) {
+        const root = ReactDOM.createRoot(particleTextContainer);
+        root.render(
+          <GooeyText
+            texts={['AI Developer', 'ML Engineer', 'Fullstack Dev', 'Problem Solver']}
+            morphTime={1}
+            cooldownTime={0.25}
+          />
         );
       }
     }, 0);
