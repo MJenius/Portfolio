@@ -1599,20 +1599,23 @@ const htmlContent = `
 
 function App() {
   useEffect(() => {
-    initPortfolio();
-    
-    // Mount React components to their containers
-    const navContainer = document.getElementById('navbar-container');
-    if (navContainer) {
-      const root = ReactDOM.createRoot(navContainer);
-      root.render(<NavBar items={navItems} />);
-    }
-    
-    const socialContainer = document.getElementById('social-links-container');
-    if (socialContainer) {
-      const root = ReactDOM.createRoot(socialContainer);
-      root.render(<SocialLinks />);
-    }
+    // Wait for next tick to ensure DOM is ready
+    setTimeout(() => {
+      initPortfolio();
+      
+      // Mount React components to their containers
+      const navContainer = document.getElementById('navbar-container');
+      if (navContainer) {
+        const root = ReactDOM.createRoot(navContainer);
+        root.render(<NavBar items={navItems} />);
+      }
+      
+      const socialContainer = document.getElementById('social-links-container');
+      if (socialContainer) {
+        const root = ReactDOM.createRoot(socialContainer);
+        root.render(<SocialLinks />);
+      }
+    }, 0);
   }, []);
 
   return (
