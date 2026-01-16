@@ -42,11 +42,11 @@ const cards: TechnologyCardConfig[] = [
   },
 ];
 
-export default function TechnologiesShowcase() {
+export default function SkewCards() {
   return (
     <>
       <section className="py-24 px-6 pt-32 md:pt-40 scroll-mt-32 md:scroll-mt-40">
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-[100rem] mx-auto">
           {/* Section Header */}
           <div className="text-center mb-8 md:mb-10">
             <h2 className="text-4xl md:text-5xl font-bold gradient-text leading-[1.2] pb-4">
@@ -55,21 +55,21 @@ export default function TechnologiesShowcase() {
           </div>
 
           {/* Cards Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 pt-2">
+          <div className="grid grid-cols-4 gap-8 pt-2">
             {cards.map(({ title, icon: Icon, technologies, gradientFrom, gradientTo }, idx) => (
               <div
                 key={idx}
-                className="group relative min-h-90 transition-all duration-500"
+                className="group relative w-full h-[400px] transition-all duration-500 cursor-pointer"
               >
                 {/* Skewed gradient panels */}
                 <span
-                  className="absolute top-0 left-12.5 w-1/2 h-full rounded-lg transform skew-x-15 transition-all duration-500 group-hover:skew-x-0 group-hover:left-5 group-hover:w-[calc(100%-90px)]"
+                  className="absolute top-0 left-[50px] w-1/2 h-full rounded-lg transform skew-x-[15deg] transition-all duration-500 group-hover:skew-x-0 group-hover:left-[20px] group-hover:w-[calc(100%-90px)] opacity-90"
                   style={{
                     background: `linear-gradient(315deg, ${gradientFrom}, ${gradientTo})`,
                   }}
                 />
                 <span
-                  className="absolute top-0 left-12.5 w-1/2 h-full rounded-lg transform skew-x-15 blur-[30px] transition-all duration-500 group-hover:skew-x-0 group-hover:left-5 group-hover:w-[calc(100%-90px)]"
+                  className="absolute top-0 left-[50px] w-1/2 h-full rounded-lg transform skew-x-[15deg] blur-[30px] transition-all duration-500 group-hover:skew-x-0 group-hover:left-[20px] group-hover:w-[calc(100%-90px)] opacity-80"
                   style={{
                     background: `linear-gradient(315deg, ${gradientFrom}, ${gradientTo})`,
                   }}
@@ -77,26 +77,26 @@ export default function TechnologiesShowcase() {
 
                 {/* Animated blurs */}
                 <span className="pointer-events-none absolute inset-0 z-10">
-                  <span className="absolute top-0 left-0 w-0 h-0 rounded-lg opacity-0 bg-[rgba(255,255,255,0.1)] backdrop-blur-[10px] shadow-[0_5px_15px_rgba(0,0,0,0.08)] transition-all duration-100 animate-blob group-hover:-top-12.5 group-hover:left-12.5 group-hover:w-25 group-hover:h-25 group-hover:opacity-100" />
-                  <span className="absolute bottom-0 right-0 w-0 h-0 rounded-lg opacity-0 bg-[rgba(255,255,255,0.1)] backdrop-blur-[10px] shadow-[0_5px_15px_rgba(0,0,0,0.08)] transition-all duration-500 animate-blob animation-delay-1000 group-hover:-bottom-12.5 group-hover:right-12.5 group-hover:w-25 group-hover:h-25 group-hover:opacity-100" />
+                  <span className="absolute top-0 left-0 w-0 h-0 rounded-lg opacity-0 bg-[rgba(255,255,255,0.1)] backdrop-blur-[10px] shadow-[0_5px_15px_rgba(0,0,0,0.08)] transition-all duration-100 animate-blob group-hover:top-[-50px] group-hover:left-[50px] group-hover:w-[100px] group-hover:h-[100px] group-hover:opacity-100" />
+                  <span className="absolute bottom-0 right-0 w-0 h-0 rounded-lg opacity-0 bg-[rgba(255,255,255,0.1)] backdrop-blur-[10px] shadow-[0_5px_15px_rgba(0,0,0,0.08)] transition-all duration-500 animate-blob animation-delay-1000 group-hover:bottom-[-50px] group-hover:right-[50px] group-hover:w-[100px] group-hover:h-[100px] group-hover:opacity-100" />
                 </span>
 
                 {/* Content */}
-                <div className="relative z-20 left-0 p-6 bg-[rgba(255,255,255,0.05)] backdrop-blur-[10px] shadow-lg rounded-lg text-white transition-all duration-500 group-hover:-left-6.25 group-hover:p-8 h-full">
+                <div className="relative z-20 left-0 p-[20px_40px] bg-[rgba(255,255,255,0.05)] backdrop-blur-[10px] shadow-lg rounded-lg text-white transition-all duration-500 group-hover:-left-[25px] group-hover:p-[60px_40px] h-full">
                   {/* Icon and Title */}
-                  <div className="flex items-center gap-3 mb-6">
-                    <div className="p-2 bg-white/10 rounded-lg">
-                      <Icon className="w-6 h-6 text-white" />
+                  <div className="flex items-start gap-2 mb-4">
+                    <div className="p-2 bg-white/20 rounded-lg flex-shrink-0">
+                      <Icon className="w-5 h-5 text-white" />
                     </div>
-                    <h3 className="text-2xl font-bold">{title}</h3>
+                    <h3 className="text-lg font-bold leading-snug break-words">{title}</h3>
                   </div>
 
                   {/* Technology Tags */}
-                  <div className="flex flex-wrap gap-2">
+                  <div className="flex flex-wrap gap-1.5">
                     {technologies.map((tech, techIdx) => (
                       <span
                         key={techIdx}
-                        className="bg-white/10 backdrop-blur-sm px-3 py-1.5 rounded-lg text-sm font-medium text-white/90 hover:bg-white/20 transition-colors"
+                        className="bg-white/10 backdrop-blur-sm px-2.5 py-1 rounded text-sm font-medium text-white/90 hover:bg-white/20 transition-colors whitespace-nowrap"
                       >
                         {tech}
                       </span>
@@ -109,7 +109,7 @@ export default function TechnologiesShowcase() {
         </div>
       </section>
 
-      {/* Tailwind custom utilities for animation */}
+      {/* Tailwind custom utilities for animation and shadows */}
       <style>{`
         @keyframes blob {
           0%, 100% { transform: translateY(10px); }
@@ -117,6 +117,7 @@ export default function TechnologiesShowcase() {
         }
         .animate-blob { animation: blob 2s ease-in-out infinite; }
         .animation-delay-1000 { animation-delay: -1s; }
+        .shadow-\[0_5px_15px_rgba\(0,0,0,0.08\) { box-shadow: 0 5px 15px rgba(0,0,0,0.08); }
       `}</style>
     </>
   );
