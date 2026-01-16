@@ -159,7 +159,7 @@ My work spans Python, FastAPI, Node.js, React, LightGBM, OpenCV, and reinforceme
 
 I'm interested in roles where machine learning meets robust software engineering—building systems that don't just work in notebooks, but perform reliably in production.`,email:l="mjenius1357@gmail.com",phone:d="+91 99029 32228",githubUrl:f="https://github.com/MJenius",leetcodeUrl:p="https://leetcode.com/u/mjenius1357/",className:h}=n,g=[{icon:hk,label:"Call",href:`tel:${d}`},{icon:Mo,label:"Email",href:`mailto:${l}`},{icon:g0,label:"GitHub",href:f},{icon:tc,label:"LeetCode",href:p}];return C.jsxs("div",{className:Xt("max-w-fit mx-auto",h),children:[C.jsxs("div",{className:"hidden md:flex relative items-center gap-0",children:[C.jsx("div",{className:"w-[380px] flex-shrink-0",children:C.jsx(bu,{})}),C.jsxs(Ce.div,{initial:{opacity:0,x:20},animate:{opacity:1,x:0},transition:{duration:.5,ease:"easeOut"},className:"bg-slate-900/90 border border-slate-700/60 rounded-3xl shadow-2xl p-6 ml-[-80px] z-10 max-w-xl flex-1 backdrop-blur",children:[C.jsxs("div",{className:"mb-4",children:[C.jsx("h2",{className:"text-xl font-bold text-white mb-1",children:r}),C.jsx("p",{className:"text-xs font-medium text-slate-400",children:i})]}),C.jsx("p",{className:"text-slate-200 text-sm leading-relaxed mb-6 whitespace-pre-line",children:a}),C.jsx("div",{className:"flex space-x-3",children:g.map(({icon:v,label:y,href:x})=>C.jsx("a",{href:x,target:"_blank",rel:"noopener noreferrer",className:"w-10 h-10 bg-slate-800/70 border border-slate-700/70 rounded-full flex items-center justify-center text-white hover:bg-slate-700/80 hover:scale-105 transition-transform","aria-label":y,children:C.jsx(v,{className:"w-4 h-4"})},y))})]})]}),C.jsxs(Ce.div,{initial:{opacity:0,y:20},animate:{opacity:1,y:0},transition:{duration:.5,ease:"easeOut"},className:"md:hidden max-w-sm mx-auto text-center",children:[C.jsx("div",{className:"mb-6",children:C.jsx(bu,{})}),C.jsxs("div",{className:"px-4",children:[C.jsx("h2",{className:"text-xl font-bold text-white mb-2",children:r}),C.jsx("p",{className:"text-sm font-medium text-slate-400 mb-4",children:i}),C.jsx("p",{className:"text-slate-200 text-sm leading-relaxed mb-6 whitespace-pre-line",children:a}),C.jsx("div",{className:"flex justify-center space-x-4",children:g.map(({icon:v,label:y,href:x})=>C.jsx("a",{href:x,target:"_blank",rel:"noopener noreferrer",className:"w-12 h-12 bg-slate-800/70 border border-slate-700/70 rounded-full flex items-center justify-center text-white hover:bg-slate-700/80 transition-colors","aria-label":y,children:C.jsx(v,{className:"w-5 h-5"})},y))})]})]})]})}const Bb=[{name:"Home",url:"#home",icon:ik},{name:"About Me",url:"#about",icon:yk},{name:"Work Experience",url:"#experience",icon:Xw},{name:"Projects",url:"#projects",icon:Zw},{name:"Skills",url:"#skills",icon:ak},{name:"Certifications",url:"#certifications",icon:m0},{name:"Contact",url:"#contact",icon:fk}],Ub=`
 
-  <section id="home" class="min-h-screen flex items-center justify-center pt-20 px-6">
+  <section id="home" class="min-h-screen flex items-start justify-center pt-28 px-6">
       <div class="max-w-6xl mx-auto text-center relative z-20">
       <div class="reveal-element">
         <img src="resources/profile-avatar.png" alt="Mevin Jose Profile Pic"
@@ -167,14 +167,14 @@ I'm interested in roles where machine learning meets robust software engineering
       </div>
 
       <div class="reveal-element">
-        <div id="particle-text-container" class="h-[120px] flex items-center justify-center mb-6"></div>
+        <div id="particle-text-container" class="h-[120px] flex items-center justify-center mb-10"></div>
       </div>
 
       
 
-      <div id="hero-buttons-container" class="reveal-element flex flex-col sm:flex-row gap-4 justify-center items-center mb-12"></div>
+      <div id="hero-buttons-container" class="reveal-element flex flex-col sm:flex-row gap-4 justify-center items-center mb-4"></div>
 
-      <div id="social-links-container" class="reveal-element flex justify-center mt-8"></div>
+      <div id="social-links-container" class="reveal-element flex justify-center mt-2"></div>
     </div>
   </section>
 
