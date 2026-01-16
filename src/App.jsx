@@ -12,6 +12,7 @@ import { ProfileCard } from '@/components/ui/profile-card';
 import { LiveEngineeringStats } from './components/live-engineering-stats';
 import { ProjectsHoverEffect } from './components/ui/projects-hover-effect';
 import { ExperienceTimeline } from './components/ui/experience-timeline';
+import SchemaCard from './components/ui/schema-card-with-animated-wave-visualizer';
 
 const navItems = [
   { name: 'Home', url: '#home', icon: Home },
@@ -520,7 +521,11 @@ const htmlContent = `
     </div>
   </div>
 
-  <div id="technologies-showcase-container" class="reveal-element scroll-mt-32 md:scroll-mt-40"></div>
+  <section id="skills" class="pt-0 pb-20 px-6 -scroll-mt-28">
+    <div class="max-w-6xl mx-auto">
+      <div id="technologies-showcase-container" class="reveal-element"></div>
+    </div>
+  </section>
 
   <section id="certifications" class="py-16 px-6">
     <div class="max-w-6xl mx-auto">
@@ -603,56 +608,20 @@ const htmlContent = `
     </div>
   </section>
 
-  <section id="contact" class="pt-32 pb-16 px-6">
-    <div class="max-w-6xl mx-auto text-center">
-      <div class="reveal-element">
-        <h1 class="text-5xl md:text-6xl font-bold mb-6 gradient-text">Get In Touch</h1>
-        <p class="text-xl text-slate-300 max-w-3xl mx-auto mb-12">
-          Let's connect and explore opportunities to collaborate on innovative projects.
-          I'm always open to discussing AI/ML, web development, and technology.
-        </p>
+  <section id="contact" class="min-h-screen pt-6 pb-20 px-6 flex flex-col justify-center">
+    <div class="max-w-6xl mx-auto w-full">
+      <div class="text-center mb-12 reveal-element">
+        <h1 class="text-5xl md:text-6xl font-bold mb-2 gradient-text">Contact Me</h1>
       </div>
-    </div>
-  </section>
 
-  <section class="pb-20 px-6">
-    <div class="max-w-4xl mx-auto">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-        <div class="reveal-element">
-          <div class="contact-card p-8 rounded-xl">
-            <h2 class="text-2xl font-bold text-white mb-6">Get In Touch</h2>
-
-            <div class="text-center space-y-6">
-              <p class="text-slate-300">
-                I'm always interested in discussing new opportunities, collaborating on projects,
-                or just connecting with like-minded professionals in the tech community.
-              </p>
-
-              <div class="space-y-4">
-                <div id="email-button-container"></div>
-
-                <p class="text-slate-400 text-sm">
-                  Direct email: <a href="mailto:mjenius1357@gmail.com"
-                    class="text-blue-400 hover:text-blue-300">mjenius1357@gmail.com</a>
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
+        <div class="reveal-element" id="schema-card-container"></div>
 
         <div class="reveal-element">
           <div class="space-y-8">
             <div>
-              <h2 class="text-2xl font-bold text-white mb-6">Let's Connect</h2>
-              <p class="text-slate-300 mb-6">
-                I'm currently available for freelance projects, full-time opportunities, and
-                collaborative work.
-                Whether you have a project in mind or just want to discuss technology, I'd love to hear
-                from you.
-              </p>
-            </div>
-
-            <div class="space-y-4">
+              <h2 class="text-2xl font-bold text-white mb-6">Contact</h2>
+              <div class="space-y-4">
               <div class="flex items-center">
                 <div
                   class="w-12 h-12 bg-gradient-to-r from-blue-500 to-blue-600 rounded-lg flex items-center justify-center mr-4">
@@ -684,25 +653,10 @@ const htmlContent = `
                   <p class="text-slate-300">Bangalore, Karnataka, India</p>
                 </div>
               </div>
-
-              <div class="flex items-center">
-                <div
-                  class="w-12 h-12 bg-gradient-to-r from-green-500 to-teal-600 rounded-lg flex items-center justify-center mr-4">
-                  <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor"
-                    viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                      d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                </div>
-                <div>
-                  <h3 class="text-white font-semibold">Availability</h3>
-                  <p class="text-slate-300">Open to opportunities</p>
-                </div>
-              </div>
             </div>
 
             <div>
-              <h3 class="text-xl font-bold text-white mb-4">Professional Profiles</h3>
+              <h3 class="text-xl font-bold text-white mb-4">Profiles</h3>
               <div class="grid grid-cols-2 gap-4">
                 <a href="https://github.com/MJenius" target="_blank"
                   class="social-link p-4 rounded-lg flex items-center">
@@ -728,11 +682,6 @@ const htmlContent = `
                   </div>
                 </a>
               </div>
-            </div>
-
-            <div>
-              <h3 class="text-xl font-bold text-white mb-4">Resume</h3>
-              <div id="resume-button-container"></div>
             </div>
           </div>
         </div>
@@ -906,6 +855,13 @@ function App() {
             </a>
           </GradientButton>
         );
+      }
+
+      // Mount Schema Card
+      const schemaCardContainer = document.getElementById('schema-card-container');
+      if (schemaCardContainer) {
+        const root = ReactDOM.createRoot(schemaCardContainer);
+        root.render(<SchemaCard />);
       }
 
       // Mount GooeyText Component

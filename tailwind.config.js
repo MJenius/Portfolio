@@ -8,6 +8,9 @@ export default {
     extend: {
       animation: {
         orbit: "orbit calc(var(--duration)*1s) linear infinite",
+        float: "float 3s ease-in-out infinite",
+        dataStream: "dataStream 2s linear infinite",
+        schemaPulse: "schemaPulse 2s ease-in-out infinite",
       },
       keyframes: {
         orbit: {
@@ -18,6 +21,32 @@ export default {
           "100%": {
             transform:
               "rotate(360deg) translateY(calc(var(--radius) * 1px)) rotate(-360deg)",
+          },
+        },
+        float: {
+          "0%, 100%": {
+            transform: "translateY(0)",
+          },
+          "50%": {
+            transform: "translateY(-10px)",
+          },
+        },
+        dataStream: {
+          "0%": {
+            strokeDashoffset: "20",
+          },
+          "100%": {
+            strokeDashoffset: "0",
+          },
+        },
+        schemaPulse: {
+          "0%, 100%": {
+            transform: "scale(1)",
+            opacity: "0.8",
+          },
+          "50%": {
+            transform: "scale(1.02)",
+            opacity: "1",
           },
         },
       },
