@@ -40,7 +40,7 @@ export function ProfileCard(props: ProfileCardProps) {
       {/* Desktop Layout */}
       <div className="hidden md:flex relative items-center gap-0">
         {/* Left: Live Stats (replaces square image) */}
-        <div className="w-[380px] flex-shrink-0">
+        <div className="w-95 shrink-0">
           <LiveEngineeringStats />
         </div>
 
@@ -49,7 +49,7 @@ export function ProfileCard(props: ProfileCardProps) {
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5, ease: 'easeOut' }}
-          className="bg-slate-900/90 border border-slate-700/60 rounded-3xl shadow-2xl p-6 ml-[-80px] z-10 max-w-xl flex-1 backdrop-blur"
+          className="bg-slate-900/90 border border-slate-700/60 rounded-3xl shadow-2xl p-6 -ml-20 z-10 max-w-xl flex-1 backdrop-blur"
         >
           <div className="mb-4">
             <h2 className="text-xl font-bold text-white mb-1">{name}</h2>

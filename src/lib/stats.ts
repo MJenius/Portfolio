@@ -93,12 +93,12 @@ async function fetchGitHubStats(): Promise<GitHubStats> {
       }
     }
 
-    const stats: GitHubStats = { totalContributions: totalContributions || 380 };
+    const stats: GitHubStats = { totalContributions: totalContributions || 400 };
     setCache(cacheKey, stats);
     return stats;
   } catch (error) {
     console.error('GitHub stats fetch error:', error);
-    return { totalContributions: 380 };
+    return { totalContributions: 400 };
   }
 }
 

@@ -34,7 +34,7 @@ const htmlContent = `
       </div>
 
       <div class="reveal-element">
-        <div id="particle-text-container" class="h-[120px] flex items-center justify-center mb-10"></div>
+        <div id="particle-text-container" class="h-30 flex items-center justify-center mb-10"></div>
       </div>
 
       
@@ -59,7 +59,7 @@ const htmlContent = `
   </section>
 
   <section id="about" class="py-16 px-6 relative overflow-hidden">
-    <div class="absolute inset-0 bg-gradient-to-b from-slate-900/0 via-slate-900/40 to-slate-950"></div>
+    <div class="absolute inset-0 bg-linear-to-b from-slate-900/0 via-slate-900/40 to-slate-950"></div>
     <div class="max-w-6xl mx-auto relative z-10">
       <div class="text-center mb-8 reveal-element">
         <h2 class="text-3xl md:text-4xl font-bold mb-2 gradient-text">About Me</h2>
@@ -69,7 +69,7 @@ const htmlContent = `
     </div>
   </section>
 
-  <section id="experience" class="pt-32 pb-16 px-6">
+  <section id="experience" class="pt-32 pb-16 px-6 -scroll-mt-28">
     <div class="max-w-4xl mx-auto">
       <div class="text-center mb-12 reveal-element">
         <h2 class="text-3xl md:text-4xl font-bold mb-4 gradient-text">Experience Timeline</h2>
@@ -80,7 +80,7 @@ const htmlContent = `
     </div>
   </section>
 
-  <section id="projects" class="pt-20 pb-6 px-6">
+  <section id="projects" class="pt-20 pb-6 px-6  -scroll-mt-16">
     <div class="max-w-6xl mx-auto text-center">
       <div class="reveal-element">
         <h1 class="text-5xl md:text-6xl font-bold mb-6 gradient-text">My Projects</h1>
@@ -624,7 +624,7 @@ const htmlContent = `
               <div class="space-y-4">
               <div class="flex items-center">
                 <div
-                  class="w-12 h-12 bg-gradient-to-r from-blue-500 to-blue-600 rounded-lg flex items-center justify-center mr-4">
+                  class="w-12 h-12 bg-linear-to-r from-blue-500 to-blue-600 rounded-lg flex items-center justify-center mr-4">
                   <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor"
                     viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -642,7 +642,7 @@ const htmlContent = `
 
               <div class="flex items-center">
                 <div
-                  class="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-600 rounded-lg flex items-center justify-center mr-4">
+                  class="w-12 h-12 bg-linear-to-r from-purple-500 to-pink-600 rounded-lg flex items-center justify-center mr-4">
                   <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
                     <path
                       d="M12 0L1.605 6.021v7.958L12 19.5l10.395-5.521V6.021L12 0zm0 2.5l7.5 4.5v6l-7.5 4.5-7.5-4.5v-6l7.5-4.5z" />

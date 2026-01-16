@@ -287,7 +287,7 @@ const CarouselCard = memo(
 
           {/* Enhanced bottom border glow */}
           <motion.div
-            className="absolute bottom-0 left-0 right-0 h-[2px] z-25"
+            className="absolute bottom-0 left-0 right-0 h-0.5 z-25"
             style={{
               background: "linear-gradient(90deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.7) 50%, rgba(255, 255, 255, 0.05) 100%)",
             }}
@@ -312,7 +312,7 @@ const CarouselCard = memo(
           >
             {/* Icon circle */}
             <motion.div
-              className="w-10 h-10 rounded-full flex items-center justify-center mb-2 flex-shrink-0 mx-auto"
+              className="w-10 h-10 rounded-full flex items-center justify-center mb-2 shrink-0 mx-auto"
               style={{
                 background: `linear-gradient(225deg, ${project.icon.gradientFrom.replace('from-', '')} 0%, #121624 100%)`,
                 position: "relative",
@@ -594,7 +594,7 @@ function ThreeDPhotoCarousel() {
                   {activeImg && projects.find((p) => p.title === activeImg) && (
                     <>
                       <div
-                        className={`w-12 h-12 bg-gradient-to-r ${projects.find((p) => p.title === activeImg)?.icon.gradientFrom} ${projects.find((p) => p.title === activeImg)?.icon.gradientTo} rounded-lg flex items-center justify-center mr-3 flex-shrink-0`}
+                        className={`w-12 h-12 bg-linear-to-r ${projects.find((p) => p.title === activeImg)?.icon.gradientFrom} ${projects.find((p) => p.title === activeImg)?.icon.gradientTo} rounded-lg flex items-center justify-center mr-3 shrink-0`}
                       >
                         <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d={projects.find((p) => p.title === activeImg)?.icon.svg} />
@@ -606,7 +606,7 @@ function ThreeDPhotoCarousel() {
                       </div>
                       <button
                         onClick={handleClose}
-                        className="flex-shrink-0 text-slate-400 hover:text-white transition-colors ml-2"
+                        className="shrink-0 text-slate-400 hover:text-white transition-colors ml-2"
                         aria-label="Close"
                       >
                         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -656,7 +656,7 @@ function ThreeDPhotoCarousel() {
           </motion.div>
         )}
       </AnimatePresence>
-      <div className="relative h-[450px] w-full overflow-visible flex items-center justify-center">
+      <div className="relative h-112.5 w-full overflow-visible flex items-center justify-center">
         <Carousel
           handleClick={handleClick}
           controls={controls}
