@@ -11,6 +11,7 @@ import { ThreeDPhotoCarouselDemo, DemoOne } from '@/components/ui/demo';
 import { ProfileCard } from '@/components/ui/profile-card';
 import { LiveEngineeringStats } from './components/live-engineering-stats';
 import { ProjectsHoverEffect } from './components/ui/projects-hover-effect';
+import { ExperienceTimeline } from './components/ui/experience-timeline';
 
 const navItems = [
   { name: 'Home', url: '#home', icon: Home },
@@ -74,53 +75,7 @@ const htmlContent = `
         <p class="text-slate-300">My journey in technology and software development</p>
       </div>
 
-      <div class="space-y-8 reveal-element">
-        <div class="timeline-item">
-          <div class="bg-slate-800 p-6 rounded-lg border border-slate-700">
-            <div class="flex justify-between items-start mb-3">
-              <h3 class="text-xl font-bold text-white">B.Tech in AI & ML</h3>
-              <span class="text-blue-400 font-semibold">2023 - 2027</span>
-            </div>
-            <p class="text-slate-400 font-medium mb-2">PES University, Bangalore</p>
-            <p class="text-slate-300 text-sm mb-3">
-              Pursuing Bachelor's degree in Artificial Intelligence and Machine Learning with CGPA of
-              7.54.
-              Relevant coursework includes Data Structures, Operating Systems, Database Management
-              Systems,
-              Computer Networks, Software Engineering, and Machine Learning.
-            </p>
-            <div class="flex flex-wrap gap-2">
-              <span class="bg-purple-600/20 text-purple-400 px-2 py-1 rounded text-xs">Machine
-                Learning</span>
-              <span class="bg-blue-600/20 text-blue-400 px-2 py-1 rounded text-xs">Data Structures</span>
-              <span class="bg-green-600/20 text-green-400 px-2 py-1 rounded text-xs">Software
-                Engineering</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="bg-slate-800 p-6 rounded-lg border border-slate-700">
-            <div class="flex justify-between items-start mb-3">
-              <h3 class="text-xl font-bold text-white">Web Development Intern</h3>
-              <span class="text-blue-400 font-semibold">July 2025 - Sept 2025</span>
-            </div>
-            <p class="text-slate-400 font-medium mb-2">Superhhero Learning</p>
-            <p class="text-slate-300 text-sm mb-3">
-              Developed and deployed a production MERN landing platform receiving ~100 monthly users.
-              Integrated APIs and improved workflow efficiency, reducing development time by 25%.
-              Optimized backend performance and caching, improving load time by 10%.
-            </p>
-            <div class="flex flex-wrap gap-2">
-              <span class="bg-blue-600/20 text-blue-400 px-2 py-1 rounded text-xs">React</span>
-              <span class="bg-green-600/20 text-green-400 px-2 py-1 rounded text-xs">Node.js</span>
-              <span class="bg-purple-600/20 text-purple-400 px-2 py-1 rounded text-xs">MongoDB</span>
-              <span class="bg-orange-600/20 text-orange-400 px-2 py-1 rounded text-xs">Vercel
-                Auto-Deploy</span>
-            </div>
-          </div>
-        </div>
-      </div>
+      <div class="reveal-element" id="experience-timeline-container"></div>
     </div>
   </section>
 
@@ -1084,6 +1039,33 @@ function App() {
       if (profileCardContainer) {
         const root = ReactDOM.createRoot(profileCardContainer);
         root.render(<ProfileCard />);
+      }
+
+      // Mount Experience Timeline
+      const experienceTimelineContainer = document.getElementById('experience-timeline-container');
+      if (experienceTimelineContainer) {
+        const experienceItems = [
+          {
+            title: 'B.Tech in Artificial Intelligence & Machine Learning',
+            organization: 'PES University, Bangalore',
+            period: '2023 – 2027',
+            description:
+              'Pursuing a Bachelor\'s degree with a current CGPA of 7.78. Focus on building strong foundations in core computer science and applied machine learning.',
+            tags: ['Machine Learning', 'Data Structures', 'Software Engineering', 'Algorithms'],
+            glowColors: ['#9333ea', '#ec4899', '#3b82f6'],
+          },
+          {
+            title: 'Web Development Intern',
+            organization: 'Superhhero Learning',
+            period: 'July 2025 – September 2025',
+            description:
+              'Built and deployed a production MERN platform for ~100 monthly users. Improved API performance by 10% and reduced development iteration time by 25%.',
+            tags: ['React', 'Node.js', 'MongoDB', 'Express', 'REST APIs', 'Vercel'],
+            glowColors: ['#0894FF', '#C959DD', '#FF2E54'],
+          },
+        ];
+        const root = ReactDOM.createRoot(experienceTimelineContainer);
+        root.render(<ExperienceTimeline items={experienceItems} />);
       }
 
       // Mount Email Button
