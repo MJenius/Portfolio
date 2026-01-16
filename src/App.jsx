@@ -534,13 +534,7 @@ const htmlContent = `
           target="_blank" rel="noopener noreferrer"
           class="certification-badge p-6 rounded-xl block hover:bg-slate-700/50 transition-colors">
           <div class="flex items-center mb-4">
-            <div
-              class="w-12 h-12 bg-gradient-to-r from-blue-500 to-green-500 rounded-lg flex items-center justify-center mr-4">
-              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-            </div>
+            <img src="https://www.google.com/favicon.ico" alt="Google Logo" class="w-12 h-12 mr-4 rounded-lg object-contain" />
             <div>
               <h3 class="text-lg font-bold text-white">Google Data Analytics</h3>
               <p class="text-slate-400 text-sm">Coursera</p>
@@ -554,13 +548,7 @@ const htmlContent = `
           target="_blank" rel="noopener noreferrer"
           class="certification-badge p-6 rounded-xl block hover:bg-slate-700/50 transition-colors">
           <div class="flex items-center mb-4">
-            <div
-              class="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg flex items-center justify-center mr-4">
-              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-            </div>
+            <img src="https://www.ibm.com/brand/experience-guides/developer/b1db1ae501d522a1a4b49613fe07c9f1/01_8-bar-positive.svg" alt="IBM Logo" class="w-12 h-12 mr-4 rounded-lg object-contain" />
             <div>
               <h3 class="text-lg font-bold text-white">IBM Generative AI</h3>
               <p class="text-slate-400 text-sm">Coursera</p>
@@ -574,13 +562,7 @@ const htmlContent = `
           data-cert="microsoft-computer-vision" target="_blank" rel="noopener noreferrer"
           class="certification-badge p-6 rounded-xl block hover:bg-slate-700/50 transition-colors">
           <div class="flex items-center mb-4">
-            <div
-              class="w-12 h-12 bg-gradient-to-r from-red-500 to-orange-500 rounded-lg flex items-center justify-center mr-4">
-              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-            </div>
+            <img src="https://www.microsoft.com/favicon.ico" alt="Microsoft Logo" class="w-12 h-12 mr-4 rounded-lg object-contain" />
             <div>
               <h3 class="text-lg font-bold text-white">Microsoft Computer Vision</h3>
               <p class="text-slate-400 text-sm">Azure AI</p>
@@ -594,13 +576,7 @@ const htmlContent = `
           rel="noopener noreferrer"
           class="certification-badge p-6 rounded-xl block hover:bg-slate-700/50 transition-colors">
           <div class="flex items-center mb-4">
-            <div
-              class="w-12 h-12 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-lg flex items-center justify-center mr-4">
-              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-            </div>
+            <img src="https://www.kaggle.com/favicon.ico" alt="Kaggle Logo" class="w-12 h-12 mr-4 rounded-lg object-contain" />
             <div>
               <h3 class="text-lg font-bold text-white">Kaggle ML & DL</h3>
               <p class="text-slate-400 text-sm">Kaggle</p>
@@ -614,13 +590,7 @@ const htmlContent = `
           target="_blank" rel="noopener noreferrer"
           class="certification-badge p-6 rounded-xl block hover:bg-slate-700/50 transition-colors">
           <div class="flex items-center mb-4">
-            <div
-              class="w-12 h-12 bg-gradient-to-r from-teal-500 to-green-500 rounded-lg flex items-center justify-center mr-4">
-              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-            </div>
+            <img src="https://www.logo.wine/a/logo/Meta_Platforms/Meta_Platforms-Logo.wine.svg" alt="Meta Logo" class="w-12 h-12 mr-4 rounded-lg object-contain" />
             <div>
               <h3 class="text-lg font-bold text-white">Meta GenAI Analytics</h3>
               <p class="text-slate-400 text-sm">Meta/Coursera</p>

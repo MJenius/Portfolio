@@ -40,7 +40,7 @@ export function GlowEffect({
   const BASE_TRANSITION = {
     repeat: Infinity,
     duration: duration,
-    ease: 'linear',
+    ease: [0.25, 0.1, 0.25, 1],
   };
 
   const animations = {
@@ -52,7 +52,7 @@ export function GlowEffect({
       transition: {
         ...(transition ?? BASE_TRANSITION),
       },
-    },
+    } as any,
     pulse: {
       background: colors.map(
         (color) =>
@@ -66,7 +66,7 @@ export function GlowEffect({
           repeatType: 'mirror',
         }),
       },
-    },
+    } as any,
     breathe: {
       background: [
         ...colors.map(
@@ -81,7 +81,7 @@ export function GlowEffect({
           repeatType: 'mirror',
         }),
       },
-    },
+    } as any,
     colorShift: {
       background: colors.map((color, index) => {
         const nextColor = colors[(index + 1) % colors.length];
@@ -93,7 +93,7 @@ export function GlowEffect({
           repeatType: 'mirror',
         }),
       },
-    },
+    } as any,
     flowHorizontal: {
       background: colors.map((color) => {
         const nextColor = colors[(colors.indexOf(color) + 1) % colors.length];
@@ -105,10 +105,10 @@ export function GlowEffect({
           repeatType: 'mirror',
         }),
       },
-    },
+    } as any,
     static: {
       background: `linear-gradient(to right, ${colors.join(', ')})`,
-    },
+    } as any,
   };
 
   const getBlurClass = (blur: GlowEffectProps['blur']) => {
