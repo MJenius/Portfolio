@@ -7,7 +7,7 @@ import { GradientButton } from './components/ui/gradient-button';
 import { GooeyText } from './components/ui/gooey-text-morphing';
 import { Home, Briefcase, Lightbulb, MessageSquare, Download, Eye, Mail, User, BriefcaseBusiness, Award } from 'lucide-react';
 import { Vortex } from './components/ui/vortex';
-import { ThreeDPhotoCarouselDemo } from '@/components/ui/demo';
+import { ThreeDPhotoCarouselDemo, DemoOne } from '@/components/ui/demo';
 import { ProfileCard } from '@/components/ui/profile-card';
 import { LiveEngineeringStats } from './components/live-engineering-stats';
 import { ProjectsHoverEffect } from './components/ui/projects-hover-effect';
@@ -56,62 +56,6 @@ const htmlContent = `
     </div>
   </section>
 
-  <section class="py-20 px-6">
-    <div class="max-w-6xl mx-auto">
-      <div class="text-center mb-16 reveal-element">
-        <h2 class="text-4xl md:text-5xl font-bold mb-6 gradient-text">Technical Expertise</h2>
-        <p class="text-xl text-slate-300 max-w-3xl mx-auto">
-          Specialized in AI/ML and modern web development technologies
-        </p>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 reveal-element">
-        <div class="text-center">
-          <div
-            class="w-24 h-24 bg-gradient-to-r from-purple-500 to-pink-600 rounded-xl flex items-center justify-center mx-auto mb-6 skill-icon">
-            <svg class="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-            </svg>
-          </div>
-          <h3 class="text-2xl font-bold text-white mb-4">AI/ML Development</h3>
-          <p class="text-slate-300 mb-6">
-            Building intelligent solutions with cutting-edge machine learning algorithms and data-driven
-            insights
-          </p>
-          <div class="flex flex-wrap justify-center gap-3">
-            <span class="bg-purple-600/20 text-purple-400 px-4 py-2 rounded-lg text-sm">Python</span>
-            <span class="bg-purple-600/20 text-purple-400 px-4 py-2 rounded-lg text-sm">TensorFlow</span>
-            <span class="bg-purple-600/20 text-purple-400 px-4 py-2 rounded-lg text-sm">Scikit-learn</span>
-            <span class="bg-purple-600/20 text-purple-400 px-4 py-2 rounded-lg text-sm">Pandas</span>
-            <span class="bg-purple-600/20 text-purple-400 px-4 py-2 rounded-lg text-sm">NumPy</span>
-          </div>
-        </div>
-
-        <div class="text-center">
-          <div
-            class="w-24 h-24 bg-gradient-to-r from-green-500 to-teal-600 rounded-xl flex items-center justify-center mx-auto mb-6 skill-icon">
-            <svg class="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
-            </svg>
-          </div>
-          <h3 class="text-2xl font-bold text-white mb-4">Web Development</h3>
-          <p class="text-slate-300 mb-6">
-            Creating scalable, responsive applications with modern frameworks and clean architecture
-          </p>
-          <div class="flex flex-wrap justify-center gap-3">
-            <span class="bg-green-600/20 text-green-400 px-4 py-2 rounded-lg text-sm">React</span>
-            <span class="bg-green-600/20 text-green-400 px-4 py-2 rounded-lg text-sm">Node.js</span>
-            <span class="bg-green-600/20 text-green-400 px-4 py-2 rounded-lg text-sm">MongoDB</span>
-            <span class="bg-green-600/20 text-green-400 px-4 py-2 rounded-lg text-sm">Express</span>
-            <span class="bg-green-600/20 text-green-400 px-4 py-2 rounded-lg text-sm">JavaScript</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <section id="about" class="py-16 px-6 relative overflow-hidden">
     <div class="absolute inset-0 bg-gradient-to-b from-slate-900/0 via-slate-900/40 to-slate-950"></div>
     <div class="max-w-6xl mx-auto relative z-10">
@@ -120,6 +64,63 @@ const htmlContent = `
       </div>
 
       <div class="reveal-element flex justify-center" id="profile-card-container"></div>
+    </div>
+  </section>
+
+  <section id="experience" class="pt-32 pb-16 px-6">
+    <div class="max-w-4xl mx-auto">
+      <div class="text-center mb-12 reveal-element">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4 gradient-text">Experience Timeline</h2>
+        <p class="text-slate-300">My journey in technology and software development</p>
+      </div>
+
+      <div class="space-y-8 reveal-element">
+        <div class="timeline-item">
+          <div class="bg-slate-800 p-6 rounded-lg border border-slate-700">
+            <div class="flex justify-between items-start mb-3">
+              <h3 class="text-xl font-bold text-white">B.Tech in AI & ML</h3>
+              <span class="text-blue-400 font-semibold">2023 - 2027</span>
+            </div>
+            <p class="text-slate-400 font-medium mb-2">PES University, Bangalore</p>
+            <p class="text-slate-300 text-sm mb-3">
+              Pursuing Bachelor's degree in Artificial Intelligence and Machine Learning with CGPA of
+              7.54.
+              Relevant coursework includes Data Structures, Operating Systems, Database Management
+              Systems,
+              Computer Networks, Software Engineering, and Machine Learning.
+            </p>
+            <div class="flex flex-wrap gap-2">
+              <span class="bg-purple-600/20 text-purple-400 px-2 py-1 rounded text-xs">Machine
+                Learning</span>
+              <span class="bg-blue-600/20 text-blue-400 px-2 py-1 rounded text-xs">Data Structures</span>
+              <span class="bg-green-600/20 text-green-400 px-2 py-1 rounded text-xs">Software
+                Engineering</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="bg-slate-800 p-6 rounded-lg border border-slate-700">
+            <div class="flex justify-between items-start mb-3">
+              <h3 class="text-xl font-bold text-white">Web Development Intern</h3>
+              <span class="text-blue-400 font-semibold">July 2025 - Sept 2025</span>
+            </div>
+            <p class="text-slate-400 font-medium mb-2">Superhhero Learning</p>
+            <p class="text-slate-300 text-sm mb-3">
+              Developed and deployed a production MERN landing platform receiving ~100 monthly users.
+              Integrated APIs and improved workflow efficiency, reducing development time by 25%.
+              Optimized backend performance and caching, improving load time by 10%.
+            </p>
+            <div class="flex flex-wrap gap-2">
+              <span class="bg-blue-600/20 text-blue-400 px-2 py-1 rounded text-xs">React</span>
+              <span class="bg-green-600/20 text-green-400 px-2 py-1 rounded text-xs">Node.js</span>
+              <span class="bg-purple-600/20 text-purple-400 px-2 py-1 rounded text-xs">MongoDB</span>
+              <span class="bg-orange-600/20 text-orange-400 px-2 py-1 rounded text-xs">Vercel
+                Auto-Deploy</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -564,63 +565,6 @@ const htmlContent = `
     </div>
   </div>
 
-  <section id="experience" class="pt-32 pb-16 px-6">
-    <div class="max-w-4xl mx-auto">
-      <div class="text-center mb-12 reveal-element">
-        <h2 class="text-3xl md:text-4xl font-bold mb-4 gradient-text">Experience Timeline</h2>
-        <p class="text-slate-300">My journey in technology and software development</p>
-      </div>
-
-      <div class="space-y-8 reveal-element">
-        <div class="timeline-item">
-          <div class="bg-slate-800 p-6 rounded-lg border border-slate-700">
-            <div class="flex justify-between items-start mb-3">
-              <h3 class="text-xl font-bold text-white">B.Tech in AI & ML</h3>
-              <span class="text-blue-400 font-semibold">2023 - 2027</span>
-            </div>
-            <p class="text-slate-400 font-medium mb-2">PES University, Bangalore</p>
-            <p class="text-slate-300 text-sm mb-3">
-              Pursuing Bachelor's degree in Artificial Intelligence and Machine Learning with CGPA of
-              7.54.
-              Relevant coursework includes Data Structures, Operating Systems, Database Management
-              Systems,
-              Computer Networks, Software Engineering, and Machine Learning.
-            </p>
-            <div class="flex flex-wrap gap-2">
-              <span class="bg-purple-600/20 text-purple-400 px-2 py-1 rounded text-xs">Machine
-                Learning</span>
-              <span class="bg-blue-600/20 text-blue-400 px-2 py-1 rounded text-xs">Data Structures</span>
-              <span class="bg-green-600/20 text-green-400 px-2 py-1 rounded text-xs">Software
-                Engineering</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="bg-slate-800 p-6 rounded-lg border border-slate-700">
-            <div class="flex justify-between items-start mb-3">
-              <h3 class="text-xl font-bold text-white">Web Development Intern</h3>
-              <span class="text-blue-400 font-semibold">July 2025 - Sept 2025</span>
-            </div>
-            <p class="text-slate-400 font-medium mb-2">Superhhero Learning</p>
-            <p class="text-slate-300 text-sm mb-3">
-              Developed and deployed a production MERN landing platform receiving ~100 monthly users.
-              Integrated APIs and improved workflow efficiency, reducing development time by 25%.
-              Optimized backend performance and caching, improving load time by 10%.
-            </p>
-            <div class="flex flex-wrap gap-2">
-              <span class="bg-blue-600/20 text-blue-400 px-2 py-1 rounded text-xs">React</span>
-              <span class="bg-green-600/20 text-green-400 px-2 py-1 rounded text-xs">Node.js</span>
-              <span class="bg-purple-600/20 text-purple-400 px-2 py-1 rounded text-xs">MongoDB</span>
-              <span class="bg-orange-600/20 text-orange-400 px-2 py-1 rounded text-xs">Vercel
-                Auto-Deploy</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <section id="skills" class="py-16 px-6">
     <div class="max-w-6xl mx-auto">
       <div class="text-center mb-12 reveal-element">
@@ -779,106 +723,7 @@ const htmlContent = `
     </div>
   </section>
 
-  <section class="py-16 px-6">
-    <div class="max-w-6xl mx-auto">
-      <div class="text-center mb-12 reveal-element">
-        <h2 class="text-3xl md:text-4xl font-bold mb-4 gradient-text">Technologies & Frameworks</h2>
-        <p class="text-slate-300">Tools and technologies I work with regularly</p>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div class="skill-card p-6 rounded-xl reveal-element">
-          <h3 class="text-xl font-bold text-white mb-6 flex items-center">
-            <div
-              class="w-8 h-8 bg-gradient-to-r from-green-500 to-teal-600 rounded-lg flex items-center justify-center mr-3">
-            
-              <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
-              </svg>
-            </div>
-            Web Development
-          </h3>
-          <div class="flex flex-wrap gap-2">
-            <span class="bg-green-600/20 text-green-400 px-3 py-1 rounded-full text-sm">FastAPI</span>
-            <span class="bg-green-600/20 text-green-400 px-3 py-1 rounded-full text-sm">Flask</span>
-            <span class="bg-green-600/20 text-green-400 px-3 py-1 rounded-full text-sm">React</span>
-            <span class="bg-green-600/20 text-green-400 px-3 py-1 rounded-full text-sm">Node.js</span>
-            <span class="bg-green-600/20 text-green-400 px-3 py-1 rounded-full text-sm">Express</span>
-            <span class="bg-green-600/20 text-green-400 px-3 py-1 rounded-full text-sm">Next.js</span>
-            <span class="bg-green-600/20 text-green-400 px-3 py-1 rounded-full text-sm">TypeScript</span>
-          </div>
-        </div>
-
-        <div class="skill-card p-6 rounded-xl reveal-element">
-          <h3 class="text-xl font-bold text-white mb-6 flex items-center">
-            <div
-              class="w-8 h-8 bg-gradient-to-r from-purple-500 to-pink-600 rounded-lg flex items-center justify-center mr-3">
-            
-              <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-              </svg>
-            </div>
-            AI/ML
-          </h3>
-          <div class="flex flex-wrap gap-2">
-            <span class="bg-purple-600/20 text-purple-400 px-3 py-1 rounded-full text-sm">PyTorch</span>
-            <span class="bg-purple-600/20 text-purple-400 px-3 py-1 rounded-full text-sm">TensorFlow</span>
-            <span
-              class="bg-purple-600/20 text-purple-400 px-3 py-1 rounded-full text-sm">Scikit-Learn</span>
-            <span class="bg-purple-600/20 text-purple-400 px-3 py-1 rounded-full text-sm">OpenCV</span>
-            <span class="bg-purple-600/20 text-purple-400 px-3 py-1 rounded-full text-sm">Pandas</span>
-            <span class="bg-purple-600/20 text-purple-400 px-3 py-1 rounded-full text-sm">NumPy</span>
-          </div>
-        </div>
-
-        <div class="skill-card p-6 rounded-xl reveal-element">
-          <h3 class="text-xl font-bold text-white mb-6 flex items-center">
-            <div
-              class="w-8 h-8 bg-gradient-to-r from-orange-500 to-red-600 rounded-lg flex items-center justify-center mr-3">
-            
-              <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-              </svg>
-            </div>
-            Tools & Platforms
-          </h3>
-          <div class="flex flex-wrap gap-2">
-            <span class="bg-orange-600/20 text-orange-400 px-3 py-1 rounded-full text-sm">Machine
-              Learning</span>
-            <span class="bg-orange-600/20 text-orange-400 px-3 py-1 rounded-full text-sm">Deep
-              Learning</span>
-            <span class="bg-orange-600/20 text-orange-400 px-3 py-1 rounded-full text-sm">Computer
-              Vision</span>
-            <span class="bg-orange-600/20 text-orange-400 px-3 py-1 rounded-full text-sm">NLP</span>
-            <span class="bg-orange-600/20 text-orange-400 px-3 py-1 rounded-full text-sm">Generative
-              AI</span>
-            <span class="bg-orange-600/20 text-orange-400 px-3 py-1 rounded-full text-sm">Reinforcement
-              Learning</span>
-            <span class="bg-orange-600/20 text-orange-400 px-3 py-1 rounded-full text-sm">MLOps</span>
-            <span class="bg-orange-600/20 text-orange-400 px-3 py-1 rounded-full text-sm">Model
-              Deployment</span>
-            <span class="bg-orange-600/20 text-orange-400 px-3 py-1 rounded-full text-sm">Docker</span>
-            <span class="bg-orange-600/20 text-orange-400 px-3 py-1 rounded-full text-sm">Git
-              & GitHub Actions</span>
-            <span class="bg-orange-600/20 text-orange-400 px-3 py-1 rounded-full text-sm">Vercel
-              CI/CD</span>
-            <span class="bg-orange-600/20 text-orange-400 px-3 py-1 rounded-full text-sm">Modal</span>
-            <span class="bg-orange-600/20 text-orange-400 px-3 py-1 rounded-full text-sm">PyTest</span>
-            <span class="bg-orange-600/20 text-orange-400 px-3 py-1 rounded-full text-sm">PostgreSQL</span>
-            <span class="bg-orange-600/20 text-orange-400 px-3 py-1 rounded-full text-sm">MongoDB</span>
-            <span class="bg-orange-600/20 text-orange-400 px-3 py-1 rounded-full text-sm">SQLite</span>
-            <span class="bg-orange-600/20 text-orange-400 px-3 py-1 rounded-full text-sm">Tableau</span>
-            <span class="bg-orange-600/20 text-orange-400 px-3 py-1 rounded-full text-sm">TensorBoard</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+  <div id="technologies-showcase-container" class="reveal-element"></div>
 
   <section id="certifications" class="py-16 px-6">
     <div class="max-w-6xl mx-auto">
@@ -1287,6 +1132,13 @@ function App() {
       if (projectsHoverContainer) {
         const root = ReactDOM.createRoot(projectsHoverContainer);
         root.render(<ProjectsHoverEffect />);
+      }
+
+      // Mount Technologies Showcase
+      const technologiesContainer = document.getElementById('technologies-showcase-container');
+      if (technologiesContainer) {
+        const root = ReactDOM.createRoot(technologiesContainer);
+        root.render(<DemoOne />);
       }
     }, 0);
 

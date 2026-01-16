@@ -1,5 +1,6 @@
 import { ThreeDPhotoCarousel } from "@/components/ui/3d-carousel";
 import { GradientCard } from "@/components/ui/gradient-card";
+import TechnologiesShowcase from "@/components/ui/gradient-card-showcase";
 
 export function ThreeDPhotoCarouselDemo() {
   return (
@@ -10,5 +11,9 @@ export function ThreeDPhotoCarouselDemo() {
 }
 
 export const Demo = () => {
-  return <GradientCard />
-}
+  return <GradientCard />;
+};
+
+export const DemoOne = () => {
+  return <TechnologiesShowcase />;
+};
