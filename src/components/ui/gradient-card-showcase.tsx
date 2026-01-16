@@ -39,20 +39,17 @@ const cards: TechnologyCardConfig[] = [
 export default function TechnologiesShowcase() {
   return (
     <>
-      <section className="py-20 px-6">
+      <section className="py-24 px-6 pt-32 md:pt-40 scroll-mt-32 md:scroll-mt-40">
         <div className="max-w-6xl mx-auto">
           {/* Section Header */}
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 gradient-text">
+          <div className="text-center mb-16 md:mb-20">
+            <h2 className="text-4xl md:text-5xl font-bold gradient-text leading-[1.2] pb-4">
               Technologies & Frameworks
             </h2>
-            <p className="text-xl text-slate-300">
-              Tools and technologies I work with regularly
-            </p>
           </div>
 
           {/* Cards Grid */}
-          <div className="flex justify-center items-center flex-wrap gap-8">
+          <div className="flex justify-center items-center flex-wrap gap-8 pt-6 md:pt-8">
             {cards.map(({ title, icon: Icon, technologies, gradientFrom, gradientTo }, idx) => (
               <div
                 key={idx}

@@ -723,7 +723,7 @@ const htmlContent = `
     </div>
   </section>
 
-  <div id="technologies-showcase-container" class="reveal-element"></div>
+  <div id="technologies-showcase-container" class="reveal-element mt-28 md:mt-36 scroll-mt-32 md:scroll-mt-40"></div>
 
   <section id="certifications" class="py-16 px-6">
     <div class="max-w-6xl mx-auto">
