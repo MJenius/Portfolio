@@ -109,7 +109,8 @@ const projects: ProjectCard[] = [
     tags: ["FastAPI", "Next.js", "Modal", "Vercel"],
     metric: "99% accuracy",
     links: [
-      { label: "View GitHub", url: "https://github.com/MJenius/PDF-Extractor-With-PymuPDF", type: "github" }
+      { label: "View GitHub", url: "https://github.com/MJenius/PDF-Extractor-With-PymuPDF", type: "github" },
+      { label: "Live Demo", url: "https://pdf-playground-8wlek8vg8-mevin-joses-projects.vercel.app/", type: "demo" }
     ]
   },
   {
@@ -589,7 +590,7 @@ function ThreeDPhotoCarousel() {
               <motion.div
                 className="relative p-6 z-40"
               >
-              <div className="flex items-start mb-4">
+                <div className="flex items-start mb-4">
                   {activeImg && projects.find((p) => p.title === activeImg) && (
                     <>
                       <div

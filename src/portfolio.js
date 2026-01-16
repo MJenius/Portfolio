@@ -285,6 +285,14 @@ const openModal = (modalId) => {
   modal.classList.add('active');
   document.body.style.overflow = 'hidden';
 
+  // Hide the navbar when modal is open
+  const navbar = document.getElementById('navbar-container');
+  if (navbar) {
+    navbar.style.opacity = '0';
+    navbar.style.pointerEvents = 'none';
+    navbar.style.transition = 'opacity 0.3s ease';
+  }
+
   const modalContent = modal.querySelector('.modal-content');
   const anime = safeAnime();
   if (anime && modalContent) {
@@ -305,6 +313,15 @@ const closeModal = (modalId) => {
   const modalContent = modal.querySelector('.modal-content');
   const anime = safeAnime();
 
+  // Show the navbar again when modal closes
+  const showNavbar = () => {
+    const navbar = document.getElementById('navbar-container');
+    if (navbar) {
+      navbar.style.opacity = '1';
+      navbar.style.pointerEvents = 'auto';
+    }
+  };
+
   if (anime && modalContent) {
     anime({
       targets: modalContent,
@@ -315,11 +332,13 @@ const closeModal = (modalId) => {
       complete: () => {
         modal.classList.remove('active');
         document.body.style.overflow = '';
+        showNavbar();
       },
     });
   } else {
     modal.classList.remove('active');
     document.body.style.overflow = '';
+    showNavbar();
   }
 };
 

@@ -19,7 +19,7 @@ export function ProfileCard(props: ProfileCardProps) {
     name = 'Mevin Jose',
     title = 'AI/ML & Software Engineering Student — PES University (2023–2027)',
     description =
-      'I build production-grade machine learning systems, real-time computer vision pipelines, and full-stack web platforms with a strong emphasis on reliability, observability, and deployment discipline.\n\nMy work spans Python, FastAPI, Node.js, React, LightGBM, OpenCV, and reinforcement learning, with a focus on designing systems that remain stable under data drift, scale, and real-world noise.\n\nI\'m interested in roles where machine learning meets robust software engineering—building systems that don\'t just work in notebooks, but perform reliably in production.',
+    'I build production-grade machine learning systems, real-time computer vision pipelines, and full-stack web platforms with a strong emphasis on reliability, observability, and deployment discipline.\n\nMy work spans Python, FastAPI, Node.js, React, LightGBM, OpenCV, and reinforcement learning, with a focus on designing systems that remain stable under data drift, scale, and real-world noise.\n\nI\'m interested in roles where machine learning meets robust software engineering—building systems that don\'t just work in notebooks, but perform reliably in production.',
     email = 'mjenius1357@gmail.com',
     phone = '+91 99029 32228',
     githubUrl = 'https://github.com/MJenius',
