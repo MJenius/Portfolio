@@ -1,4 +1,4 @@
-import { Monitor, Lightbulb, Settings } from 'lucide-react';
+import { Monitor, Lightbulb, Settings, Code } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 
 type TechnologyCardConfig = {
@@ -11,9 +11,16 @@ type TechnologyCardConfig = {
 
 const cards: TechnologyCardConfig[] = [
   {
+    title: "Programming Languages",
+    icon: Code,
+    technologies: ["Python", "JavaScript", "TypeScript", "SQL", "Java", "C", "R"],
+    gradientFrom: "#3b82f6",
+    gradientTo: "#2563eb",
+  },
+  {
     title: "Web & Backend",
     icon: Monitor,
-    technologies: ["FastAPI", "Flask", "Node.js", "Express.js", "React", "Next.js", "TypeScript", "REST APIs", "WebSockets (Socket.IO)"],
+    technologies: ["FastAPI", "Flask", "Node.js", "Express.js", "React", "Next.js", "REST APIs", "WebSockets (Socket.IO)"],
     gradientFrom: "#4dff03",
     gradientTo: "#00d0ff",
   },
@@ -28,8 +35,7 @@ const cards: TechnologyCardConfig[] = [
     title: "Infra, DevOps & Databases",
     icon: Settings,
     technologies: [
-      "Docker", "Git", "GitHub Actions", "Vercel", "Modal", "FFmpeg",
-      "PostgreSQL", "MongoDB", "SQLite", "TensorBoard", "pytest"
+      "Git", "GitHub Actions", "Vercel", "Modal", "PostgreSQL", "MongoDB", "SQLite", "FFmpeg", "TensorBoard", "pytest"
     ],
     gradientFrom: "#03a9f4",
     gradientTo: "#ff0058",
@@ -42,18 +48,18 @@ export default function TechnologiesShowcase() {
       <section className="py-24 px-6 pt-32 md:pt-40 scroll-mt-32 md:scroll-mt-40">
         <div className="max-w-6xl mx-auto">
           {/* Section Header */}
-          <div className="text-center mb-16 md:mb-20">
+          <div className="text-center mb-8 md:mb-10">
             <h2 className="text-4xl md:text-5xl font-bold gradient-text leading-[1.2] pb-4">
               Technologies & Frameworks
             </h2>
           </div>
 
           {/* Cards Grid */}
-          <div className="flex justify-center items-center flex-wrap gap-8 pt-6 md:pt-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 pt-2">
             {cards.map(({ title, icon: Icon, technologies, gradientFrom, gradientTo }, idx) => (
               <div
                 key={idx}
-                className="group relative w-[340px] min-h-[420px] transition-all duration-500"
+                className="group relative min-h-[360px] transition-all duration-500"
               >
                 {/* Skewed gradient panels */}
                 <span
