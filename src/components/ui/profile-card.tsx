@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { Mail, Phone, Github, Code2 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { LiveEngineeringStats } from '../live-engineering-stats';
+import { MicroExpander } from './micro-expander';
 
 interface ProfileCardProps {
   name?: string;
@@ -59,18 +60,15 @@ export function ProfileCard(props: ProfileCardProps) {
             {description}
           </p>
 
-          <div className="flex space-x-3">
+          <div className="flex space-x-2">
             {socials.map(({ icon: Icon, label, href }) => (
-              <a
+              <MicroExpander
                 key={label}
-                href={href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 bg-slate-800/70 border border-slate-700/70 rounded-full flex items-center justify-center text-white hover:bg-slate-700/80 hover:scale-105 transition-transform"
-                aria-label={label}
-              >
-                <Icon className="w-4 h-4" />
-              </a>
+                text={label}
+                icon={<Icon className="w-5 h-5" />}
+                variant="ghost"
+                onClick={() => window.open(href, '_blank')}
+              />
             ))}
           </div>
         </motion.div>
@@ -95,18 +93,15 @@ export function ProfileCard(props: ProfileCardProps) {
             {description}
           </p>
 
-          <div className="flex justify-center space-x-4">
+          <div className="flex justify-center flex-wrap gap-2">
             {socials.map(({ icon: Icon, label, href }) => (
-              <a
+              <MicroExpander
                 key={label}
-                href={href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-12 h-12 bg-slate-800/70 border border-slate-700/70 rounded-full flex items-center justify-center text-white hover:bg-slate-700/80 transition-colors"
-                aria-label={label}
-              >
-                <Icon className="w-5 h-5" />
-              </a>
+                text={label}
+                icon={<Icon className="w-5 h-5" />}
+                variant="ghost"
+                onClick={() => window.open(href, '_blank')}
+              />
             ))}
           </div>
         </div>

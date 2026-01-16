@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import ReactDOM from 'react-dom/client';
 import { initPortfolio } from './portfolio';
 import { SocialLinks } from './components/social-links';
-import { NavBar } from './components/ui/tubelight-navbar';
+import { MicroExpanderNavBar } from './components/ui/micro-expander-navbar';
 import { GradientButton } from './components/ui/gradient-button';
 import { GooeyText } from './components/ui/gooey-text-morphing';
 import { Home, Briefcase, Lightbulb, MessageSquare, Download, Eye, Mail, User, BriefcaseBusiness, Award } from 'lucide-react';
@@ -1190,7 +1190,7 @@ function App() {
       const navContainer = document.getElementById('navbar-container');
       if (navContainer) {
         const root = ReactDOM.createRoot(navContainer);
-        root.render(<NavBar items={navItems} />);
+        root.render(<MicroExpanderNavBar items={navItems} />);
       }
 
       const socialContainer = document.getElementById('social-links-container');
