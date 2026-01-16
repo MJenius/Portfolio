@@ -23,7 +23,7 @@ const navItems = [
 
 const htmlContent = `
 
-  <section id="home" class="min-h-screen flex items-center justify-center pt-20 px-6">
+  <section id="home" class="min-h-screen flex items-start justify-center pt-28 px-6">
       <div class="max-w-6xl mx-auto text-center relative z-20">
       <div class="reveal-element">
         <img src="resources/profile-avatar.png" alt="Mevin Jose Profile Pic"
@@ -31,14 +31,14 @@ const htmlContent = `
       </div>
 
       <div class="reveal-element">
-        <div id="particle-text-container" class="h-[120px] flex items-center justify-center mb-6"></div>
+        <div id="particle-text-container" class="h-[120px] flex items-center justify-center mb-10"></div>
       </div>
 
       
 
-      <div id="hero-buttons-container" class="reveal-element flex flex-col sm:flex-row gap-4 justify-center items-center mb-12"></div>
+      <div id="hero-buttons-container" class="reveal-element flex flex-col sm:flex-row gap-4 justify-center items-center mb-4"></div>
 
-      <div id="social-links-container" class="reveal-element flex justify-center mt-8"></div>
+      <div id="social-links-container" class="reveal-element flex justify-center mt-2"></div>
     </div>
   </section>
 
@@ -1456,18 +1456,18 @@ function App() {
       initPortfolio();
 
       // Mount React components to their containers
-            // Mount Featured 3D Carousel
-            const featuredCarouselContainer = document.getElementById('featured-carousel-container');
-            if (featuredCarouselContainer) {
-              const root = ReactDOM.createRoot(featuredCarouselContainer);
-              root.render(<ThreeDPhotoCarouselDemo />);
-            }
+      // Mount Featured 3D Carousel
+      const featuredCarouselContainer = document.getElementById('featured-carousel-container');
+      if (featuredCarouselContainer) {
+        const root = ReactDOM.createRoot(featuredCarouselContainer);
+        root.render(<ThreeDPhotoCarouselDemo />);
+      }
       const navContainer = document.getElementById('navbar-container');
       if (navContainer) {
         const root = ReactDOM.createRoot(navContainer);
         root.render(<NavBar items={navItems} />);
       }
-      
+
       const socialContainer = document.getElementById('social-links-container');
       if (socialContainer) {
         const root = ReactDOM.createRoot(socialContainer);
