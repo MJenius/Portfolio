@@ -24,7 +24,7 @@ interface LeetCodeStats {
 interface EngineeringStats {
   github: GitHubStats;
   leetcode: LeetCodeStats;
-  cgpa: number;
+  scholarships: number;
   error?: string;
 }
 
@@ -151,14 +151,14 @@ export async function fetchEngineeringStats(): Promise<EngineeringStats> {
     return {
       github,
       leetcode,
-      cgpa: 7.78,
+      scholarships: 2,
     };
   } catch (error) {
     console.error('Error fetching stats:', error);
     return {
       github: { totalContributions: 0 },
       leetcode: { totalSolved: 185, easy: 62, medium: 98, hard: 25 },
-      cgpa: 7.78,
+      scholarships: 2,
       error: 'Failed to fetch live stats',
     };
   }

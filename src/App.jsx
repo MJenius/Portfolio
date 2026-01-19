@@ -811,7 +811,7 @@ function App() {
             organization: 'PES University, Bangalore',
             period: '2023 – 2027',
             description:
-              'Pursuing a Bachelor\'s degree with a current CGPA of 7.78. Focus on building strong foundations in core computer science and applied machine learning.',
+              'Pursuing a Bachelor\'s degree with 2 scholarships awarded. Focus on building strong foundations in core computer science and applied machine learning.',
             tags: ['Machine Learning', 'Data Structures', 'Software Engineering', 'Algorithms'],
             glowColors: ['#9333ea', '#ec4899', '#3b82f6'],
           },
