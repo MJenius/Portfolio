@@ -253,6 +253,10 @@ body {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  display: block;
+  padding: 0.15em 0 0.25em 0;
+  line-height: 1.1;
+  background-size: 100% 130%;
 }
 
 .glow-effect {
