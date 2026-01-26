@@ -1,6 +1,7 @@
 import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "framer-motion";
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import { Project } from "@/data/portfolioData";
 import {
     Eye,
     MapPin,
@@ -9,20 +10,47 @@ import {
     GraduationCap,
     ScanLine,
     TrendingUp,
-    Share2
+    Share2,
+    Code,
+    Brain
 } from "lucide-react";
 
-interface Project {
-    title: string;
-    description: string;
-    link: string;
-    category: "ai-ml" | "web";
-    stats: string;
-    icon: React.ReactNode;
-    gradient: string;
-}
+const getProjectIcon = (projectId: string) => {
+    const iconMap: Record<string, React.ReactNode> = {
+        "aegis": <Eye className="w-6 h-6 text-white" />,
+        "traffic-control": <MapPin className="w-6 h-6 text-white" />,
+        "docparse-ai": <FileText className="w-6 h-6 text-white" />,
+        "voice-assistant": <Mic className="w-6 h-6 text-white" />,
+        "superhhero": <GraduationCap className="w-6 h-6 text-white" />,
+        "covid-radiomics": <ScanLine className="w-6 h-6 text-white" />,
+        "demand-forecasting": <TrendingUp className="w-6 h-6 text-white" />,
+        "smms": <Share2 className="w-6 h-6 text-white" />,
+        "spotify": <Code className="w-6 h-6 text-white" />,
+        "cardiovascular": <Brain className="w-6 h-6 text-white" />
+    };
+    return iconMap[projectId] || <Code className="w-6 h-6 text-white" />;
+};
 
-const projects: Project[] = [
+const getProjectGradient = (category: string, index: number) => {
+    const gradients = {
+        "ai-ml": [
+            "from-purple-500 to-pink-600",
+            "from-blue-500 to-cyan-600",
+            "from-rose-500 to-pink-600",
+            "from-indigo-500 to-purple-600",
+            "from-red-500 to-orange-600"
+        ],
+        "web": [
+            "from-green-500 to-emerald-600",
+            "from-orange-500 to-red-600",
+            "from-blue-500 to-cyan-600"
+        ]
+    };
+    const categoryGradients = category === "ai-ml" ? gradients["ai-ml"] : gradients["web"];
+    return categoryGradients[index % categoryGradients.length];
+};
+
+const oldProjects = [
     {
         title: "AEGIS Surveillance",
         description:
@@ -107,60 +135,14 @@ const projects: Project[] = [
 
 export const ProjectsHoverEffect = ({
     className,
+    projects = [],
+    onProjectClick,
 }: {
     className?: string;
+    projects?: Project[];
+    onProjectClick?: (projectId: string) => void;
 }) => {
     const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-    const [activeFilter, setActiveFilter] = useState<string>("all");
-    const [searchTerm, setSearchTerm] = useState<string>("");
-
-    // Listen to filter button clicks and search input changes
-    useEffect(() => {
-        const filterButtons = document.querySelectorAll('.filter-btn');
-        const searchInput = document.getElementById('project-search') as HTMLInputElement;
-
-        const handleFilterClick = (e: Event) => {
-            const button = e.currentTarget as HTMLElement;
-            const filter = button.dataset.filter || "all";
-            setActiveFilter(filter);
-
-            // Update button active states
-            filterButtons.forEach((btn) => btn.classList.remove('active'));
-            button.classList.add('active');
-        };
-
-        const handleSearchInput = () => {
-            if (searchInput) {
-                setSearchTerm(searchInput.value.toLowerCase());
-            }
-        };
-
-        // Add event listeners
-        filterButtons.forEach((button) => {
-            button.addEventListener('click', handleFilterClick);
-        });
-
-        if (searchInput) {
-            searchInput.addEventListener('input', handleSearchInput);
-        }
-
-        // Cleanup
-        return () => {
-            filterButtons.forEach((button) => {
-                button.removeEventListener('click', handleFilterClick);
-            });
-            if (searchInput) {
-                searchInput.removeEventListener('input', handleSearchInput);
-            }
-        };
-    }, []);
-
-    // Filter projects based on active filter and search term
-    const filteredProjects = projects.filter((project) => {
-        const matchesFilter = activeFilter === "all" || project.category === activeFilter;
-        const matchesSearch = searchTerm === "" || project.title.toLowerCase().includes(searchTerm);
-        return matchesFilter && matchesSearch;
-    });
 
     return (
         <div
@@ -170,9 +152,9 @@ export const ProjectsHoverEffect = ({
             )}
         >
             <AnimatePresence mode="popLayout">
-                {filteredProjects.map((project, idx) => (
+                {projects.map((project, idx) => (
                     <motion.div
-                        key={project.title}
+                        key={project.id}
                         layout
                         initial={{ opacity: 0, scale: 0.9 }}
                         animate={{ opacity: 1, scale: 1 }}
@@ -181,13 +163,7 @@ export const ProjectsHoverEffect = ({
                         className="relative group block p-2 h-full w-full cursor-pointer"
                         onMouseEnter={() => setHoveredIndex(idx)}
                         onMouseLeave={() => setHoveredIndex(null)}
-                        onClick={() => {
-                            // Trigger the existing modal system
-                            const modalId = getModalId(project.title);
-                            if (modalId && typeof window !== 'undefined') {
-                                (window as any).openModal?.(modalId);
-                            }
-                        }}
+                        onClick={() => onProjectClick?.(project.id)}
                     >
                         <AnimatePresence>
                             {hoveredIndex === idx && (
@@ -206,13 +182,13 @@ export const ProjectsHoverEffect = ({
                                 />
                             )}
                         </AnimatePresence>
-                        <ProjectCard project={project} />
+                        <ProjectCard project={project} index={idx} />
                     </motion.div>
                 ))}
             </AnimatePresence>
 
             {/* Empty state when no projects match */}
-            {filteredProjects.length === 0 && (
+            {projects.length === 0 && (
                 <motion.div
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
@@ -226,21 +202,11 @@ export const ProjectsHoverEffect = ({
     );
 };
 
-function getModalId(title: string): string {
-    const modalMap: Record<string, string> = {
-        "AEGIS Surveillance": "aegis",
-        "Adaptive Traffic Control": "traffic-rl",
-        "DocParse AI": "pdf-playground",
-        "AI Voice Assistant": "voice-assistant",
-        "Superhhero Learning": "superhhero",
-        "CT-Based Radiomics": "ct-radiomics",
-        "Demand Forecasting ML": "demand-forecasting",
-        "Social Media Management": "smms",
-    };
-    return modalMap[title] || "";
-}
+const ProjectCard = ({ project, index }: { project: Project; index: number }) => {
+    const icon = getProjectIcon(project.id);
+    const gradient = getProjectGradient(project.category, index);
+    const stats = project.tags.slice(0, 3).join(", ");
 
-const ProjectCard = ({ project }: { project: Project }) => {
     return (
         <div
             className={cn(
@@ -259,11 +225,11 @@ const ProjectCard = ({ project }: { project: Project }) => {
                         className={cn(
                             "w-12 h-12 rounded-xl flex items-center justify-center",
                             "bg-gradient-to-r",
-                            project.gradient,
+                            gradient,
                             "shadow-lg"
                         )}
                     >
-                        {project.icon}
+                        {icon}
                     </div>
                     <div>
                         <h4 className="text-lg font-bold text-white tracking-wide">
@@ -291,7 +257,7 @@ const ProjectCard = ({ project }: { project: Project }) => {
                 <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2 text-xs text-slate-400">
                         <span className="text-green-400">●</span>
-                        <span>{project.stats}</span>
+                        <span>{stats}</span>
                     </div>
                     <span className="text-blue-400 text-sm group-hover:text-blue-300 transition-colors">
                         View Details →

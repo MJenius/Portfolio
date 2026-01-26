@@ -45,15 +45,8 @@ const cards: TechnologyCardConfig[] = [
 export default function SkewCards() {
   return (
     <>
-      <section className="py-24 px-6 pt-32 md:pt-40 scroll-mt-32 md:scroll-mt-40">
+      <section className="px-6 pb-20 scroll-mt-32 md:scroll-mt-40">
         <div className="max-w-[100rem] mx-auto">
-          {/* Section Header */}
-          <div className="text-center mb-8 md:mb-10">
-            <h2 className="text-4xl md:text-5xl font-bold gradient-text leading-[1.2] pb-4">
-              Technologies & Frameworks
-            </h2>
-          </div>
-
           {/* Cards Grid */}
           <div className="grid grid-cols-4 gap-8 pt-2">
             {cards.map(({ title, icon: Icon, technologies, gradientFrom, gradientTo }, idx) => (
