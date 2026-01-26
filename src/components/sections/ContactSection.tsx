@@ -73,7 +73,7 @@ export function CertificationsSection() {
   }, []);
 
   return (
-    <section id="certifications" className="pt-24 pb-32 px-6 scroll-mt-0">
+    <section id="certifications" className="pt-24 pb-32 px-6 scroll-mt-0 relative z-10">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-8 reveal-element">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 gradient-text">Certifications</h2>
