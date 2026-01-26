@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react';
 import SchemaCard from '../ui/schema-card-with-animated-wave-visualizer';
 
 interface Certification {
@@ -10,68 +9,50 @@ interface Certification {
   logoType: 'image' | 'text';
 }
 
-const certificationData: Record<string, Omit<Certification, 'credential_url'>> = {
-  'google-data-analytics': {
+const certifications: Certification[] = [
+  {
     name: 'Google Data Analytics',
     issuer: 'Coursera',
     description: 'Comprehensive certification in data analysis, visualization, and business intelligence using Google tools.',
     logo: 'https://www.google.com/favicon.ico',
-    logoType: 'image'
+    logoType: 'image',
+    credential_url: 'https://coursera.org/share/11aafe0abcf8437084bc6d19db82c564'
   },
-  'ibm-generative-ai': {
+  {
     name: 'IBM Generative AI',
     issuer: 'Coursera',
     description: 'Advanced certification in generative AI technologies, including GPT models and prompt engineering.',
     logo: 'https://www.ibm.com/brand/experience-guides/developer/b1db1ae501d522a1a4b49613fe07c9f1/01_8-bar-positive.svg',
-    logoType: 'image'
+    logoType: 'image',
+    credential_url: 'https://coursera.org/share/beaa01b66b9804e5d9547c403fa9840f'
   },
-  'microsoft-computer-vision': {
+  {
     name: 'Microsoft Computer Vision',
     issuer: 'Azure AI',
     description: 'Specialized certification in Azure Cognitive Services for computer vision and image processing.',
     logo: 'https://www.microsoft.com/favicon.ico',
-    logoType: 'image'
+    logoType: 'image',
+    credential_url: 'https://coursera.org/share/2db49eb5a4a3fbd458b3c759d3635992'
   },
-  'kaggle-ml-dl': {
+  {
     name: 'Kaggle ML & DL',
     issuer: 'Kaggle',
     description: 'Expert-level certification in machine learning and deep learning through practical competitions.',
     logo: 'https://www.kaggle.com/favicon.ico',
-    logoType: 'image'
+    logoType: 'image',
+    credential_url: 'https://www.kaggle.com/mjeniusmj'
   },
-  'meta-genai-analytics': {
+  {
     name: 'Meta GenAI Analytics',
     issuer: 'Meta/Coursera',
     description: 'Advanced certification in generative AI applications for data analytics and business intelligence.',
     logo: 'https://www.logo.wine/a/logo/Meta_Platforms/Meta_Platforms-Logo.wine.svg',
-    logoType: 'image'
+    logoType: 'image',
+    credential_url: 'https://coursera.org/share/3b59ffff270c01b2e6ffdc4fb13abc2f'
   }
-};
+];
 
 export function CertificationsSection() {
-  const [certifications, setCertifications] = useState<Certification[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    fetch('/cert-links.json')
-      .then((res) => res.json())
-      .then((data) => {
-        const certs = Object.entries(data)
-          .filter(([_, url]) => url && url !== '')
-          .map(([key, url]) => ({
-            ...certificationData[key],
-            credential_url: url as string
-          }))
-          .filter((cert) => cert.name); // Filter out any undefined entries
-        setCertifications(certs);
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.error('Error loading certifications:', error);
-        setLoading(false);
-      });
-  }, []);
-
   return (
     <section id="certifications" className="pt-24 pb-32 px-6 scroll-mt-0 relative z-10">
       <div className="max-w-6xl mx-auto">
@@ -83,32 +64,22 @@ export function CertificationsSection() {
         </div>
 
         <div className="reveal-element">
-          {loading ? (
-            <div className="text-center text-slate-400">
-              Loading certifications...
+          <>
+            {/* Top row - 3 certifications */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4 max-w-5xl mx-auto">
+              {certifications.slice(0, 3).map((cert, index) => (
+                <CertificationCard key={index} cert={cert} />
+              ))}
             </div>
-          ) : certifications.length === 0 ? (
-            <div className="text-center text-slate-400">
-              No certifications available
-            </div>
-          ) : (
-            <>
-              {/* Top row - 3 certifications */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4 max-w-5xl mx-auto">
-                {certifications.slice(0, 3).map((cert, index) => (
-                  <CertificationCard key={index} cert={cert} />
+            {/* Bottom row - 2 certifications centered */}
+            {certifications.length > 3 && (
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-3xl mx-auto">
+                {certifications.slice(3, 5).map((cert, index) => (
+                  <CertificationCard key={index + 3} cert={cert} />
                 ))}
               </div>
-              {/* Bottom row - 2 certifications centered */}
-              {certifications.length > 3 && (
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-3xl mx-auto">
-                  {certifications.slice(3, 5).map((cert, index) => (
-                    <CertificationCard key={index + 3} cert={cert} />
-                  ))}
-                </div>
-              )}
-            </>
-          )}
+            )}
+          </>
         </div>
       </div>
     </section>
