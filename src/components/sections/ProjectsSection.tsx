@@ -28,10 +28,6 @@ export function ProjectsSection() {
         <div className="max-w-6xl mx-auto text-center">
           <div className="reveal-element">
             <h1 className="text-5xl md:text-6xl font-bold mb-6 gradient-text">My Projects</h1>
-            <p className="text-xl text-slate-300 max-w-3xl mx-auto mb-12">
-              A comprehensive showcase of my work in AI/ML, full-stack development, and innovative
-              problem-solving
-            </p>
           </div>
         </div>
       </section>

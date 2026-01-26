@@ -58,9 +58,6 @@ export function CertificationsSection() {
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-8 reveal-element">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 gradient-text">Certifications</h2>
-          <p className="text-lg text-slate-300 max-w-3xl mx-auto">
-            Professional certifications and achievements
-          </p>
         </div>
 
         <div className="reveal-element">
@@ -117,7 +114,7 @@ function CertificationCard({ cert }: { cert: Certification }) {
 export function ContactSection() {
   return (
     <>
-      <section id="contact" className="min-h-screen pt-6 pb-20 px-6 flex flex-col justify-center">
+      <section id="contact" className="pt-20 pb-20 px-6">
         <div className="max-w-6xl mx-auto w-full">
           <div className="text-center mb-12 reveal-element">
             <h1 className="text-5xl md:text-6xl font-bold mb-2 gradient-text">Contact Me</h1>
