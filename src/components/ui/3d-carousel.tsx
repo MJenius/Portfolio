@@ -102,15 +102,14 @@ const projects: ProjectCard[] = [
     ]
   },
   {
-    icon: { gradientFrom: "from-indigo-500", gradientTo: "to-purple-600", svg: "M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" },
-    title: "DocParse AI",
-    subtitle: "Full Stack • Multi-Model • SaaS",
-    description: "Multi-model PDF extraction platform (Surya, Docling, MinerU) with PyMuPDF fallback. Deployed via Modal + Vercel.",
-    tags: ["FastAPI", "Next.js", "Modal", "Vercel"],
-    metric: "99% accuracy",
+    icon: { gradientFrom: "from-amber-500", gradientTo: "to-orange-600", svg: "M13 10V3L4 14h7v7l9-11h-7z" },
+    title: "Football Scouting Dashboard",
+    subtitle: "ML • Analytics • Decision Support",
+    description: "Professional DSS for scouts identifying tactical archetypes, statistical twins, and undervalued prospects using SHAP, PCA, and Generative AI.",
+    tags: ["Python", "Streamlit", "Scikit-Learn", "SHAP"],
+    metric: "8-12 tactical archetypes",
     links: [
-      { label: "View GitHub", url: "https://github.com/MJenius/PDF-Extractor-With-PymuPDF", type: "github" },
-      { label: "Live Demo", url: "https://pdf-playground-8wlek8vg8-mevin-joses-projects.vercel.app/", type: "demo" }
+      { label: "View GitHub", url: "https://github.com/yourusername/scouting-dashboard", type: "github" }
     ]
   },
   {

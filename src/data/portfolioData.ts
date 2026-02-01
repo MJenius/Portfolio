@@ -2,7 +2,7 @@ export interface Project {
   id: string;
   title: string;
   description: string;
-  category: 'ai-ml' | 'web' | 'all';
+  category: 'ai-ml' | 'web' | 'data-analysis' | 'all';
   tags: string[];
   image?: string;
   github?: string;
@@ -110,7 +110,7 @@ export const projects: Project[] = [
     id: 'covid-radiomics',
     title: 'CT-Based Radiomics for COVID-19 Detection',
     description: 'A deep learning pipeline for COVID-19 detection using chest CT imaging.',
-    category: 'ai-ml',
+    category: 'data-analysis',
     tags: ['Python', 'PyTorch', 'CNN', 'Medical Imaging', 'DL'],
     github: 'https://github.com/MJenius/CT-based-Radiomics-for-COVID-19-Detection',
     featured: true,
@@ -134,7 +134,7 @@ export const projects: Project[] = [
     id: 'demand-forecasting',
     title: 'Demand Forecasting ML System',
     description: 'A machine learning system for predicting retail demand patterns.',
-    category: 'ai-ml',
+    category: 'data-analysis',
     tags: ['Python', 'Time Series', 'Forecasting', 'XGBoost', 'ML'],
     featured: false,
     details: {
@@ -157,9 +157,9 @@ export const projects: Project[] = [
     id: 'docparse-ai',
     title: 'DocParse AI',
     description: 'An intelligent PDF extraction and processing system using AI.',
-    category: 'all',
+    category: 'web',
     tags: ['Python', 'NLP', 'PDF Processing', 'AI', 'OCR'],
-    featured: true,
+    featured: false,
     details: {
       overview: 'An intelligent PDF extraction and processing system that uses AI to extract structured data from documents.',
       achievements: [
@@ -196,6 +196,38 @@ export const projects: Project[] = [
         'Multi-threaded video processing',
         'Real-time alert notification system',
         'Edge optimization techniques'
+      ]
+    }
+  },
+  {
+    id: 'football-scouting',
+    title: 'Football Scouting & Recruitment Dashboard',
+    description: 'A professional Decision Support System for football scouts using ML, AI, and advanced analytics.',
+    category: 'data-analysis',
+    tags: ['Python', 'Streamlit', 'FastAPI', 'Scikit-Learn', 'SHAP', 'Gemini AI'],
+    github: 'https://github.com/yourusername/scouting-dashboard',
+    featured: true,
+    details: {
+      overview: 'A professional-grade Decision Support System (DSS) designed for football scouts and recruitment analysts. Leverages Machine Learning and Generative AI to identify tactical archetypes, stylistic statistical twins, and undervalued prospects across European football and the English pyramid.',
+      achievements: [
+        'Weighted Similarity Engine using Cosine Similarity with triple weighting on elite traits (>75th percentile)',
+        'Tactical Style Map (PCA) visualizing 2D footballing universe to identify tactical hybrids',
+        'Archetype Discovery via K-Means Clustering into 8-12 tactical roles (e.g., Deep-Lying Playmaker)',
+        'Explainable AI with SHAP values and similarity drivers for model transparency',
+        'Age-Curve Analysis detecting high-ceiling prospects with Z-score calculations per cohort',
+        'Generative Scouting Reports using Gemini 1.5 Pro for prose-style narrative analysis',
+        'PDF Dossier Export for offline recruitment meetings',
+        'Head-to-Head Comparison with radar charts and relative quality toggles'
+      ],
+      techStack: [
+        'Streamlit for interactive frontend UI',
+        'FastAPI with hybrid SQL + JSON schema (SQLite)',
+        'Scikit-Learn for similarity engine and K-Means clustering',
+        'SHAP for explainable AI and model attribution',
+        'Plotly for advanced data visualizations (PCA, radar, heatmaps)',
+        'Gemini 1.5 Pro API for generative scouting narratives',
+        'FPDF for professional report generation',
+        'Docker containerization for deployment'
       ]
     }
   },

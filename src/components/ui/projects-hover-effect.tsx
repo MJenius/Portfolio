@@ -44,9 +44,15 @@ const getProjectGradient = (category: string, index: number) => {
             "from-green-500 to-emerald-600",
             "from-orange-500 to-red-600",
             "from-blue-500 to-cyan-600"
+        ],
+        "data-analysis": [
+            "from-amber-500 to-orange-600",
+            "from-cyan-500 to-blue-600",
+            "from-teal-500 to-emerald-600",
+            "from-yellow-500 to-amber-600"
         ]
     };
-    const categoryGradients = category === "ai-ml" ? gradients["ai-ml"] : gradients["web"];
+    const categoryGradients = gradients[category as keyof typeof gradients] || gradients["ai-ml"];
     return categoryGradients[index % categoryGradients.length];
 };
 
@@ -154,13 +160,15 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
                         </h4>
                         <span
                             className={cn(
-                                "text-xs px-2 py-0.5 rounded-full",
+                                "text-xs px-2 py-0.5 rounded-full whitespace-nowrap",
                                 project.category === "ai-ml"
                                     ? "bg-purple-500/20 text-purple-300"
+                                    : project.category === "data-analysis"
+                                    ? "bg-amber-500/20 text-amber-300"
                                     : "bg-green-500/20 text-green-300"
                             )}
                         >
-                            {project.category === "ai-ml" ? "AI/ML" : "Web Dev"}
+                            {project.category === "ai-ml" ? "AI/ML" : project.category === "data-analysis" ? "Data Analysis" : "Web Dev"}
                         </span>
                     </div>
                 </div>
