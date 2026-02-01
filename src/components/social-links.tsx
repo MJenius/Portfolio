@@ -1,5 +1,5 @@
 import { MicroExpander } from './ui/micro-expander';
-import { Github, Code2, Mail } from 'lucide-react';
+import { Github, Code2, Mail, Linkedin } from 'lucide-react';
 
 interface SocialLink {
   icon: React.ReactNode;
@@ -15,6 +15,12 @@ export function SocialLinks() {
       text: 'GitHub',
       href: 'https://github.com/MJenius',
       color: 'hover:text-white hover:bg-slate-700/30',
+    },
+    {
+      icon: <Linkedin className="w-5 h-5" />,
+      text: 'LinkedIn',
+      href: 'https://www.linkedin.com/in/mevin-jose/',
+      color: 'hover:text-blue-400 hover:bg-blue-400/10',
     },
     {
       icon: <Code2 className="w-5 h-5" />,

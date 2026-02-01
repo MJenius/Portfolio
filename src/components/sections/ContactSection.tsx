@@ -176,6 +176,18 @@ export function ContactSection() {
                       </div>
                     </a>
 
+                    <a href="https://www.linkedin.com/in/mevin-jose/" target="_blank" rel="noopener noreferrer"
+                      className="social-link p-4 rounded-lg flex items-center hover:bg-slate-800/50 transition-colors">
+                      <svg className="w-6 h-6 text-blue-500 mr-3" fill="currentColor" viewBox="0 0 24 24">
+                        <path
+                          d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z" />
+                      </svg>
+                      <div>
+                        <h4 className="text-white font-semibold">LinkedIn</h4>
+                        <p className="text-slate-400 text-sm">Mevin Jose</p>
+                      </div>
+                    </a>
+
                     <a href="https://leetcode.com/u/mjenius1357/" target="_blank" rel="noopener noreferrer"
                       className="social-link p-4 rounded-lg flex items-center hover:bg-slate-800/50 transition-colors">
                       <svg className="w-6 h-6 text-orange-400 mr-3" fill="currentColor" viewBox="0 0 24 24">
@@ -185,6 +197,19 @@ export function ContactSection() {
                       <div>
                         <h4 className="text-white font-semibold">LeetCode</h4>
                         <p className="text-slate-400 text-sm">@mjenius1357</p>
+                      </div>
+                    </a>
+
+                    <a href="https://www.kaggle.com/mjeniusmj" target="_blank" rel="noopener noreferrer"
+                      className="social-link p-4 rounded-lg flex items-center hover:bg-slate-800/50 transition-colors">
+                      <img 
+                        src="https://www.kaggle.com/favicon.ico" 
+                        alt="Kaggle Logo"
+                        className="w-6 h-6 mr-3"
+                      />
+                      <div>
+                        <h4 className="text-white font-semibold">Kaggle</h4>
+                        <p className="text-slate-400 text-sm">@mjeniusmj</p>
                       </div>
                     </a>
                   </div>
@@ -198,13 +223,21 @@ export function ContactSection() {
       <footer className="py-12 px-6">
         <div className="max-w-6xl mx-auto text-center">
           <div className="flex justify-center space-x-6 mb-6">
+            <a href="https://github.com/MJenius" target="_blank" rel="noopener noreferrer"
+              className="text-slate-400 hover:text-white transition-colors">
+              GitHub
+            </a>
+            <a href="https://www.linkedin.com/in/mevin-jose/" target="_blank" rel="noopener noreferrer"
+              className="text-slate-400 hover:text-white transition-colors">
+              LinkedIn
+            </a>
             <a href="https://leetcode.com/u/mjenius1357/" target="_blank" rel="noopener noreferrer"
               className="text-slate-400 hover:text-white transition-colors">
               LeetCode
             </a>
-            <a href="https://github.com/MJenius" target="_blank" rel="noopener noreferrer"
+            <a href="https://www.kaggle.com/mjeniusmj" target="_blank" rel="noopener noreferrer"
               className="text-slate-400 hover:text-white transition-colors">
-              GitHub
+              Kaggle
             </a>
             <a href="mailto:mjenius1357@gmail.com" className="text-slate-400 hover:text-white transition-colors">
               Email
