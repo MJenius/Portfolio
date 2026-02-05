@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { ProjectsHoverEffect } from '../ui/projects-hover-effect';
 import { projects } from '@/data/portfolioData';
 import { ProjectModal } from './ProjectModal';
+import TextReveal from '../ui/text-reveal';
 
 type ProjectFilter = 'all' | 'ai-ml' | 'web' | 'data-analysis';
 
@@ -31,7 +32,7 @@ export function ProjectsSection() {
       <section id="projects" className="pt-20 pb-6 px-6 -scroll-mt-16">
         <div className="max-w-6xl mx-auto text-center">
           <div className="reveal-element">
-            <h1 className="text-5xl md:text-6xl font-bold mb-6 gradient-text">My Projects</h1>
+            <TextReveal word="My Projects" showReplayButton={false} showContainer={false} />
           </div>
         </div>
       </section>

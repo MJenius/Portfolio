@@ -1,4 +1,5 @@
 import SchemaCard from '../ui/schema-card-with-animated-wave-visualizer';
+import TextReveal from '../ui/text-reveal';
 
 interface Certification {
   name: string;
@@ -57,7 +58,7 @@ export function CertificationsSection() {
     <section id="certifications" className="pt-24 pb-32 px-6 scroll-mt-0 relative z-10">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-8 reveal-element">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 gradient-text">Certifications</h2>
+          <TextReveal word="Certifications" showReplayButton={false} showContainer={false} />
         </div>
 
         <div className="reveal-element">
@@ -117,7 +118,7 @@ export function ContactSection() {
       <section id="contact" className="pt-20 pb-20 px-6">
         <div className="max-w-6xl mx-auto w-full">
           <div className="text-center mb-12 reveal-element">
-            <h1 className="text-5xl md:text-6xl font-bold mb-2 gradient-text">Contact Me</h1>
+            <TextReveal word="Contact Me" showReplayButton={false} showContainer={false} />
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
