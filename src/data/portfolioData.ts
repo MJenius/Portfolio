@@ -39,7 +39,7 @@ export const projects: Project[] = [
     category: 'ai-ml',
     tags: ['Python', 'NLP', 'spaCy', 'LeetCode API', 'ElevenLabs'],
     github: 'https://github.com/MJenius/AI-Voice-Assistant-Python',
-    featured: true,
+    featured: false,
     details: {
       overview: 'A sophisticated voice-enabled assistant that revolutionizes how developers prepare for technical interviews. This project combines natural language processing with voice synthesis to create an interactive learning experience.',
       achievements: [
@@ -59,28 +59,27 @@ export const projects: Project[] = [
     }
   },
   {
-    id: 'superhhero',
-    title: 'Superhhero Learning Platform',
-    description: 'A comprehensive full-stack MERN application serving as the official landing page for Superhhero Learning.',
+    id: 'social-media-backend',
+    title: 'Enterprise Social Media Backend',
+    description: 'A secure, scalable Node.js backend featuring RBAC, Rate Limiting, and automated CI/CD pipelines.',
     category: 'web',
-    tags: ['React', 'Node.js', 'MongoDB', 'Express', 'MERN'],
-    demo: 'https://www.superhhero.com/',
-    featured: true,
+    tags: ['Node.js', 'Express', 'MongoDB', 'Docker', 'Redis'],
+    github: 'https://github.com/mjenius/social-media-management-system',
+    featured: false,
     details: {
-      overview: 'A comprehensive full-stack MERN application serving as the official landing page for Superhhero Learning, an innovative ed-tech platform. This project demonstrates enterprise-level development practices and scalable architecture.',
+      overview: 'A production-ready backend system designed for high availability and security. It features advanced system design patterns including throttling, input sanitization, and automated disaster recovery.',
       achievements: [
-        'Developed and deployed full-stack MERN application',
-        'Collaborated with 4+ developers to streamline integration',
-        'Reduced development time by 25% through optimized workflows',
-        'Improved load time performance by 10% through API optimization',
-        'Ensured cross-platform compatibility across devices'
+        'Implemented Role-Based Access Control (RBAC) for granular permission management',
+        'Engineered a custom Rate Limiter to prevent DDoS and abuse',
+        'Automated database backups and log rotation using Cron jobs',
+        'Integrated GitHub Actions for automated testing (Jest/Supertest)'
       ],
       techStack: [
-        'React with modern hooks and state management',
-        'Node.js with Express.js backend architecture',
-        'MongoDB for flexible data storage',
-        'Responsive design with mobile-first approach',
-        'RESTful API design with proper error handling'
+        'Node.js & Express.js',
+        'MongoDB (Mongoose)',
+        'Jest & Supertest (Testing)',
+        'Docker & GitHub Actions (CI/CD)',
+        'Winston (Logging)'
       ]
     }
   },
@@ -113,7 +112,7 @@ export const projects: Project[] = [
     category: 'data-analysis',
     tags: ['Python', 'PyTorch', 'CNN', 'Medical Imaging', 'DL'],
     github: 'https://github.com/MJenius/CT-based-Radiomics-for-COVID-19-Detection',
-    featured: true,
+    featured: false,
     details: {
       overview: 'A deep learning pipeline for COVID-19 detection using chest CT imaging, leveraging convolutional neural networks for automated diagnosis.',
       achievements: [
@@ -136,7 +135,7 @@ export const projects: Project[] = [
     description: 'A machine learning system for predicting retail demand patterns.',
     category: 'data-analysis',
     tags: ['Python', 'Time Series', 'Forecasting', 'XGBoost', 'ML'],
-    featured: false,
+    featured: true,
     details: {
       overview: 'A machine learning system for predicting retail demand patterns using historical sales data and external features.',
       achievements: [
@@ -206,7 +205,7 @@ export const projects: Project[] = [
     title: 'Football Scouting & Recruitment Dashboard',
     description: 'A professional Decision Support System for football scouts using ML, AI, and advanced analytics.',
     category: 'data-analysis',
-    tags: ['Python', 'Streamlit', 'FastAPI', 'Scikit-Learn', 'SHAP', 'Gemini AI'],
+    tags: ['Python', 'Streamlit', 'FastAPI', 'Scikit-Learn', 'SHAP', 'Ollama'],
     github: 'https://github.com/yourusername/scouting-dashboard',
     featured: true,
     details: {
@@ -217,7 +216,7 @@ export const projects: Project[] = [
         'Archetype Discovery via K-Means Clustering into 8-12 tactical roles (e.g., Deep-Lying Playmaker)',
         'Explainable AI with SHAP values and similarity drivers for model transparency',
         'Age-Curve Analysis detecting high-ceiling prospects with Z-score calculations per cohort',
-        'Generative Scouting Reports using Gemini 1.5 Pro for prose-style narrative analysis',
+        'Generative Scouting Reports using Ollama (Llama 3.2) for prose-style narrative analysis',
         'PDF Dossier Export for offline recruitment meetings',
         'Head-to-Head Comparison with radar charts and relative quality toggles'
       ],
@@ -227,7 +226,7 @@ export const projects: Project[] = [
         'Scikit-Learn for similarity engine and K-Means clustering',
         'SHAP for explainable AI and model attribution',
         'Plotly for advanced data visualizations (PCA, radar, heatmaps)',
-        'Gemini 1.5 Pro API for generative scouting narratives',
+        'Ollama (Llama 3.2) for generative scouting narratives',
         'FPDF for professional report generation',
         'Docker containerization for deployment'
       ]
@@ -235,25 +234,26 @@ export const projects: Project[] = [
   },
   {
     id: 'traffic-control',
-    title: 'Adaptive Traffic Control (RL)',
-    description: 'A reinforcement learning system for intelligent traffic signal control.',
+    title: 'Explainable RL Traffic Control',
+    description: 'PPO-based Reinforcement Learning agent reducing emergency travel time by 10.6% with SHAP interpretability.',
     category: 'ai-ml',
-    tags: ['Python', 'RL', 'DQN', 'SUMO', 'Traffic'],
+    tags: ['Python', 'RL', 'Stable-Baselines3', 'PPO', 'SHAP'],
     github: 'https://github.com/rajeev8008/sumo-traffic-rl-project',
     featured: true,
     details: {
-      overview: 'A reinforcement learning system for intelligent traffic signal control that adapts to real-time traffic conditions.',
+      overview: 'A safety-critical RL agent trained using Proximal Policy Optimization (PPO) to manage traffic signals. Unlike black-box models, this system uses SHAP to explain decision-making and a Reward Decomposition framework to verify emergency vehicle prioritization.',
       achievements: [
-        'Implemented Deep Q-Network (DQN) for traffic optimization',
-        'Reduced average wait time by 35% in simulations',
-        'Developed SUMO integration for realistic traffic modeling',
-        'Created reward shaping mechanism for balanced traffic flow'
+        'Reduced emergency vehicle travel time by 10.6% and overall congestion by 4.2%',
+        'Architected a Reward Decomposition framework to audit agent incentives',
+        'Implemented SHAP analysis to visualize the 43D state space decision boundaries',
+        'Benchmarked against Fixed-Time and Rule-Based controllers in SUMO'
       ],
       techStack: [
-        'Python, TensorFlow, Keras',
-        'SUMO (Simulation of Urban MObility)',
-        'Deep Q-Network (DQN) implementation',
-        'Custom environment for RL training'
+        'Python',
+        'Stable-Baselines3 (PPO)',
+        'SUMO Traffic Simulator (TraCI)',
+        'SHAP (Explainable AI)',
+        'Pandas & Matplotlib'
       ]
     }
   }
