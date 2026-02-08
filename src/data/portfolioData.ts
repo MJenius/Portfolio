@@ -159,6 +159,7 @@ export const projects: Project[] = [
     description: 'An intelligent PDF extraction and processing system using AI.',
     category: 'web',
     tags: ['Python', 'NLP', 'PDF Processing', 'AI', 'OCR'],
+    demo: 'https://pdf-playground-8wlek8vg8-mevin-joses-projects.vercel.app/',
     featured: false,
     details: {
       overview: 'An intelligent PDF extraction and processing system that uses AI to extract structured data from documents.',
@@ -182,6 +183,7 @@ export const projects: Project[] = [
     description: 'An AI-powered surveillance system for real-time threat detection.',
     category: 'ai-ml',
     tags: ['Python', 'Computer Vision', 'OpenCV', 'YOLO', 'Real-time'],
+    github: 'https://github.com/ZeroDeaths7/Aegis-Tamper-Resistant-Surveillance-System',
     featured: true,
     details: {
       overview: 'An AI-powered surveillance system for real-time threat detection and monitoring using computer vision.',
@@ -237,6 +239,7 @@ export const projects: Project[] = [
     description: 'A reinforcement learning system for intelligent traffic signal control.',
     category: 'ai-ml',
     tags: ['Python', 'RL', 'DQN', 'SUMO', 'Traffic'],
+    github: 'https://github.com/rajeev8008/sumo-traffic-rl-project',
     featured: true,
     details: {
       overview: 'A reinforcement learning system for intelligent traffic signal control that adapts to real-time traffic conditions.',

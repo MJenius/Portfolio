@@ -30,7 +30,7 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
   if (!isOpen) return null;
 
   return (
-    <div className="modal" style={{ display: 'flex' }} onClick={onClose}>
+    <div className="modal" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }} onClick={onClose}>
       <div
         className="modal-content p-8 m-4"
         onClick={(e) => e.stopPropagation()}
