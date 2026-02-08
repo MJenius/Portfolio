@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Mail, Phone, Github, Code2 } from 'lucide-react';
+import { Mail, Phone, Github, Code2, Linkedin } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { LiveEngineeringStats } from '../live-engineering-stats';
 import { MicroExpander } from './micro-expander';
@@ -11,6 +11,7 @@ interface ProfileCardProps {
   email?: string;
   phone?: string;
   githubUrl?: string;
+  linkedinUrl?: string;
   leetcodeUrl?: string;
   className?: string;
 }
@@ -24,6 +25,7 @@ export function ProfileCard(props: ProfileCardProps) {
     email = 'mjenius1357@gmail.com',
     phone = '+91 99029 32228',
     githubUrl = 'https://github.com/MJenius',
+    linkedinUrl = 'https://www.linkedin.com/in/mevin-jose',
     leetcodeUrl = 'https://leetcode.com/u/mjenius1357/',
     className,
   } = props;
@@ -31,6 +33,7 @@ export function ProfileCard(props: ProfileCardProps) {
   const socials = [
     { icon: Phone, label: 'Call', href: `tel:${phone}` },
     { icon: Mail, label: 'Email', href: `mailto:${email}` },
+    { icon: Linkedin, label: 'LinkedIn', href: linkedinUrl },
     { icon: Github, label: 'GitHub', href: githubUrl },
     { icon: Code2, label: 'LeetCode', href: leetcodeUrl },
   ];
