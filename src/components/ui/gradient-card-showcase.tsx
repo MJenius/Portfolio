@@ -1,5 +1,6 @@
 import { Monitor, Lightbulb, Settings, Code } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
+import { skills } from '@/data/portfolioData';
 
 type TechnologyCardConfig = {
   title: string;
@@ -13,30 +14,28 @@ const cards: TechnologyCardConfig[] = [
   {
     title: "Programming Languages",
     icon: Code,
-    technologies: ["Python", "JavaScript", "TypeScript", "SQL", "Java", "C", "R"],
+    technologies: skills.languages,
     gradientFrom: "#3b82f6",
     gradientTo: "#2563eb",
   },
   {
     title: "Web & Backend",
     icon: Monitor,
-    technologies: ["FastAPI", "Flask", "Node.js", "Express.js", "React", "Next.js", "REST APIs", "WebSockets (Socket.IO)"],
+    technologies: skills.webBackend,
     gradientFrom: "#4dff03",
     gradientTo: "#00d0ff",
   },
   {
     title: "AI / ML & Data",
     icon: Lightbulb,
-    technologies: ["PyTorch", "TensorFlow", "Scikit-learn", "LightGBM", "OpenCV", "Pandas", "NumPy", "Stable-Baselines3", "SUMO"],
+    technologies: skills.aiMl,
     gradientFrom: "#ffbc00",
     gradientTo: "#ff0058",
   },
   {
     title: "Infra, DevOps & Databases",
     icon: Settings,
-    technologies: [
-      "Git", "GitHub Actions", "Vercel", "Modal", "PostgreSQL", "MongoDB", "SQLite", "FFmpeg", "TensorBoard", "pytest"
-    ],
+    technologies: skills.infraDevops,
     gradientFrom: "#03a9f4",
     gradientTo: "#ff0058",
   },
@@ -48,11 +47,11 @@ export default function SkewCards() {
       <section className="px-6 pb-20 scroll-mt-32 md:scroll-mt-40">
         <div className="max-w-[100rem] mx-auto">
           {/* Cards Grid */}
-          <div className="grid grid-cols-4 gap-8 pt-2">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 pt-2">
             {cards.map(({ title, icon: Icon, technologies, gradientFrom, gradientTo }, idx) => (
               <div
                 key={idx}
-                className="group relative w-full h-[400px] transition-all duration-500 cursor-pointer"
+                className="group relative w-full min-h-[400px] h-full transition-all duration-500 cursor-pointer"
               >
                 {/* Skewed gradient panels */}
                 <span
@@ -75,9 +74,9 @@ export default function SkewCards() {
                 </span>
 
                 {/* Content */}
-                <div className="relative z-20 left-0 p-[20px_40px] bg-[rgba(255,255,255,0.05)] backdrop-blur-[10px] shadow-lg rounded-lg text-white transition-all duration-500 group-hover:-left-[25px] group-hover:p-[60px_40px] h-full">
+                <div className="relative z-20 left-0 p-[20px_25px] bg-[rgba(255,255,255,0.05)] backdrop-blur-[10px] shadow-lg rounded-lg text-white transition-all duration-500 group-hover:-left-[25px] group-hover:p-[40px_25px] h-full flex flex-col">
                   {/* Icon and Title */}
-                  <div className="flex items-start gap-2 mb-4">
+                  <div className="flex items-start gap-2 mb-4 shrink-0">
                     <div className="p-2 bg-white/20 rounded-lg flex-shrink-0">
                       <Icon className="w-5 h-5 text-white" />
                     </div>
@@ -85,11 +84,11 @@ export default function SkewCards() {
                   </div>
 
                   {/* Technology Tags */}
-                  <div className="flex flex-wrap gap-1.5">
+                  <div className="flex flex-wrap gap-1.5 overflow-visible">
                     {technologies.map((tech, techIdx) => (
                       <span
                         key={techIdx}
-                        className="bg-white/10 backdrop-blur-sm px-2.5 py-1 rounded text-sm font-medium text-white/90 hover:bg-white/20 transition-colors whitespace-nowrap"
+                        className="bg-white/10 backdrop-blur-sm px-2 py-0.5 rounded text-[13px] font-medium text-white/90 hover:bg-white/20 transition-colors whitespace-nowrap"
                       >
                         {tech}
                       </span>

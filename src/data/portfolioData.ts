@@ -358,10 +358,10 @@ export const experiences: Experience[] = [
 ];
 
 export const skills = {
-  languages: ['Python', 'JavaScript', 'TypeScript', 'SQL', 'Java', 'C', 'R'],
-  webBackend: ['FastAPI', 'Flask', 'Node.js', 'Express', 'React', 'Next.js'],
-  aiMl: ['PyTorch', 'TensorFlow', 'Scikit-learn', 'OpenCV', 'Pandas', 'NumPy'],
-  infraDevops: ['Git', 'Vercel', 'Modal', 'PostgreSQL', 'MongoDB', 'Docker']
+  languages: ['Python', 'JavaScript', 'TypeScript', 'SQL', 'Java', 'C', 'R', 'HTML/CSS'],
+  webBackend: ['FastAPI', 'Flask', 'Node.js', 'Express.js', 'React', 'Next.js', 'Tailwind CSS', 'REST APIs', 'WebSockets (Socket.IO)', 'Redis'],
+  aiMl: ['PyTorch', 'TensorFlow', 'Scikit-learn', 'LightGBM', 'SHAP (Explainable AI)', 'Ollama (LLMs)', 'OpenCV', 'Pandas', 'NumPy', 'Matplotlib/Seaborn', 'Stable-Baselines3', 'SUMO'],
+  infraDevops: ['Git', 'GitHub Actions', 'Docker', 'Vercel', 'Linux', 'PostgreSQL', 'MongoDB', 'SQLite', 'Parquet', 'FFmpeg', 'TensorBoard', 'pytest']
 };
 
 export const socialLinks = {
