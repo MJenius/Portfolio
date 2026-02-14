@@ -109,7 +109,7 @@ const projects: ProjectCard[] = [
     tags: ["Python", "Streamlit", "Scikit-Learn", "SHAP"],
     metric: "8-12 tactical archetypes",
     links: [
-      { label: "View GitHub", url: "https://github.com/yourusername/scouting-dashboard", type: "github" }
+      { label: "View GitHub", url: "https://github.com/MJenius/scouting-Dashboard", type: "github" }
     ]
   },
   {

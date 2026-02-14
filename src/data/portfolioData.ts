@@ -86,7 +86,7 @@ export const projects: Project[] = [
     description: 'A professional Decision Support System for football scouts using ML, AI, and advanced analytics.',
     category: 'data-analysis',
     tags: ['Python', 'Streamlit', 'FastAPI', 'Scikit-Learn', 'SHAP', 'Ollama'],
-    github: 'https://github.com/yourusername/scouting-dashboard',
+    github: 'https://github.com/MJenius/scouting-Dashboard',
     featured: true,
     details: {
       overview: 'A professional-grade Decision Support System (DSS) designed for football scouts and recruitment analysts. Leverages Machine Learning and Generative AI to identify tactical archetypes, stylistic statistical twins, and undervalued prospects across European football and the English pyramid.',
