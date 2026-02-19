@@ -10,8 +10,8 @@ interface TextRevealProps {
   showContainer?: boolean;
 }
 
-export default function TextReveal({ 
-  word = "Cinematic Reveal", 
+export default function TextReveal({
+  word = "Cinematic Reveal",
   className = "",
   showReplayButton = true,
   showContainer = true
@@ -51,7 +51,7 @@ export default function TextReveal({
 
   return (
     <div ref={containerRef} className={cn(`text-reveal-container ${showContainer ? 'with-container' : 'without-container'}`, className)}>
-      
+
       <div key={key} className="text-wrapper">
         <h1 className="title" aria-label={word}>
           {word.split("").map((char, i) => (
@@ -68,8 +68,8 @@ export default function TextReveal({
         </h1>
       </div>
 
-      <button 
-        className="replay-button" 
+      <button
+        className="replay-button"
         onClick={replay}
         style={{ display: showReplayButton ? 'block' : 'none' }}
       >
@@ -152,13 +152,14 @@ export default function TextReveal({
 
         /* --- Typography --- */
         .title {
-          font-size: 3.5rem;
+          font-size: clamp(1.5rem, 5vw, 3.5rem);
           font-weight: 800;
           letter-spacing: -0.03em;
           line-height: 1.1;
           margin: 0;
           display: flex;
-          flex-wrap: wrap;
+          flex-wrap: nowrap;
+          white-space: nowrap;
           justify-content: center;
           color: var(--text-color);
           transition: color 0.3s ease;

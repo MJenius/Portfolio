@@ -29,7 +29,7 @@ export function ProjectsSection() {
 
   return (
     <>
-      <section id="projects" className="pt-20 pb-6 px-6 -scroll-mt-16">
+      <section id="projects" className="pt-16 md:pt-20 pb-6 px-4 md:px-6 -scroll-mt-16">
         <div className="max-w-6xl mx-auto text-center">
           <div className="reveal-element">
             <TextReveal word="My Projects" showReplayButton={false} showContainer={false} />
@@ -37,10 +37,10 @@ export function ProjectsSection() {
         </div>
       </section>
 
-      <section className="pb-12 px-6">
+      <section className="pb-12 px-4 md:px-6">
         <div className="max-w-6xl mx-auto">
-          <div className="reveal-element flex flex-col md:flex-row gap-6 items-center justify-between mb-8">
-            <div className="flex-1 max-w-md">
+          <div className="reveal-element flex flex-col md:flex-row gap-4 md:gap-6 items-stretch md:items-center justify-between mb-6 md:mb-8">
+            <div className="flex-1 w-full md:max-w-md">
               <input
                 type="text"
                 placeholder="Search projects..."
@@ -50,35 +50,31 @@ export function ProjectsSection() {
               />
             </div>
 
-            <div className="flex flex-wrap gap-3">
+            <div className="flex flex-wrap gap-2 md:gap-3">
               <button
-                className={`filter-btn px-4 py-2 rounded-lg text-sm font-medium ${
-                  activeFilter === 'all' ? 'active' : ''
-                }`}
+                className={`filter-btn px-4 py-2 rounded-lg text-sm font-medium ${activeFilter === 'all' ? 'active' : ''
+                  }`}
                 onClick={() => setActiveFilter('all')}
               >
                 All Projects
               </button>
               <button
-                className={`filter-btn px-4 py-2 rounded-lg text-sm font-medium ${
-                  activeFilter === 'ai-ml' ? 'active' : ''
-                }`}
+                className={`filter-btn px-4 py-2 rounded-lg text-sm font-medium ${activeFilter === 'ai-ml' ? 'active' : ''
+                  }`}
                 onClick={() => setActiveFilter('ai-ml')}
               >
                 AI/ML
               </button>
               <button
-                className={`filter-btn px-4 py-2 rounded-lg text-sm font-medium ${
-                  activeFilter === 'web' ? 'active' : ''
-                }`}
+                className={`filter-btn px-4 py-2 rounded-lg text-sm font-medium ${activeFilter === 'web' ? 'active' : ''
+                  }`}
                 onClick={() => setActiveFilter('web')}
               >
                 Web Development
               </button>
               <button
-                className={`filter-btn px-4 py-2 rounded-lg text-sm font-medium ${
-                  activeFilter === 'data-analysis' ? 'active' : ''
-                }`}
+                className={`filter-btn px-4 py-2 rounded-lg text-sm font-medium ${activeFilter === 'data-analysis' ? 'active' : ''
+                  }`}
                 onClick={() => setActiveFilter('data-analysis')}
               >
                 Data Analysis
@@ -88,7 +84,7 @@ export function ProjectsSection() {
         </div>
       </section>
 
-      <section className="pb-20 px-6">
+      <section className="pb-16 md:pb-20 px-4 md:px-6">
         <div className="max-w-6xl mx-auto" style={{ maxWidth: '1560px' }}>
           <div className="reveal-element">
             <ProjectsHoverEffect

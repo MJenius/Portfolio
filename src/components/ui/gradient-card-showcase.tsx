@@ -44,24 +44,24 @@ const cards: TechnologyCardConfig[] = [
 export default function SkewCards() {
   return (
     <>
-      <section className="px-6 pb-20 scroll-mt-32 md:scroll-mt-40">
+      <section className="px-4 md:px-6 pb-16 md:pb-20 scroll-mt-32 md:scroll-mt-40">
         <div className="max-w-[100rem] mx-auto">
           {/* Cards Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 pt-2">
             {cards.map(({ title, icon: Icon, technologies, gradientFrom, gradientTo }, idx) => (
               <div
                 key={idx}
-                className="group relative w-full min-h-[400px] h-full transition-all duration-500 cursor-pointer"
+                className="group relative w-full min-h-[280px] sm:min-h-[400px] h-full transition-all duration-500 cursor-pointer"
               >
                 {/* Skewed gradient panels */}
                 <span
-                  className="absolute top-0 left-[50px] w-1/2 h-full rounded-lg transform skew-x-[15deg] transition-all duration-500 group-hover:skew-x-0 group-hover:left-[20px] group-hover:w-[calc(100%-90px)] opacity-90"
+                  className="absolute top-0 left-0 sm:left-[50px] w-full sm:w-1/2 h-full rounded-lg transform sm:skew-x-[15deg] transition-all duration-500 group-hover:skew-x-0 sm:group-hover:left-[20px] sm:group-hover:w-[calc(100%-90px)] opacity-90"
                   style={{
                     background: `linear-gradient(315deg, ${gradientFrom}, ${gradientTo})`,
                   }}
                 />
                 <span
-                  className="absolute top-0 left-[50px] w-1/2 h-full rounded-lg transform skew-x-[15deg] blur-[30px] transition-all duration-500 group-hover:skew-x-0 group-hover:left-[20px] group-hover:w-[calc(100%-90px)] opacity-80"
+                  className="absolute top-0 left-0 sm:left-[50px] w-full sm:w-1/2 h-full rounded-lg transform sm:skew-x-[15deg] blur-[30px] transition-all duration-500 group-hover:skew-x-0 sm:group-hover:left-[20px] sm:group-hover:w-[calc(100%-90px)] opacity-80"
                   style={{
                     background: `linear-gradient(315deg, ${gradientFrom}, ${gradientTo})`,
                   }}
@@ -74,7 +74,7 @@ export default function SkewCards() {
                 </span>
 
                 {/* Content */}
-                <div className="relative z-20 left-0 p-[20px_25px] bg-[rgba(255,255,255,0.05)] backdrop-blur-[10px] shadow-lg rounded-lg text-white transition-all duration-500 group-hover:-left-[25px] group-hover:p-[40px_25px] h-full flex flex-col">
+                <div className="relative z-20 left-0 p-[20px_20px] sm:p-[20px_25px] bg-[rgba(255,255,255,0.05)] backdrop-blur-[10px] shadow-lg rounded-lg text-white transition-all duration-500 sm:group-hover:-left-[25px] sm:group-hover:p-[40px_25px] h-full flex flex-col">
                   {/* Icon and Title */}
                   <div className="flex items-start gap-2 mb-4 shrink-0">
                     <div className="p-2 bg-white/20 rounded-lg flex-shrink-0">

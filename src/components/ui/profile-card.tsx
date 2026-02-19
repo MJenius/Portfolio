@@ -82,14 +82,14 @@ export function ProfileCard(props: ProfileCardProps) {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, ease: 'easeOut' }}
-        className="md:hidden max-w-sm mx-auto text-center"
+        className="md:hidden max-w-md mx-auto text-center"
       >
         {/* Mobile: Live Stats */}
         <div className="mb-6">
           <LiveEngineeringStats />
         </div>
 
-        <div className="px-4">
+        <div className="px-2 sm:px-4">
           <h2 className="text-xl font-bold text-white mb-2">{name}</h2>
           <p className="text-sm font-medium text-slate-400 mb-4">{title}</p>
           <p className="text-slate-200 text-sm leading-relaxed mb-6 whitespace-pre-line">

@@ -32,14 +32,14 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
   return (
     <div className="modal" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }} onClick={onClose}>
       <div
-        className="modal-content p-8 m-4"
+        className="modal-content p-5 md:p-8 m-4"
         onClick={(e) => e.stopPropagation()}
       >
         <button className="modal-close" onClick={onClose}>
           <X className="w-6 h-6" />
         </button>
 
-        <h2 className="text-3xl font-bold mb-4 gradient-text">{project.title}</h2>
+        <h2 className="text-2xl md:text-3xl font-bold mb-4 gradient-text pr-10">{project.title}</h2>
 
         <div className="space-y-4 text-slate-300">
           <p>{project.details.overview}</p>
@@ -58,13 +58,13 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
             ))}
           </ul>
 
-          <div className="flex gap-4 mt-6">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mt-6">
             {project.github && (
               <a
                 href={project.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-lg text-white transition-colors"
+                className="bg-blue-600 hover:bg-blue-700 px-4 py-3 sm:py-2 rounded-lg text-white transition-colors text-center w-full sm:w-auto"
               >
                 View on GitHub
               </a>
@@ -74,7 +74,7 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
                 href={project.demo}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-lg text-white transition-colors"
+                className="bg-blue-600 hover:bg-blue-700 px-4 py-3 sm:py-2 rounded-lg text-white transition-colors text-center w-full sm:w-auto"
               >
                 Live Demo
               </a>

@@ -55,7 +55,7 @@ const certifications: Certification[] = [
 
 export function CertificationsSection() {
   return (
-    <section id="certifications" className="pt-24 pb-32 px-6 scroll-mt-0 relative z-10">
+    <section id="certifications" className="pt-16 md:pt-24 pb-24 md:pb-32 px-4 md:px-6 scroll-mt-0 relative z-10">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-8 reveal-element">
           <TextReveal word="Certifications" showReplayButton={false} showContainer={false} />
@@ -93,9 +93,9 @@ function CertificationCard({ cert }: { cert: Certification }) {
       className="group bg-slate-900/80 backdrop-blur-sm border border-slate-700/50 rounded-xl p-5 hover:border-purple-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/10 hover:-translate-y-1"
     >
       <div className="flex items-start gap-3 mb-3">
-        <img 
-          src={cert.logo} 
-          alt={`${cert.name} Logo`} 
+        <img
+          src={cert.logo}
+          alt={`${cert.name} Logo`}
           className="w-14 h-14 rounded-lg object-contain flex-shrink-0 p-2"
         />
         <div className="flex-1">
@@ -115,9 +115,9 @@ function CertificationCard({ cert }: { cert: Certification }) {
 export function ContactSection() {
   return (
     <>
-      <section id="contact" className="pt-20 pb-20 px-6">
+      <section id="contact" className="pt-16 md:pt-20 pb-16 md:pb-20 px-4 md:px-6">
         <div className="max-w-6xl mx-auto w-full">
-          <div className="text-center mb-12 reveal-element">
+          <div className="text-center mb-8 md:mb-12 reveal-element">
             <TextReveal word="Contact Me" showReplayButton={false} showContainer={false} />
           </div>
 
@@ -164,7 +164,7 @@ export function ContactSection() {
 
                 <div>
                   <h3 className="text-xl font-bold text-white mb-4">Profiles</h3>
-                  <div className="grid grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <a href="https://github.com/MJenius" target="_blank" rel="noopener noreferrer"
                       className="social-link p-4 rounded-lg flex items-center hover:bg-slate-800/50 transition-colors">
                       <svg className="w-6 h-6 text-blue-400 mr-3" fill="currentColor" viewBox="0 0 24 24">
@@ -203,8 +203,8 @@ export function ContactSection() {
 
                     <a href="https://www.kaggle.com/mjeniusmj" target="_blank" rel="noopener noreferrer"
                       className="social-link p-4 rounded-lg flex items-center hover:bg-slate-800/50 transition-colors">
-                      <img 
-                        src="https://www.kaggle.com/favicon.ico" 
+                      <img
+                        src="https://www.kaggle.com/favicon.ico"
                         alt="Kaggle Logo"
                         className="w-6 h-6 mr-3"
                       />
@@ -223,7 +223,7 @@ export function ContactSection() {
 
       <footer className="py-12 px-6">
         <div className="max-w-6xl mx-auto text-center">
-          <div className="flex justify-center space-x-6 mb-6">
+          <div className="flex flex-wrap justify-center gap-4 sm:gap-6 mb-6">
             <a href="https://github.com/MJenius" target="_blank" rel="noopener noreferrer"
               className="text-slate-400 hover:text-white transition-colors">
               GitHub

@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { MicroExpanderNavBar } from './components/ui/micro-expander-navbar';
 import { Home, Briefcase, Lightbulb, MessageSquare, User, BriefcaseBusiness, Award } from 'lucide-react';
 import { HeroSection } from './components/sections/HeroSection';
@@ -21,6 +21,16 @@ const navItems = [
 ];
 
 function App() {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const mql = window.matchMedia('(max-width: 767px)');
+    setIsMobile(mql.matches);
+    const handler = (e: MediaQueryListEvent) => setIsMobile(e.matches);
+    mql.addEventListener('change', handler);
+    return () => mql.removeEventListener('change', handler);
+  }, []);
+
   useEffect(() => {
     const revealElements = document.querySelectorAll('.reveal-element');
     let revealObserver: IntersectionObserver | null = null;
@@ -53,7 +63,7 @@ function App() {
         <Vortex
           backgroundColor="#000000"
           rangeY={800}
-          particleCount={550}
+          particleCount={isMobile ? 150 : 550}
           baseHue={220}
           className="w-full h-full"
         />

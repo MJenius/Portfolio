@@ -142,6 +142,7 @@ const transitionOverlay = { duration: 0.5, ease: [0.32, 0.72, 0, 1] } as const;
 const CarouselCard = memo(
   ({
     faceWidth,
+    cardHeightRatio = 0.58,
     index,
     faceCount,
     radius,
@@ -149,6 +150,7 @@ const CarouselCard = memo(
     project,
   }: {
     faceWidth: number;
+    cardHeightRatio?: number;
     index: number;
     faceCount: number;
     radius: number;
@@ -191,7 +193,7 @@ const CarouselCard = memo(
           ref={cardRef}
           className="relative rounded-2xl overflow-hidden w-full cursor-pointer"
           style={{
-            height: `${faceWidth * 0.58}px`,
+            height: `${faceWidth * cardHeightRatio}px`,
             transformStyle: "preserve-3d",
             backgroundColor: "#0e131f",
             boxShadow: "0 -10px 100px 10px rgba(78, 99, 255, 0.25), 0 0 10px 0 rgba(0, 0, 0, 0.5)",
@@ -439,6 +441,7 @@ const Carousel = memo(
     const isScreenSizeSm = useMediaQuery("(max-width: 640px)");
     const faceCount = cards.length;
     const faceWidth = isScreenSizeSm ? 260 : 380;
+    const cardHeightRatio = isScreenSizeSm ? 1.15 : 0.58;
     const cylinderWidth = faceWidth * faceCount;
     const radius = cylinderWidth / (2 * Math.PI);
     const rotation = useMotionValue(0);
@@ -487,6 +490,7 @@ const Carousel = memo(
             <CarouselCard
               key={`key-${imgUrl}-${i}`}
               faceWidth={faceWidth}
+              cardHeightRatio={cardHeightRatio}
               index={i}
               faceCount={faceCount}
               radius={radius}
