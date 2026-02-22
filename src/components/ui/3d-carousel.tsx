@@ -113,25 +113,25 @@ const projects: ProjectCard[] = [
     ]
   },
   {
-    icon: { gradientFrom: "from-orange-500", gradientTo: "to-red-600", svg: "M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" },
-    title: "Superhhero Learning",
-    subtitle: "MERN • Ed-Tech • Full Stack",
-    description: "Full-stack MERN application for online learning platform with scalable architecture, ~100 monthly users, and optimized performance.",
-    tags: ["React", "Node.js", "MongoDB", "Vercel"],
-    metric: "25% faster development",
+    icon: { gradientFrom: "from-purple-500", gradientTo: "to-indigo-600", svg: "M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" },
+    title: "Nebula - AI Movie Discovery",
+    subtitle: "Next.js • FastAPI • Vectors",
+    description: "Semantic search engine discovering movies by natural language context, visualized via an interactive 3D graph with Pinecone vectors.",
+    tags: ["Next.js", "FastAPI", "Pinecone", "Three.js"],
+    metric: "Cosine Similarity Search",
     links: [
-      { label: "Live Demo", url: "https://superhhero.com/", type: "demo" }
+      { label: "View GitHub", url: "https://github.com/rajeev8008/Nebula", type: "github" }
     ]
   },
   {
-    icon: { gradientFrom: "from-rose-500", gradientTo: "to-pink-600", svg: "M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" },
-    title: "AI Voice Assistant",
-    subtitle: "Python • NLP • Voice",
-    description: "Voice-enabled assistant for LeetCode with company-specific suggestions using spaCy NLP and LeetCode API integration.",
-    tags: ["Python", "spaCy", "ElevenLabs", "LeetCode API"],
-    metric: "30% accuracy improvement",
+    icon: { gradientFrom: "from-rose-500", gradientTo: "to-pink-600", svg: "M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" },
+    title: "DocParse AI",
+    subtitle: "Python • NLP • AI OCR",
+    description: "Intelligent PDF extraction system to parse structured data, tables, and scanned documents using advanced OCR and NLP pipelines.",
+    tags: ["Python", "PyPDF2", "spaCy", "Tesseract OCR"],
+    metric: "95% extraction accuracy",
     links: [
-      { label: "View GitHub", url: "https://github.com/MJenius/AI-Voice-Assistant-Python", type: "github" }
+      { label: "Live Demo", url: "https://pdf-playground-8wlek8vg8-mevin-joses-projects.vercel.app/", type: "demo" }
     ]
   },
 ];

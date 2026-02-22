@@ -137,6 +137,29 @@ export const projects: Project[] = [
     }
   },
   {
+    id: 'nebula',
+    title: 'Nebula - AI Movie Discovery',
+    description: 'Semantic Movie Search Engine',
+    category: 'web',
+    tags: ['Next.js', 'FastAPI', 'Python', 'Pinecone', 'Docker', 'Zustand'],
+    github: 'https://github.com/rajeev8008/Nebula',
+    featured: true,
+    details: {
+      overview: 'An AI-powered semantic search engine that discovers movies by natural language meaning and context, visualized in an interactive 3D graph.',
+      achievements: [
+        'Architected containerized full-stack system (Next.js 14 + FastAPI) orchestrating multi-service communication with Dockerized deployment and modular service separation',
+        'Implemented semantic vector search using Pinecone and optimized client-state management via Zustand, enabling low-latency context-aware discovery',
+        'Developed an interactive 3D graph visualization with Three.js to represent movies and their cosine similarity scores',
+        'Configured a robust CI/CD pipeline running Pytest, Jest, and Playwright E2E tests on every push'
+      ],
+      techStack: [
+        'Next.js, FastAPI, Python, Pinecone',
+        'Docker, Zustand, Tailwind CSS, Three.js',
+        'Sentence Transformers (all-MiniLM-L6-v2)'
+      ]
+    }
+  },
+  {
     id: 'covid-radiomics',
     title: 'COVID-19 Radiomics Detection',
     description: 'A deep learning pipeline for COVID-19 detection using chest CT imaging.',
