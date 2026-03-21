@@ -7,6 +7,7 @@ import {
   useMotionValue,
   useTransform,
 } from "framer-motion";
+import { projects as portfolioProjects } from "@/data/portfolioData";
 
 export const useIsomorphicLayoutEffect =
   typeof window !== "undefined" ? useLayoutEffect : useEffect;
@@ -67,74 +68,84 @@ type ProjectCard = {
   links?: { label: string; url: string; type: 'github' | 'demo' }[];
 };
 
-const projects: ProjectCard[] = [
-  {
-    icon: { gradientFrom: "from-emerald-500", gradientTo: "to-teal-600", svg: "M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" },
-    title: "Demand Forecasting ML",
-    subtitle: "MLOps • End-to-End • Production",
-    description: "End-to-end retail demand forecasting with hybrid ML + statistical models, drift detection, and auto-retraining pipeline.",
-    tags: ["Python", "LightGBM", "FastAPI", "Pandas"],
-    metric: "↓25% MAE improvement",
-    links: [
-      { label: "View GitHub", url: "https://github.com/MJenius/Demand-Forecasting-ML-System", type: "github" }
-    ]
-  },
-  {
-    icon: { gradientFrom: "from-red-500", gradientTo: "to-orange-600", svg: "M15 12a3 3 0 11-6 0 3 3 0 016 0z M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" },
-    title: "AEGIS Surveillance",
-    subtitle: "CV • Security • Top-10 Hackathon",
-    description: "Tamper-resistant surveillance system using HMAC-SHA256 watermarking and real-time tamper detection (blur, glare, blackout).",
-    tags: ["Python", "OpenCV", "Flask", "Socket.IO"],
-    metric: "<2% false positives",
-    links: [
-      { label: "View GitHub", url: "https://github.com/ZeroDeaths7/Aegis-Tamper-Resistant-Surveillance-System", type: "github" }
-    ]
-  },
-  {
-    icon: { gradientFrom: "from-blue-500", gradientTo: "to-cyan-600", svg: "M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" },
-    title: "Adaptive Traffic Control",
-    subtitle: "RL • PPO • Smart City",
-    description: "Reinforcement Learning agent (PPO) optimizing emergency vehicle routing in SUMO, trained on Bangalore traffic data.",
-    tags: ["Python", "Stable-Baselines3", "SUMO", "Pandas"],
-    metric: "10.6% faster emergency travel",
-    links: [
-      { label: "View GitHub", url: "#", type: "github" }
-    ]
-  },
-  {
-    icon: { gradientFrom: "from-amber-500", gradientTo: "to-orange-600", svg: "M13 10V3L4 14h7v7l9-11h-7z" },
-    title: "Football Scouting Dashboard",
-    subtitle: "ML • Analytics • Decision Support",
-    description: "Professional DSS for scouts identifying tactical archetypes, statistical twins, and undervalued prospects using SHAP, PCA, and Generative AI.",
-    tags: ["Python", "Streamlit", "Scikit-Learn", "SHAP"],
-    metric: "8-12 tactical archetypes",
-    links: [
-      { label: "View GitHub", url: "https://github.com/MJenius/scouting-Dashboard", type: "github" }
-    ]
-  },
-  {
-    icon: { gradientFrom: "from-purple-500", gradientTo: "to-indigo-600", svg: "M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" },
-    title: "Nebula - AI Movie Discovery",
-    subtitle: "Next.js • FastAPI • Vectors",
-    description: "Semantic search engine discovering movies by natural language context, visualized via an interactive 3D graph with Pinecone vectors.",
-    tags: ["Next.js", "FastAPI", "Pinecone", "Three.js"],
-    metric: "Cosine Similarity Search",
-    links: [
-      { label: "View GitHub", url: "https://github.com/rajeev8008/Nebula", type: "github" }
-    ]
-  },
-  {
-    icon: { gradientFrom: "from-rose-500", gradientTo: "to-pink-600", svg: "M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" },
-    title: "DocParse AI",
-    subtitle: "Python • NLP • AI OCR",
-    description: "Intelligent PDF extraction system to parse structured data, tables, and scanned documents using advanced OCR and NLP pipelines.",
-    tags: ["Python", "PyPDF2", "spaCy", "Tesseract OCR"],
-    metric: "95% extraction accuracy",
-    links: [
-      { label: "Live Demo", url: "https://pdf-playground-8wlek8vg8-mevin-joses-projects.vercel.app/", type: "demo" }
-    ]
-  },
-];
+// Map portfolio projects to carousel format - only include featured projects
+const getCarouselProjects = (): ProjectCard[] => {
+  const projectMap: { [key: string]: ProjectCard } = {
+    'demand-forecasting': {
+      icon: { gradientFrom: "from-emerald-500", gradientTo: "to-teal-600", svg: "M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" },
+      title: "Demand Forecasting ML",
+      subtitle: "MLOps • End-to-End • Production",
+      description: "End-to-end retail demand forecasting with hybrid ML + statistical models, drift detection, and auto-retraining pipeline.",
+      tags: ["Python", "LightGBM", "FastAPI", "Pandas"],
+      metric: "↓25% MAE improvement",
+      links: [
+        { label: "View GitHub", url: "https://github.com/MJenius/Demand-Forecasting-ML-System", type: "github" }
+      ]
+    },
+    'aegis': {
+      icon: { gradientFrom: "from-red-500", gradientTo: "to-orange-600", svg: "M15 12a3 3 0 11-6 0 3 3 0 016 0z M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" },
+      title: "AEGIS Surveillance",
+      subtitle: "CV • Security • Top-10 Hackathon",
+      description: "Tamper-resistant surveillance system using HMAC-SHA256 watermarking and real-time tamper detection (blur, glare, blackout).",
+      tags: ["Python", "OpenCV", "Flask", "Socket.IO"],
+      metric: "<2% false positives",
+      links: [
+        { label: "View GitHub", url: "https://github.com/ZeroDeaths7/Aegis-Tamper-Resistant-Surveillance-System", type: "github" }
+      ]
+    },
+    'traffic-control': {
+      icon: { gradientFrom: "from-blue-500", gradientTo: "to-cyan-600", svg: "M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" },
+      title: "Adaptive Traffic Control",
+      subtitle: "RL • PPO • Smart City",
+      description: "Reinforcement Learning agent (PPO) optimizing emergency vehicle routing in SUMO, trained on Bangalore traffic data.",
+      tags: ["Python", "Stable-Baselines3", "SUMO", "Pandas"],
+      metric: "10.6% faster emergency travel",
+      links: [
+        { label: "View GitHub", url: "#", type: "github" }
+      ]
+    },
+    'football-scouting': {
+      icon: { gradientFrom: "from-amber-500", gradientTo: "to-orange-600", svg: "M13 10V3L4 14h7v7l9-11h-7z" },
+      title: "Football Scouting Dashboard",
+      subtitle: "ML • Analytics • Decision Support",
+      description: "Professional DSS for scouts identifying tactical archetypes, statistical twins, and undervalued prospects using SHAP, PCA, and Generative AI.",
+      tags: ["Python", "Streamlit", "Scikit-Learn", "SHAP"],
+      metric: "8-12 tactical archetypes",
+      links: [
+        { label: "View GitHub", url: "https://github.com/MJenius/scouting-Dashboard", type: "github" }
+      ]
+    },
+    'nebula': {
+      icon: { gradientFrom: "from-purple-500", gradientTo: "to-indigo-600", svg: "M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" },
+      title: "Nebula - AI Movie Discovery",
+      subtitle: "Next.js • FastAPI • Vectors",
+      description: "Semantic search engine discovering movies by natural language context, visualized via an interactive 3D graph with Pinecone vectors.",
+      tags: ["Next.js", "FastAPI", "Pinecone", "Three.js"],
+      metric: "Cosine Similarity Search",
+      links: [
+        { label: "View GitHub", url: "https://github.com/rajeev8008/Nebula", type: "github" }
+      ]
+    },
+    'adaptive-golf': {
+      icon: { gradientFrom: "from-green-500", gradientTo: "to-emerald-600", svg: "M14 4l-4-4-9 9 4 4 9-9zm0 0l4-4m-8 8l4-4" },
+      title: "Adaptive Golf Foundation",
+      subtitle: "React • Performance • Accessibility",
+      description: "High-performance SPA with code splitting, optimized 30+ media assets, lazy-loaded gallery, and polished Framer Motion animations.",
+      tags: ["React", "TypeScript", "Framer Motion", "Tailwind CSS"],
+      metric: "40% bundle reduction",
+      links: [
+        { label: "Visit Live", url: "https://www.adaptivegolfalliance.com/", type: "demo" }
+      ]
+    },
+  };
+
+  return portfolioProjects
+    .filter(p => p.featured)
+    .map(p => projectMap[p.id] || null)
+    .filter((p): p is ProjectCard => p !== null);
+};
+
+const projects: ProjectCard[] = getCarouselProjects();
 
 const transitionOverlay = { duration: 0.5, ease: [0.32, 0.72, 0, 1] } as const;
 
@@ -470,12 +481,12 @@ const Carousel = memo(
           }}
           onDrag={(_, info) =>
             isCarouselActive &&
-            rotation.set(rotation.get() + info.offset.x * 0.05)
+            rotation.set(rotation.get() + info.offset.x * 0.02)
           }
           onDragEnd={(_, info) =>
             isCarouselActive &&
             controls.start({
-              rotateY: rotation.get() + info.velocity.x * 0.05,
+              rotateY: rotation.get() + info.velocity.x * 0.02,
               transition: {
                 type: "spring",
                 stiffness: 100,

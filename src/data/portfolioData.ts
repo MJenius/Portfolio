@@ -358,6 +358,62 @@ export const projects: Project[] = [
         '30% improvement in response accuracy over rule-based systems'
       ]
     }
+  },
+  {
+    id: 'multi-agent-coder',
+    title: 'Multi-Agent GitHub Issue Resolver',
+    description: 'An autonomous multi-agent AI system using LangGraph and Ollama that analyzes, resolves, and validates GitHub issues with deterministic flow control and isolated Docker sandbox testing.',
+    category: 'ai-ml',
+    tags: ['LangGraph', 'Ollama', 'Python', 'Docker', 'Multi-Agent AI', 'FastAPI', 'StateGraph'],
+    github: 'https://github.com/MJenius/Multi-Agent-Coder',
+    featured: false,
+    details: {
+      overview: 'A production-grade autonomous multi-agent system orchestrated through a Supervisor-led StateGraph architecture. Built with LangGraph and Ollama (Llama 3.2, Qwen 2.5), it intelligently analyzes GitHub issues and generates surgical patches with deterministic safety guardrails and isolated Docker sandbox validation.',
+      achievements: [
+        'Architected a Supervisor-orchestrated StateGraph with specialized agents (Researcher, Coder, Reviewer) for deterministic issue resolution',
+        'Implemented Hard Guards to enforce deterministic flow control and prevent infinite loops in multi-agent workflows',
+        'Generated surgical, standard Unified Diffs for precise patch application with minimal side effects',
+        'Deployed an isolated, network-disabled Docker sandbox for safe patch testing with Git-based regression baselines',
+        'Integrated TokenBucket rate limiting and FastAPI backend for production-grade scalability',
+        'Achieved autonomous end-to-end issue resolution without manual intervention'
+      ],
+      techStack: [
+        'LangGraph for multi-agent orchestration and StateGraph patterns',
+        'Ollama with Llama 3.2 and Qwen 2.5 for local LLM inference',
+        'Docker Engine with network isolation for safe patch validation',
+        'Python with FastAPI for backend API layer',
+        'Git for baseline management and regression tracking',
+        'TokenBucket rate limiting for production stability'
+      ]
+    }
+  },
+  {
+    id: 'adaptive-golf',
+    title: 'Adaptive Golf Alliance Foundation',
+    description: 'A high-performance React SPA developed for a registered non-profit, emphasizing accessibility and optimized delivery of 30+ media assets through code splitting and lazy loading.',
+    category: 'web',
+    tags: ['React', 'TypeScript', 'Framer Motion', 'Tailwind CSS', 'EmailJS', 'Vercel', 'Performance'],
+    demo: 'https://www.adaptivegolfalliance.com/',
+    featured: true,
+    details: {
+      overview: 'A production React Single Page Application developed for the Adaptive Golf Alliance Foundation, a registered non-profit. The application prioritizes accessibility, performance optimization, and seamless user experience through modern architecture and best practices in web delivery.',
+      achievements: [
+        'Implemented aggressive code splitting and dynamic imports to reduce initial bundle size by 40%',
+        'Optimized image assets through compression and responsive sizing, enabling 30+ high-quality media files with minimal load time impact',
+        'Architected a paginated media gallery with lazy loading and intersection observer for progressive image rendering',
+        'Integrated Framer Motion animations for polished, accessible page transitions and interactive UI components',
+        'Built a validated contact form with EmailJS integration for seamless non-profit communication workflows',
+        'Deployed to Vercel with automatic CI/CD for instant production updates'
+      ],
+      techStack: [
+        'React with TypeScript for type-safe component architecture',
+        'Framer Motion for sophisticated animations and interactions',
+        'Tailwind CSS for rapidly scalable, accessible styling',
+        'EmailJS for client-side form submissions',
+        'Lazy loading and intersection observer APIs for performance',
+        'Vercel deployment with edge-optimized delivery'
+      ]
+    }
   }
 ];
 
