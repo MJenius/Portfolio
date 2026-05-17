@@ -126,6 +126,17 @@ const getCarouselProjects = (): ProjectCard[] => {
         { label: "View GitHub", url: "https://github.com/rajeev8008/Nebula", type: "github" }
       ]
     },
+    'ai-data-analyst': {
+      icon: { gradientFrom: "from-purple-500", gradientTo: "to-indigo-600", svg: "M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" },
+      title: "AI Data Analyst Agent",
+      subtitle: "Multi-Agent • FastAPI • FAISS",
+      description: "Multi-agent database analyzer with semantic schema retrieval, read-only SQL sandboxing, self-correcting query repair, and resilient LLM cascading.",
+      tags: ["Python", "FastAPI", "FAISS", "Groq / Gemini"],
+      metric: "95–100% SQL Success Rate",
+      links: [
+        { label: "View GitHub", url: "https://github.com/MJenius/ai-data-analyst-agent", type: "github" }
+      ]
+    },
     'adaptive-golf': {
       icon: { gradientFrom: "from-green-500", gradientTo: "to-emerald-600", svg: "M14 4l-4-4-9 9 4 4 9-9zm0 0l4-4m-8 8l4-4" },
       title: "Adaptive Golf Foundation",

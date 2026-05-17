@@ -13,7 +13,12 @@ export function ProjectsSection() {
   const [showAll, setShowAll] = useState(false);
 
   const filteredProjects = projects.filter((project) => {
-    const matchesFilter = activeFilter === 'all' || project.category === activeFilter || project.category === 'all';
+    const matchesFilter =
+      activeFilter === 'all' ||
+      project.category === 'all' ||
+      (Array.isArray(project.category)
+        ? project.category.includes(activeFilter)
+        : project.category === activeFilter);
     const matchesSearch =
       searchQuery === '' ||
       project.title.toLowerCase().includes(searchQuery.toLowerCase()) ||

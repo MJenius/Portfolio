@@ -12,7 +12,8 @@ import {
     TrendingUp,
     Share2,
     Code,
-    Brain
+    Brain,
+    Database
 } from "lucide-react";
 
 const getProjectIcon = (projectId: string) => {
@@ -26,7 +27,8 @@ const getProjectIcon = (projectId: string) => {
         "demand-forecasting": <TrendingUp className="w-6 h-6 text-white" />,
         "smms": <Share2 className="w-6 h-6 text-white" />,
         "spotify": <Code className="w-6 h-6 text-white" />,
-        "cardiovascular": <Brain className="w-6 h-6 text-white" />
+        "cardiovascular": <Brain className="w-6 h-6 text-white" />,
+        "ai-data-analyst": <Database className="w-6 h-6 text-white" />
     };
     return iconMap[projectId] || <Code className="w-6 h-6 text-white" />;
 };
@@ -127,7 +129,8 @@ export const ProjectsHoverEffect = ({
 
 const ProjectCard = ({ project, index }: { project: Project; index: number }) => {
     const icon = getProjectIcon(project.id);
-    const gradient = getProjectGradient(project.category, index);
+    const primaryCategory = Array.isArray(project.category) ? project.category[0] : project.category;
+    const gradient = getProjectGradient(primaryCategory, index);
     const stats = project.tags.slice(0, 3).join(", ");
 
     return (
@@ -155,21 +158,26 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
                         {icon}
                     </div>
                     <div>
-                        <h4 className="text-lg font-bold text-white tracking-wide">
+                        <h4 className="text-lg font-bold text-white tracking-wide mb-1">
                             {project.title}
                         </h4>
-                        <span
-                            className={cn(
-                                "text-xs px-2 py-0.5 rounded-full whitespace-nowrap",
-                                project.category === "ai-ml"
-                                    ? "bg-purple-500/20 text-purple-300"
-                                    : project.category === "data-analysis"
-                                    ? "bg-amber-500/20 text-amber-300"
-                                    : "bg-green-500/20 text-green-300"
-                            )}
-                        >
-                            {project.category === "ai-ml" ? "AI/ML" : project.category === "data-analysis" ? "Data Analysis" : "Web Dev"}
-                        </span>
+                        <div className="flex flex-wrap gap-1.5">
+                            {(Array.isArray(project.category) ? project.category : [project.category]).map((cat) => (
+                                <span
+                                    key={cat}
+                                    className={cn(
+                                        "text-[10px] px-2 py-0.5 rounded-full whitespace-nowrap font-medium border",
+                                        cat === "ai-ml"
+                                            ? "bg-purple-500/10 text-purple-300 border-purple-500/30"
+                                            : cat === "data-analysis"
+                                            ? "bg-amber-500/10 text-amber-300 border-amber-500/30"
+                                            : "bg-green-500/10 text-green-300 border-green-500/30"
+                                    )}
+                                >
+                                    {cat === "ai-ml" ? "AI/ML" : cat === "data-analysis" ? "Data Analysis" : "Web Dev"}
+                                </span>
+                            ))}
+                        </div>
                     </div>
                 </div>
 

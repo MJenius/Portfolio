@@ -2,7 +2,7 @@ export interface Project {
   id: string;
   title: string;
   description: string;
-  category: 'ai-ml' | 'web' | 'data-analysis' | 'all';
+  category: ('ai-ml' | 'web' | 'data-analysis' | 'all') | ('ai-ml' | 'web' | 'data-analysis' | 'all')[];
   tags: string[];
   image?: string;
   github?: string;
@@ -32,6 +32,32 @@ export interface Certification {
 }
 
 export const projects: Project[] = [
+  {
+    id: 'ai-data-analyst',
+    title: 'AI Data Analyst Agent',
+    description: 'A multi-agent AI system designed for reliable database analysis with FAISS schema search, sandboxed query execution, and resilient LLM cascading.',
+    category: ['data-analysis', 'ai-ml'],
+    tags: ['Python', 'FastAPI', 'FAISS', 'Groq API', 'Multi-Agent AI', 'SQL', 'LLM Failover'],
+    github: 'https://github.com/MJenius/ai-data-analyst-agent',
+    featured: true,
+    details: {
+      overview: 'A multi-agent AI system designed for reliable database analysis. Given a natural language business question, the system retrieves relevant schemas via semantic search (FAISS), generates precise SQL queries, executes them in a sandboxed SQLite environment, validates the output with compiler feedback, and provides a structured executive report with fallback LLM routing (Groq/Gemini).',
+      achievements: [
+        'Orchestrated a 3-agent pipeline (Planner, Executor, Evaluator) using FastAPI and SSE for real-time telemetry streaming',
+        'Engineered a Schema Retriever utilizing FAISS dense vector search and disk-based caching, achieving ~85-90% retrieval accuracy',
+        'Built an Analytics Executor with strict query parsing and read-only sandboxed database connections for verified safety',
+        'Implemented an automated 2-retry self-correction loop using database compiler feedback, achieving 95-100% SQL success rate',
+        'Designed a resilient API failover client cascading from Groq (Llama 3.3) to Gemini (1.5 Flash) with deterministic local SQL backup',
+        'Created a premium glassmorphism dashboard UI using custom HSL CSS, ES6+ Javascript, and Server-Sent Events telemetry'
+      ],
+      techStack: [
+        'Python 3.11+, FastAPI, Uvicorn',
+        'FAISS, SentenceTransformers (all-MiniLM-L6-v2) for vector search',
+        'Groq API (Llama 3.3), Gemini API (1.5 Flash), SQLite3',
+        'Vanilla HTML5, ES6+ JS, Custom HSL CSS (Glassmorphism UI, SSE)'
+      ]
+    }
+  },
   {
     id: 'demand-forecasting',
     title: 'Demand Forecasting ML System',
@@ -394,7 +420,7 @@ export const projects: Project[] = [
     category: 'web',
     tags: ['React', 'TypeScript', 'Framer Motion', 'Tailwind CSS', 'EmailJS', 'Vercel', 'Performance'],
     demo: 'https://www.adaptivegolfalliance.com/',
-    featured: true,
+    featured: false,
     details: {
       overview: 'A production React Single Page Application developed for the Adaptive Golf Alliance Foundation, a registered non-profit. The application prioritizes accessibility, performance optimization, and seamless user experience through modern architecture and best practices in web delivery.',
       achievements: [
