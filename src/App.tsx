@@ -59,7 +59,7 @@ function App() {
 
   return (
     <>
-      <div className="fixed inset-0 -z-10">
+      <div className="fixed inset-0 -z-10 inline-flex">
         <Vortex
           backgroundColor="#000000"
           rangeY={800}

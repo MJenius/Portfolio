@@ -18,7 +18,7 @@ export function HeroSection() {
         </div>
 
         <div className="reveal-element">
-          <div className="h-30 max-md:h-20 flex items-center justify-center mb-10 max-md:mb-6">
+          <div className="h-32 max-md:h-20 flex items-center justify-center mb-10 max-md:mb-6">
             <GooeyText
               texts={['AI Developer', 'ML Engineer', 'Fullstack Dev', 'Problem Solver']}
               morphTime={1}
