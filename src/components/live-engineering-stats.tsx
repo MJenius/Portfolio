@@ -78,7 +78,7 @@ export function LiveEngineeringStats() {
         {metricRow(
           <Code2 className="w-5 h-5" />,
           'Total Contributions',
-          stats.github.totalContributions >= 400 ? `${stats.github.totalContributions}+` : stats.github.totalContributions,
+          stats.github.totalContributions >= 500 ? `${stats.github.totalContributions}+` : stats.github.totalContributions,
           '',
           'All-time GitHub contributions across all repositories'
         )}

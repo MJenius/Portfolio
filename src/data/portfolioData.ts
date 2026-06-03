@@ -448,7 +448,7 @@ export const experiences: Experience[] = [
     title: 'B.Tech in Artificial Intelligence & Machine Learning',
     organization: 'PES University, Bangalore',
     period: '2023 – 2027',
-    description: 'Pursuing a Bachelor\'s degree with 2 scholarships awarded. Focus on building strong foundations in core computer science and applied machine learning.',
+    description: 'Pursuing a Bachelor\'s degree with 3 scholarships awarded. Focus on building strong foundations in core computer science and applied machine learning.',
     tags: ['Machine Learning', 'Data Structures', 'Software Engineering', 'Algorithms'],
     glowColors: ['#9333ea', '#ec4899', '#3b82f6']
   },
@@ -463,10 +463,10 @@ export const experiences: Experience[] = [
 ];
 
 export const skills = {
-  languages: ['Python', 'JavaScript', 'TypeScript', 'SQL', 'Java', 'C', 'R', 'HTML/CSS'],
-  webBackend: ['FastAPI', 'Flask', 'Node.js', 'Express.js', 'React', 'Next.js', 'Tailwind CSS', 'REST APIs', 'WebSockets (Socket.IO)', 'Redis'],
-  aiMl: ['PyTorch', 'TensorFlow', 'Scikit-learn', 'LightGBM', 'SHAP (Explainable AI)', 'Ollama (LLMs)', 'OpenCV', 'Pandas', 'NumPy', 'Matplotlib/Seaborn', 'Stable-Baselines3', 'SUMO'],
-  infraDevops: ['Git', 'GitHub Actions', 'Docker', 'Vercel', 'Linux', 'PostgreSQL', 'MongoDB', 'SQLite', 'Parquet', 'FFmpeg', 'TensorBoard', 'pytest']
+  languages: ['Python', 'SQL (PostgreSQL/MySQL)', 'JavaScript (ES6+)', 'TypeScript', 'Java', 'R', 'C', 'HTML/CSS'],
+  webBackend: ['React', 'Next.js 14', 'FastAPI', 'Node.js', 'Express.js', 'Flask', 'Tailwind CSS', 'Zustand', 'Framer Motion', 'REST APIs', 'JWT Auth', 'RBAC', 'Rate Limiting', 'Socket.IO', 'Stripe API', 'Vercel', 'Responsive Design', 'Cloudinary'],
+  aiMl: ['PyTorch', 'Scikit-learn', 'LightGBM', 'Stable-Baselines3', 'SHAP', 'OpenCV', 'NLP', 'FAISS', 'Sentence Transformers', 'RAG', 'Groq/Gemini APIs', 'Llama 3 (Ollama)', 'Prompt Engineering', 'Pandas', 'NumPy', 'SciPy', 'Matplotlib', 'Plotly', 'Streamlit', 'Clustering', 'Time-Series Forecasting', 'Feature Engineering', 'EDA', 'ETL Pipelines', 'Model Evaluation', 'SUMO'],
+  infraDevops: ['Docker', 'CI/CD', 'GitHub Actions', 'Git', 'PostgreSQL', 'MongoDB (Mongoose)', 'SQLite', 'Redis', 'Pinecone', 'Supabase', 'Vector Databases', 'Jest', 'Supertest', 'Drift Detection', 'Model Monitoring', 'MLOps', 'Linux', 'pytest']
 };
 
 export const socialLinks = {
