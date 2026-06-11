@@ -80,15 +80,15 @@ export default function TextReveal({
       <style>{`
         /* --- THEME VARIABLES --- */
         .text-reveal-container {
-          /* Light Mode Defaults (Zinc Theme) */
-          --bg-color: #ffffff;
-          --text-color: #18181b;      /* Zinc-900 */
-          --btn-bg: #f4f4f5;          /* Zinc-100 */
-          --btn-text: #18181b;
-          --btn-border: #e4e4e7;      /* Zinc-200 */
-          --btn-hover: #e4e4e7;
-          --shine-color: rgba(0, 0, 0, 0.1);
-          --container-border: #e4e4e7;
+          /* Website is dark-themed by default */
+          --bg-color: #09090b;      /* Zinc-950 */
+          --text-color: #fafafa;    /* Zinc-50 */
+          --btn-bg: #27272a;        /* Zinc-800 */
+          --btn-text: #ffffff;
+          --btn-border: #3f3f46;    /* Zinc-700 */
+          --btn-hover: #3f3f46;
+          --shine-color: rgba(255, 255, 255, 0.15);
+          --container-border: #27272a;
         }
 
         /* Dark Mode Overrides (System Preference OR .dark class) */

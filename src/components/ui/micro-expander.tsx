@@ -70,7 +70,7 @@ const MicroExpander = React.forwardRef<HTMLButtonElement, MicroExpanderProps>(
       outline:
         'bg-transparent border border-input text-foreground hover:border-primary',
       ghost:
-        'bg-accent/50 border border-transparent text-accent-foreground hover:bg-accent',
+        'bg-gradient-to-b from-slate-800/60 to-slate-900/60 border border-slate-700/50 text-slate-400 hover:text-slate-100 hover:border-slate-600/80 hover:from-slate-800/80 hover:to-slate-900/80',
       destructive:
         'bg-destructive text-destructive-foreground border border-destructive hover:bg-destructive/90',
     };

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { MicroExpanderNavBar } from './components/ui/micro-expander-navbar';
+import { ResponsiveMagneticDock } from './components/ui/responsive-magnetic-dock';
 import { Home, Briefcase, Lightbulb, MessageSquare, User, BriefcaseBusiness, Award } from 'lucide-react';
 import { HeroSection } from './components/sections/HeroSection';
 import { FeaturedProjectsSection } from './components/sections/FeaturedProjectsSection';
@@ -68,7 +68,7 @@ function App() {
           className="w-full h-full"
         />
       </div>
-      <MicroExpanderNavBar items={navItems} />
+      <ResponsiveMagneticDock items={navItems} />
       <div className="relative z-10">
         <HeroSection />
         <FeaturedProjectsSection />

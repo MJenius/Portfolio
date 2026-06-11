@@ -115,7 +115,7 @@ function CertificationCard({ cert }: { cert: Certification }) {
 export function ContactSection() {
   return (
     <>
-      <section id="contact" className="pt-16 md:pt-20 pb-16 md:pb-20 px-4 md:px-6">
+      <section id="contact" className="pt-16 md:pt-20 pb-16 md:pb-20 px-4 md:px-6 -scroll-mt-16">
         <div className="max-w-6xl mx-auto w-full">
           <div className="text-center mb-8 md:mb-12 reveal-element">
             <TextReveal word="Contact Me" showReplayButton={false} showContainer={false} />
