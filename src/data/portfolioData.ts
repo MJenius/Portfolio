@@ -33,6 +33,32 @@ export interface Certification {
 
 export const projects: Project[] = [
   {
+    id: 'underdog-ai',
+    title: 'UnderdogAI',
+    description: 'Decision Intelligence and Predictive Football Analytics Platform designed to identify underdogs, simulate tournaments, and predict upset probabilities.',
+    category: ['data-analysis', 'ai-ml'],
+    tags: ['Python', 'FastAPI', 'dbt', 'PyMC', 'Kafka', 'Docker', 'Airflow'],
+    github: 'https://github.com/MJenius/UnderdogAI',
+    featured: true,
+    details: {
+      overview: 'UnderdogAI is built on a modular data-to-decision architecture combining streaming event meshes, Bayesian statistics, and causal inference. It models match outcomes as independent Poisson processes with latent team strength parameters inferred through MCMC sampling.',
+      achievements: [
+        'Implemented event-driven simulation processing using Apache Kafka for long-running Monte Carlo tournaments',
+        'Engineered a probabilistic model via Bayesian Inference (PyMC) to estimate latent team strengths and uncertainty',
+        'Developed dbt analytics layer to transform raw staging tables into a structured feature warehouse',
+        'Utilized Microsoft\'s DoWhy to isolate the Average Treatment Effect of team preparation on tournament outcomes',
+        'Architected horizontal scalability with FastAPI gateway and stateless, containerized simulation workers'
+      ],
+      techStack: [
+        'Python, FastAPI, gRPC',
+        'PyMC (Bayesian Modeling), DoWhy (Causal Inference)',
+        'dbt (Analytics Engineering), PostgreSQL, MinIO',
+        'Apache Kafka, Redis, Apache Airflow',
+        'Docker, Kubernetes, Next.js'
+      ]
+    }
+  },
+  {
     id: 'ai-data-analyst',
     title: 'AI Data Analyst Agent',
     description: 'A multi-agent AI system designed for reliable database analysis with FAISS schema search, sandboxed query execution, and resilient LLM cascading.',
@@ -62,7 +88,7 @@ export const projects: Project[] = [
     id: 'demand-forecasting',
     title: 'Demand Forecasting ML System',
     description: 'A machine learning system for predicting retail demand patterns.',
-    category: 'data-analysis',
+    category: ['data-analysis', 'ai-ml'],
     tags: ['Python', 'Time Series', 'Forecasting', 'XGBoost', 'ML'],
     featured: true,
     details: {
@@ -110,7 +136,7 @@ export const projects: Project[] = [
     id: 'football-scouting',
     title: 'GenAI Football Scouting Dashboard',
     description: 'A professional Decision Support System for football scouts using ML, AI, and advanced analytics.',
-    category: 'data-analysis',
+    category: ['data-analysis', 'ai-ml'],
     tags: ['Python', 'Streamlit', 'FastAPI', 'Scikit-Learn', 'SHAP', 'Ollama'],
     github: 'https://github.com/MJenius/scouting-Dashboard',
     featured: true,
