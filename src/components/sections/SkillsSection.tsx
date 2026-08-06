@@ -4,7 +4,7 @@ import TextReveal from '../ui/text-reveal';
 export function SkillsSection() {
   return (
     <>
-      <section id="skills" className="pt-16 md:pt-20 pb-8 md:pb-12 px-4 md:px-6 -scroll-mt-16">
+      <section id="skills" className="pt-6 md:pt-8 pb-2 md:pb-4 px-4 md:px-6 -scroll-mt-6">
         <div className="max-w-6xl mx-auto text-center">
           <div className="reveal-element">
             <TextReveal word="Technical Skills" showReplayButton={false} showContainer={false} />
@@ -12,7 +12,7 @@ export function SkillsSection() {
         </div>
       </section>
 
-      <section className="pb-20 px-6">
+      <section className="pb-24 md:pb-32 px-4 md:px-6">
         <div className="max-w-6xl mx-auto">
           <div className="reveal-element">
             <DemoOne />
