@@ -8,6 +8,7 @@ import {
   useTransform,
 } from "framer-motion";
 import { projects as portfolioProjects } from "@/data/portfolioData";
+import { GlowEffect } from "@/components/ui/glow-effect";
 
 export const useIsomorphicLayoutEffect =
   typeof window !== "undefined" ? useLayoutEffect : useEffect;
@@ -211,131 +212,58 @@ const CarouselCard = memo(
         }}
         onClick={() => handleClick(project.title, index)}
       >
-        <motion.div
-          ref={cardRef}
-          className="relative rounded-2xl overflow-hidden w-full cursor-pointer"
-          style={{
-            height: `${faceWidth * cardHeightRatio}px`,
-            transformStyle: "preserve-3d",
-            backgroundColor: "#0e131f",
-            boxShadow: "0 -10px 100px 10px rgba(78, 99, 255, 0.25), 0 0 10px 0 rgba(0, 0, 0, 0.5)",
-          }}
-          initial={{ y: 0 }}
-          animate={{
-            y: isHovered ? -5 : 0,
-            rotateX: rotation.x,
-            rotateY: rotation.y,
-          }}
-          transition={{
-            type: "spring",
-            stiffness: 300,
-            damping: 20
-          }}
-          onMouseEnter={() => setIsHovered(true)}
-          onMouseLeave={handleMouseLeave}
-          onMouseMove={handleMouseMove}
+        <div
+          className="relative w-full"
+          style={{ height: `${faceWidth * cardHeightRatio}px` }}
         >
-          {/* Subtle glass reflection overlay */}
+          <GlowEffect
+            colors={['#0894FF', '#C959DD', '#FF2E54', '#FF9004']}
+            mode='static'
+            blur='medium'
+            className="rounded-2xl"
+          />
           <motion.div
-            className="absolute inset-0 z-35 pointer-events-none"
+            ref={cardRef}
+            className="relative h-full w-full rounded-2xl bg-black p-3 sm:p-4.5 text-white flex flex-col justify-between items-center text-center cursor-pointer overflow-hidden z-10"
             style={{
-              background: "linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0) 40%, rgba(255,255,255,0) 80%, rgba(255,255,255,0.05) 100%)",
-              backdropFilter: "blur(2px)",
+              transformStyle: "preserve-3d",
             }}
+            initial={{ y: 0 }}
             animate={{
-              opacity: isHovered ? 0.7 : 0.5,
-              rotateX: -rotation.x * 0.2,
-              rotateY: -rotation.y * 0.2,
+              y: isHovered ? -5 : 0,
+              rotateX: rotation.x,
+              rotateY: rotation.y,
             }}
             transition={{
-              duration: 0.4,
-              ease: "easeOut"
+              type: "spring",
+              stiffness: 300,
+              damping: 20
             }}
-          />
-
-          {/* Dark background */}
-          <motion.div
-            className="absolute inset-0 z-0"
-            style={{
-              background: "linear-gradient(180deg, #000000 0%, #000000 70%)",
-            }}
-          />
-
-          {/* Noise texture overlay */}
-          <motion.div
-            className="absolute inset-0 opacity-30 mix-blend-overlay z-10"
-            style={{
-              backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='5' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")`,
-            }}
-          />
-
-          {/* Purple/blue glow effect */}
-          <motion.div
-            className="absolute bottom-0 left-0 right-0 h-2/3 z-20"
-            style={{
-              background: `
-                radial-gradient(ellipse at bottom right, rgba(172, 92, 255, 0.7) -10%, rgba(79, 70, 229, 0) 70%),
-                radial-gradient(ellipse at bottom left, rgba(56, 189, 248, 0.7) -10%, rgba(79, 70, 229, 0) 70%)
-              `,
-              filter: "blur(40px)",
-            }}
-            animate={{
-              opacity: isHovered ? 0.9 : 0.8,
-              y: isHovered ? rotation.x * 0.5 : 0,
-            }}
-            transition={{
-              duration: 0.4,
-              ease: "easeOut"
-            }}
-          />
-
-          {/* Central purple glow */}
-          <motion.div
-            className="absolute bottom-0 left-0 right-0 h-2/3 z-21"
-            style={{
-              background: `
-                radial-gradient(circle at bottom center, rgba(161, 58, 229, 0.7) -20%, rgba(79, 70, 229, 0) 60%)
-              `,
-              filter: "blur(45px)",
-            }}
-            animate={{
-              opacity: isHovered ? 0.85 : 0.75,
-              y: isHovered ? `calc(10% + ${rotation.x * 0.3}px)` : "10%",
-            }}
-            transition={{
-              duration: 0.4,
-              ease: "easeOut"
-            }}
-          />
-
-          {/* Enhanced bottom border glow */}
-          <motion.div
-            className="absolute bottom-0 left-0 right-0 h-0.5 z-25"
-            style={{
-              background: "linear-gradient(90deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.7) 50%, rgba(255, 255, 255, 0.05) 100%)",
-            }}
-            animate={{
-              boxShadow: isHovered
-                ? "0 0 20px 4px rgba(172, 92, 255, 0.9), 0 0 30px 6px rgba(138, 58, 185, 0.7), 0 0 40px 8px rgba(56, 189, 248, 0.5)"
-                : "0 0 15px 3px rgba(172, 92, 255, 0.8), 0 0 25px 5px rgba(138, 58, 185, 0.6), 0 0 35px 7px rgba(56, 189, 248, 0.4)",
-              opacity: isHovered ? 1 : 0.9,
-            }}
-            transition={{
-              duration: 0.4,
-              ease: "easeOut"
-            }}
-          />
-
-          {/* Card content */}
-          <motion.div
-            className="relative flex flex-col h-full p-3 z-40 justify-between items-center text-center"
-            animate={{
-              z: 2
-            }}
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={handleMouseLeave}
+            onMouseMove={handleMouseMove}
           >
+            {/* Subtle glass reflection overlay */}
+            <motion.div
+              className="absolute inset-0 z-35 pointer-events-none"
+              style={{
+                background: "linear-gradient(135deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0) 40%, rgba(255,255,255,0) 80%, rgba(255,255,255,0.04) 100%)",
+                backdropFilter: "blur(1px)",
+              }}
+              animate={{
+                opacity: isHovered ? 0.7 : 0.4,
+                rotateX: -rotation.x * 0.2,
+                rotateY: -rotation.y * 0.2,
+              }}
+              transition={{
+                duration: 0.4,
+                ease: "easeOut"
+              }}
+            />
+
             {/* Icon circle */}
             <motion.div
-              className="w-10 h-10 rounded-full flex items-center justify-center mb-2 shrink-0 mx-auto"
+              className="w-9 h-9 sm:w-10 sm:h-10 rounded-full flex items-center justify-center mb-1.5 sm:mb-2 shrink-0 mx-auto"
               style={{
                 background: `linear-gradient(225deg, ${project.icon.gradientFrom.replace('from-', '')} 0%, #121624 100%)`,
                 position: "relative",
@@ -355,7 +283,7 @@ const CarouselCard = memo(
                 ease: "easeOut"
               }}
             >
-              <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-4.5 h-4.5 sm:w-5 sm:h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d={project.icon.svg} />
               </svg>
             </motion.div>
@@ -373,7 +301,7 @@ const CarouselCard = memo(
               }}
             >
               <motion.h3
-                className="text-base font-bold text-white mb-0.5 leading-tight tracking-tight w-full"
+                className="text-base sm:text-xl font-bold text-white mb-0.5 sm:mb-1 leading-tight tracking-tight w-full"
                 initial={{ filter: "blur(3px)", opacity: 0.7 }}
                 animate={{
                   textShadow: isHovered ? "0 2px 4px rgba(0,0,0,0.2)" : "none",
@@ -389,7 +317,7 @@ const CarouselCard = memo(
               </motion.h3>
 
               <motion.p
-                className="text-xs text-slate-300 mb-0.75 leading-relaxed font-semibold w-full"
+                className="text-xs sm:text-xs text-slate-300 mb-1 leading-relaxed font-semibold w-full opacity-90"
                 initial={{ filter: "blur(3px)", opacity: 0.7 }}
                 animate={{
                   filter: "blur(0px)",
@@ -404,7 +332,7 @@ const CarouselCard = memo(
               </motion.p>
 
               <motion.p
-                className="text-xs text-slate-100 mb-1.25 leading-relaxed font-normal w-full"
+                className="text-xs sm:text-xs text-slate-100 mb-2 leading-relaxed font-normal w-full"
                 initial={{ filter: "blur(3px)", opacity: 0.7 }}
                 animate={{
                   filter: "blur(0px)",
@@ -418,9 +346,9 @@ const CarouselCard = memo(
                 {project.description}
               </motion.p>
 
-              <div className="flex flex-wrap gap-0.5 mb-1">
+              <div className="flex flex-wrap gap-1 mb-1 justify-center">
                 {project.tags.map((tag) => (
-                  <span key={tag} className="bg-slate-700/50 text-slate-100 px-2 py-0.5 rounded text-xs font-medium">
+                  <span key={tag} className="bg-slate-800/80 text-slate-100 px-2 py-0.5 rounded text-xs font-medium">
                     {tag}
                   </span>
                 ))}
@@ -429,7 +357,7 @@ const CarouselCard = memo(
 
             {/* Footer metric */}
             <motion.div
-              className="text-xs text-slate-400 pt-1 border-t border-slate-700/30"
+              className="text-xs text-slate-400 pt-1 border-t border-slate-800/60 w-full"
               initial={{ filter: "blur(3px)", opacity: 0.7 }}
               animate={{
                 filter: "blur(0px)",
@@ -440,10 +368,10 @@ const CarouselCard = memo(
                 delay: 0.25
               }}
             >
-              <span className="text-green-400 font-bold">●</span> <span className="text-sm font-semibold text-slate-100">{project.metric}</span>
+              <span className="text-green-400 font-bold">●</span> <span className="text-xs font-semibold text-slate-100">{project.metric}</span>
             </motion.div>
           </motion.div>
-        </motion.div>
+        </div>
       </motion.div>
     );
   });
@@ -462,8 +390,8 @@ const Carousel = memo(
   }) => {
     const isScreenSizeSm = useMediaQuery("(max-width: 640px)");
     const faceCount = cards.length;
-    const faceWidth = isScreenSizeSm ? 260 : 380;
-    const cardHeightRatio = isScreenSizeSm ? 1.15 : 0.66;
+    const faceWidth = isScreenSizeSm ? 230 : 390;
+    const cardHeightRatio = isScreenSizeSm ? 1.2 : 0.70;
     const cylinderWidth = faceWidth * faceCount;
     const radius = cylinderWidth / (2 * Math.PI);
     const rotation = useMotionValue(0);
@@ -580,35 +508,15 @@ function ThreeDPhotoCarousel() {
               }}
               onClick={(e) => e.stopPropagation()}
             >
+              <GlowEffect
+                colors={['#0894FF', '#C959DD', '#FF2E54', '#FF9004']}
+                mode='static'
+                blur='medium'
+                className="rounded-2xl"
+              />
               {/* Dark background */}
               <motion.div
-                className="absolute inset-0 z-0"
-                style={{
-                  background: "linear-gradient(180deg, #000000 0%, #000000 70%)",
-                }}
-              />
-
-              {/* Purple/blue glow effect */}
-              <motion.div
-                className="absolute bottom-0 left-0 right-0 h-2/3 z-20"
-                style={{
-                  background: `
-                    radial-gradient(ellipse at bottom right, rgba(172, 92, 255, 0.7) -10%, rgba(79, 70, 229, 0) 70%),
-                    radial-gradient(ellipse at bottom left, rgba(56, 189, 248, 0.7) -10%, rgba(79, 70, 229, 0) 70%)
-                  `,
-                  filter: "blur(40px)",
-                }}
-              />
-
-              {/* Central purple glow */}
-              <motion.div
-                className="absolute bottom-0 left-0 right-0 h-2/3 z-21"
-                style={{
-                  background: `
-                    radial-gradient(circle at bottom center, rgba(161, 58, 229, 0.7) -20%, rgba(79, 70, 229, 0) 60%)
-                  `,
-                  filter: "blur(45px)",
-                }}
+                className="absolute inset-0 z-0 bg-black rounded-2xl"
               />
 
               {/* Content */}
@@ -681,7 +589,7 @@ function ThreeDPhotoCarousel() {
           </motion.div>
         )}
       </AnimatePresence>
-      <div className="relative h-112.5 w-full overflow-visible flex items-center justify-center">
+      <div className="relative h-[420px] sm:h-[450px] w-full overflow-visible flex items-center justify-center">
         <Carousel
           handleClick={handleClick}
           controls={controls}
