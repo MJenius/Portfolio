@@ -83,9 +83,9 @@ export const projects: Project[] = [
   },
   {
     id: 'sentinelgraph',
-    title: 'SentinelGraph – Explainable Anomaly Detection Engine',
+    title: 'SentinelGraph',
     description: 'Behavioral Intelligence & Anomaly Detection SOC Platform with max-dominant risk fusion, SHAP explainability, and GNN/Graph-RAG traversal.',
-    category: ['ai-ml', 'data-analysis', 'web'],
+    category: ['ai-ml', 'data-analysis'],
     tags: ['Python', 'Streamlit', 'NetworkX', 'RAGAS', 'PyTorch', 'Docker', 'FastAPI', 'SHAP'],
     github: 'https://github.com/mjenius/sentinelgraph',
     featured: true,

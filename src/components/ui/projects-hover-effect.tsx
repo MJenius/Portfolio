@@ -13,18 +13,26 @@ import {
     Share2,
     Code,
     Brain,
-    Database
+    Database,
+    Network,
+    Trophy,
+    Search,
+    Target
 } from "lucide-react";
 
 const getProjectIcon = (projectId: string) => {
     const iconMap: Record<string, React.ReactNode> = {
         "aegis": <Eye className="w-6 h-6 text-white" />,
+        "sentinelgraph": <Network className="w-6 h-6 text-white" />,
         "traffic-control": <MapPin className="w-6 h-6 text-white" />,
         "docparse-ai": <FileText className="w-6 h-6 text-white" />,
         "voice-assistant": <Mic className="w-6 h-6 text-white" />,
         "superhhero": <GraduationCap className="w-6 h-6 text-white" />,
         "covid-radiomics": <ScanLine className="w-6 h-6 text-white" />,
         "demand-forecasting": <TrendingUp className="w-6 h-6 text-white" />,
+        "football-scouting": <Trophy className="w-6 h-6 text-white" />,
+        "nebula": <Search className="w-6 h-6 text-white" />,
+        "adaptive-golf": <Target className="w-6 h-6 text-white" />,
         "smms": <Share2 className="w-6 h-6 text-white" />,
         "spotify": <Code className="w-6 h-6 text-white" />,
         "cardiovascular": <Brain className="w-6 h-6 text-white" />,
@@ -149,7 +157,7 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
                 <div className="flex items-center gap-4 mb-4">
                     <div
                         className={cn(
-                            "w-12 h-12 rounded-xl flex items-center justify-center",
+                            "w-12 h-12 rounded-xl flex items-center justify-center shrink-0",
                             "bg-gradient-to-r",
                             gradient,
                             "shadow-lg"
