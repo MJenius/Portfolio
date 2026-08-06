@@ -102,7 +102,7 @@ const getCarouselProjects = (): ProjectCard[] => {
       tags: ["Python", "Stable-Baselines3", "SUMO", "Pandas"],
       metric: "10.6% faster emergency travel",
       links: [
-        { label: "View GitHub", url: "#", type: "github" }
+        { label: "View GitHub", url: "https://github.com/rajeev8008/Adaptive-Traffic-Signal-Control", type: "github" }
       ]
     },
     'football-scouting': {

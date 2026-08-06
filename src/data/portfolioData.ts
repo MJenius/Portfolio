@@ -155,7 +155,7 @@ export const projects: Project[] = [
     description: 'Explainable PPO reinforcement learning traffic signal management reducing emergency transit time by 10.6% in SUMO.',
     category: 'ai-ml',
     tags: ['PPO', 'SUMO', 'Stable-Baselines3', 'SHAP', 'Python', 'Reinforcement Learning'],
-    github: 'https://github.com/rajeev8008/sumo-traffic-rl-project',
+    github: 'https://github.com/rajeev8008/Adaptive-Traffic-Signal-Control',
     featured: true,
     details: {
       overview: 'A safety-critical RL system using Proximal Policy Optimization (PPO) and SUMO simulation to optimize emergency transit and intersection flow, backed by 43D state space SHAP interpretability.',
