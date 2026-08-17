@@ -35,20 +35,20 @@ export const projects: Project[] = [
   {
     id: 'underdog-ai',
     title: 'UnderdogAI',
-    description: 'Event-Driven Football & Decision Intelligence Platform featuring Kafka event streaming, Bayesian simulations, and causal inference.',
+    description: 'High-throughput event-driven decision platform with Kafka streaming, Monte Carlo simulations, and Airflow/dbt data pipelines.',
     category: ['data-analysis', 'ai-ml', 'web'],
-    tags: ['FastAPI', 'Kafka', 'gRPC', 'Kubernetes', 'Docker', 'Redis', 'PyMC', 'DoWhy', 'dbt'],
+    tags: ['FastAPI', 'Kafka', 'gRPC', 'Kubernetes', 'Docker', 'Redis', 'Airflow', 'dbt', 'MLflow', 'PyMC', 'DoWhy'],
     github: 'https://github.com/MJenius/UnderdogAI',
     featured: true,
     details: {
-      overview: 'UnderdogAI is an event-driven decision intelligence platform combining Monte Carlo tournament simulations, Bayesian modeling, and causal inference.',
+      overview: 'A decision-intelligence platform combining event-driven microservices, Monte Carlo simulations, causal inference, and an Airflow/dbt data pipeline processing 120K+ records.',
       achievements: [
-        'Architected an event-driven microservices backend using Kafka to decouple Monte Carlo simulations, reducing API blocking latency by ~84% (324ms → <50ms)',
-        'Engineered asynchronous workers running 63,000+ match simulations in ~324ms per task via vectorized computation for scalable tournament evaluation',
-        'Built end-to-end data pipelines using Airflow and dbt to construct warehouse feature marts with temporal joins',
-        'Developed Bayesian forecasting and causal inference models using PyMC and DoWhy, validating predictions with log loss (~0.88) and Brier score (~0.52)',
-        'Tracked experiments, model versions, and evaluation metrics using MLflow to enable reproducible training and comparison',
-        'Built containerized microservices with CI/CD validation and traceable job execution for reliable debugging'
+        'Improved HTTP API throughput 57% (352 to 553 req/s) with 50 concurrent clients and 1,000 requests, reducing P50, P95, and P99 latency by 37%, 26%, and 29% respectively with zero failures',
+        'Reduced server CPU time 42% and peak memory usage 10% through bounded TTL caching, async processing, shared service clients, and optimized request paths',
+        'Engineered fault-tolerant Kafka processing with manual offset commits, idempotent job handling, atomic Redis completion, bounded retries, and exponential backoff; recovered from two injected failures in 3.0 seconds',
+        'Built async Monte Carlo workers processing 63,000+ match simulations per task and deployed containerized services with CI/CD validation, health probes, metrics, and rolling Kubernetes deployments',
+        'Built an Airflow/dbt data pipeline processing 120K+ records at 12.2K records/s, materializing a 49,413-record, 29-column feature mart using temporal joins and feature engineering',
+        'Implemented 19 automated data-quality and temporal-leakage checks with zero failures across null-key, duplicate, referential-integrity, freshness, invalid-value, and leakage tests; tracked experiments with MLflow'
       ],
       techStack: [
         'Python, FastAPI, gRPC, Kafka',
@@ -60,19 +60,19 @@ export const projects: Project[] = [
   {
     id: 'ai-data-analyst',
     title: 'AI Data Analyst Agent',
-    description: 'A multi-agent AI system achieving 95-100% NL-to-SQL accuracy with FAISS schema search, sandboxed Docker execution, and fallback LLM routing.',
+    description: 'Multi-agent NL-to-SQL system achieving 95-100% accuracy across 8 domains with FAISS schema retrieval and Dockerized execution sandboxes.',
     category: ['data-analysis', 'ai-ml'],
     tags: ['Python', 'FastAPI', 'FAISS', 'Sentence Transformers', 'Groq/Gemini APIs', 'RAG', 'Pydantic', 'Docker'],
     github: 'https://github.com/MJenius/ai-data-analyst-agent',
     featured: true,
     details: {
-      overview: 'A multi-agent natural-language-to-SQL system designed for reliable, schema-grounded database analytics with multi-model fallback and isolated execution.',
+      overview: 'A planner-executor-evaluator multi-agent system for natural-language-to-SQL analytics with FAISS schema retrieval, multi-model fallback, and isolated Docker execution.',
       achievements: [
-        'Achieved 95-100% natural-language-to-SQL accuracy on a 100-query benchmark across 8 domains, validated against schema-grounded ground truth',
-        'Architected a planner-executor-evaluator multi-agent system with FAISS schema retrieval and multi-model fallback (Groq → Gemini), improving execution accuracy',
-        'Built semantic retrieval layer using FAISS + Sentence Transformers enabling context-aware query generation',
+        'Achieved 95-100% NL-to-SQL accuracy on a 100-query benchmark across 8 e-commerce domains, validated against schema-grounded ground truth',
+        'Architected a planner-executor-evaluator multi-agent system with FAISS schema retrieval and multi-model fallback (Groq to Gemini), improving execution accuracy',
+        'Built semantic retrieval layer using FAISS and Sentence Transformers enabling context-aware query generation',
         'Integrated Dockerized execution sandboxes to isolate generated SQL scripts, reducing unsafe execution risks to 0% during schema validation',
-        'Designed automated evaluation pipeline with Dockerized execution sandboxes to safely validate query correctness via execution and parsing checks'
+        'Designed automated evaluation pipeline with Dockerized sandboxes to safely validate query correctness via execution and parsing checks'
       ],
       techStack: [
         'Python, FastAPI, Pydantic',
@@ -84,64 +84,65 @@ export const projects: Project[] = [
   {
     id: 'sentinelgraph',
     title: 'SentinelGraph',
-    description: 'Behavioral Intelligence & Anomaly Detection SOC Platform with max-dominant risk fusion, SHAP explainability, and GNN/Graph-RAG traversal.',
+    description: 'Behavioral intelligence platform with 7-detector risk fusion, GNN/Graph-RAG traversal, and real-time graph visualization for SOC analysts.',
     category: ['ai-ml', 'data-analysis'],
-    tags: ['Python', 'Streamlit', 'NetworkX', 'RAGAS', 'PyTorch', 'Docker', 'FastAPI', 'SHAP'],
+    tags: ['Python', 'Streamlit', 'NetworkX', 'RAGAS', 'PyTorch', 'Docker', 'FastAPI', 'SHAP', 'Redis'],
     github: 'https://github.com/mjenius/sentinelgraph',
     featured: true,
     details: {
-      overview: 'A high-performance behavioral intelligence platform for SOC analysts featuring multi-detector risk fusion engines, graph topology visualization, counterfactual explainability, and microservice containerization.',
+      overview: 'A behavioral intelligence and anomaly detection platform for SOC analysts featuring multi-detector risk fusion, GNN/Graph-RAG traversal, counterfactual explainability, and containerized microservices.',
       achievements: [
-        'Architected a 7-detector behavioral anomaly ensemble for 1,000+ entities, suppressing false positive alert rates by >90% via max-dominant risk fusion',
-        'Built an 11-step detection pipeline and max-dominant risk fusion engine for 10K+ logs, processing events with 3.4ms average scoring latency',
+        'Architected a 7-detector behavioral anomaly ensemble for 1,000+ entities, suppressing false positive alert rates by over 90% via max-dominant risk fusion',
+        'Built an 11-step event-processing pipeline combining graph analysis and risk-fusion services to score 10K+ logs at 3.4ms average latency',
         'Evaluated GNN and Graph-RAG traversal pipelines with RAGAS, achieving 0.942 PR-AUC and sub-10ms scoring latency over 10K benchmark events',
         'Integrated counterfactual explainability and SHAP feature breakdowns, increasing policy explainability and threat triage efficiency by 30%',
-        'Developed dynamic graph topology renderers and real-time timeline scrubbers, reducing threat triage time for SOC analysts by 65%',
-        'Containerized microservices using Docker Compose and created a 56-test Pytest suite, achieving 100% test pass rate for automated pipeline validation'
+        'Reduced threat-triage time 65% by delivering dynamic graph-topology visualization and real-time event-timeline tooling',
+        'Containerized backend services with Docker Compose and created a 56-test Pytest suite achieving 100% automated pipeline pass rate'
       ],
       techStack: [
         'Python, FastAPI, Streamlit',
         'PyTorch, NetworkX, RAGAS, SHAP',
-        'Docker, Docker Compose, Pytest'
+        'Docker, Docker Compose, Redis, Pytest'
       ]
     }
   },
   {
     id: 'demand-forecasting',
     title: 'Demand Forecasting ML System',
-    description: 'Production-grade forecasting pipeline predicting retail demand across 30K+ SKUs with lag features and time-aware drift detection.',
+    description: 'Leakage-safe LightGBM forecasting pipeline over 58.3M records with expanding-window validation and PSI drift monitoring.',
     category: ['data-analysis', 'ai-ml'],
-    tags: ['LightGBM', 'FastAPI', 'Pandas', 'SciPy', 'SQLite', 'Parquet', 'Python'],
+    tags: ['LightGBM', 'FastAPI', 'Pandas', 'SciPy', 'SQLite', 'Parquet', 'MLflow', 'Python'],
     github: 'https://github.com/MJenius/demand-forecasting-ml',
     featured: true,
     details: {
-      overview: 'A machine learning forecasting pipeline built across 30K+ SKUs (2M+ records) with time-aware cross-validation and PSI drift monitoring.',
+      overview: 'A production-grade forecasting pipeline covering 58.3M historical records across 3,049 SKUs and 10 stores, with time-aware cross-validation and PSI-based drift detection.',
       achievements: [
-        'Built forecasting pipeline across 30K+ SKUs (2M+ records), achieving 25% MAPE reduction vs baselines via lag-based and rolling features',
-        'Implemented time-aware cross-validation, preventing temporal leakage to improve real-world generalization',
-        'Designed rolling-window drift detection and reproducible retraining pipelines, utilizing Population Stability Index (PSI) thresholds to trigger automated alerts'
+        'Built a leakage-safe LightGBM forecasting pipeline covering 58.3M records, 3,049 SKUs, and 10 stores; evaluated 7- and 28-day horizons using 3-fold expanding-window validation',
+        'Achieved the lowest MAE among evaluated models, improving on the strongest baseline by 5.36% at the 7-day horizon and 4.10% at the 28-day horizon',
+        'Implemented PSI-based drift monitoring and guarded auto-retraining; rejected a candidate model after detecting a 0.585% RMSE regression and preserved the active model',
+        'Added incremental dbt processing, reducing no-op pipeline runtime by 20.9%; PostgreSQL benchmarks averaged 8.74ms across 20 queries'
       ],
       techStack: [
         'Python, LightGBM, FastAPI',
         'Pandas, SciPy, SQLite, Parquet',
-        'Time-Series Analysis & Drift Detection (PSI)'
+        'MLflow, Drift Detection (PSI)'
       ]
     }
   },
   {
     id: 'adaptive-golf',
     title: 'Adaptive Golf Alliance Foundation',
-    description: 'A production React client application featuring responsive multi-page navigation, lazy loading, and asset optimization for 30+ media assets.',
+    description: 'Production React application for an external client with responsive navigation, lazy loading, and code-split media gallery.',
     category: 'web',
     tags: ['React', 'TypeScript', 'Tailwind CSS', 'Framer Motion', 'EmailJS', 'Vercel'],
     demo: 'https://www.adaptivegolfalliance.com/',
     featured: true,
     details: {
-      overview: 'Delivered a production React application for an external non-profit client, implementing responsive multi-page navigation, lazy loading asset optimizations, and validated contact workflows.',
+      overview: 'Delivered a production React application for an external non-profit client with responsive navigation, accessible UI components, and optimized asset delivery.',
       achievements: [
-        'Delivered a production React application for an external client, implementing responsive multi-page navigation and accessible UI components',
-        'Improved performance through lazy loading, asset optimization, and code splitting for a media gallery serving 30+ assets',
-        'Managed deployment on Vercel and implemented validated contact workflows to support reliable production usage'
+        'Delivered a production React application for an external client with responsive navigation, accessible UI components, and validated contact workflows',
+        'Improved frontend performance through lazy loading, asset optimization, and code splitting for a media gallery serving 30+ assets',
+        'Managed deployment on Vercel with validated contact workflows supporting reliable production usage'
       ],
       techStack: [
         'React, TypeScript, TailwindCSS',
@@ -152,13 +153,13 @@ export const projects: Project[] = [
   {
     id: 'traffic-control',
     title: 'Adaptive Traffic Signal Control (PPO)',
-    description: 'Explainable PPO reinforcement learning traffic signal management reducing emergency transit time by 10.6% in SUMO.',
+    description: 'PPO reinforcement learning traffic signal system reducing emergency vehicle transit time by 10.6% with SHAP interpretability over 43D state space.',
     category: 'ai-ml',
     tags: ['PPO', 'SUMO', 'Stable-Baselines3', 'SHAP', 'Python', 'Reinforcement Learning'],
     github: 'https://github.com/rajeev8008/Adaptive-Traffic-Signal-Control',
     featured: true,
     details: {
-      overview: 'A safety-critical RL system using Proximal Policy Optimization (PPO) and SUMO simulation to optimize emergency transit and intersection flow, backed by 43D state space SHAP interpretability.',
+      overview: 'A safety-critical RL system using Proximal Policy Optimization and SUMO simulation to optimize emergency transit and intersection flow, with SHAP-based interpretability over a 43-dimensional state space.',
       achievements: [
         'Reduced emergency vehicle transit time by 10.6% vs fixed baseline using PPO-based reinforcement learning',
         'Applied SHAP-based interpretability over 43D state space, increasing policy reliability and explainability by 30% in safety-critical simulation scenarios'
@@ -483,34 +484,34 @@ export const experiences: Experience[] = [
   {
     title: 'AI Intern',
     organization: 'Wadhwani Foundation',
-    period: 'June 2026 – Present',
-    description: 'Participated in technical architecture reviews for enterprise AI document ingestion, analyzed RAG retrieval & vector search routing, evaluated Qdrant multi-modal embeddings, and established Controller-Service-Repository patterns in FastAPI.',
-    tags: ['FastAPI', 'MongoDB', 'RAG', 'Qdrant', 'Vector Search', 'Multi-Modal Embeddings', 'System Architecture'],
+    period: 'Jun 2026 - Aug 2026',
+    description: 'Participated in architecture reviews for an enterprise-grade, multi-tenant AI platform processing structured Excel data and unstructured documents. Reviewed the Python/FastAPI codebase, tracing API-to-service-to-repository workflows for document ingestion, OCR, LLM extraction, embeddings, and Qdrant-based semantic retrieval. Studied RAG retrieval, vector-search, and conversational AI flows across distributed services spanning FastAPI, NestJS, RabbitMQ, MongoDB/CosmosDB, and Azure Blob Storage.',
+    tags: ['FastAPI', 'RAG', 'Qdrant', 'Vector Search', 'Embeddings', 'System Architecture', 'Distributed Services'],
     glowColors: ['#6366f1', '#a855f7', '#ec4899']
   },
   {
     title: 'Web Developer Intern',
     organization: 'Superhhero Learning',
-    period: 'June 2025 – September 2025',
-    description: 'Deployed 8+ MERN pages for 100+ active users. Optimized MongoDB/Mongoose indexing & query execution to reduce API response latency by 25% and improved load speed by 10%.',
-    tags: ['React', 'Node.js', 'MongoDB', 'Express', 'REST APIs', 'Performance Optimization'],
+    period: 'Jun 2025 - Sep 2025',
+    description: 'Developed and deployed 8+ MERN pages serving 100+ active users. Optimized MongoDB indexing and query execution, reducing API response latency by 25%. Built aggregation pipelines for real-time product analytics, cutting reporting effort by 40%. Improved page-load speed by 10% through asset compression and performance observability pipelines.',
+    tags: ['React', 'Node.js', 'MongoDB', 'Express', 'REST APIs', 'Performance Optimization', 'Aggregation Pipelines'],
     glowColors: ['#0894FF', '#C959DD', '#FF2E54']
   },
   {
-    title: 'B.Tech in Artificial Intelligence & Machine Learning',
+    title: 'B.Tech in AI & Machine Learning',
     organization: 'PES University, Bangalore',
-    period: 'Aug 2023 – May 2027',
-    description: 'CGPA: 7.85 / 10.00. Focus on Explainable AI, LLMs & RAG, Deep Learning, Reinforcement Learning, Distributed Systems, Cloud Computing, and Software Engineering.',
-    tags: ['AI & ML', 'Explainable AI', 'LLMs & RAG', 'Distributed Systems', 'MERN Stack'],
+    period: 'Aug 2023 - May 2027',
+    description: 'CGPA: 7.85 / 10.00. Coursework includes Explainable AI, LLMs & Applications (RAG), Advanced Foundations of ML (Deep Learning, Reinforcement Learning), Database Management Systems, Data Warehousing and Mining, Cloud Computing, Software Engineering, and Compiler Design.',
+    tags: ['AI & ML', 'Explainable AI', 'LLMs & RAG', 'Deep Learning', 'Reinforcement Learning', 'Distributed Systems'],
     glowColors: ['#9333ea', '#ec4899', '#3b82f6']
   }
 ];
 
 export const skills = {
-  languages: ['Python', 'SQL (PostgreSQL / MongoDB / Redis / SQLite)', 'JavaScript', 'TypeScript', 'Java', 'R'],
-  webBackend: ['React', 'Next.js 14', 'TailwindCSS', 'Framer Motion', 'Node.js', 'Express', 'FastAPI', 'REST APIs', 'gRPC', 'JWT', 'RBAC', 'Rate Limiting', 'Socket.IO', 'Vercel'],
-  aiMl: ['PyTorch', 'Scikit-learn', 'LightGBM', 'OpenCV', 'SHAP', 'LangChain', 'LangGraph', 'RAG', 'FAISS', 'Qdrant', 'Pinecone', 'Sentence Transformers', 'Groq/Gemini APIs', 'Multi-Agent AI', 'RAGAS', 'PPO (SUMO)', 'PyMC', 'DoWhy'],
-  infraDevops: ['Distributed Systems', 'Event-Driven Systems', 'Kafka', 'Docker', 'Kubernetes', 'CI/CD', 'GitHub Actions', 'AWS (EC2, S3)', 'Airflow', 'dbt', 'MLflow', 'Parquet', 'Drift Detection', 'Model Monitoring']
+  languages: ['Python', 'SQL', 'JavaScript', 'TypeScript', 'Java', 'R'],
+  webBackend: ['FastAPI', 'Node.js', 'Express', 'React', 'Next.js', 'TailwindCSS', 'REST', 'gRPC', 'JWT', 'RBAC', 'Flask', 'Streamlit', 'Vercel'],
+  aiMl: ['PyTorch', 'Scikit-learn', 'LightGBM', 'OpenCV', 'SHAP', 'LangChain', 'LangGraph', 'RAG', 'FAISS', 'Qdrant', 'Pinecone', 'Sentence Transformers', 'Multi-Agent AI', 'RAGAS', 'PPO (SUMO)', 'PyMC', 'DoWhy', 'NLP', 'Hugging Face', 'PEFT (LoRA)'],
+  infraDevops: ['Docker', 'Kubernetes', 'Kafka', 'GitHub Actions', 'AWS (EC2, S3)', 'CI/CD', 'Airflow', 'dbt', 'MLflow', 'Parquet', 'BigQuery', 'Drift Detection', 'Model Monitoring', 'Event-Driven Systems', 'PostgreSQL', 'MongoDB', 'Redis', 'SQLite', 'Pandas', 'NumPy', 'SciPy', 'Statistical Analysis', 'Data Validation', 'Tableau']
 };
 
 export const socialLinks = {

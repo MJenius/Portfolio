@@ -80,7 +80,7 @@ export default function SchemaCard() {
         <h3 className="text-2xl font-bold text-white mb-3">Work With Me</h3>
         
         <p className="text-slate-300 mb-8 leading-relaxed text-sm flex-1">
-          I'm interested in internships, research collaborations, and early-stage product work where engineering quality and real-world impact matter. If you're building something serious—or evaluating technical talent—I'd be happy to connect.
+          I am open to internships, research collaborations, and product engineering roles where the work is real and the bar is high. I have shipped ML pipelines across 58M+ records, built event-driven platforms processing 63K+ simulations per task, and delivered production apps serving 100+ users. If you are building something that matters or evaluating technical talent seriously, let us connect.
         </p>
         
         <div className="space-y-3 mt-auto">
