@@ -17,7 +17,8 @@ import {
     Network,
     Trophy,
     Search,
-    Target
+    Target,
+    Shield
 } from "lucide-react";
 
 const getProjectIcon = (projectId: string) => {
@@ -36,7 +37,8 @@ const getProjectIcon = (projectId: string) => {
         "smms": <Share2 className="w-6 h-6 text-white" />,
         "spotify": <Code className="w-6 h-6 text-white" />,
         "cardiovascular": <Brain className="w-6 h-6 text-white" />,
-        "ai-data-analyst": <Database className="w-6 h-6 text-white" />
+        "ai-data-analyst": <Database className="w-6 h-6 text-white" />,
+        "mandate": <Shield className="w-6 h-6 text-white" />
     };
     return iconMap[projectId] || <Code className="w-6 h-6 text-white" />;
 };

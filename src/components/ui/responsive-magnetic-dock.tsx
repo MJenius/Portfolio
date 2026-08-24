@@ -5,6 +5,7 @@ import { LucideIcon, Menu, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { MagneticDock, type DockItemData } from '@/components/ui/magnetic-dock';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useOverlayOpen } from '@/lib/overlay-events';
 
 interface NavItem {
   name: string;
@@ -21,6 +22,7 @@ export function ResponsiveMagneticDock({ items, className }: ResponsiveMagneticD
   const [activeTab, setActiveTab] = useState(items[0].name);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const overlayOpen = useOverlayOpen();
   const scrollTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   // Detect mobile viewport
@@ -94,19 +96,25 @@ export function ResponsiveMagneticDock({ items, className }: ResponsiveMagneticD
     return (
       <>
         {/* Floating hamburger button */}
-        <motion.button
-          className={cn(
-            'fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full cursor-pointer',
-            'bg-slate-900/80 backdrop-blur-xl border border-slate-700/60',
-            'flex items-center justify-center shadow-2xl',
-            'active:scale-95 transition-transform',
-            className
-          )}
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          whileTap={{ scale: 0.92 }}
-          aria-label="Navigation menu"
-          aria-expanded={mobileMenuOpen}
-        >
+        <AnimatePresence>
+          {!overlayOpen && (
+            <motion.button
+              className={cn(
+                'fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full cursor-pointer',
+                'bg-slate-900/80 backdrop-blur-xl border border-slate-700/60',
+                'flex items-center justify-center shadow-2xl',
+                'active:scale-95 transition-transform',
+                className
+              )}
+              initial={{ y: 100, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              exit={{ y: 100, opacity: 0 }}
+              transition={{ duration: 0.25, ease: 'easeOut' }}
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              whileTap={{ scale: 0.92 }}
+              aria-label="Navigation menu"
+              aria-expanded={mobileMenuOpen}
+            >
           <AnimatePresence mode="wait">
             {mobileMenuOpen ? (
               <motion.div
@@ -130,7 +138,9 @@ export function ResponsiveMagneticDock({ items, className }: ResponsiveMagneticD
               </motion.div>
             )}
           </AnimatePresence>
-        </motion.button>
+            </motion.button>
+          )}
+        </AnimatePresence>
 
         {/* Full-screen overlay */}
         <AnimatePresence>
@@ -201,22 +211,30 @@ export function ResponsiveMagneticDock({ items, className }: ResponsiveMagneticD
 
   // Desktop: Magnetic Dock
   return (
-    <div
-      className={cn(
-        'fixed bottom-0 left-0 right-0 z-50 mb-6 flex justify-center pointer-events-none',
-        className
+    <AnimatePresence>
+      {!overlayOpen && (
+        <motion.div
+          className={cn(
+            'fixed bottom-0 left-0 right-0 z-50 mb-6 flex justify-center pointer-events-none',
+            className
+          )}
+          initial={{ y: 120, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          exit={{ y: 120, opacity: 0 }}
+          transition={{ duration: 0.25, ease: 'easeOut' }}
+        >
+          <div className="pointer-events-auto">
+            <MagneticDock
+              items={dockItems}
+              iconSize={48}
+              maxScale={1.4}
+              magneticDistance={120}
+              showLabels={true}
+              variant="glass"
+            />
+          </div>
+        </motion.div>
       )}
-    >
-      <div className="pointer-events-auto">
-        <MagneticDock 
-          items={dockItems}
-          iconSize={48}
-          maxScale={1.4}
-          magneticDistance={120}
-          showLabels={true}
-          variant="glass"
-        />
-      </div>
-    </div>
+    </AnimatePresence>
   );
 }

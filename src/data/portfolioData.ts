@@ -6,6 +6,7 @@ export interface Project {
   tags: string[];
   image?: string;
   github?: string;
+  doi?: string;
   demo?: string;
   featured?: boolean;
   details: {
@@ -59,25 +60,27 @@ export const projects: Project[] = [
   },
   {
     id: 'ai-data-analyst',
-    title: 'AI Data Analyst Agent',
-    description: 'Multi-agent NL-to-SQL system achieving 95-100% accuracy across 8 domains with FAISS schema retrieval and Dockerized execution sandboxes.',
+    title: 'AI Data Analyst Agent - Research Preprint',
+    description: 'Research preprint evaluating a multi-stage reliability architecture for NL-to-SQL, achieving 73.40% result equivalence and 100% execution success on a 500-query benchmark.',
     category: ['data-analysis', 'ai-ml'],
-    tags: ['Python', 'FastAPI', 'FAISS', 'Sentence Transformers', 'Groq/Gemini APIs', 'RAG', 'Pydantic', 'Docker'],
+    tags: ['Text-to-SQL', 'LLM Agents', 'RAG', 'FAISS', 'SQLGlot', 'SQLite', 'Statistical Evaluation', 'Python'],
     github: 'https://github.com/MJenius/ai-data-analyst-agent',
+    doi: 'https://doi.org/10.5281/zenodo.22024528',
     featured: true,
     details: {
-      overview: 'A planner-executor-evaluator multi-agent system for natural-language-to-SQL analytics with FAISS schema retrieval, multi-model fallback, and isolated Docker execution.',
+      overview: 'Research preprint (August 2026) investigating why natural-language-to-analytical-SQL fails over multi-table relational databases and evaluating an observable multi-stage reliability architecture: graph-guided semantic schema RAG, DAG query planning with deterministic validation, and AST-based structural verification with closed-loop repair, benchmarked over 500 queries on the Olist e-commerce data warehouse (9 tables, 100,000+ orders).',
       achievements: [
-        'Achieved 95-100% NL-to-SQL accuracy on a 100-query benchmark across 8 e-commerce domains, validated against schema-grounded ground truth',
-        'Architected a planner-executor-evaluator multi-agent system with FAISS schema retrieval and multi-model fallback (Groq to Gemini), improving execution accuracy',
-        'Built semantic retrieval layer using FAISS and Sentence Transformers enabling context-aware query generation',
-        'Integrated Dockerized execution sandboxes to isolate generated SQL scripts, reducing unsafe execution risks to 0% during schema validation',
-        'Designed automated evaluation pipeline with Dockerized sandboxes to safely validate query correctness via execution and parsing checks'
+        'Achieved 73.40% result equivalence (367/500) with 95% CI [69.26%, 77.18%] and 100% SQL execution success across 8 business domains of the Olist e-commerce warehouse, with zero provider errors, 429s, or timeouts',
+        'Designed graph-guided semantic schema RAG combining FAISS embeddings with foreign-key graph traversal, retrieving minimal schema subgraphs at 93.1% precision and 95.3% recall',
+        'Introduced DAG query planning with deterministic pre-execution catalog validation that statically prunes hallucinated tables, columns, and join paths prior to SQL generation',
+        'Demonstrated via controlled ablation that AST-based structural verification raises execution reliability from 34.0% to 65.0% and result equivalence from 15.0% to 26.0% (McNemar exact p=0.0192, Odds Ratio=3.75)',
+        'Audited 101 self-repair events exposing the self-repair trade-off: while 96.0% of post-repair queries were syntactically valid, aggressive repair rules caused 22 false-positive regressions against only 4 genuine recoveries',
+        'Derived an AST failure taxonomy across 133 non-equivalent queries — missing join paths (27.8%), filter omissions/errors (24.8%), aggregation mismatches (24.1%) — with controlled synthetic perturbation robustness analysis across 5 vectors'
       ],
       techStack: [
-        'Python, FastAPI, Pydantic',
-        'FAISS, Sentence Transformers, RAG',
-        'Groq / Gemini APIs, Docker, SQLite / PostgreSQL'
+        'Python, SQLite (sandboxed read-only engine), SQLGlot (AST verification)',
+        'FAISS, Sentence Transformers, Graph-Guided Schema RAG',
+        'Clopper-Pearson / Wilson Score / BCa Bootstrap Statistical Evaluation'
       ]
     }
   },
@@ -126,6 +129,31 @@ export const projects: Project[] = [
         'Python, LightGBM, FastAPI',
         'Pandas, SciPy, SQLite, Parquet',
         'MLflow, Drift Detection (PSI)'
+      ]
+    }
+  },
+  {
+    id: 'mandate',
+    title: 'Mandate — AI Agent Financial Control Plane',
+    description: 'Security-critical financial authorization control plane for AI agents with deterministic policy enforcement, concurrency-safe budget reservations, and self-healing payment workflows.',
+    category: ['web', 'ai-ml'],
+    tags: ['Python', 'FastAPI', 'PostgreSQL', 'Redis', 'MCP', 'Razorpay', 'Docker', 'Pytest', 'Prometheus', 'OpenTelemetry'],
+    github: 'https://github.com/MJenius/Mandate-Razorpay-Control-Plane',
+    featured: false,
+    details: {
+      overview: 'A deterministic financial authorization and control plane that sits between autonomous AI agents and Razorpay APIs/MCP. Enforces hierarchical authority, policy-based spending limits, concurrency-safe budget reservations, webhook idempotency, rate limiting, and reconciliation to prevent unauthorized or inconsistent financial operations.',
+      achievements: [
+        'Built a deterministic authorization gateway with hierarchical delegation, dynamic MCP tool filtering, spending policies, human-review thresholds, and zero-gateway-dispatch enforcement for denied operations',
+        'Engineered atomic PostgreSQL budget reservations and validated financial correctness across 12 real Docker/PostgreSQL concurrency trials at 100, 200, and 500 concurrent requests with zero overspend',
+        'Implemented idempotent financial state transitions, HMAC webhook verification, replay protection, and self-healing reconciliation for dropped, duplicated, delayed, and out-of-order payment events',
+        'Added Redis-backed per-agent rate limiting, Prometheus metrics, OpenTelemetry-compatible observability, property-based testing, and deterministic failure-injection testing',
+        'Evaluated authorization against 1,144 hostile simulated scenarios with 100% blocked unauthorized operations and zero unauthorized Razorpay gateway dispatches',
+        'Built reproducible CI, Docker-based integration testing, Locust contention tooling, and automated verification covering security, concurrency, recovery, and state-consistency invariants'
+      ],
+      techStack: [
+        'Python, FastAPI, PostgreSQL, Redis',
+        'MCP, Razorpay APIs, Docker, Pytest',
+        'Prometheus, OpenTelemetry, Locust, Hypothesis'
       ]
     }
   },

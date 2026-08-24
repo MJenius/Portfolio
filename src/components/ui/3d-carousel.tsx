@@ -9,6 +9,7 @@ import {
 } from "framer-motion";
 import { projects as portfolioProjects } from "@/data/portfolioData";
 import { GlowEffect } from "@/components/ui/glow-effect";
+import { notifyOverlayClose, notifyOverlayOpen } from "@/lib/overlay-events";
 
 export const useIsomorphicLayoutEffect =
   typeof window !== "undefined" ? useLayoutEffect : useEffect;
@@ -141,11 +142,12 @@ const getCarouselProjects = (): ProjectCard[] => {
     'ai-data-analyst': {
       icon: { gradientFrom: "from-purple-500", gradientTo: "to-indigo-600", svg: "M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" },
       title: "AI Data Analyst Agent",
-      subtitle: "Multi-Agent • FastAPI • FAISS",
-      description: "Multi-agent database analyzer with semantic schema retrieval, read-only SQL sandboxing, self-correcting query repair, and resilient LLM cascading.",
-      tags: ["Python", "FastAPI", "FAISS", "Groq / Gemini"],
-      metric: "95–100% SQL Success Rate",
+      subtitle: "Research Preprint • Text-to-SQL • Reliability",
+      description: "Empirical study of schema grounding, DAG planning, deterministic validation, and AST-based closed-loop SQL repair for reliable LLM-based data analysis.",
+      tags: ["Text-to-SQL", "RAG", "SQLGlot", "SQLite"],
+      metric: "73.40% Result Equivalence @ 500 Queries",
       links: [
+        { label: "Read Paper (DOI)", url: "https://doi.org/10.5281/zenodo.22024528", type: "demo" },
         { label: "View GitHub", url: "https://github.com/MJenius/ai-data-analyst-agent", type: "github" }
       ]
     },
@@ -195,6 +197,10 @@ const CarouselCard = memo(
     const [isHovered, setIsHovered] = useState(false);
     const [rotation, setRotation] = useState({ x: 0, y: 0 });
 
+    const handleCardClick = () => {
+      handleClick(project.title, index);
+    };
+
     const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
       if (cardRef.current) {
         const rect = cardRef.current.getBoundingClientRect();
@@ -221,7 +227,7 @@ const CarouselCard = memo(
           width: `${faceWidth}px`,
           transform: `rotateY(${index * (360 / faceCount)}deg) translateZ(${radius}px)`,
         }}
-        onClick={() => handleClick(project.title, index)}
+        onClick={handleCardClick}
       >
         <div
           className="relative w-full"
@@ -410,6 +416,20 @@ const Carousel = memo(
       rotation,
       (value) => `rotate3d(0, 1, 0, ${value}deg)`
     );
+    const dragMovedRef = useRef(false);
+    const snapStep = 360 / faceCount;
+
+    const isIndexCentered = (index: number) => {
+      const current = ((rotation.get() % 360) + 360) % 360;
+      const target = (((-index * snapStep) % 360) + 360) % 360;
+      const diff = Math.abs(current - target);
+      return Math.min(diff, 360 - diff) <= snapStep / 4;
+    };
+
+    const attemptOpen = (imgUrl: string, index: number) => {
+      if (dragMovedRef.current || !isIndexCentered(index)) return;
+      handleClick(imgUrl, index);
+    };
 
     return (
       <div
@@ -429,22 +449,30 @@ const Carousel = memo(
             width: cylinderWidth,
             transformStyle: "preserve-3d",
           }}
+          onPointerDownCapture={() => {
+            dragMovedRef.current = false;
+          }}
+          onDragStart={() => {
+            dragMovedRef.current = true;
+          }}
           onDrag={(_, info) =>
             isCarouselActive &&
             rotation.set(rotation.get() + info.offset.x * 0.02)
           }
-          onDragEnd={(_, info) =>
-            isCarouselActive &&
+          onDragEnd={(_, info) => {
+            if (!isCarouselActive) return;
+            const projected = rotation.get() + info.velocity.x * 0.02;
+            const snapped = Math.round(projected / snapStep) * snapStep;
             controls.start({
-              rotateY: rotation.get() + info.velocity.x * 0.02,
+              rotateY: snapped,
               transition: {
                 type: "spring",
-                stiffness: 100,
-                damping: 30,
-                mass: 0.1,
+                stiffness: 160,
+                damping: 20,
+                mass: 0.5,
               },
-            })
-          }
+            });
+          }}
           animate={controls}
         >
           {cards.map((imgUrl, i) => (
@@ -455,7 +483,7 @@ const Carousel = memo(
               index={i}
               faceCount={faceCount}
               radius={radius}
-              handleClick={handleClick}
+              handleClick={attemptOpen}
               project={projects[i % projects.length]}
             />
           ))}
@@ -478,6 +506,14 @@ function ThreeDPhotoCarousel() {
     // eslint-disable-next-line no-console
     console.log("Carousel cards loaded:", cards);
   }, [cards]);
+
+  useEffect(() => {
+    if (activeImg) {
+      notifyOverlayOpen();
+    } else {
+      notifyOverlayClose();
+    }
+  }, [activeImg]);
 
   const handleClick = (imgUrl: string) => {
     setActiveImg(imgUrl);

@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { Project } from '@/data/portfolioData';
 import { X } from 'lucide-react';
+import { notifyOverlayClose, notifyOverlayOpen } from '@/lib/overlay-events';
 
 interface ProjectModalProps {
   project: Project;
@@ -26,6 +27,12 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
       document.body.style.overflow = 'unset';
     };
   }, [isOpen, onClose]);
+
+  useEffect(() => {
+    if (!isOpen) return undefined;
+    notifyOverlayOpen();
+    return () => notifyOverlayClose();
+  }, [isOpen]);
 
   if (!isOpen) return null;
 
@@ -67,6 +74,16 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
                 className="bg-blue-600 hover:bg-blue-700 px-4 py-3 sm:py-2 rounded-lg text-white transition-colors text-center w-full sm:w-auto"
               >
                 View on GitHub
+              </a>
+            )}
+            {project.doi && (
+              <a
+                href={project.doi}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-blue-600 hover:bg-blue-700 px-4 py-3 sm:py-2 rounded-lg text-white transition-colors text-center w-full sm:w-auto"
+              >
+                Read Paper (DOI)
               </a>
             )}
             {project.demo && (
