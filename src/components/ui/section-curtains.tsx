@@ -29,8 +29,8 @@ export function SectionCurtains() {
   const [direction, setDirection] = useState<CurtainDirection>('down');
 
   useEffect(() => {
-    let scrollTimer: NodeJS.Timeout;
-    let dismissTimer: NodeJS.Timeout;
+    let scrollTimer: ReturnType<typeof setTimeout>;
+    let dismissTimer: ReturnType<typeof setTimeout>;
 
     const handleTrigger = (e: Event) => {
       const customEvent = e as CustomEvent<CurtainEventDetail>;
