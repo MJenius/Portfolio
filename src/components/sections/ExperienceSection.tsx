@@ -92,12 +92,16 @@ export function ExperienceSection() {
   };
 
   return (
-    <section id="experience" className="pt-20 md:pt-32 pb-12 md:pb-16 px-4 md:px-6 -scroll-mt-28">
-      <div className="max-w-4xl mx-auto">
+    <section
+      id="experience"
+      className="min-h-[85vh] flex flex-col justify-start pt-24 md:pt-36 pb-48 md:pb-64 px-4 md:px-6 -scroll-mt-12 md:-scroll-mt-16 relative z-10"
+    >
+      <div className="max-w-4xl mx-auto w-full">
         <div className="text-center mb-8 md:mb-12 reveal-element">
           <TextReveal word="Experience Timeline" showReplayButton={false} showContainer={false} />
         </div>
 
+        {/* Education & Internships Dropdown */}
         <div className="reveal-element max-w-5xl mx-auto">
           <div
             role="button"

@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react';
 import { GradientButton } from './gradient-button';
 import { Mail, Download, Radio } from 'lucide-react';
 import { animate } from 'animejs';
+import { BorderBeam } from './border-beam';
 
 export default function SchemaCard() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -168,6 +169,8 @@ export default function SchemaCard() {
         ref={cardRef}
         className="relative overflow-hidden rounded-2xl flex flex-col p-8 flex-1 border border-indigo-500/30 bg-slate-900/80 backdrop-blur-xl shadow-2xl group transition-all duration-300 hover:border-indigo-500/50"
       >
+        <BorderBeam size={260} duration={10} colorFrom="#6366f1" colorTo="#38bdf8" />
+
         {/* Animated Canvas Wave in background */}
         <canvas
           ref={canvasRef}

@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef, useCallback } from 'react';
 import { fetchEngineeringStats } from '@/lib/stats';
 import { Code2, Award, Sparkles, Activity } from 'lucide-react';
 import { animate, stagger } from 'animejs';
@@ -27,27 +27,21 @@ export function LiveEngineeringStats() {
   const containerRef = useRef<HTMLDivElement>(null);
   const pulseRef = useRef<HTMLSpanElement>(null);
   const progressBarsRef = useRef<HTMLDivElement>(null);
+  const isFirstRender = useRef(true);
 
-  useEffect(() => {
-    const loadStats = async () => {
-      try {
-        const data = await fetchEngineeringStats();
-        setStats(data);
-      } catch (error) {
-        console.error('Failed to load stats:', error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    loadStats();
-  }, []);
-
-  // Animate stats whenever they are loaded
-  useEffect(() => {
+  const runAnimation = useCallback(() => {
     if (!stats || !containerRef.current) return;
 
-    // 1. Number rolling counters
+    // Reset initial values
+    setAnimatedValues({
+      contributions: 0,
+      leetcodeTotal: 0,
+      leetcodeEasy: 0,
+      leetcodeMedium: 0,
+      leetcodeHard: 0,
+      scholarships: 0,
+    });
+
     const counterObj = {
       contributions: 0,
       leetcodeTotal: 0,
@@ -64,7 +58,7 @@ export function LiveEngineeringStats() {
       leetcodeMedium: stats.leetcode.medium,
       leetcodeHard: stats.leetcode.hard,
       scholarships: stats.scholarships,
-      duration: 1600,
+      duration: 1500,
       ease: 'outExpo',
       onUpdate: () => {
         setAnimatedValues({
@@ -78,20 +72,58 @@ export function LiveEngineeringStats() {
       },
     });
 
-    // 2. Staggered card entrance
+    // Staggered cards entrance
     const cards = containerRef.current.querySelectorAll('.stat-metric-card');
     if (cards.length > 0) {
       animate(cards, {
         opacity: [0, 1],
-        translateY: [16, 0],
-        scale: [0.96, 1],
-        delay: stagger(100, { start: 100 }),
-        duration: 700,
+        translateY: [14, 0],
+        scale: [0.97, 1],
+        delay: stagger(80, { start: 50 }),
+        duration: 600,
         ease: 'outBack(1.4)',
       });
     }
 
-    // 3. Animated pulse on the live beacon dot
+    // Animated LeetCode progress bar widths
+    if (progressBarsRef.current) {
+      const bars = progressBarsRef.current.querySelectorAll('.meter-segment');
+      animate(bars, {
+        scaleX: [0, 1],
+        duration: 1100,
+        delay: stagger(60, { start: 250 }),
+        ease: 'outCubic',
+      });
+    }
+
+    return () => {
+      counterAnim.revert();
+    };
+  }, [stats]);
+
+  // Initial load
+  useEffect(() => {
+    const loadStats = async () => {
+      try {
+        const data = await fetchEngineeringStats();
+        setStats(data);
+      } catch (error) {
+        console.error('Failed to load stats:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadStats();
+  }, []);
+
+  // Trigger animation whenever stats load or when entering/navigating to About Me
+  useEffect(() => {
+    if (!stats) return;
+
+    runAnimation();
+
+    // Pulse animation on the live dot
     if (pulseRef.current) {
       animate(pulseRef.current, {
         scale: [1, 1.8, 1],
@@ -102,21 +134,42 @@ export function LiveEngineeringStats() {
       });
     }
 
-    // 4. Animated LeetCode progress bar widths
-    if (progressBarsRef.current) {
-      const bars = progressBarsRef.current.querySelectorAll('.meter-segment');
-      animate(bars, {
-        scaleX: [0, 1],
-        duration: 1200,
-        delay: stagger(80, { start: 400 }),
-        ease: 'outCubic',
-      });
+    // Listen for dock curtain transition to "About Me"
+    const handleCurtainTransition = (e: Event) => {
+      const customEvent = e as CustomEvent<{ sectionName?: string }>;
+      if (customEvent.detail?.sectionName?.toLowerCase().includes('about')) {
+        setTimeout(() => {
+          runAnimation();
+        }, 350);
+      }
+    };
+
+    // Intersection observer for scrolling into About Me section
+    let observer: IntersectionObserver | null = null;
+    if (containerRef.current) {
+      observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              if (!isFirstRender.current) {
+                runAnimation();
+              }
+              isFirstRender.current = false;
+            }
+          });
+        },
+        { threshold: 0.25 }
+      );
+      observer.observe(containerRef.current);
     }
 
+    window.addEventListener('portfolio:curtain-transition', handleCurtainTransition);
+
     return () => {
-      counterAnim.revert();
+      window.removeEventListener('portfolio:curtain-transition', handleCurtainTransition);
+      observer?.disconnect();
     };
-  }, [stats]);
+  }, [stats, runAnimation]);
 
   if (loading) {
     return (

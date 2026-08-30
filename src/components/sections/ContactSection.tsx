@@ -1,5 +1,6 @@
 import SchemaCard from '../ui/schema-card-with-animated-wave-visualizer';
 import TextReveal from '../ui/text-reveal';
+import { TiltCard } from '../ui/tilt-card';
 
 interface Certification {
   name: string;
@@ -55,8 +56,11 @@ const certifications: Certification[] = [
 
 export function CertificationsSection() {
   return (
-    <section id="certifications" className="pt-16 md:pt-24 pb-24 md:pb-32 px-4 md:px-6 scroll-mt-0 relative z-10">
-      <div className="max-w-6xl mx-auto">
+    <section
+      id="certifications"
+      className="min-h-[85vh] flex flex-col justify-center pt-20 md:pt-32 pb-48 md:pb-64 px-4 md:px-6 -scroll-mt-12 md:-scroll-mt-8 relative z-10"
+    >
+      <div className="max-w-6xl mx-auto w-full">
         <div className="text-center mb-8 reveal-element">
           <TextReveal word="Certifications" showReplayButton={false} showContainer={false} />
         </div>
@@ -86,20 +90,23 @@ export function CertificationsSection() {
 
 function CertificationCard({ cert }: { cert: Certification }) {
   return (
-    <a
+    <TiltCard
+      as="a"
       href={cert.credential_url}
       target="_blank"
       rel="noopener noreferrer"
-      className="group bg-slate-900/80 backdrop-blur-sm border border-slate-700/50 rounded-xl p-5 hover:border-purple-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/10 hover:-translate-y-1"
+      maxTilt={10}
+      scaleOnHover={1.03}
+      className="group block h-full bg-slate-900/80 backdrop-blur-sm border border-slate-700/50 rounded-xl p-5 hover:border-purple-500/60 transition-colors duration-300 hover:shadow-xl hover:shadow-purple-500/10"
     >
       <div className="flex items-start gap-3 mb-3">
         <img
           src={cert.logo}
           alt={`${cert.name} Logo`}
-          className="w-14 h-14 rounded-lg object-contain flex-shrink-0 p-2"
+          className="w-14 h-14 rounded-lg object-contain flex-shrink-0 p-2 bg-slate-800/60 border border-slate-700/40"
         />
-        <div className="flex-1">
-          <h3 className="text-base font-bold text-white mb-0.5 group-hover:text-purple-300 transition-colors">
+        <div className="flex-1 min-w-0">
+          <h3 className="text-base font-bold text-white mb-0.5 group-hover:text-purple-300 transition-colors truncate">
             {cert.name}
           </h3>
           <p className="text-slate-400 text-xs">{cert.issuer}</p>
@@ -108,14 +115,17 @@ function CertificationCard({ cert }: { cert: Certification }) {
       <p className="text-slate-300 text-xs leading-relaxed">
         {cert.description}
       </p>
-    </a>
+    </TiltCard>
   );
 }
 
 export function ContactSection() {
   return (
     <>
-      <section id="contact" className="pt-16 md:pt-20 pb-16 md:pb-20 px-4 md:px-6 -scroll-mt-16">
+      <section
+        id="contact"
+        className="min-h-[85vh] flex flex-col justify-center pt-24 md:pt-36 pb-24 md:pb-32 px-4 md:px-6 -scroll-mt-12 md:-scroll-mt-28"
+      >
         <div className="max-w-6xl mx-auto w-full">
           <div className="text-center mb-8 md:mb-12 reveal-element">
             <TextReveal word="Contact Me" showReplayButton={false} showContainer={false} />

@@ -6,6 +6,7 @@ import { cn } from '@/lib/utils';
 import { MagneticDock, type DockItemData } from '@/components/ui/magnetic-dock';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useOverlayOpen } from '@/lib/overlay-events';
+import { triggerCurtainTransition } from './section-curtains';
 
 interface NavItem {
   name: string;
@@ -83,12 +84,13 @@ export function ResponsiveMagneticDock({ items, className }: ResponsiveMagneticD
   }, [items]);
 
   const handleNavClick = (item: NavItem) => {
+    const currentIdx = items.findIndex((i) => i.name === activeTab);
+    const targetIdx = items.findIndex((i) => i.name === item.name);
+    const direction = targetIdx >= currentIdx ? 'down' : 'up';
+
     setActiveTab(item.name);
     setMobileMenuOpen(false);
-    const element = document.getElementById(item.url.replace('#', ''));
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
+    triggerCurtainTransition(item.name, direction, item.url);
   };
 
   // Mobile: hamburger FAB + slide-up overlay

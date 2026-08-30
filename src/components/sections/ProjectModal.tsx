@@ -1,7 +1,9 @@
 import { useEffect } from 'react';
 import { Project } from '@/data/portfolioData';
-import { X } from 'lucide-react';
+import { X, ExternalLink, Github, BookOpen } from 'lucide-react';
 import { notifyOverlayClose, notifyOverlayOpen } from '@/lib/overlay-events';
+import { motion, AnimatePresence } from 'framer-motion';
+import { BorderBeam } from '../ui/border-beam';
 
 interface ProjectModalProps {
   project: Project;
@@ -34,71 +36,133 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
     return () => notifyOverlayClose();
   }, [isOpen]);
 
-  if (!isOpen) return null;
-
   return (
-    <div className="modal" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }} onClick={onClose}>
-      <div
-        className="modal-content p-5 md:p-8 m-4"
-        onClick={(e) => e.stopPropagation()}
-      >
-        <button className="modal-close" onClick={onClose}>
-          <X className="w-6 h-6" />
-        </button>
+    <AnimatePresence>
+      {isOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-6">
+          {/* Backdrop */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25 }}
+            className="fixed inset-0 bg-black/75 backdrop-blur-md"
+            onClick={onClose}
+          />
 
-        <h2 className="text-2xl md:text-3xl font-bold mb-4 gradient-text pr-10">{project.title}</h2>
+          {/* Expanded Bento Modal Card with Shared layoutId */}
+          <motion.div
+            layoutId={`project-card-${project.id}`}
+            transition={{
+              type: 'spring',
+              stiffness: 280,
+              damping: 28,
+            }}
+            className="relative w-full max-w-2xl max-h-[85vh] overflow-y-auto custom-scrollbar bg-slate-900/95 border border-indigo-500/40 rounded-3xl p-6 md:p-8 shadow-2xl backdrop-blur-xl z-50"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <BorderBeam size={220} duration={8} colorFrom="#38bdf8" colorTo="#ec4899" />
 
-        <div className="space-y-4 text-slate-300">
-          <p>{project.details.overview}</p>
+            {/* Close button */}
+            <button
+              onClick={onClose}
+              className="absolute top-5 right-5 p-2 rounded-full bg-slate-800/80 hover:bg-slate-700 text-slate-300 hover:text-white border border-slate-700 transition-colors z-20"
+              aria-label="Close modal"
+            >
+              <X className="w-5 h-5" />
+            </button>
 
-          <h3 className="text-xl font-semibold text-white">Key Achievements:</h3>
-          <ul className="list-disc list-inside space-y-2">
-            {project.details.achievements.map((achievement, index) => (
-              <li key={index}>{achievement}</li>
-            ))}
-          </ul>
+            {/* Title with layoutId */}
+            <motion.h2
+              layoutId={`project-title-${project.id}`}
+              className="text-2xl md:text-3xl font-extrabold mb-4 gradient-text pr-12 tracking-tight"
+            >
+              {project.title}
+            </motion.h2>
 
-          <h3 className="text-xl font-semibold text-white">Technical Stack:</h3>
-          <ul className="list-disc list-inside space-y-2">
-            {project.details.techStack.map((tech, index) => (
-              <li key={index}>{tech}</li>
-            ))}
-          </ul>
+            {/* Modal details content */}
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1, duration: 0.3 }}
+              className="space-y-5 text-slate-300 text-sm leading-relaxed"
+            >
+              <p className="text-slate-200 leading-relaxed text-base">
+                {project.details.overview}
+              </p>
 
-          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mt-6">
-            {project.github && (
-              <a
-                href={project.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-blue-600 hover:bg-blue-700 px-4 py-3 sm:py-2 rounded-lg text-white transition-colors text-center w-full sm:w-auto"
-              >
-                View on GitHub
-              </a>
-            )}
-            {project.doi && (
-              <a
-                href={project.doi}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-blue-600 hover:bg-blue-700 px-4 py-3 sm:py-2 rounded-lg text-white transition-colors text-center w-full sm:w-auto"
-              >
-                Read Paper (DOI)
-              </a>
-            )}
-            {project.demo && (
-              <a
-                href={project.demo}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-blue-600 hover:bg-blue-700 px-4 py-3 sm:py-2 rounded-lg text-white transition-colors text-center w-full sm:w-auto"
-              >
-                Live Demo
-              </a>
-            )}
-          </div>
+              <div>
+                <h3 className="text-base font-bold text-white mb-2.5 flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-cyan-400" />
+                  Key Achievements & Numbers:
+                </h3>
+                <ul className="space-y-2 pl-2">
+                  {project.details.achievements.map((achievement, index) => (
+                    <li key={index} className="flex items-start gap-2.5 text-slate-300">
+                      <span className="text-cyan-400 mt-1">▹</span>
+                      <span>{achievement}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div>
+                <h3 className="text-base font-bold text-white mb-2.5 flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-purple-400" />
+                  Technical Stack:
+                </h3>
+                <div className="flex flex-wrap gap-2">
+                  {project.details.techStack.map((tech, index) => (
+                    <span
+                      key={index}
+                      className="px-2.5 py-1 rounded-lg bg-indigo-500/15 text-indigo-300 border border-indigo-500/30 text-xs font-mono font-medium"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              {/* Action Buttons */}
+              <div className="flex flex-wrap gap-3 pt-4 border-t border-slate-800">
+                {project.github && (
+                  <a
+                    href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 px-4 py-2.5 rounded-xl text-white font-medium transition-all shadow-lg hover:shadow-indigo-500/25"
+                  >
+                    <Github className="w-4 h-4" />
+                    View on GitHub
+                  </a>
+                )}
+                {project.doi && (
+                  <a
+                    href={project.doi}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 px-4 py-2.5 rounded-xl text-white font-medium transition-all shadow-lg hover:shadow-purple-500/25"
+                  >
+                    <BookOpen className="w-4 h-4" />
+                    Read Paper (DOI)
+                  </a>
+                )}
+                {project.demo && (
+                  <a
+                    href={project.demo}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 border border-slate-700 px-4 py-2.5 rounded-xl text-white font-medium transition-colors"
+                  >
+                    <ExternalLink className="w-4 h-4 text-cyan-400" />
+                    Live Demo
+                  </a>
+                )}
+              </div>
+            </motion.div>
+          </motion.div>
         </div>
-      </div>
-    </div>
+      )}
+    </AnimatePresence>
   );
 }

@@ -2,6 +2,7 @@ import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 import { Project } from "@/data/portfolioData";
+import { BorderBeam } from "./border-beam";
 import {
     Eye,
     MapPin,
@@ -91,10 +92,15 @@ export const ProjectsHoverEffect = ({
                     <motion.div
                         key={project.id}
                         layout
+                        layoutId={`project-card-${project.id}`}
                         initial={{ opacity: 0, scale: 0.9 }}
                         animate={{ opacity: 1, scale: 1 }}
                         exit={{ opacity: 0, scale: 0.9 }}
-                        transition={{ duration: 0.3, ease: "easeOut" }}
+                        transition={{
+                            type: 'spring',
+                            stiffness: 280,
+                            damping: 28,
+                        }}
                         className="relative group block p-2 h-full w-full cursor-pointer"
                         onMouseEnter={() => setHoveredIndex(idx)}
                         onMouseLeave={() => setHoveredIndex(null)}
@@ -117,7 +123,7 @@ export const ProjectsHoverEffect = ({
                                 />
                             )}
                         </AnimatePresence>
-                        <ProjectCard project={project} index={idx} />
+                        <ProjectCard project={project} index={idx} isHovered={hoveredIndex === idx} />
                     </motion.div>
                 ))}
             </AnimatePresence>
@@ -137,7 +143,7 @@ export const ProjectsHoverEffect = ({
     );
 };
 
-const ProjectCard = ({ project, index }: { project: Project; index: number }) => {
+const ProjectCard = ({ project, index, isHovered }: { project: Project; index: number; isHovered?: boolean }) => {
     const icon = getProjectIcon(project.id);
     const primaryCategory = Array.isArray(project.category) ? project.category[0] : project.category;
     const gradient = getProjectGradient(primaryCategory, index);
@@ -154,6 +160,9 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
                 "relative z-20"
             )}
         >
+            {isHovered && (
+                <BorderBeam size={160} duration={8} colorFrom="#38bdf8" colorTo="#a855f7" />
+            )}
             <div className="relative z-50">
                 {/* Header with Icon */}
                 <div className="flex items-center gap-4 mb-4">
@@ -168,9 +177,12 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
                         {icon}
                     </div>
                     <div>
-                        <h4 className="text-lg font-bold text-white tracking-wide mb-1">
+                        <motion.h4
+                            layoutId={`project-title-${project.id}`}
+                            className="text-lg font-bold text-white tracking-wide mb-1"
+                        >
                             {project.title}
-                        </h4>
+                        </motion.h4>
                         <div className="flex flex-wrap gap-1.5">
                             {(Array.isArray(project.category) ? project.category : [project.category]).map((cat) => (
                                 <span
@@ -179,7 +191,7 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
                                         "text-[10px] px-2 py-0.5 rounded-full whitespace-nowrap font-medium border",
                                         cat === "ai-ml"
                                             ? "bg-purple-500/10 text-purple-300 border-purple-500/30"
-                                            : cat === "data-analysis"
+                                             : cat === "data-analysis"
                                             ? "bg-amber-500/10 text-amber-300 border-amber-500/30"
                                             : "bg-green-500/10 text-green-300 border-green-500/30"
                                     )}

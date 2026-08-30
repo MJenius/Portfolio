@@ -9,6 +9,8 @@ import { ProjectsSection } from './components/sections/ProjectsSection';
 import { SkillsSection } from './components/sections/SkillsSection';
 import { CertificationsSection, ContactSection } from './components/sections/ContactSection';
 import { Vortex } from './components/ui/vortex';
+import { LogoTicker } from './components/ui/logo-ticker';
+import { SectionCurtains } from './components/ui/section-curtains';
 
 const navItems = [
   { name: 'Home', url: '#home', icon: Home },
@@ -59,11 +61,12 @@ function App() {
 
   return (
     <>
+      <SectionCurtains />
       <div className="fixed inset-0 -z-10 inline-flex">
         <Vortex
           backgroundColor="#000000"
           rangeY={800}
-          particleCount={isMobile ? 150 : 550}
+          particleCount={isMobile ? 120 : 300}
           baseHue={220}
           className="w-full h-full"
         />
@@ -71,6 +74,10 @@ function App() {
       <ResponsiveMagneticDock items={navItems} />
       <div className="relative z-10">
         <HeroSection />
+        {/* Infinite Logo Ticker */}
+        <div className="max-w-6xl mx-auto px-4 -mt-8 mb-4 reveal-element">
+          <LogoTicker />
+        </div>
         <FeaturedProjectsSection />
         <AboutSection />
         <ExperienceSection />
