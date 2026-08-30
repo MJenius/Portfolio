@@ -3,7 +3,10 @@ import TextReveal from '../ui/text-reveal';
 
 export function AboutSection() {
   return (
-    <section id="about" className="py-12 md:py-16 px-4 md:px-6 relative overflow-hidden">
+    <section
+      id="about"
+      className="py-12 md:py-16 px-4 md:px-6 -scroll-mt-24 md:-scroll-mt-10 relative overflow-hidden"
+    >
       <div className="absolute inset-0 bg-linear-to-b from-transparent via-slate-900/40 to-transparent"></div>
       <div className="max-w-6xl mx-auto relative z-10">
         <div className="text-center mb-8 reveal-element">

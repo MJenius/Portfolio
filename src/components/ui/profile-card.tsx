@@ -39,31 +39,33 @@ export function ProfileCard(props: ProfileCardProps) {
   ];
 
   return (
-    <div className={cn('max-w-fit mx-auto', className)}>
-      {/* Desktop Layout */}
-      <div className="hidden md:flex relative items-center gap-0">
-        {/* Left: Live Stats (replaces square image) */}
-        <div className="w-95 shrink-0">
+    <div className={cn('max-w-6xl mx-auto w-full', className)}>
+      {/* Desktop Layout - Clean Side-by-Side without clipping */}
+      <div className="hidden lg:grid lg:grid-cols-12 gap-6 items-stretch">
+        {/* Left: Live Stats (5 columns) */}
+        <div className="lg:col-span-5 flex flex-col">
           <LiveEngineeringStats />
         </div>
 
-        {/* Right: Overlapping Card with text and socials */}
+        {/* Right: Bio & Socials Card (7 columns) */}
         <motion.div
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5, ease: 'easeOut' }}
-          className="bg-slate-900/90 border border-slate-700/60 rounded-3xl shadow-2xl p-6 -ml-20 z-10 max-w-xl flex-1 backdrop-blur"
+          className="lg:col-span-7 bg-slate-900/90 border border-slate-700/60 rounded-3xl shadow-2xl p-7 flex flex-col justify-between backdrop-blur"
         >
-          <div className="mb-4">
-            <h2 className="text-xl font-bold text-white mb-1">{name}</h2>
-            <p className="text-xs font-medium text-slate-400">{title}</p>
+          <div>
+            <div className="mb-4">
+              <h2 className="text-2xl font-bold text-white mb-1">{name}</h2>
+              <p className="text-xs font-medium text-slate-400">{title}</p>
+            </div>
+
+            <p className="text-slate-200 text-sm leading-relaxed mb-6 whitespace-pre-line">
+              {description}
+            </p>
           </div>
 
-          <p className="text-slate-200 text-sm leading-relaxed mb-6 whitespace-pre-line">
-            {description}
-          </p>
-
-          <div className="flex space-x-2">
+          <div className="flex space-x-2 pt-2 border-t border-slate-800/80">
             {socials.map(({ icon: Icon, label, href }) => (
               <MicroExpander
                 key={label}
@@ -77,26 +79,26 @@ export function ProfileCard(props: ProfileCardProps) {
         </motion.div>
       </div>
 
-      {/* Mobile Layout */}
+      {/* Medium & Mobile Layout */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, ease: 'easeOut' }}
-        className="md:hidden max-w-md mx-auto text-center"
+        className="lg:hidden max-w-xl mx-auto space-y-6"
       >
-        {/* Mobile: Live Stats */}
-        <div className="mb-6">
+        {/* Live Stats */}
+        <div className="w-full">
           <LiveEngineeringStats />
         </div>
 
-        <div className="px-2 sm:px-4">
-          <h2 className="text-xl font-bold text-white mb-2">{name}</h2>
-          <p className="text-sm font-medium text-slate-400 mb-4">{title}</p>
+        <div className="bg-slate-900/90 border border-slate-700/60 rounded-3xl shadow-2xl p-6 backdrop-blur">
+          <h2 className="text-xl font-bold text-white mb-1.5">{name}</h2>
+          <p className="text-xs font-medium text-slate-400 mb-4">{title}</p>
           <p className="text-slate-200 text-sm leading-relaxed mb-6 whitespace-pre-line">
             {description}
           </p>
 
-          <div className="flex justify-center flex-wrap gap-2">
+          <div className="flex flex-wrap gap-2 pt-2 border-t border-slate-800">
             {socials.map(({ icon: Icon, label, href }) => (
               <MicroExpander
                 key={label}

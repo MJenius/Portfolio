@@ -1,6 +1,8 @@
+import { useRef } from 'react';
 import { Monitor, Lightbulb, Settings, Code } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 import { skills } from '@/data/portfolioData';
+import { animate, stagger } from 'animejs';
 
 type TechnologyCardConfig = {
   title: string;
@@ -42,15 +44,45 @@ const cards: TechnologyCardConfig[] = [
 ];
 
 export default function SkewCards() {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  const handleCardMouseEnter = (e: React.MouseEvent<HTMLDivElement>) => {
+    const card = e.currentTarget;
+    const badges = card.querySelectorAll('.skill-chip');
+    const icon = card.querySelector('.card-icon-wrap');
+
+    // Staggered bounce wave across skill tags
+    if (badges.length > 0) {
+      animate(badges, {
+        scale: [1, 1.15, 1],
+        translateY: [0, -3, 0],
+        delay: stagger(35, { from: 'center' }),
+        duration: 450,
+        ease: 'outBack(2)',
+      });
+    }
+
+    // Icon micro-bounce
+    if (icon) {
+      animate(icon, {
+        rotate: [0, -10, 10, 0],
+        scale: [1, 1.2, 1],
+        duration: 500,
+        ease: 'outElastic(1, 0.6)',
+      });
+    }
+  };
+
   return (
     <>
-      <section className="px-4 md:px-6 pb-6 md:pb-8 scroll-mt-32 md:scroll-mt-40">
+      <section ref={containerRef} className="px-4 md:px-6 pb-6 md:pb-8 scroll-mt-32 md:scroll-mt-40">
         <div className="max-w-6xl mx-auto">
           {/* Compact 2x2 Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4 md:gap-5 pt-1">
             {cards.map(({ title, icon: Icon, technologies, gradientFrom, gradientTo }, idx) => (
               <div
                 key={idx}
+                onMouseEnter={handleCardMouseEnter}
                 className="group relative w-full min-h-[160px] sm:min-h-[190px] h-full transition-all duration-500 cursor-pointer"
               >
                 {/* Skewed gradient panels */}
@@ -77,7 +109,7 @@ export default function SkewCards() {
                 <div className="relative z-20 left-0 p-3 sm:p-4 bg-[rgba(255,255,255,0.05)] backdrop-blur-[10px] shadow-lg rounded-lg text-white transition-all duration-500 sm:group-hover:-left-[15px] sm:group-hover:p-5 h-full flex flex-col justify-between">
                   {/* Icon and Title */}
                   <div className="flex items-center gap-2 mb-2 shrink-0">
-                    <div className="p-1.5 bg-white/20 rounded-md flex-shrink-0">
+                    <div className="card-icon-wrap p-1.5 bg-white/20 rounded-md flex-shrink-0">
                       <Icon className="w-4 h-4 text-white" />
                     </div>
                     <h3 className="text-base font-bold leading-tight break-words">{title}</h3>
@@ -88,7 +120,7 @@ export default function SkewCards() {
                     {technologies.map((tech, techIdx) => (
                       <span
                         key={techIdx}
-                        className="bg-white/10 backdrop-blur-sm px-1.5 py-0.5 rounded text-[11px] font-medium text-white/90 hover:bg-white/20 transition-colors whitespace-nowrap"
+                        className="skill-chip bg-white/10 backdrop-blur-sm px-1.5 py-0.5 rounded text-[11px] font-medium text-white/90 hover:bg-white/25 transition-colors whitespace-nowrap will-change-transform"
                       >
                         {tech}
                       </span>
