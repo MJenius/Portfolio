@@ -52,25 +52,25 @@ export function ProfileCard(props: ProfileCardProps) {
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5, ease: 'easeOut' }}
-          className="lg:col-span-7 bg-slate-900/90 border border-slate-700/60 rounded-3xl shadow-2xl p-7 flex flex-col justify-between backdrop-blur"
+          className="lg:col-span-7 bg-slate-900/90 border border-slate-700/60 rounded-3xl shadow-2xl p-5.5 flex flex-col justify-between backdrop-blur"
         >
           <div>
-            <div className="mb-4">
-              <h2 className="text-2xl font-bold text-white mb-1">{name}</h2>
-              <p className="text-xs font-medium text-slate-400">{title}</p>
+            <div className="mb-2.5">
+              <h2 className="text-xl font-bold text-white mb-0.5">{name}</h2>
+              <p className="text-[11px] font-medium text-slate-400">{title}</p>
             </div>
 
-            <p className="text-slate-200 text-sm leading-relaxed mb-6 whitespace-pre-line">
+            <p className="text-slate-200 text-[13px] leading-relaxed mb-3 whitespace-pre-line">
               {description}
             </p>
           </div>
 
-          <div className="flex space-x-2 pt-2 border-t border-slate-800/80">
+          <div className="flex space-x-1.5 pt-2 border-t border-slate-800/80">
             {socials.map(({ icon: Icon, label, href }) => (
               <MicroExpander
                 key={label}
                 text={label}
-                icon={<Icon className="w-5 h-5" />}
+                icon={<Icon className="w-4 h-4" />}
                 variant="ghost"
                 onClick={() => window.open(href, '_blank')}
               />
@@ -84,26 +84,26 @@ export function ProfileCard(props: ProfileCardProps) {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, ease: 'easeOut' }}
-        className="lg:hidden max-w-xl mx-auto space-y-6"
+        className="lg:hidden max-w-xl mx-auto space-y-5"
       >
         {/* Live Stats */}
         <div className="w-full">
           <LiveEngineeringStats />
         </div>
 
-        <div className="bg-slate-900/90 border border-slate-700/60 rounded-3xl shadow-2xl p-6 backdrop-blur">
-          <h2 className="text-xl font-bold text-white mb-1.5">{name}</h2>
-          <p className="text-xs font-medium text-slate-400 mb-4">{title}</p>
-          <p className="text-slate-200 text-sm leading-relaxed mb-6 whitespace-pre-line">
+        <div className="bg-slate-900/90 border border-slate-700/60 rounded-3xl shadow-2xl p-5 backdrop-blur">
+          <h2 className="text-xl font-bold text-white mb-1">{name}</h2>
+          <p className="text-[11px] font-medium text-slate-400 mb-3">{title}</p>
+          <p className="text-slate-200 text-[13px] leading-relaxed mb-4 whitespace-pre-line">
             {description}
           </p>
 
-          <div className="flex flex-wrap gap-2 pt-2 border-t border-slate-800">
+          <div className="flex flex-wrap gap-1.5 pt-2 border-t border-slate-800">
             {socials.map(({ icon: Icon, label, href }) => (
               <MicroExpander
                 key={label}
                 text={label}
-                icon={<Icon className="w-5 h-5" />}
+                icon={<Icon className="w-4 h-4" />}
                 variant="ghost"
                 onClick={() => window.open(href, '_blank')}
               />

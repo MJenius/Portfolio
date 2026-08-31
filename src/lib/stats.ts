@@ -60,7 +60,7 @@ function setCache<T>(key: string, data: T): void {
 }
 
 async function fetchGitHubStats(): Promise<GitHubStats> {
-  const cacheKey = 'github_stats';
+  const cacheKey = 'github_stats_v2';
   const cached = getCache<GitHubStats>(cacheKey);
 
   if (cached) {
@@ -68,37 +68,27 @@ async function fetchGitHubStats(): Promise<GitHubStats> {
   }
 
   try {
-    // Use GitHub Contributions API to get all years of contributions
-    const currentYear = new Date().getFullYear();
-    const years = [currentYear, currentYear - 1, currentYear - 2, currentYear - 3];
-    
-    const responses = await Promise.all(
-      years.map(year =>
-        fetch(
-          `https://github-contributions-api.jogruber.de/v4/${GITHUB_USERNAME}?y=${year}`,
-          {
-            method: 'GET',
-            headers: { 'Accept': 'application/json' },
-          }
-        )
-      )
+    // Fetch last year and total from jogruber's API
+    const response = await fetch(
+      `https://github-contributions-api.jogruber.de/v4/${GITHUB_USERNAME}?y=last`,
+      {
+        method: 'GET',
+        headers: { 'Accept': 'application/json' },
+      }
     );
 
-    let totalContributions = 0;
-    
-    for (const response of responses) {
-      if (response.ok) {
-        const result = await response.json();
-        totalContributions += result.total?.[String(result.year)] || 0;
-      }
+    if (response.ok) {
+      const result = await response.json();
+      const lastYearTotal = result.total?.lastYear ?? result.total?.[Object.keys(result.total)[0]] ?? 0;
+      const stats: GitHubStats = { totalContributions: lastYearTotal };
+      setCache(cacheKey, stats);
+      return stats;
     }
 
-    const stats: GitHubStats = { totalContributions: Math.max(totalContributions, 500) };
-    setCache(cacheKey, stats);
-    return stats;
+    return { totalContributions: 725 };
   } catch (error) {
     console.error('GitHub stats fetch error:', error);
-    return { totalContributions: 500 };
+    return { totalContributions: 725 };
   }
 }
 
