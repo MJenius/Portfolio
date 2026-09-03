@@ -521,8 +521,8 @@ export const experiences: Experience[] = [
     title: 'Web Developer Intern',
     organization: 'Superhhero Learning',
     period: 'Jun 2025 - Sep 2025',
-    description: 'Developed and deployed 8+ MERN pages serving 100+ active users. Optimized MongoDB indexing and query execution, reducing API response latency by 25%. Built aggregation pipelines for real-time product analytics, cutting reporting effort by 40%. Improved page-load speed by 10% through asset compression and performance observability pipelines.',
-    tags: ['React', 'Node.js', 'MongoDB', 'Express', 'REST APIs', 'Performance Optimization', 'Aggregation Pipelines'],
+    description: 'Built 4 of 5 application routes and 5 core UI modules for an online education platform using Next.js, React, and Tailwind CSS, delivering responsive, interactive, data-driven components through 8 merged PRs.',
+    tags: ['Next.js', 'React', 'Tailwind CSS', 'TypeScript', 'UI/UX', 'Component Architecture'],
     glowColors: ['#0894FF', '#C959DD', '#FF2E54']
   },
   {

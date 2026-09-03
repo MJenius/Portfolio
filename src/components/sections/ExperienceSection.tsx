@@ -20,8 +20,8 @@ const experienceCards = [
     title: 'Web Developer Intern',
     organization: 'Superhhero Learning',
     period: 'Jun 2025 – Sep 2025',
-    description: 'Built and deployed 8+ MERN pages serving 100+ users. Improved API latency by 25% through MongoDB optimization and improved load speed by 10%.',
-    tags: ['React', 'Node.js', 'MongoDB', 'Performance'],
+    description: 'Built 4 of 5 application routes and 5 core UI modules for an online education platform using Next.js, React, and Tailwind CSS, delivering responsive, interactive, data-driven components through 8 merged PRs.',
+    tags: ['Next.js', 'React', 'Tailwind CSS', 'TypeScript'],
     glowColors: ['#0894FF', '#C959DD', '#FF2E54']
   },
   {
