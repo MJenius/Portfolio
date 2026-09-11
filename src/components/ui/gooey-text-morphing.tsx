@@ -22,10 +22,7 @@ export function GooeyText({
   const text2Ref = React.useRef<HTMLSpanElement>(null);
 
   React.useEffect(() => {
-    let textIndex = texts.length - 1;
-    let time = new Date();
-    let morph = 0;
-    let cooldown = cooldownTime;
+    let animId: number;
 
     const setMorph = (fraction: number) => {
       if (text1Ref.current && text2Ref.current) {
@@ -38,56 +35,44 @@ export function GooeyText({
       }
     };
 
-    const doCooldown = () => {
-      morph = 0;
-      if (text1Ref.current && text2Ref.current) {
-        text2Ref.current.style.filter = "";
-        text2Ref.current.style.opacity = "100%";
-        text1Ref.current.style.filter = "";
-        text1Ref.current.style.opacity = "0%";
-      }
-    };
-
-    const doMorph = () => {
-      morph -= cooldown;
-      cooldown = 0;
-      let fraction = morph / morphTime;
-
-      if (fraction > 1) {
-        cooldown = cooldownTime;
-        fraction = 1;
-      }
-
-      setMorph(fraction);
-    };
+    // Calculate deterministic phase from performance.now() so all instances are synchronized
+    const cycleDuration = (morphTime + cooldownTime) * 1000;
 
     function animate() {
-      requestAnimationFrame(animate);
-      const newTime = new Date();
-      const shouldIncrementIndex = cooldown > 0;
-      const dt = (newTime.getTime() - time.getTime()) / 1000;
-      time = newTime;
+      animId = requestAnimationFrame(animate);
+      const now = performance.now();
+      const totalIndex = Math.floor(now / cycleDuration);
+      const cycleProgress = (now % cycleDuration) / 1000;
 
-      cooldown -= dt;
+      const currentIndex = totalIndex % texts.length;
+      const nextIndex = (totalIndex + 1) % texts.length;
 
-      if (cooldown <= 0) {
-        if (shouldIncrementIndex) {
-          textIndex = (textIndex + 1) % texts.length;
-          if (text1Ref.current && text2Ref.current) {
-            text1Ref.current.textContent = texts[textIndex % texts.length];
-            text2Ref.current.textContent = texts[(textIndex + 1) % texts.length];
-          }
+      if (text1Ref.current && text2Ref.current) {
+        if (text1Ref.current.textContent !== texts[currentIndex]) {
+          text1Ref.current.textContent = texts[currentIndex];
         }
-        doMorph();
-      } else {
-        doCooldown();
+        if (text2Ref.current.textContent !== texts[nextIndex]) {
+          text2Ref.current.textContent = texts[nextIndex];
+        }
+
+        if (cycleProgress < cooldownTime) {
+          // Cooldown phase: text1 is visible (100%), text2 is hidden (0%)
+          text1Ref.current.style.filter = "";
+          text1Ref.current.style.opacity = "100%";
+          text2Ref.current.style.filter = "";
+          text2Ref.current.style.opacity = "0%";
+        } else {
+          // Morph phase: transitioning from text1 to text2
+          const morphFraction = Math.min((cycleProgress - cooldownTime) / morphTime, 1);
+          setMorph(morphFraction);
+        }
       }
     }
 
-    animate();
+    animId = requestAnimationFrame(animate);
 
     return () => {
-      // Cleanup function if needed
+      cancelAnimationFrame(animId);
     };
   }, [texts, morphTime, cooldownTime]);
 

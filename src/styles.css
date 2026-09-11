@@ -115,6 +115,7 @@
         var(--color-3) var(--stop-3),
         var(--color-4) var(--stop-4),
         var(--color-5) var(--stop-5));
+    box-shadow: 0 4px 20px -2px rgba(201, 98, 135, 0.25), 0 0 15px 0 rgba(198, 108, 100, 0.15);
     transition:
       --pos-x 0.5s,
       --pos-y 0.5s,
@@ -132,7 +133,9 @@
       --stop-2 0.5s,
       --stop-3 0.5s,
       --stop-4 0.5s,
-      --stop-5 0.5s;
+      --stop-5 0.5s,
+      box-shadow 0.4s ease,
+      transform 0.3s ease;
   }
 
   .gradient-button::before {
@@ -140,7 +143,7 @@
     position: absolute;
     inset: 0;
     border-radius: inherit;
-    padding: 1px;
+    padding: 1.5px;
     background: linear-gradient(var(--border-angle),
         var(--border-color-1),
         var(--border-color-2));
@@ -154,29 +157,32 @@
     --pos-y: 91.51%;
     --spread-x: 120.24%;
     --spread-y: 103.18%;
-    --color-1: #c96287;
-    --color-2: #c66c64;
-    --color-3: #cc7d23;
-    --color-4: #37140a;
+    --color-1: #e06894;
+    --color-2: #de756c;
+    --color-3: #e68d28;
+    --color-4: #48190c;
     --color-5: #000;
     --border-angle: 190deg;
-    --border-color-1: hsla(340, 78%, 90%, 0.1);
-    --border-color-2: hsla(340, 75%, 90%, 0.6);
+    --border-color-1: hsla(340, 85%, 92%, 0.3);
+    --border-color-2: hsla(340, 90%, 92%, 0.85);
     --stop-1: 0%;
     --stop-2: 8.8%;
     --stop-3: 21.44%;
     --stop-4: 71.34%;
     --stop-5: 85.76%;
+    box-shadow: 0 8px 30px -4px rgba(224, 104, 148, 0.6), 0 0 25px rgba(230, 141, 40, 0.4);
+    transform: translateY(-1.5px) scale(1.02);
   }
 
   .gradient-button-variant {
-    --color-1: #000022;
-    --color-2: #1f3f6d;
-    --color-3: #469396;
-    --color-4: #f1ffa5;
+    --color-1: #000030;
+    --color-2: #244b82;
+    --color-3: #4ea8ab;
+    --color-4: #f4ffb3;
     --border-angle: 200deg;
-    --border-color-1: hsla(320, 75%, 90%, 0.6);
-    --border-color-2: hsla(320, 50%, 90%, 0.15);
+    --border-color-1: hsla(320, 80%, 92%, 0.7);
+    --border-color-2: hsla(320, 60%, 92%, 0.3);
+    box-shadow: 0 4px 20px -2px rgba(78, 168, 171, 0.25), 0 0 15px 0 rgba(244, 255, 179, 0.15);
   }
 
   .gradient-button-variant:hover {
@@ -184,10 +190,10 @@
     --pos-y: 95.51%;
     --spread-x: 110.24%;
     --spread-y: 110.2%;
-    --color-1: #000020;
-    --color-2: #f1ffa5;
-    --color-3: #469396;
-    --color-4: #1f3f6d;
+    --color-1: #000028;
+    --color-2: #f7ffbe;
+    --color-3: #52b8bb;
+    --color-4: #244b82;
     --color-5: #000;
     --stop-1: 0%;
     --stop-2: 10%;
@@ -195,8 +201,10 @@
     --stop-4: 71.34%;
     --stop-5: 90.76%;
     --border-angle: 210deg;
-    --border-color-1: hsla(320, 75%, 90%, 0.2);
-    --border-color-2: hsla(320, 50%, 90%, 0.75);
+    --border-color-1: hsla(320, 85%, 92%, 0.35);
+    --border-color-2: hsla(320, 65%, 92%, 0.9);
+    box-shadow: 0 8px 30px -4px rgba(82, 184, 187, 0.6), 0 0 25px rgba(247, 255, 190, 0.45);
+    transform: translateY(-1.5px) scale(1.02);
   }
 }
 
@@ -213,16 +221,29 @@
 
 
 
-html {
-  scroll-behavior: smooth;
-  overflow-x: hidden;
+/* Completely remove right scrollbar across all browsers while preserving scrollability */
+html,
+body,
+#root {
+  overflow-x: clip;
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar,
+#root::-webkit-scrollbar {
+  width: 0 !important;
+  height: 0 !important;
+  display: none !important;
+  background: transparent !important;
 }
 
 body {
   font-family: 'Inter', sans-serif;
   background: var(--primary-dark);
   color: var(--soft-white);
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 @layer components {
@@ -472,15 +493,24 @@ body {
   }
 
   .filter-btn {
-    background: rgba(59, 130, 246, 0.1);
-    border: 1px solid rgba(59, 130, 246, 0.3);
-    transition: all 0.3s ease;
+    background: rgba(59, 130, 246, 0.12);
+    border: 1px solid rgba(59, 130, 246, 0.35);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
-  .filter-btn:hover,
+  .filter-btn:hover {
+    background: rgba(59, 130, 246, 0.25);
+    border-color: rgba(96, 165, 250, 0.8);
+    box-shadow: 0 0 16px rgba(59, 130, 246, 0.35);
+    transform: translateY(-1px);
+  }
+
   .filter-btn.active {
-    background: rgba(59, 130, 246, 0.2);
-    border-color: var(--primary-blue);
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.9) 0%, rgba(147, 51, 234, 0.9) 100%);
+    border-color: rgba(192, 132, 252, 0.8);
+    box-shadow: 0 4px 20px rgba(59, 130, 246, 0.5), 0 0 15px rgba(147, 51, 234, 0.4);
+    color: #ffffff;
+    font-weight: 600;
   }
 
   .search-input {
@@ -1226,6 +1256,34 @@ body {
 
 .animate-border-beam {
   animation: border-beam var(--duration, 12s) infinite linear;
+}
+
+@keyframes tech-spin-cw {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes tech-spin-ccw {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+.animate-tech-ring-1 {
+  animation: tech-spin-cw 24s linear infinite;
+  transform-origin: center center;
+}
+
+.animate-tech-ring-2 {
+  animation: tech-spin-ccw 32s linear infinite;
+  transform-origin: center center;
 }
 
 /* Custom Sleek Scrollbar */

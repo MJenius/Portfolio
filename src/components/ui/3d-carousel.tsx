@@ -73,15 +73,16 @@ type ProjectCard = {
 // Map portfolio projects to carousel format - only include featured projects
 const getCarouselProjects = (): ProjectCard[] => {
   const projectMap: { [key: string]: ProjectCard } = {
-    'sentinelgraph': {
-      icon: { gradientFrom: "from-rose-500", gradientTo: "to-pink-600", svg: "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" },
-      title: "SentinelGraph",
-      subtitle: "GNN • Anomaly Detection • SOC",
-      description: "Behavioral Intelligence & Anomaly Detection SOC Platform with max-dominant risk fusion and SHAP explainability.",
-      tags: ["Python", "Streamlit", "NetworkX", "SHAP"],
-      metric: "3.4ms scoring latency",
+    'mandate': {
+      icon: { gradientFrom: "from-cyan-500", gradientTo: "to-blue-600", svg: "M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" },
+      title: "Mandate — AI Agent Control Plane",
+      subtitle: "FastAPI • Razorpay MCP • Security",
+      description: "Deterministic financial authorization control plane for AI agents — hierarchical policy enforcement, atomic budget reservations, and self-healing reconciliation.",
+      tags: ["FastAPI", "Razorpay", "Redis", "MCP"],
+      metric: "100% unauthorized ops blocked",
       links: [
-        { label: "View GitHub", url: "https://github.com/mjenius/sentinelgraph", type: "github" }
+        { label: "Live Demo", url: "https://mandate-razorpay-control-plane.vercel.app/", type: "demo" },
+        { label: "View GitHub", url: "https://github.com/MJenius/Mandate-Razorpay-Control-Plane", type: "github" }
       ]
     },
     'demand-forecasting': {

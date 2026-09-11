@@ -96,23 +96,23 @@ function CertificationCard({ cert }: { cert: Certification }) {
       target="_blank"
       rel="noopener noreferrer"
       maxTilt={10}
-      scaleOnHover={1.03}
-      className="group block h-full bg-slate-900/80 backdrop-blur-sm border border-slate-700/50 rounded-xl p-5 hover:border-purple-500/60 transition-colors duration-300 hover:shadow-xl hover:shadow-purple-500/10"
+      scaleOnHover={1.025}
+      className="group block h-full bg-slate-900/60 backdrop-blur-2xl border border-white/10 ring-1 ring-white/5 rounded-2xl p-5.5 hover:border-white/25 hover:bg-white/[0.07] transition-all duration-300 hover:shadow-2xl hover:shadow-black/50"
     >
-      <div className="flex items-start gap-3 mb-3">
+      <div className="flex items-start gap-3.5 mb-3.5">
         <img
           src={cert.logo}
           alt={`${cert.name} Logo`}
-          className="w-14 h-14 rounded-lg object-contain flex-shrink-0 p-2 bg-slate-800/60 border border-slate-700/40"
+          className="w-13 h-13 rounded-xl object-contain flex-shrink-0 p-2 bg-white/[0.05] border border-white/10"
         />
         <div className="flex-1 min-w-0">
-          <h3 className="text-base font-bold text-white mb-0.5 group-hover:text-purple-300 transition-colors truncate">
+          <h3 className="text-base font-bold text-white tracking-tight mb-0.5 group-hover:text-purple-300 transition-colors truncate">
             {cert.name}
           </h3>
-          <p className="text-slate-400 text-xs">{cert.issuer}</p>
+          <p className="text-slate-400 text-xs tracking-wide">{cert.issuer}</p>
         </div>
       </div>
-      <p className="text-slate-300 text-xs leading-relaxed">
+      <p className="text-slate-300 text-xs leading-relaxed font-normal">
         {cert.description}
       </p>
     </TiltCard>
@@ -121,8 +121,7 @@ function CertificationCard({ cert }: { cert: Certification }) {
 
 export function ContactSection() {
   return (
-    <>
-      <section
+    <section
         id="contact"
         className="min-h-[85vh] flex flex-col justify-center pt-24 md:pt-36 pb-24 md:pb-32 px-4 md:px-6 -scroll-mt-12 md:-scroll-mt-28"
       >
@@ -230,35 +229,5 @@ export function ContactSection() {
           </div>
         </div>
       </section>
-
-      <footer className="py-12 px-6">
-        <div className="max-w-6xl mx-auto text-center">
-          <div className="flex flex-wrap justify-center gap-4 sm:gap-6 mb-6">
-            <a href="https://github.com/MJenius" target="_blank" rel="noopener noreferrer"
-              className="text-slate-400 hover:text-white transition-colors">
-              GitHub
-            </a>
-            <a href="https://www.linkedin.com/in/mevin-jose/" target="_blank" rel="noopener noreferrer"
-              className="text-slate-400 hover:text-white transition-colors">
-              LinkedIn
-            </a>
-            <a href="https://leetcode.com/u/mjenius1357/" target="_blank" rel="noopener noreferrer"
-              className="text-slate-400 hover:text-white transition-colors">
-              LeetCode
-            </a>
-            <a href="https://www.kaggle.com/mjeniusmj" target="_blank" rel="noopener noreferrer"
-              className="text-slate-400 hover:text-white transition-colors">
-              Kaggle
-            </a>
-            <a href="mailto:mjenius1357@gmail.com" className="text-slate-400 hover:text-white transition-colors">
-              Email
-            </a>
-          </div>
-          <p className="text-slate-400">
-            Mevin Jose, AIML Student at PES University
-          </p>
-        </div>
-      </footer>
-    </>
   );
 }

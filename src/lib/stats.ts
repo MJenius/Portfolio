@@ -2,6 +2,7 @@
 // Caches data in localStorage with 6-hour expiry
 
 const CACHE_DURATION = 6 * 60 * 60 * 1000; // 6 hours
+const LEETCODE_CACHE_DURATION = 30 * 60 * 1000; // 30 minutes
 const GITHUB_USERNAME = 'MJenius';
 const LEETCODE_USERNAME = 'mjenius1357';
 
@@ -28,13 +29,13 @@ interface EngineeringStats {
   error?: string;
 }
 
-function getCache<T>(key: string): T | null {
+function getCache<T>(key: string, duration: number = CACHE_DURATION): T | null {
   try {
     const cached = localStorage.getItem(key);
     if (!cached) return null;
 
     const entry: CacheEntry<T> = JSON.parse(cached);
-    const isExpired = Date.now() - entry.timestamp > CACHE_DURATION;
+    const isExpired = Date.now() - entry.timestamp > duration;
 
     if (isExpired) {
       localStorage.removeItem(key);
@@ -94,7 +95,7 @@ async function fetchGitHubStats(): Promise<GitHubStats> {
 
 async function fetchLeetCodeStats(): Promise<LeetCodeStats> {
   const cacheKey = 'leetcode_stats';
-  const cached = getCache<LeetCodeStats>(cacheKey);
+  const cached = getCache<LeetCodeStats>(cacheKey, LEETCODE_CACHE_DURATION);
 
   if (cached) {
     return cached;
@@ -127,7 +128,7 @@ async function fetchLeetCodeStats(): Promise<LeetCodeStats> {
     return stats;
   } catch (error) {
     console.error('LeetCode stats fetch error:', error);
-    return { totalSolved: 235, easy: 78, medium: 125, hard: 32 };
+    return { totalSolved: 389, easy: 158, medium: 199, hard: 32 };
   }
 }
 
@@ -146,8 +147,8 @@ export async function fetchEngineeringStats(): Promise<EngineeringStats> {
   } catch (error) {
     console.error('Error fetching stats:', error);
     return {
-      github: { totalContributions: 500 },
-      leetcode: { totalSolved: 185, easy: 62, medium: 98, hard: 25 },
+      github: { totalContributions: 725 },
+      leetcode: { totalSolved: 389, easy: 158, medium: 199, hard: 32 },
       scholarships: 3,
       error: 'Failed to fetch live stats',
     };

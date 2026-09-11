@@ -52,20 +52,20 @@ export function ProfileCard(props: ProfileCardProps) {
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5, ease: 'easeOut' }}
-          className="lg:col-span-7 bg-slate-900/90 border border-slate-700/60 rounded-3xl shadow-2xl p-5.5 flex flex-col justify-between backdrop-blur"
+          className="lg:col-span-7 bg-slate-900/60 border border-white/10 rounded-3xl shadow-2xl shadow-black/40 p-6 flex flex-col justify-between backdrop-blur-2xl ring-1 ring-white/5"
         >
           <div>
-            <div className="mb-2.5">
-              <h2 className="text-xl font-bold text-white mb-0.5">{name}</h2>
-              <p className="text-[11px] font-medium text-slate-400">{title}</p>
+            <div className="mb-3">
+              <h2 className="text-xl font-bold text-white tracking-tight mb-0.5">{name}</h2>
+              <p className="text-[12px] font-medium text-slate-400 tracking-wide">{title}</p>
             </div>
 
-            <p className="text-slate-200 text-[13px] leading-relaxed mb-3 whitespace-pre-line">
+            <p className="text-slate-300 text-[13.5px] leading-relaxed mb-4 whitespace-pre-line font-normal">
               {description}
             </p>
           </div>
 
-          <div className="flex space-x-1.5 pt-2 border-t border-slate-800/80">
+          <div className="flex space-x-2 pt-3 border-t border-white/10">
             {socials.map(({ icon: Icon, label, href }) => (
               <MicroExpander
                 key={label}
@@ -91,14 +91,14 @@ export function ProfileCard(props: ProfileCardProps) {
           <LiveEngineeringStats />
         </div>
 
-        <div className="bg-slate-900/90 border border-slate-700/60 rounded-3xl shadow-2xl p-5 backdrop-blur">
-          <h2 className="text-xl font-bold text-white mb-1">{name}</h2>
-          <p className="text-[11px] font-medium text-slate-400 mb-3">{title}</p>
-          <p className="text-slate-200 text-[13px] leading-relaxed mb-4 whitespace-pre-line">
+        <div className="bg-slate-900/60 border border-white/10 rounded-3xl shadow-2xl shadow-black/40 p-5.5 backdrop-blur-2xl ring-1 ring-white/5">
+          <h2 className="text-xl font-bold text-white tracking-tight mb-1">{name}</h2>
+          <p className="text-[12px] font-medium text-slate-400 mb-3 tracking-wide">{title}</p>
+          <p className="text-slate-300 text-[13.5px] leading-relaxed mb-4 whitespace-pre-line font-normal">
             {description}
           </p>
 
-          <div className="flex flex-wrap gap-1.5 pt-2 border-t border-slate-800">
+          <div className="flex flex-wrap gap-2 pt-3 border-t border-white/10">
             {socials.map(({ icon: Icon, label, href }) => (
               <MicroExpander
                 key={label}

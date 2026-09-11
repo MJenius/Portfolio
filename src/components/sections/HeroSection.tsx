@@ -4,13 +4,11 @@ import { GooeyText } from '../ui/gooey-text-morphing';
 import { SocialLinks } from '../social-links';
 import { Eye, Download } from 'lucide-react';
 import { contactInfo } from '@/data/portfolioData';
-import { createTimeline, animate, stagger } from 'animejs';
+import { createTimeline, stagger } from 'animejs';
 
 export function HeroSection() {
   const heroRef = useRef<HTMLDivElement>(null);
   const avatarWrapperRef = useRef<HTMLDivElement>(null);
-  const ring1Ref = useRef<SVGSVGElement>(null);
-  const ring2Ref = useRef<SVGSVGElement>(null);
 
   useEffect(() => {
     if (!heroRef.current) return;
@@ -92,32 +90,8 @@ export function HeroSection() {
       );
     }
 
-    // 2. Continuous rotating holographic rings
-    let ringAnim1: any;
-    let ringAnim2: any;
-
-    if (ring1Ref.current) {
-      ringAnim1 = animate(ring1Ref.current, {
-        rotate: [0, 360],
-        duration: 24000,
-        loop: true,
-        ease: 'linear',
-      });
-    }
-
-    if (ring2Ref.current) {
-      ringAnim2 = animate(ring2Ref.current, {
-        rotate: [360, 0],
-        duration: 32000,
-        loop: true,
-        ease: 'linear',
-      });
-    }
-
     return () => {
       tl.revert();
-      ringAnim1?.revert();
-      ringAnim2?.revert();
     };
   }, []);
 
@@ -128,12 +102,11 @@ export function HeroSection() {
       className="min-h-screen flex items-start justify-center pt-28 px-6 max-md:min-h-0 max-md:pt-20 max-md:px-4 max-md:pb-12"
     >
       <div className="max-w-6xl mx-auto text-center relative z-20">
-        {/* Holographic Avatar with Orbiting SVG Tech Rings (Stationary) */}
+        {/* Holographic Avatar with Orbiting SVG Tech Rings */}
         <div className="relative inline-block mb-8 max-md:mb-6">
           {/* Outer SVG Tech Ring 1 */}
           <svg
-            ref={ring1Ref}
-            className="hero-ring absolute -inset-6 w-[calc(100%+48px)] h-[calc(100%+48px)] pointer-events-none z-10 opacity-75"
+            className="hero-ring animate-tech-ring-1 absolute -inset-6 w-[calc(100%+48px)] h-[calc(100%+48px)] pointer-events-none z-10 opacity-75"
             viewBox="0 0 200 200"
           >
             <circle
@@ -163,8 +136,7 @@ export function HeroSection() {
 
           {/* Inner SVG Tech Ring 2 */}
           <svg
-            ref={ring2Ref}
-            className="hero-ring absolute -inset-3 w-[calc(100%+24px)] h-[calc(100%+24px)] pointer-events-none z-10 opacity-60"
+            className="hero-ring animate-tech-ring-2 absolute -inset-3 w-[calc(100%+24px)] h-[calc(100%+24px)] pointer-events-none z-10 opacity-60"
             viewBox="0 0 180 180"
           >
             <circle

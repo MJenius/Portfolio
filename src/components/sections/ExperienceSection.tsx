@@ -45,18 +45,18 @@ export function ExperienceSection() {
   const timelineData = internshipCards.map((card) => ({
     title: card.year,
     content: (
-      <div className="relative overflow-hidden rounded-lg border border-slate-700">
+      <div className="relative overflow-hidden rounded-2xl border border-white/10 ring-1 ring-white/5 shadow-xl shadow-black/30">
         <GlowEffect
           colors={card.glowColors}
           mode="static"
           blur="medium"
-          className="opacity-40"
+          className="opacity-55"
         />
-        <div className="relative z-10 bg-slate-800/50 backdrop-blur-sm p-6">
-          <h4 className="text-xl md:text-2xl font-bold text-white mb-1.5">
+        <div className="relative z-10 bg-slate-900/60 backdrop-blur-2xl p-6">
+          <h4 className="text-xl md:text-2xl font-bold text-white tracking-tight mb-1.5">
             {card.title}
           </h4>
-          <p className="text-blue-400 text-sm font-medium mb-3">
+          <p className="text-blue-400 text-sm font-medium tracking-wide mb-3">
             {card.organization} · {card.period}
           </p>
           <p className="text-slate-300 text-sm leading-relaxed mb-4">
@@ -66,7 +66,7 @@ export function ExperienceSection() {
             {card.tags.map((tag, tagIndex) => (
               <span
                 key={tagIndex}
-                className="bg-blue-600/20 text-blue-400 px-2 py-1 rounded text-xs font-medium"
+                className="bg-white/[0.06] border border-white/10 text-slate-300 px-2.5 py-1 rounded-full text-xs font-medium tracking-wide"
               >
                 {tag}
               </span>
@@ -109,19 +109,19 @@ export function ExperienceSection() {
             aria-expanded={expanded}
             onClick={toggleExpanded}
             onKeyDown={handleCardKeyDown}
-            className="group relative overflow-hidden rounded-lg border border-slate-700 hover:border-purple-500/50 hover:shadow-lg hover:shadow-purple-500/10 transition-all duration-300 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-500/60"
+            className="group relative overflow-hidden rounded-2xl border border-white/10 ring-1 ring-white/5 hover:border-white/25 hover:shadow-2xl hover:shadow-black/50 transition-all duration-300 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/60"
           >
             <GlowEffect
               colors={educationCard.glowColors}
               mode="static"
               blur="medium"
-              className="opacity-40"
+              className="opacity-55"
             />
-            <div className="relative z-10 bg-slate-800/50 backdrop-blur-sm p-6 pb-0">
-              <h3 className="text-xl md:text-2xl font-bold text-white mb-1.5 pt-1">
+            <div className="relative z-10 bg-slate-900/60 backdrop-blur-2xl p-6 pb-0">
+              <h3 className="text-xl md:text-2xl font-bold text-white tracking-tight mb-1.5 pt-1">
                 {educationCard.title}
               </h3>
-              <p className="text-blue-400 text-sm md:text-base font-medium mb-3">
+              <p className="text-blue-400 text-sm md:text-base font-medium tracking-wide mb-3">
                 {educationCard.organization} · {educationCard.period}
               </p>
               <p className="text-slate-300 text-sm leading-relaxed mb-4">
@@ -131,14 +131,14 @@ export function ExperienceSection() {
                 {educationCard.tags.map((tag, tagIndex) => (
                   <span
                     key={tagIndex}
-                    className="bg-blue-600/20 text-blue-400 px-2 py-1 rounded text-xs font-medium"
+                    className="bg-white/[0.06] border border-white/10 text-slate-300 px-2.5 py-1 rounded-full text-xs font-medium tracking-wide"
                   >
                     {tag}
                   </span>
                 ))}
               </div>
 
-              <div className="-mx-6 mt-5 px-6 py-3.5 border-t border-slate-700/80 bg-slate-900/40 rounded-b-lg flex items-center justify-center gap-2.5 group-hover:bg-slate-900/60 transition-colors duration-300">
+              <div className="-mx-6 mt-5 px-6 py-3.5 border-t border-white/10 bg-white/[0.02] rounded-b-2xl flex items-center justify-center gap-2.5 group-hover:bg-white/[0.05] transition-colors duration-300">
                 <ChevronDown
                   className={`w-4 h-4 text-blue-400 transition-transform duration-300 ${
                     expanded ? 'rotate-180' : ''

@@ -108,28 +108,30 @@ function DockItem({
             <motion.div
                 className={cn(
                     "relative w-full h-full rounded-2xl overflow-hidden",
-                    "backdrop-blur-sm border",
+                    "backdrop-blur-md border",
                     "shadow-lg shadow-black/40",
                     "flex items-center justify-center",
                     "transition-all duration-200",
                     item.isActive
-                      ? "bg-gradient-to-b from-blue-500/20 to-purple-500/20 border-blue-500/40"
-                      : "bg-gradient-to-b from-slate-800/60 to-slate-900/60 border-slate-700/50"
+                      ? "bg-gradient-to-tr from-blue-600/30 via-indigo-500/25 to-purple-500/30 border-blue-400/50 shadow-lg shadow-blue-500/30 ring-1 ring-blue-400/40"
+                      : "bg-white/[0.05] border-white/12 hover:bg-white/[0.12] hover:border-white/30"
                 )}
                 style={{
-                    boxShadow: isHovered
-                        ? "0 8px 32px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.05)"
-                        : "0 4px 12px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.02)",
+                    boxShadow: item.isActive
+                        ? "0 0 24px rgba(59,130,246,0.45), inset 0 1px 0 rgba(255,255,255,0.4)"
+                        : isHovered
+                        ? "0 8px 32px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.25)"
+                        : "0 4px 12px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.1)",
                 }}
             >
                 {/* Icon */}
                 <div className={cn(
-                    "w-[50%] h-[50%] flex items-center justify-center transition-colors duration-200",
+                    "w-[52%] h-[52%] flex items-center justify-center transition-all duration-200",
                     item.isActive 
-                      ? "text-blue-400" 
+                      ? "text-cyan-300 drop-shadow-[0_0_8px_rgba(56,189,248,0.8)] scale-105" 
                       : isHovered 
-                        ? "text-slate-100" 
-                        : "text-slate-400"
+                        ? "text-white drop-shadow-[0_0_6px_rgba(255,255,255,0.4)]" 
+                        : "text-slate-300"
                 )}>
                     {item.icon}
                 </div>
@@ -177,8 +179,8 @@ function DockItem({
                         exit={{ scale: 0, opacity: 0 }}
                         className={cn(
                             "absolute -bottom-2",
-                            "w-1.5 h-1.5 rounded-full",
-                            "bg-blue-400"
+                            "w-2 h-2 rounded-full",
+                            "bg-cyan-400 shadow-[0_0_10px_#22d3ee,0_0_20px_#38bdf8]"
                         )}
                     />
                 )}
@@ -261,9 +263,10 @@ function MagneticDock({
 
     const variantStyles = {
         glass: cn(
-            "bg-slate-950/40",
-            "backdrop-blur-xl backdrop-saturate-150",
-            "border border-slate-800/80"
+            "bg-slate-950/50",
+            "backdrop-blur-2xl backdrop-saturate-200",
+            "border border-white/10",
+            "shadow-2xl shadow-black/60 ring-1 ring-white/5"
         ),
         solid: cn(
             "bg-slate-900",

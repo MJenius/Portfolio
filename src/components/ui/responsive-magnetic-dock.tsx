@@ -1,6 +1,7 @@
 'use client';
 
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState } from 'react';
+import { useLenis } from 'lenis/react';
 import { LucideIcon, Menu, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { MagneticDock, type DockItemData } from '@/components/ui/magnetic-dock';
@@ -24,7 +25,6 @@ export function ResponsiveMagneticDock({ items, className }: ResponsiveMagneticD
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const overlayOpen = useOverlayOpen();
-  const scrollTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   // Detect mobile viewport
   useEffect(() => {
@@ -48,40 +48,37 @@ export function ResponsiveMagneticDock({ items, className }: ResponsiveMagneticD
     return () => { document.body.style.overflow = ''; };
   }, [mobileMenuOpen]);
 
-  // Section scroll tracking
-  useEffect(() => {
-    const handleScroll = () => {
-      if (scrollTimeoutRef.current) {
-        clearTimeout(scrollTimeoutRef.current);
-      }
-
-      scrollTimeoutRef.current = setTimeout(() => {
-        const sections = items.map(item => {
-          const id = item.url.replace('#', '');
-          return document.getElementById(id);
-        });
-
-        for (let i = sections.length - 1; i >= 0; i--) {
-          if (sections[i]) {
-            const rect = sections[i]!.getBoundingClientRect();
-            // Using slightly wider threshold for better activation feel
-            if (rect.top <= window.innerHeight / 2) {
-              setActiveTab(items[i].name);
-              break;
-            }
-          }
+  // Immediate, high-precision active section tracking synced directly with Lenis scroll
+  useLenis(() => {
+    // When inside the loop transition zooming into/out of Home, highlight Home
+    const loopEl = document.getElementById('loop-transition');
+    if (loopEl) {
+      const loopRect = loopEl.getBoundingClientRect();
+      if (loopRect.top <= 0 && loopRect.bottom >= window.innerHeight * 0.2) {
+        if (items.length > 0) {
+          setActiveTab(items[0].name);
         }
-      }, 50);
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-      if (scrollTimeoutRef.current) {
-        clearTimeout(scrollTimeoutRef.current);
+        return;
       }
-    };
-  }, [items]);
+    }
+
+    const triggerLine = window.innerHeight * 0.45;
+    for (let i = items.length - 1; i >= 0; i--) {
+      const id = items[i].url.replace('#', '');
+      const el = document.getElementById(id);
+      if (el) {
+        const rect = el.getBoundingClientRect();
+        if (rect.top <= triggerLine) {
+          setActiveTab(items[i].name);
+          return;
+        }
+      }
+    }
+    // Fallback to first section if scrolled above
+    if (items.length > 0) {
+      setActiveTab(items[0].name);
+    }
+  });
 
   const handleNavClick = (item: NavItem) => {
     const currentIdx = items.findIndex((i) => i.name === activeTab);

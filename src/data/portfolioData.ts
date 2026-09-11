@@ -85,31 +85,6 @@ export const projects: Project[] = [
     }
   },
   {
-    id: 'sentinelgraph',
-    title: 'SentinelGraph',
-    description: 'Behavioral intelligence platform with 7-detector risk fusion, GNN/Graph-RAG traversal, and real-time graph visualization for SOC analysts.',
-    category: ['ai-ml', 'data-analysis'],
-    tags: ['Python', 'Streamlit', 'NetworkX', 'RAGAS', 'PyTorch', 'Docker', 'FastAPI', 'SHAP', 'Redis'],
-    github: 'https://github.com/mjenius/sentinelgraph',
-    featured: true,
-    details: {
-      overview: 'A behavioral intelligence and anomaly detection platform for SOC analysts featuring multi-detector risk fusion, GNN/Graph-RAG traversal, counterfactual explainability, and containerized microservices.',
-      achievements: [
-        'Architected a 7-detector behavioral anomaly ensemble for 1,000+ entities, suppressing false positive alert rates by over 90% via max-dominant risk fusion',
-        'Built an 11-step event-processing pipeline combining graph analysis and risk-fusion services to score 10K+ logs at 3.4ms average latency',
-        'Evaluated GNN and Graph-RAG traversal pipelines with RAGAS, achieving 0.942 PR-AUC and sub-10ms scoring latency over 10K benchmark events',
-        'Integrated counterfactual explainability and SHAP feature breakdowns, increasing policy explainability and threat triage efficiency by 30%',
-        'Reduced threat-triage time 65% by delivering dynamic graph-topology visualization and real-time event-timeline tooling',
-        'Containerized backend services with Docker Compose and created a 56-test Pytest suite achieving 100% automated pipeline pass rate'
-      ],
-      techStack: [
-        'Python, FastAPI, Streamlit',
-        'PyTorch, NetworkX, RAGAS, SHAP',
-        'Docker, Docker Compose, Redis, Pytest'
-      ]
-    }
-  },
-  {
     id: 'demand-forecasting',
     title: 'Demand Forecasting ML System',
     description: 'Leakage-safe LightGBM forecasting pipeline over 58.3M records with expanding-window validation and PSI drift monitoring.',
@@ -139,7 +114,8 @@ export const projects: Project[] = [
     category: ['web', 'ai-ml'],
     tags: ['Python', 'FastAPI', 'PostgreSQL', 'Redis', 'MCP', 'Razorpay', 'Docker', 'Pytest', 'Prometheus', 'OpenTelemetry'],
     github: 'https://github.com/MJenius/Mandate-Razorpay-Control-Plane',
-    featured: false,
+    demo: 'https://mandate-razorpay-control-plane.vercel.app/',
+    featured: true,
     details: {
       overview: 'A deterministic financial authorization and control plane that sits between autonomous AI agents and Razorpay APIs/MCP. Enforces hierarchical authority, policy-based spending limits, concurrency-safe budget reservations, webhook idempotency, rate limiting, and reconciliation to prevent unauthorized or inconsistent financial operations.',
       achievements: [
@@ -196,6 +172,31 @@ export const projects: Project[] = [
         'Python, Stable-Baselines3 (PPO)',
         'SUMO Traffic Simulator (TraCI)',
         'SHAP (Explainable AI), Pandas, Matplotlib'
+      ]
+    }
+  },
+  {
+    id: 'sentinelgraph',
+    title: 'SentinelGraph',
+    description: 'Behavioral intelligence platform with 7-detector risk fusion, GNN/Graph-RAG traversal, and real-time graph visualization for SOC analysts.',
+    category: ['ai-ml', 'data-analysis'],
+    tags: ['Python', 'Streamlit', 'NetworkX', 'RAGAS', 'PyTorch', 'Docker', 'FastAPI', 'SHAP', 'Redis'],
+    github: 'https://github.com/mjenius/sentinelgraph',
+    featured: false,
+    details: {
+      overview: 'A behavioral intelligence and anomaly detection platform for SOC analysts featuring multi-detector risk fusion, GNN/Graph-RAG traversal, counterfactual explainability, and containerized microservices.',
+      achievements: [
+        'Architected a 7-detector behavioral anomaly ensemble for 1,000+ entities, suppressing false positive alert rates by over 90% via max-dominant risk fusion',
+        'Built an 11-step event-processing pipeline combining graph analysis and risk-fusion services to score 10K+ logs at 3.4ms average latency',
+        'Evaluated GNN and Graph-RAG traversal pipelines with RAGAS, achieving 0.942 PR-AUC and sub-10ms scoring latency over 10K benchmark events',
+        'Integrated counterfactual explainability and SHAP feature breakdowns, increasing policy explainability and threat triage efficiency by 30%',
+        'Reduced threat-triage time 65% by delivering dynamic graph-topology visualization and real-time event-timeline tooling',
+        'Containerized backend services with Docker Compose and created a 56-test Pytest suite achieving 100% automated pipeline pass rate'
+      ],
+      techStack: [
+        'Python, FastAPI, Streamlit',
+        'PyTorch, NetworkX, RAGAS, SHAP',
+        'Docker, Docker Compose, Redis, Pytest'
       ]
     }
   },
@@ -545,7 +546,7 @@ export const skills = {
 export const socialLinks = {
   github: 'https://github.com/MJenius',
   linkedin: 'https://www.linkedin.com/in/mevin-jose/',
-  leetcode: 'https://leetcode.com/u/MJenius/',
+  leetcode: 'https://leetcode.com/u/mjenius1357/',
   email: 'mailto:mjenius1357@gmail.com'
 };
 
