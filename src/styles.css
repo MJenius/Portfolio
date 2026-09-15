@@ -303,15 +303,17 @@ body {
     position: absolute;
     bottom: -4px;
     left: 0;
-    width: 0;
+    width: 100%;
     height: 2px;
     background: var(--primary-blue);
-    transition: width 0.3s ease;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.25s ease-out;
   }
 
   .nav-link:hover::after,
   .nav-link.active::after {
-    width: 100%;
+    transform: scaleX(1);
   }
 
   .typewriter-cursor {
@@ -667,10 +669,8 @@ body {
   }
 
   .modal-content h3 {
-    background: linear-gradient(135deg, #e2e8f0, #f8fafc);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: #f1f5f9;
+    font-weight: 700;
     margin-top: 1.5rem;
   }
 
@@ -763,7 +763,8 @@ body {
     background: linear-gradient(90deg, var(--primary-blue), var(--ml-purple));
     height: 100%;
     border-radius: 10px;
-    transition: width 1s ease;
+    transform-origin: left;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   .certification-badge {
@@ -1309,4 +1310,57 @@ body {
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
   background: rgba(99, 102, 241, 0.8);
 }
+
+/* Dynamic Liquid Holographic Sheen Animation */
+@keyframes fluid-sheen-sweep {
+  0% {
+    transform: translate(-100%, -100%) rotate(25deg);
+  }
+  50% {
+    transform: translate(100%, 100%) rotate(25deg);
+  }
+  100% {
+    transform: translate(-100%, -100%) rotate(25deg);
+  }
+}
+
+@keyframes fluid-aurora-glow {
+  0%, 100% {
+    opacity: 0.35;
+    transform: scale(1) translate(0%, 0%);
+  }
+  33% {
+    opacity: 0.65;
+    transform: scale(1.15) translate(8%, -6%);
+  }
+  66% {
+    opacity: 0.45;
+    transform: scale(0.95) translate(-6%, 8%);
+  }
+}
+
+.animate-fluid-sheen {
+  animation: fluid-sheen-sweep 5.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+.animate-aurora-glow {
+  animation: fluid-aurora-glow 7s ease-in-out infinite;
+}
+
+/* Authentic Ticket Pass Cutout Mask: Left, Right, and Center Notches - 100% transparent */
+.ticket-notch-mask {
+  -webkit-mask-image:
+    radial-gradient(circle 14px at 0% 50%, transparent 13px, black 14px),
+    radial-gradient(circle 14px at 100% 50%, transparent 13px, black 14px),
+    radial-gradient(circle 14px at 50% 0%, transparent 13px, black 14px),
+    radial-gradient(circle 14px at 50% 100%, transparent 13px, black 14px);
+  -webkit-mask-composite: source-in;
+  mask-image:
+    radial-gradient(circle 14px at 0% 50%, transparent 13px, black 14px),
+    radial-gradient(circle 14px at 100% 50%, transparent 13px, black 14px),
+    radial-gradient(circle 14px at 50% 0%, transparent 13px, black 14px),
+    radial-gradient(circle 14px at 50% 100%, transparent 13px, black 14px);
+  mask-composite: intersect;
+}
+
 

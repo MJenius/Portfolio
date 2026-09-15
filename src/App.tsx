@@ -102,6 +102,12 @@ function AppContent({ isMobile }: { isMobile: boolean }) {
 
   return (
     <>
+      <a
+        href="#projects"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-blue-600 focus:text-white focus:rounded-lg focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-white"
+      >
+        Skip to main content
+      </a>
       <SectionCurtains />
       <div className="fixed inset-0 -z-10 inline-flex pointer-events-none">
         <Vortex
@@ -113,7 +119,7 @@ function AppContent({ isMobile }: { isMobile: boolean }) {
         />
       </div>
       <ResponsiveMagneticDock items={navItems} />
-      <div className="relative z-10">
+      <main id="main-content" className="relative z-10">
         <HeroSection />
         {/* Infinite Logo Ticker */}
         <div className="max-w-6xl mx-auto px-4 -mt-8 mb-4 reveal-element">
@@ -127,7 +133,7 @@ function AppContent({ isMobile }: { isMobile: boolean }) {
         <CertificationsSection />
         <ContactSection />
         <ScrollLoopTransition />
-      </div>
+      </main>
     </>
   );
 }

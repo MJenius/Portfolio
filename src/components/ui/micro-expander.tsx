@@ -26,9 +26,8 @@ interface MicroExpanderProps
 }
 
 /**
- * A micro-interaction button that expands from a circular icon to a pill shape
- * containing text upon hover. It handles loading states by reverting to the
- * circular shape and displaying a spinner.
+ * A micro-interaction button that smoothly expands from a circular icon to a pill shape
+ * containing text upon hover without stutter or layout pop.
  */
 const MicroExpander = React.forwardRef<HTMLButtonElement, MicroExpanderProps>(
   (
@@ -45,32 +44,74 @@ const MicroExpander = React.forwardRef<HTMLButtonElement, MicroExpanderProps>(
   ) => {
     const [isHovered, setIsHovered] = React.useState(false);
 
+    // Fast, responsive spring without frame thrash
     const containerVariants: Variants = {
-      initial: { width: '48px' },
-      hover: { width: 'auto' },
-      loading: { width: '48px' },
+      initial: {
+        width: 48,
+        transition: {
+          type: 'spring',
+          stiffness: 400,
+          damping: 30,
+          mass: 0.6,
+        },
+      },
+      hover: {
+        width: 'auto',
+        transition: {
+          type: 'spring',
+          stiffness: 380,
+          damping: 28,
+          mass: 0.6,
+        },
+      },
+      loading: {
+        width: 48,
+        transition: {
+          type: 'spring',
+          stiffness: 400,
+          damping: 30,
+        },
+      },
     };
 
+    // Immediate synchronized text reveal - no delayed pop or stutter
     const textVariants: Variants = {
-      initial: { opacity: 0, x: -10 },
+      initial: {
+        opacity: 0,
+        x: -6,
+        filter: 'blur(2px)',
+        transition: {
+          duration: 0.12,
+          ease: 'easeInOut',
+        },
+      },
       hover: {
         opacity: 1,
         x: 0,
-        transition: { delay: 0.15, duration: 0.3, ease: 'easeOut' },
+        filter: 'blur(0px)',
+        transition: {
+          duration: 0.2,
+          ease: [0.16, 1, 0.3, 1],
+          delay: 0.04,
+        },
       },
       exit: {
         opacity: 0,
-        x: -5,
-        transition: { duration: 0.1, ease: 'linear' },
+        x: -4,
+        transition: {
+          duration: 0.1,
+          ease: 'easeOut',
+        },
       },
     };
 
+    // Notice: removed CSS `transition-all duration-200` to prevent fight with Framer Motion spring ticks!
     const variantStyles = {
       default: 'bg-primary text-primary-foreground border border-primary',
       outline:
         'bg-transparent border border-input text-foreground hover:border-primary',
       ghost:
-        'bg-slate-900/60 backdrop-blur-xl border border-white/10 text-slate-300 hover:text-white hover:border-white/25 hover:bg-white/[0.08] shadow-lg shadow-black/20 transition-all duration-200',
+        'bg-slate-900/70 backdrop-blur-xl border border-white/10 text-slate-300 hover:text-white hover:border-white/25 hover:bg-white/[0.08] shadow-lg shadow-black/20',
       destructive:
         'bg-destructive text-destructive-foreground border border-destructive hover:bg-destructive/90',
     };
@@ -84,17 +125,17 @@ const MicroExpander = React.forwardRef<HTMLButtonElement, MicroExpanderProps>(
       <motion.button
         ref={ref}
         className={cn(
-          'relative flex h-12 items-center overflow-hidden rounded-full',
-          'whitespace-nowrap font-medium text-sm uppercase tracking-wide',
-          'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
-          isLoading && 'cursor-not-allowed',
+          'relative flex h-12 items-center overflow-hidden rounded-full cursor-pointer select-none',
+          'whitespace-nowrap font-medium text-sm tracking-wide',
+          'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950',
+          isLoading && 'cursor-not-allowed opacity-60',
           variantStyles[variant],
           className
         )}
+        style={{ willChange: 'width, transform' }}
         initial='initial'
         animate={isLoading ? 'loading' : isHovered ? 'hover' : 'initial'}
         variants={containerVariants}
-        transition={{ type: 'spring', stiffness: 150, damping: 20, mass: 0.8 }}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
         onFocus={() => setIsHovered(true)}
@@ -109,20 +150,20 @@ const MicroExpander = React.forwardRef<HTMLButtonElement, MicroExpanderProps>(
             {isLoading ? (
               <motion.div
                 key='spinner'
-                initial={{ opacity: 0, scale: 0.5, rotate: -90 }}
+                initial={{ opacity: 0, scale: 0.6, rotate: -90 }}
                 animate={{ opacity: 1, scale: 1, rotate: 0 }}
-                exit={{ opacity: 0, scale: 0.5 }}
-                transition={{ duration: 0.2 }}
+                exit={{ opacity: 0, scale: 0.6 }}
+                transition={{ duration: 0.15 }}
               >
                 <Loader2 className='h-5 w-5 animate-spin' />
               </motion.div>
             ) : (
               <motion.div
                 key='icon'
-                initial={{ opacity: 0, scale: 0.5 }}
+                initial={{ opacity: 0, scale: 0.7 }}
                 animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.5 }}
-                transition={{ duration: 0.2 }}
+                exit={{ opacity: 0, scale: 0.7 }}
+                transition={{ duration: 0.15 }}
               >
                 {icon || <Plus className='h-5 w-5' />}
               </motion.div>
@@ -130,7 +171,10 @@ const MicroExpander = React.forwardRef<HTMLButtonElement, MicroExpanderProps>(
           </AnimatePresence>
         </div>
 
-        <motion.div variants={textVariants} className='pr-6 pl-1'>
+        <motion.div
+          variants={textVariants}
+          className='pr-5 pl-0.5 overflow-hidden'
+        >
           {text}
         </motion.div>
       </motion.button>

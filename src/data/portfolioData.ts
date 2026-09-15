@@ -111,7 +111,7 @@ export const projects: Project[] = [
     id: 'mandate',
     title: 'Mandate — AI Agent Financial Control Plane',
     description: 'Security-critical financial authorization control plane for AI agents with deterministic policy enforcement, concurrency-safe budget reservations, and self-healing payment workflows.',
-    category: ['web', 'ai-ml'],
+    category: ['ai-ml'],
     tags: ['Python', 'FastAPI', 'PostgreSQL', 'Redis', 'MCP', 'Razorpay', 'Docker', 'Pytest', 'Prometheus', 'OpenTelemetry'],
     github: 'https://github.com/MJenius/Mandate-Razorpay-Control-Plane',
     demo: 'https://mandate-razorpay-control-plane.vercel.app/',
@@ -179,7 +179,7 @@ export const projects: Project[] = [
     id: 'sentinelgraph',
     title: 'SentinelGraph',
     description: 'Behavioral intelligence platform with 7-detector risk fusion, GNN/Graph-RAG traversal, and real-time graph visualization for SOC analysts.',
-    category: ['ai-ml', 'data-analysis'],
+    category: ['ai-ml'],
     tags: ['Python', 'Streamlit', 'NetworkX', 'RAGAS', 'PyTorch', 'Docker', 'FastAPI', 'SHAP', 'Redis'],
     github: 'https://github.com/mjenius/sentinelgraph',
     featured: false,
@@ -530,7 +530,7 @@ export const experiences: Experience[] = [
     title: 'B.Tech in AI & Machine Learning',
     organization: 'PES University, Bangalore',
     period: 'Aug 2023 - May 2027',
-    description: 'CGPA: 7.85 / 10.00. Coursework includes Explainable AI, LLMs & Applications (RAG), Advanced Foundations of ML (Deep Learning, Reinforcement Learning), Database Management Systems, Data Warehousing and Mining, Cloud Computing, Software Engineering, and Compiler Design.',
+    description: 'Coursework includes Explainable AI, LLMs & Applications (RAG), Advanced Foundations of ML (Deep Learning, Reinforcement Learning), Database Management Systems, Data Warehousing and Mining, Cloud Computing, Software Engineering, and Compiler Design.',
     tags: ['AI & ML', 'Explainable AI', 'LLMs & RAG', 'Deep Learning', 'Reinforcement Learning', 'Distributed Systems'],
     glowColors: ['#9333ea', '#ec4899', '#3b82f6']
   }

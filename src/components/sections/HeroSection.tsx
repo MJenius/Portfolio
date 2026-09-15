@@ -171,6 +171,8 @@ export function HeroSection() {
             <img
               src="resources/profile-avatar.png"
               alt="Mevin Jose Profile Pic"
+              width={192}
+              height={192}
               className="profile-avatar mx-auto rounded-full shadow-2xl ring-2 ring-indigo-500/30 filter drop-shadow-[0_10px_25px_rgba(99,102,241,0.25)]"
               loading="eager"
             />

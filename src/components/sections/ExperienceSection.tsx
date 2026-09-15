@@ -1,37 +1,47 @@
 import { useState, type KeyboardEvent } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { ChevronDown } from 'lucide-react';
+import { ChevronDown, Briefcase, GraduationCap, Building2, Calendar } from 'lucide-react';
 import TextReveal from '../ui/text-reveal';
 import { Timeline } from '../ui/timeline';
-import { GlowEffect } from '../ui/glow-effect';
+import { BorderBeam } from '../ui/border-beam';
 
-const experienceCards = [
+interface ExperienceItem {
+  year: string;
+  title: string;
+  organization: string;
+  period: string;
+  description: string;
+  tags: string[];
+  type: 'internship' | 'education';
+}
+
+const experienceCards: ExperienceItem[] = [
   {
     year: '2026',
-    title: 'AI Intern',
+    title: 'AI Engineering Intern',
     organization: 'Wadhwani Foundation',
     period: 'Jun 2026 – Aug 2026',
-    description: 'Worked with a multi-tenant AI platform spanning RAG, vector search, document processing, and conversational AI. Traced FastAPI workflows and studied retrieval architecture and embeddings.',
-    tags: ['RAG', 'FastAPI', 'Vector Search', 'Embeddings'],
-    glowColors: ['#6366f1', '#a855f7', '#ec4899']
+    description: 'Contributed to an enterprise-grade multi-tenant AI platform. Analyzed and optimized Python/FastAPI workflows for document parsing, OCR, and vector ingestion, evaluating Qdrant-backed semantic retrieval and RAG architectures.',
+    tags: ['FastAPI', 'RAG', 'Qdrant', 'Vector Search', 'Distributed Systems'],
+    type: 'internship'
   },
   {
     year: '2025',
     title: 'Web Developer Intern',
     organization: 'Superhhero Learning',
     period: 'Jun 2025 – Sep 2025',
-    description: 'Built 4 of 5 application routes and 5 core UI modules for an online education platform using Next.js, React, and Tailwind CSS, delivering responsive, interactive, data-driven components through 8 merged PRs.',
-    tags: ['Next.js', 'React', 'Tailwind CSS', 'TypeScript'],
-    glowColors: ['#0894FF', '#C959DD', '#FF2E54']
+    description: 'Engineered 4 of 5 core application routes and 5 interactive UI components for an online education platform using Next.js, React, and Tailwind CSS. Delivered responsive, high-performance user experiences through 8 production PRs.',
+    tags: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'UI Architecture'],
+    type: 'internship'
   },
   {
-    year: 'Education',
+    year: '2023 – 2027',
     title: 'B.Tech in Computer Science (AI & Machine Learning)',
-    organization: 'PES University',
+    organization: 'PES University, Bangalore',
     period: 'Aug 2023 – May 2027',
-    description: 'CGPA: 7.85 / 10.00 · AI/ML, Deep Learning, Reinforcement Learning, Algorithms',
-    tags: ['AI & ML', 'Deep Learning', 'RL', 'Distributed Systems'],
-    glowColors: ['#9333ea', '#ec4899', '#3b82f6']
+    description: 'Rigorous coursework spanning Deep Learning, Reinforcement Learning, Natural Language Processing, Distributed Database Systems, Cloud Computing, and Algorithmic Complexity.',
+    tags: ['Machine Learning', 'Deep Learning', 'Reinforcement Learning', 'Distributed Systems', 'Algorithms'],
+    type: 'education'
   }
 ];
 
@@ -39,39 +49,53 @@ export function ExperienceSection() {
   const [expanded, setExpanded] = useState(false);
   const [animationSettled, setAnimationSettled] = useState(false);
 
-  const educationCard = experienceCards[experienceCards.length - 1];
-  const internshipCards = experienceCards.slice(0, -1);
+  const educationCard = experienceCards.find((c) => c.type === 'education')!;
+  const internshipCards = experienceCards.filter((c) => c.type === 'internship');
 
   const timelineData = internshipCards.map((card) => ({
     title: card.year,
     content: (
-      <div className="relative overflow-hidden rounded-2xl border border-white/10 ring-1 ring-white/5 shadow-xl shadow-black/30">
-        <GlowEffect
-          colors={card.glowColors}
-          mode="static"
-          blur="medium"
-          className="opacity-55"
-        />
-        <div className="relative z-10 bg-slate-900/60 backdrop-blur-2xl p-6">
-          <h4 className="text-xl md:text-2xl font-bold text-white tracking-tight mb-1.5">
-            {card.title}
-          </h4>
-          <p className="text-blue-400 text-sm font-medium tracking-wide mb-3">
-            {card.organization} · {card.period}
-          </p>
-          <p className="text-slate-300 text-sm leading-relaxed mb-4">
-            {card.description}
-          </p>
-          <div className="flex flex-wrap gap-2">
-            {card.tags.map((tag, tagIndex) => (
-              <span
-                key={tagIndex}
-                className="bg-white/[0.06] border border-white/10 text-slate-300 px-2.5 py-1 rounded-full text-xs font-medium tracking-wide"
-              >
-                {tag}
-              </span>
-            ))}
+      <div className="relative overflow-hidden rounded-2xl border border-slate-700/60 bg-slate-900/90 backdrop-blur-xl p-6 sm:p-7 shadow-xl shadow-black/40 hover:border-slate-600 transition-all duration-300">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
+          <div className="flex items-center gap-2.5">
+            <div className="w-8 h-8 rounded-lg bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400">
+              <Briefcase className="w-4 h-4" />
+            </div>
+            <div>
+              <h4 className="text-lg sm:text-xl font-bold text-white tracking-tight">
+                {card.title}
+              </h4>
+            </div>
           </div>
+          <span className="self-start sm:self-auto px-2.5 py-1 rounded-md text-xs font-mono font-medium bg-slate-800 text-slate-300 border border-slate-700">
+            {card.year}
+          </span>
+        </div>
+
+        <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-slate-400 mb-4 font-medium">
+          <span className="flex items-center gap-1.5 text-sky-400">
+            <Building2 className="w-3.5 h-3.5 text-sky-400" />
+            {card.organization}
+          </span>
+          <span className="flex items-center gap-1.5 text-slate-400">
+            <Calendar className="w-3.5 h-3.5 text-slate-500" />
+            {card.period}
+          </span>
+        </div>
+
+        <p className="text-slate-300 text-sm leading-relaxed mb-5 font-normal">
+          {card.description}
+        </p>
+
+        <div className="flex flex-wrap gap-1.5 pt-3 border-t border-slate-800">
+          {card.tags.map((tag, tagIndex) => (
+            <span
+              key={tagIndex}
+              className="bg-slate-800/80 border border-slate-700/80 text-slate-300 px-2.5 py-0.5 rounded-md text-[11px] font-mono font-medium tracking-wide"
+            >
+              {tag}
+            </span>
+          ))}
         </div>
       </div>
     )
@@ -98,54 +122,76 @@ export function ExperienceSection() {
     >
       <div className="max-w-4xl mx-auto w-full">
         <div className="text-center mb-8 md:mb-12 reveal-element">
-          <TextReveal word="Experience Timeline" showReplayButton={false} showContainer={false} />
+          <TextReveal word="Experience & Education" showReplayButton={false} showContainer={false} />
         </div>
 
-        {/* Education & Internships Dropdown */}
-        <div className="reveal-element max-w-5xl mx-auto">
+        {/* Professional Education Card */}
+        <div className="reveal-element max-w-4xl mx-auto">
           <div
             role="button"
             tabIndex={0}
             aria-expanded={expanded}
             onClick={toggleExpanded}
             onKeyDown={handleCardKeyDown}
-            className="group relative overflow-hidden rounded-2xl border border-white/10 ring-1 ring-white/5 hover:border-white/25 hover:shadow-2xl hover:shadow-black/50 transition-all duration-300 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/60"
+            className="group relative overflow-hidden rounded-2xl border border-slate-700/70 bg-slate-900/90 backdrop-blur-xl hover:border-slate-600 shadow-2xl shadow-black/50 transition-all duration-300 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-400"
           >
-            <GlowEffect
-              colors={educationCard.glowColors}
-              mode="static"
-              blur="medium"
-              className="opacity-55"
-            />
-            <div className="relative z-10 bg-slate-900/60 backdrop-blur-2xl p-6 pb-0">
-              <h3 className="text-xl md:text-2xl font-bold text-white tracking-tight mb-1.5 pt-1">
-                {educationCard.title}
-              </h3>
-              <p className="text-blue-400 text-sm md:text-base font-medium tracking-wide mb-3">
-                {educationCard.organization} · {educationCard.period}
-              </p>
-              <p className="text-slate-300 text-sm leading-relaxed mb-4">
+            <BorderBeam size={280} duration={12} colorFrom="#38bdf8" colorTo="#6366f1" />
+
+            <div className="p-6 sm:p-8 pb-0">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-2.5">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400">
+                    <GraduationCap className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <span className="text-[11px] font-mono uppercase tracking-widest text-sky-400 font-semibold">
+                      DEGREE PROGRAM
+                    </span>
+                    <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
+                      {educationCard.title}
+                    </h3>
+                  </div>
+                </div>
+                <span className="self-start sm:self-auto px-3 py-1 rounded-md text-xs font-mono font-medium bg-slate-800 text-slate-300 border border-slate-700">
+                  {educationCard.year}
+                </span>
+              </div>
+
+              <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-slate-400 mb-4 font-medium pl-0.5">
+                <span className="flex items-center gap-1.5 text-sky-400">
+                  <Building2 className="w-3.5 h-3.5 text-sky-400" />
+                  {educationCard.organization}
+                </span>
+                <span className="flex items-center gap-1.5 text-slate-400">
+                  <Calendar className="w-3.5 h-3.5 text-slate-500" />
+                  {educationCard.period}
+                </span>
+              </div>
+
+              <p className="text-slate-300 text-sm leading-relaxed mb-5 font-normal pl-0.5">
                 {educationCard.description}
               </p>
-              <div className="flex flex-wrap gap-2">
+
+              <div className="flex flex-wrap gap-1.5 pb-5">
                 {educationCard.tags.map((tag, tagIndex) => (
                   <span
                     key={tagIndex}
-                    className="bg-white/[0.06] border border-white/10 text-slate-300 px-2.5 py-1 rounded-full text-xs font-medium tracking-wide"
+                    className="bg-slate-800/80 border border-slate-700/80 text-slate-300 px-2.5 py-0.5 rounded-md text-[11px] font-mono font-medium tracking-wide"
                   >
                     {tag}
                   </span>
                 ))}
               </div>
 
-              <div className="-mx-6 mt-5 px-6 py-3.5 border-t border-white/10 bg-white/[0.02] rounded-b-2xl flex items-center justify-center gap-2.5 group-hover:bg-white/[0.05] transition-colors duration-300">
+              {/* Toggle Tray */}
+              <div className="-mx-6 sm:-mx-8 px-6 sm:px-8 py-3.5 border-t border-slate-800 bg-slate-950/40 rounded-b-2xl flex items-center justify-center gap-2 group-hover:bg-slate-950/70 transition-colors duration-200">
                 <ChevronDown
-                  className={`w-4 h-4 text-blue-400 transition-transform duration-300 ${
+                  className={`w-4 h-4 text-sky-400 transition-transform duration-300 ${
                     expanded ? 'rotate-180' : ''
                   }`}
                 />
-                <span className="text-sm font-semibold tracking-wide text-blue-400 group-hover:text-blue-300 transition-colors">
-                  {expanded ? 'Hide Internships' : 'Internships'}
+                <span className="text-xs font-semibold tracking-wider uppercase text-sky-400 group-hover:text-sky-300 transition-colors">
+                  {expanded ? 'Hide Industry Internships' : 'View Industry Internships (2)'}
                 </span>
               </div>
             </div>
@@ -159,7 +205,7 @@ export function ExperienceSection() {
               initial={{ height: 0, opacity: 0 }}
               animate={{ height: 'auto', opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}
-              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
               onAnimationComplete={() => setAnimationSettled(true)}
               style={{ overflow: animationSettled ? 'visible' : 'hidden' }}
             >

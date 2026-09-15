@@ -10,25 +10,57 @@ export function ProjectsSection() {
   const [activeFilter, setActiveFilter] = useState<ProjectFilter>('all');
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedProjectId, setSelectedProjectId] = useState<string | null>(null);
-  const [showAll, setShowAll] = useState(false);
 
-  const filteredProjects = projects.filter((project) => {
-    const matchesFilter =
-      activeFilter === 'all' ||
-      project.category === 'all' ||
-      (Array.isArray(project.category)
-        ? project.category.includes(activeFilter)
-        : project.category === activeFilter);
-    const matchesSearch =
-      searchQuery === '' ||
-      project.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      project.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      project.tags.some((tag) => tag.toLowerCase().includes(searchQuery.toLowerCase()));
-    return matchesFilter && matchesSearch;
-  });
+  const filteredProjects = projects
+    .filter((project) => {
+      const matchesFilter =
+        activeFilter === 'all' ||
+        project.category === 'all' ||
+        (Array.isArray(project.category)
+          ? project.category.includes(activeFilter)
+          : project.category === activeFilter);
+      const matchesSearch =
+        searchQuery === '' ||
+        project.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        project.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        project.tags.some((tag) => tag.toLowerCase().includes(searchQuery.toLowerCase()));
+      return matchesFilter && matchesSearch;
+    })
+    .sort((a, b) => {
+      if (activeFilter === 'web') {
+        if (a.id === 'adaptive-golf') return -1;
+        if (b.id === 'adaptive-golf') return 1;
+        return 0;
+      }
+      return 0;
+    });
 
-  const displayedProjects = showAll ? filteredProjects : filteredProjects.slice(0, 8);
-  const hasMore = filteredProjects.length > 8;
+  // When viewing 'All Projects', interleave categories so projects with the same color are not bunched together
+  const displayProjects = activeFilter === 'all' && searchQuery.trim() === ''
+    ? (() => {
+        const aiProjects = filteredProjects.filter((p) => {
+          const cat = Array.isArray(p.category) ? p.category[0] : p.category;
+          return cat === 'ai-ml';
+        });
+        const webProjects = filteredProjects.filter((p) => {
+          const cat = Array.isArray(p.category) ? p.category[0] : p.category;
+          return cat === 'web';
+        });
+        const dataProjects = filteredProjects.filter((p) => {
+          const cat = Array.isArray(p.category) ? p.category[0] : p.category;
+          return cat === 'data-analysis';
+        });
+
+        const interleaved: typeof filteredProjects = [];
+        const maxLen = Math.max(aiProjects.length, webProjects.length, dataProjects.length);
+        for (let i = 0; i < maxLen; i++) {
+          if (i < aiProjects.length) interleaved.push(aiProjects[i]);
+          if (i < webProjects.length) interleaved.push(webProjects[i]);
+          if (i < dataProjects.length) interleaved.push(dataProjects[i]);
+        }
+        return interleaved;
+      })()
+    : filteredProjects;
 
   const selectedProject = projects.find((p) => p.id === selectedProjectId);
 
@@ -42,9 +74,9 @@ export function ProjectsSection() {
         </div>
       </section>
 
-      <section className="pb-12 px-4 md:px-6">
+      <section className="pb-3 px-4 md:px-6">
         <div className="max-w-6xl mx-auto">
-          <div className="reveal-element flex flex-col md:flex-row gap-4 md:gap-6 items-stretch md:items-center justify-between mb-6 md:mb-8">
+          <div className="reveal-element flex flex-col md:flex-row gap-4 md:gap-6 items-stretch md:items-center justify-between mb-2 md:mb-3">
             <div className="flex-1 w-full md:max-w-md">
               <input
                 type="text"
@@ -89,38 +121,15 @@ export function ProjectsSection() {
         </div>
       </section>
 
-      <section className="pb-16 md:pb-20 px-4 md:px-6">
-        <div className="max-w-6xl mx-auto" style={{ maxWidth: '1560px' }}>
+      <section className="pb-16 md:pb-20 w-full overflow-hidden">
+        <div className="w-full">
           <div className="reveal-element">
             <ProjectsHoverEffect
-              projects={displayedProjects}
+              projects={displayProjects}
               onProjectClick={(projectId) => setSelectedProjectId(projectId)}
+              isSearching={searchQuery.trim().length > 0}
             />
           </div>
-          {hasMore && (
-            <div className="flex justify-center mt-8">
-              <button
-                onClick={() => setShowAll(!showAll)}
-                className="px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold rounded-lg hover:shadow-lg hover:shadow-purple-500/50 transition-all duration-300 flex items-center gap-2"
-              >
-                {showAll ? (
-                  <>
-                    <span>Show Less</span>
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />
-                    </svg>
-                  </>
-                ) : (
-                  <>
-                    <span>View All Projects ({filteredProjects.length})</span>
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-                    </svg>
-                  </>
-                )}
-              </button>
-            </div>
-          )}
         </div>
       </section>
 

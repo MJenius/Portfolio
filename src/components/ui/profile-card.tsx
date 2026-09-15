@@ -3,6 +3,7 @@ import { Mail, Phone, Github, Code2, Linkedin } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { LiveEngineeringStats } from '../live-engineering-stats';
 import { MicroExpander } from './micro-expander';
+import { BorderBeam } from './border-beam';
 
 interface ProfileCardProps {
   name?: string;
@@ -47,17 +48,32 @@ export function ProfileCard(props: ProfileCardProps) {
           <LiveEngineeringStats />
         </div>
 
-        {/* Right: Bio & Socials Card (7 columns) */}
+        {/* Right: Bio & Socials Card (7 columns) styled with Work With Me aesthetics */}
         <motion.div
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5, ease: 'easeOut' }}
-          className="lg:col-span-7 bg-slate-900/60 border border-white/10 rounded-3xl shadow-2xl shadow-black/40 p-6 flex flex-col justify-between backdrop-blur-2xl ring-1 ring-white/5"
+          className="lg:col-span-7 relative overflow-hidden rounded-3xl border border-indigo-500/30 bg-slate-900/80 backdrop-blur-xl shadow-2xl p-7 flex flex-col justify-between group transition-all duration-300 hover:border-indigo-500/50"
         >
-          <div>
-            <div className="mb-3">
-              <h2 className="text-xl font-bold text-white tracking-tight mb-0.5">{name}</h2>
-              <p className="text-[12px] font-medium text-slate-400 tracking-wide">{title}</p>
+          <BorderBeam size={260} duration={10} colorFrom="#6366f1" colorTo="#38bdf8" />
+
+          {/* Cybernetic grid overlay background */}
+          <div
+            className="absolute inset-0 pointer-events-none opacity-20"
+            style={{
+              backgroundImage: `linear-gradient(to right, rgba(99, 102, 241, 0.2) 1px, transparent 1px), linear-gradient(to bottom, rgba(99, 102, 241, 0.2) 1px, transparent 1px)`,
+              backgroundSize: '32px 32px'
+            }}
+          />
+
+          {/* Ambient radial lighting overlays matching Work With Me */}
+          <div className="absolute top-0 right-0 w-64 h-64 bg-indigo-500/15 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute bottom-0 left-0 w-64 h-64 bg-cyan-500/15 rounded-full blur-3xl pointer-events-none" />
+
+          <div className="relative z-10">
+            <div className="mb-3.5">
+              <h2 className="text-2xl font-black text-white tracking-tight mb-1">{name}</h2>
+              <p className="text-[12.5px] font-medium text-slate-400 tracking-wide">{title}</p>
             </div>
 
             <p className="text-slate-300 text-[13.5px] leading-relaxed mb-4 whitespace-pre-line font-normal">
@@ -65,7 +81,7 @@ export function ProfileCard(props: ProfileCardProps) {
             </p>
           </div>
 
-          <div className="flex space-x-2 pt-3 border-t border-white/10">
+          <div className="flex space-x-2 pt-3.5 border-t border-white/10 relative z-10">
             {socials.map(({ icon: Icon, label, href }) => (
               <MicroExpander
                 key={label}
@@ -91,23 +107,35 @@ export function ProfileCard(props: ProfileCardProps) {
           <LiveEngineeringStats />
         </div>
 
-        <div className="bg-slate-900/60 border border-white/10 rounded-3xl shadow-2xl shadow-black/40 p-5.5 backdrop-blur-2xl ring-1 ring-white/5">
-          <h2 className="text-xl font-bold text-white tracking-tight mb-1">{name}</h2>
-          <p className="text-[12px] font-medium text-slate-400 mb-3 tracking-wide">{title}</p>
-          <p className="text-slate-300 text-[13.5px] leading-relaxed mb-4 whitespace-pre-line font-normal">
-            {description}
-          </p>
+        <div className="relative overflow-hidden rounded-3xl border border-indigo-500/30 bg-slate-900/80 backdrop-blur-xl shadow-2xl p-6 transition-all duration-300">
+          <BorderBeam size={220} duration={10} colorFrom="#6366f1" colorTo="#38bdf8" />
 
-          <div className="flex flex-wrap gap-2 pt-3 border-t border-white/10">
-            {socials.map(({ icon: Icon, label, href }) => (
-              <MicroExpander
-                key={label}
-                text={label}
-                icon={<Icon className="w-4 h-4" />}
-                variant="ghost"
-                onClick={() => window.open(href, '_blank')}
-              />
-            ))}
+          <div
+            className="absolute inset-0 pointer-events-none opacity-20"
+            style={{
+              backgroundImage: `linear-gradient(to right, rgba(99, 102, 241, 0.2) 1px, transparent 1px), linear-gradient(to bottom, rgba(99, 102, 241, 0.2) 1px, transparent 1px)`,
+              backgroundSize: '32px 32px'
+            }}
+          />
+
+          <div className="relative z-10">
+            <h2 className="text-xl font-black text-white tracking-tight mb-1">{name}</h2>
+            <p className="text-[12px] font-medium text-slate-400 mb-3 tracking-wide">{title}</p>
+            <p className="text-slate-300 text-[13.5px] leading-relaxed mb-4 whitespace-pre-line font-normal">
+              {description}
+            </p>
+
+            <div className="flex flex-wrap gap-2 pt-3 border-t border-white/10">
+              {socials.map(({ icon: Icon, label, href }) => (
+                <MicroExpander
+                  key={label}
+                  text={label}
+                  icon={<Icon className="w-4 h-4" />}
+                  variant="ghost"
+                  onClick={() => window.open(href, '_blank')}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </motion.div>

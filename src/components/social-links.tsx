@@ -5,7 +5,7 @@ interface SocialLink {
   icon: React.ReactNode;
   text: string;
   href: string;
-  color: string;
+  colorClass: string;
 }
 
 export function SocialLinks() {
@@ -14,25 +14,25 @@ export function SocialLinks() {
       icon: <Github className="w-5 h-5" />,
       text: 'GitHub',
       href: 'https://github.com/MJenius',
-      color: 'hover:text-white hover:bg-slate-700/30',
+      colorClass: 'hover:text-white hover:border-slate-400/40 hover:bg-slate-800/60',
     },
     {
       icon: <Linkedin className="w-5 h-5" />,
       text: 'LinkedIn',
       href: 'https://www.linkedin.com/in/mevin-jose/',
-      color: 'hover:text-blue-400 hover:bg-blue-400/10',
+      colorClass: 'hover:text-sky-400 hover:border-sky-500/40 hover:bg-sky-500/10',
     },
     {
       icon: <Code2 className="w-5 h-5" />,
       text: 'LeetCode',
       href: 'https://leetcode.com/u/mjenius1357/',
-      color: 'hover:text-orange-400 hover:bg-orange-500/10',
+      colorClass: 'hover:text-amber-400 hover:border-amber-500/40 hover:bg-amber-500/10',
     },
     {
       icon: <Mail className="w-5 h-5" />,
       text: 'Email',
       href: 'mailto:mjenius1357@gmail.com',
-      color: 'hover:text-blue-400 hover:bg-blue-500/10',
+      colorClass: 'hover:text-blue-400 hover:border-blue-500/40 hover:bg-blue-500/10',
     },
   ];
 
@@ -44,13 +44,14 @@ export function SocialLinks() {
           href={link.href}
           target={link.text === 'Email' ? undefined : '_blank'}
           rel={link.text === 'Email' ? undefined : 'noopener noreferrer'}
-          className="no-underline"
+          className="no-underline rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400"
+          aria-label={link.text}
         >
           <MicroExpander
             text={link.text}
             variant="ghost"
             icon={link.icon}
-            className={`text-slate-400 ${link.color} border-slate-600`}
+            className={`text-slate-300 border-white/10 ${link.colorClass}`}
           />
         </a>
       ))}

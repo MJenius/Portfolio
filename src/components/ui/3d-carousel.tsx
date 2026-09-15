@@ -130,7 +130,7 @@ const getCarouselProjects = (): ProjectCard[] => {
       ]
     },
     'nebula': {
-      icon: { gradientFrom: "from-purple-500", gradientTo: "to-indigo-600", svg: "M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" },
+      icon: { gradientFrom: "from-sky-500", gradientTo: "to-indigo-600", svg: "M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" },
       title: "Nebula - AI Movie Discovery",
       subtitle: "Next.js • FastAPI • Vectors",
       description: "Semantic search engine discovering movies by natural language context, visualized via an interactive 3D graph with Pinecone vectors.",
@@ -141,7 +141,7 @@ const getCarouselProjects = (): ProjectCard[] => {
       ]
     },
     'ai-data-analyst': {
-      icon: { gradientFrom: "from-purple-500", gradientTo: "to-indigo-600", svg: "M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" },
+      icon: { gradientFrom: "from-blue-600", gradientTo: "to-indigo-600", svg: "M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" },
       title: "AI Data Analyst Agent",
       subtitle: "Research Preprint • Text-to-SQL • Reliability",
       description: "Empirical study of schema grounding, DAG planning, deterministic validation, and AST-based closed-loop SQL repair for reliable LLM-based data analysis.",

@@ -197,11 +197,20 @@ export function LiveEngineeringStats() {
   return (
     <div
       ref={containerRef}
-      className="bg-slate-900/60 border border-white/10 rounded-3xl p-5 backdrop-blur-2xl shadow-2xl shadow-black/40 ring-1 ring-white/5 relative overflow-hidden group h-full flex flex-col justify-between"
+      className="border border-indigo-500/30 bg-slate-900/80 rounded-3xl p-6 backdrop-blur-xl shadow-2xl shadow-black/40 ring-1 ring-white/5 relative overflow-hidden group h-full flex flex-col justify-between transition-all duration-300 hover:border-indigo-500/50"
     >
+      {/* Cybernetic grid overlay background matching Work With Me */}
+      <div
+        className="absolute inset-0 pointer-events-none opacity-20"
+        style={{
+          backgroundImage: `linear-gradient(to right, rgba(99, 102, 241, 0.2) 1px, transparent 1px), linear-gradient(to bottom, rgba(99, 102, 241, 0.2) 1px, transparent 1px)`,
+          backgroundSize: '32px 32px'
+        }}
+      />
+
       {/* Ambient background glow */}
-      <div className="absolute -top-24 -right-24 w-48 h-48 bg-blue-500/10 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute -bottom-24 -left-24 w-48 h-48 bg-purple-500/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute -top-24 -right-24 w-48 h-48 bg-indigo-500/15 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute -bottom-24 -left-24 w-48 h-48 bg-cyan-500/15 rounded-full blur-3xl pointer-events-none" />
 
       {/* Header */}
       <div className="mb-2.5 flex items-center justify-between">
